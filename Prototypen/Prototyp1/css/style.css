@@ -1,0 +1,275 @@
+body{
+	background-image: url("../images/watch2.jpg");
+	background-size: 100%;
+    background-repeat: no-repeat;
+	background-color: #F9FDFF;
+}
+
+button{
+	border: none;
+	border-radius: 3px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+	padding: 4px 7px;
+	margin: 3px;
+	background-color: rgba(79, 132, 196, 0.9);
+	color: white;
+}
+
+button:hover{
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+	background-color: rgba(79, 132, 196, 1);
+}
+
+.card{
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7), 0px 0px 7px -3px rgba(0,0,0, 0.13);
+	margin: 5px;
+	border-radius: 2px;
+	width: 100%;
+	padding: 6px;
+	min-height: 200px;
+	margin-top: 20px;
+}
+
+.card ul, .card li{
+	width: 95%;
+}
+
+.card ul{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.card li>button{
+	text-align: right;
+	float: right;
+}
+
+.card h4{
+	display: inline-block;
+	padding-left: 10px;
+}
+
+.card p{
+	padding-left: 10px;
+}
+
+.card table{
+	margin-top: 15px;
+}
+
+.nav{
+	background-color: #F9FDFF;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7), 0px 0px 7px -3px rgba(0,0,0, 0.13);
+}
+
+.nav li{
+	font-weight: bold;
+}
+
+.dropdown-menu span{
+	padding: 3px 13px 3px 10px;
+	font-weight: 400;
+}
+
+
+.dropdown-menu span:first-child{
+	float: left;
+}
+
+.dropdown-menu span:last-child{
+	float: right;
+}
+
+.addBtn, .card .glyphicon, .ekVal, .vkVal, .numProduction, .verkauf, .productionLimit{
+	float: right;
+}
+
+.addBtn{
+	cursor: pointer;
+}
+
+.card .addBtn{
+	border: none;
+	border-radius: 3px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+	padding: 3px 7px;
+	text-decoration: none;
+	vertical-align: middle;
+	color: white;
+}
+
+a.addBtn{
+	margin: -3px;
+}
+
+.listhead{
+	font-size: 16px;
+	margin-left: 20px;
+	margin-bottom: 6px;
+}
+
+#nextRound{
+	color: white;
+	background-color: rgba(79, 132, 196, 0.9);
+}
+
+#nextRound:hover{
+	background-color: rgba(79, 132, 196, 1);
+}
+
+.luxus{
+	/*background-color: #ffeecc;*/
+	background-color: white;
+}
+
+.umwelt{
+	/*background-color: #dce8ca;*/
+	background-color: white;
+}
+
+.umwelt h4, .umwelt .done{
+	color: #92B558;
+	font-weight: 700;
+}
+
+.umwelt .done{
+	background-color: #F4F8EE;
+}
+
+.umwelt .addBtn{
+	background-color: #92B558;
+}
+
+.luxus{
+	/*background-color: #dce8ca;*/
+	background-color: white;
+}
+
+.luxus h4, .luxus .done{
+	color: #D8AE47;
+	font-weight: 700;
+}
+
+.luxus .done{
+	background-color: #FBF7ED;
+}
+
+.luxus  .addBtn{
+	background-color: #D8AE47;
+}
+
+.preisbewusst{
+	/*background-color: #f2f3f2;*/
+	background-color: white;
+}
+
+.card-aktive{
+	background-color: rgba(79, 132, 196, 0.15);
+	background-color: white!important;
+}
+
+.card li{
+	cursor: pointer;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+.card-inaktive, .card-inaktive li, li.notAavailable{
+	background-color: #f2f3f2;
+	color: grey;
+	cursor: default;
+}
+
+li.selected{
+	color: #4F84C4;
+	font-weight: 700;
+	background-color: #E5EDF6;
+}
+
+#menu1{
+}
+
+.glyphicon-ok{
+	color: #92B558;
+}
+
+.list-group{
+	margin-bottom: 12px;
+}
+
+.nav-stacked{
+	width: 140px;
+	display: inline-block;
+	position: fixed;
+	left: 0px;
+	top: 15%;
+}
+
+.cont-side-nav{
+	position: fixed;
+	left: 140px;
+}
+
+#player a, .player{
+	background-color: rgba(79, 132, 196, 0.9);
+	color: white;
+	text-align: center;
+}
+
+#player a{
+	cursor: default;
+}
+
+#player img{
+	width: 28px;
+	margin-top: -6px;
+	margin-bottom: -6px;
+}
+
+.glyphicon-ok{
+	color: #92B558;
+}
+
+.glyphicon-remove{
+	color: #dc0027;
+}
+
+.good{
+	background-color: #F4F8EE;
+}
+
+.bad{
+	background-color: #FCE6EA;
+}
+
+.marketing a.addBtn{
+	background-color: rgba(79, 132, 196, 0.9);
+}
+
+tfoot>tr>td{
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#next{
+	margin-top: 10%;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#next img, #next button, #next>h4, #next>h3{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#next button{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 10px 14px;
+	font-size: 1.2em;
+	font-weight: bold;
+}

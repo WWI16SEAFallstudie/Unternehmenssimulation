@@ -1,0 +1,89 @@
+body{
+	font-size: 23px;
+}
+
+h3{
+	color: grey;
+}
+
+.head{
+	background-color: rgba(255,255,255, 0.8);
+}
+
+#start{
+	background-image: url("images/watch.jpg");
+	background-repeat: repeat-x;
+}
+
+.container{
+	margin: 10px auto 25px auto;
+	padding: 10px;
+	border-radius: 6px;
+	text-align: center;
+}
+
+.inpframe, .playerCard{
+	text-align: center;
+	border-radius: 4px;
+	padding: 8px;
+	margin: 8px
+}
+
+.playerCard{
+	display: inline-block;
+	width: 22%;
+	background-color: rgba(255,255,255, 0.8);
+}
+
+.input{
+	display: block;
+	border: none;
+	border-radius: 4px;
+	background-color: white;
+	color: rgb(85,85,85);
+	box-shadow: 1px 1px 2px 0 rgb(0,0,0);
+	padding: 7px 15px;
+	margin: 2px auto 20px auto;
+}
+
+
+.playerBtn{
+	background-color: rgb(128,191,255);
+}
+
+#startbtn{
+	padding: 10px 35px;
+	font-size: 1.3em;
+	background-color: #79C753;
+	color: black;
+	font-weight: bold;
+}
+
+#startbtn:hover{
+	box-shadow: 2px 2px 6px 1px rgb(50,50,50);
+}
+
+input{
+	text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  cursor: pointer;
+}
+li{
+	font-weight: 400;
+	height: 30px;
+}
+
+li:hover{
+	font-size: 1.2em;
+}
+
+.playerOption{
+	decoration: none;
+}
+
+.selected{
+	color: red;
+}
