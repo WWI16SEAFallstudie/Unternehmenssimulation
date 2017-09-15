@@ -1,0 +1,38 @@
+Öko:
+	- Uhrwerk
+		1. Quarz
+		2. Funk
+		3. Automatik
+	- Gehäuse
+		1. Holz
+		2. Wurzelholz
+		3. Gebeiztes Holz
+	- Armband:
+		1. Stoff
+		2. Leinenfasern
+		3. Holz
+Premium:
+	- Uhrwerk:
+		1. Quarz
+		2. Automatik
+		3. Skelett/Kalender
+	- Gehäuse
+		1. Stahl
+		2. Titan
+		3. Platin
+	- Armband:
+		1. Leder
+		2. Gehäusematerial
+		3. Keramik
+Billig:
+	- Uhrwerk:
+		1. Quarz
+		2. Funk
+	- Gehäuse:
+		1. Plastik
+		2. Gefärbtes Plastik
+		3. Durchsichtiges Plastik
+	- Armband:
+		1. Plastik
+		2. Gummi
+		3. Stoff
