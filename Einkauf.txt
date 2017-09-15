@@ -1,0 +1,23 @@
+﻿Einkauf:
+- Rohstoffe
+* Holz
+* Textil
+* Kunststoff
+* Edelstahl
+* Reintitan, Aluminium, High-Tech-Keramik 
+* Gold, Silber, Platin
+* Edelsteine, Perlen
+* Leder, Wildleder, Krokoleder
+* Fischhaut
+* Glas
+* Quarz
+* steigende Personalkosten
+- fertige / halbfertige Produkte
+* Armbänder
+* Gehäuse
+* ggf Personalabbau
+- Eigenproduktion (z.B. Anbau von Holz)
+- Lieferanten auswählen (nach Region und Preis sortiert)
+- Skonto, Rabatte
+- Siegel (Blauer Engel für Leder, Fairtrade für Gold und Edelsteine, 30% teurer, recycletes Gold)
+
