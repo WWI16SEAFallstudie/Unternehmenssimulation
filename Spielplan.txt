@@ -1,0 +1,5 @@
+Spielplan "Watch Tycoon"
+Anzahl der Spieler:
+Spielverfahren:
+Maximal Anzahl der Spielzüge:
+Gewinnbedingung:
