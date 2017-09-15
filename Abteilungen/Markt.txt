@@ -1,0 +1,32 @@
+Markt (3Segmente)
+
+Funktionen
+	- Marktform ermitteln (Monopol, Oligopol, Polypol)
+	- Marktvolumen ermitteln
+	- Angebot und Nachfrage erzeugen
+	- Marktergebnis an den Spieler zurückgeben
+	- Boni mit einbringen
+
+Ideen:
+	- Markt aufteilen: 
+		o Lokale, regionaler Markt
+		o Nationaler Markt
+		o Internationaler Markt
+		o Weltmarkt
+	- In verschiedenen Phasen verschiedene Probleme einbringen (Zufällig einbringen)
+		o Wirtschaftskriese
+		o Öko-Skandal
+		o Streik für mehr Lohn in der Massenproduktion
+		o Lieferengpass für Luxusmarkt
+Marktverhalten: 
+	- Entscheiden, ob die angestoßene Werbung positiv oder negativ zu sehen ist
+	- Entscheiden wie viel in einem Markt Nachgefragt werden und auf die verschiedenen Anbieter prozentual verteilen
+	- Attribute für den Markt pro Runde zufällig setzen
+Marktgrößen
+	- Marktkapazität: Theoretische Maximalgröße des Marktes, Preise und Kaufkraft bleiben unberücksichtigt
+	- Marktpotenzial: Gesamte mögliche Absatzmenge eines Marktes. Das Marktpotenzial ist die obere Grenze für das Marktvolumen
+	- Marktvolumen: Summe der tatsächlich erzielten Umsätze
+	- Marktanteil: Relativer Anteil eines Anbieters am Marktvolumen
+	- Marktausdehnung: Konkrete räumliche Ausdehnung des relevanten Markts
+	- Marktwachstum: Zunahme der wirtschaftlichen Leistung in dem Markt, gemessen z.B. am Umsatz
+
