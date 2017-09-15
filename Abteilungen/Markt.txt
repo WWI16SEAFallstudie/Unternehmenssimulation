@@ -7,8 +7,8 @@ Funktionen
 	- Marktergebnis an den Spieler zurückgeben
 	- Boni mit einbringen
 
-Ideen:
-	- Markt aufteilen: 
+Ideen: 
+	- Markt aufteilen: (dumme IDEE)
 		o Lokale, regionaler Markt
 		o Nationaler Markt
 		o Internationaler Markt
@@ -22,6 +22,7 @@ Marktverhalten:
 	- Entscheiden, ob die angestoßene Werbung positiv oder negativ zu sehen ist
 	- Entscheiden wie viel in einem Markt Nachgefragt werden und auf die verschiedenen Anbieter prozentual verteilen
 	- Attribute für den Markt pro Runde zufällig setzen
+
 Marktgrößen
 	- Marktkapazität: Theoretische Maximalgröße des Marktes, Preise und Kaufkraft bleiben unberücksichtigt
 	- Marktpotenzial: Gesamte mögliche Absatzmenge eines Marktes. Das Marktpotenzial ist die obere Grenze für das Marktvolumen

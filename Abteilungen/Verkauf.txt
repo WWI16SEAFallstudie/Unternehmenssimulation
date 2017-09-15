@@ -1,0 +1,15 @@
+Verkauf:
+
+- Direktvertrieb
+	Höhere Kosten aber höherer Gewinn
+
+- Einzelhandel
+	Weniger KOsten, Geringerer Gewinn
+
+- Handelsvertreter
+	Provision pro Uhr
+
+--> Kann pro Uhr ausgewählt werden und die Menge muss mit angegeben werden
+
+
+Optionale Lagerkapazität
