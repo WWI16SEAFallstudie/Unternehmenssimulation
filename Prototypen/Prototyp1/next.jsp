@@ -28,7 +28,7 @@
 		<div id="next" class="card card-aktive">
 			<h4>N&auml;chster Spieler</h4>
 			<h3>Spieler 2</h3>
-			<img alt="" src="images/Spongebob.png">
+			<img alt="" src="images/ManB.png">
 			<button class="input" name="start" id="startbtn" onclick="next();">WEITER</button>
 		</div>
     </div>

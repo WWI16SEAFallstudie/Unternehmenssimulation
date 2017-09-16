@@ -44,6 +44,7 @@
 	    <li><a data-toggle="tab" href="#menu7">Statistik</a></li>
 	    <li><a id="nextRound" href="next.jsp">Runde beenden</a></li>
 	    <li onclick="uiSwitch();"><a id="uiSwitch"><span class="glyphicon glyphicon-menu-hamburger"></span></a></li>
+	    <li><a data-toggle="tab" href="#help">?</a></li>
 	  </ul>
 
     <!-- Page Content -->
@@ -109,6 +110,9 @@
 						<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
 						<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
 					</ul>
+					<div id="overlay">
+						<div id="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-4 col-md-4 col-lg-4">
@@ -138,6 +142,9 @@
 						<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
 						<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
 					</ul>
+					<div id="overlay">
+						<div id="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -198,7 +205,7 @@
 			</div>
 			<div class="col-sm-4 col-md-4 col-lg-4">
 				<div id="watch3" class="card preisbewusst card-inaktive">
-				<h4>G&uuml;nstig</h4>
+				<h4>Gro&szlig;serienfertigung</h4>
 				<button class="addBtn">Freischalten 100.000 &euro;</button>
 				<p></p>
 				<span class="listhead">Geh&auml;use</span>				
@@ -219,6 +226,9 @@
 					<li class="list-group-item">Punkt 2</li>
 					<li class="list-group-item">Punkt 3</li>
 				</ul>
+				<div id="overlay">
+						<div id="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -286,7 +296,7 @@
 			</div>
 			<div class="col-sm-4 col-md-4 col-lg-4">
 				<div id="watch3" class="card preisbewusst card-inaktive">
-				<h4>G&uuml;nstig</h4>
+				<h4>Gro&szlig;serienfertigung</h4>
 				<p></p>
 				<span class="listhead">Verbesserung</span>				
 				<ul class="list-group">
@@ -309,7 +319,10 @@
 				<ul class="list-group">
 					<li class="list-group-item">Produktionslimit <span class="productionLimit"></span></li>
 					<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
-				</ul>				
+				</ul>
+				<div id="overlay">
+						<div id="ol-text">nicht verf&uuml;gbar</div>
+					</div>				
 				</div>
 			</div>
 		</div>
@@ -369,7 +382,7 @@
 			</div>
 			<div class="col-sm-4 col-md-4 col-lg-4">
 				<div id="watch3" class="card preisbewusst card-inaktive">
-				<h4>G&uuml;nstig</h4>
+				<h4>Gro&szlig;serienfertigung</h4>
 				<p></p>
 				<span class="listhead">Verbesserung</span>				
 				<ul class="list-group">
@@ -389,6 +402,9 @@
 					<li class="list-group-item">Punkt 2</li>
 					<li class="list-group-item">Punkt 3</li>
 				</ul>
+				<div id="overlay">
+						<div id="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -412,6 +428,9 @@
 					<li class="list-group-item">geplanter Absatz <span class="verkauf"></span></li>
 					<li class="list-group-item">geplanter Umsatz <span class="verkauf"></span></li>
 				</ul>
+				<div id="overlay">
+						<div id="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-4 col-md-4 col-lg-4">
@@ -421,6 +440,9 @@
 					<li class="list-group-item">geplanter Absatz <span class="verkauf"></span></li>
 					<li class="list-group-item">geplanter Umsatz <span class="verkauf"></span></li>
 				</ul>
+				<div id="overlay">
+						<div id="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -467,6 +489,9 @@
 					<li class="list-group-item">Punkt 2</li>
 					<li class="list-group-item">Punkt 3</li>
 				</ul>
+				<div id="overlay">
+						<div id="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-4 col-md-4 col-lg-4">
@@ -477,6 +502,9 @@
 					<li class="list-group-item">Punkt 2</li>
 					<li class="list-group-item">Punkt 3</li>
 				</ul>
+				<div id="overlay">
+						<div id="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -541,6 +569,20 @@
 				      </tr>
 				    </tfoot>
 				  </table>
+				</div>
+			</div>
+		</div>
+    </div>
+    <!-- Hilfe -->
+    <div id="help" class="tab-pane fade">
+      		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div id="watch1" class="card card-aktive">
+				<h4>Hilfe</h4>
+				<ul class="list-group">
+					<li class="list-group-item">Erläuterungen zum Menüpunkt Produkte</li>
+					<li class="list-group-item">Erläuterungen zum Menüpunkt F&E</li>
+				</ul>
 				</div>
 			</div>
 		</div>
