@@ -1,0 +1,22 @@
+Marketing:
+
+- Produktkampagnen: Nur für ein Produkt anwenden
+- Unternehmenskampagnen: Für alle Produkte
+--> Kosten pro Kampagne
+
+- TV-Werbung (einmal)
+	- Privatsender 60k / 
+	- Formel 1 / GNTM 150k
+	- Öffentlich Rechtlichen 20K
+- Internet 14K Jährlich
+- Zeitung 
+	Überregional 34k / Anzeige
+	Stern / Spiegel 40-60k/Anzeige
+- Radio 630 - 3k / 30sek (einmal)
+- Werbeplakate 180-250 / Plakat
+
+- Auswirkungsgrade
+	Internet / TV
+	Zeitung / Radio
+	Werbeplakate
+--> Nicht mit Werten festlegen, sondern nur eine kurze Info

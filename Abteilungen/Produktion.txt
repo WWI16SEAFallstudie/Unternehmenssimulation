@@ -1,0 +1,45 @@
+Konkrete Werte gefragt!
+Grundkapital: 100.000
+
+Produktion begrenzt durch
+-	Kapital (siehe oben)
+-	Art der Uhr (Grenzwert-Luxus,Öko,Masse)
+o	Luxus: 100 pro Uhr
+o	Öko: 50 pro Uhr
+o	Masse: 5 pro Uhr
+-	Berechnung des Wertes (Regler/Freitextfeld-Formel notwendig)?
+o	Verhältnis zu Kapital (wie viel ist vorhanden)
+o	Eine Rate der Betriebskosten muss gedeckt sein
+
+Erweiterung der Maschinen
+-	Wie viel Stufen?
+o	3 Stufen (+ Anfangsstufe)
+-	Was kostet es?
+o	Bedingt was das Grundkapital ist (typischerweise 15.000 und 30.000)
+-	Senkung der Kosten (1. 10%, 2. 20%, 3. 30%)
+
+Erweiterung der Produktionsstraßen
+-	drei Möglichkeiten
+o	bei Erweiterung auf das gleiche Segment werden Kosten um 10% bzw. 20% reduziert
+
+Betriebkosten
+-	Was kostet es?
+o	Abhängig von Maschinen
+•	1: 2000
+•	2: 4000
+•	3: 6000
+o	Fällt jede Runde an
+-	Welche Kosten?
+o	Lediglich als “Betriebskosten” oder “Produktionskosten” gekennzeichnet
+o	Keine weiteren Kosten
+
+Nutzungsende der Maschine
+-	Defekt?
+o	Zufallsereignis/wenn zu lange im Betrieb (normal 20 Runden; erstes Ereignis frühstens 10. Runde)
+-	Verkauf?
+o	Erst eine Runde nach dem Kauf möglich; VP pro Runde abnehmend (Festwert -500)
+o	Eine Maschine ist immer pflicht (Verkauf nicht möglich)
+-	Häufigkeit der Reparaturen (im Verhältnis zur Produktionsdauer/Lebensdauer)
+o	Proportional steigend
+
+Zufallsereignisse?

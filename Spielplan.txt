@@ -1,0 +1,9 @@
+Spielplan "Watch Tycoon"
+Anzahl der Spieler:1-4
+Spielverfahren: Rundenbasiertes Strategiespiel
+Maximal Anzahl der Spielrunden (insgesamt): 20 Runden
+Zeitlimit pro Spielzug: 10 Minuten
+Gewinnbedingung:
+
+
+Spielregeln:
