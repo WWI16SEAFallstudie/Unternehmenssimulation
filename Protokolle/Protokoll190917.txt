@@ -1,0 +1,5 @@
+Aufgaben bis Montag 25.09.17
+
+An alle: Dokumentation über die Abteilung
+Erik: Dokumentation über Oberfläche und die Styles
+Miri: Umsetzen des UML-Diagramms in die JavaUmgebung und Erstellen eines Grundgerüsts
