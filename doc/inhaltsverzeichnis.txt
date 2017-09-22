@@ -1,4 +1,5 @@
 - Einleitung
+  - Warum Uhr?
 - Grundgedanke unseres Spiels
    - Unternehmensbeschreibung
    - 3-Schichten-Modell (danach zuordnung zu den nächsten Punkten)
@@ -6,7 +7,6 @@
    - Fachkonzept
    - Mockup/UI
 - Industriezweig
-   - Warum Uhr?
    - Marktsituation (real/fiktiv; irgendwas zum Uhrenmarkt + Überleitung zu unserem Markt)
 - Abteilungen/primäre Spieloptionen (sprich, die einzelnen Abteilung und was wir uns darunter vorstellen)
 - Spielplan (fertig)
