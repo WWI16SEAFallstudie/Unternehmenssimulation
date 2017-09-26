@@ -59,11 +59,15 @@ h3{
 	background-color: #4F84C4;
 	color: black;
 	font-weight: bold;
+	-webkit-transition: 0.2s; /* Safari */
+    transition: 0.2s;
 }
 
 #startbtn:hover{
 	box-shadow: 2px 2px 6px 1px rgb(50,50,50);
 	color: white;
+	-webkit-transition: 0.2s; /* Safari */
+    transition: 0.2s;
 }
 
 input{

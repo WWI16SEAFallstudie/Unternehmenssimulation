@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
 function start(){
 	window.open("game.jsp","_self")
 }
@@ -89,7 +93,7 @@ function startTimer(duration, display) {
 }
 
 window.onload = function () {
-    var fiveMinutes = 60 * 5,
+    var starttime = 60 * 10,
         display = document.querySelector('#countdown');
-    startTimer(fiveMinutes, display);
+    startTimer(starttime, display);
 };

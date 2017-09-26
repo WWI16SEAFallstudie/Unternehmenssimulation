@@ -25,16 +25,18 @@
 
     <!-- Navigation -->
       <ul id="mainNav" class="nav nav-tabs">
-      	<li id="player"><a><img alt="" src="images/Boss.png"> Spieler 1</a></li>
+      	<li id="player"><a><img alt="" src="images/Boss.png"> <span id="countdown" class="player">10:00</span></a></li>
 		<li class="dropdown">
 			<a id="player" class=" player dropdown-toggle" data-toggle="dropdown" href="#"> 300.500 &euro; <span class="caret"></span></a>
 			<ul class="dropdown-menu">
+				<li><span class="first-elem">Anfangskapital</span><span class="last-elem">400.500 &euro;</span></li>
+				<li><span class="first-elem">Geplante Ausgaben</span><span class="last-elem">100.000 &euro;</span></li>
+				<li><span class="first-elem">Endkapital</span><span class="last-elem">300.500 &euro;</span></li>
 				<li><span class="first-elem">Uhr 1</span><span class="last-elem">2000 St.</span></li>
 				<li><span class="first-elem">Uhr 2</span><span class="last-elem">- St.</span></li>
 				<li><span class="first-elem">Uhr 3</span><span class="last-elem">- St.</span></li>                       
 			</ul>
-		</li>
-    	<li><a id="countdown" class="player">05:00</a></li>    
+		</li>    
 	    <li class="active"><a data-toggle="tab" href="#menu1">Produkte</a></li>
 	    <li><a data-toggle="tab" href="#menu2">F+E</a></li>
 	    <li><a data-toggle="tab" href="#menu3">Produktion</a></li>
@@ -168,14 +170,14 @@
 				<ul class="list-group">
 					<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
 					<li class="done list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item"  data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 3 <span class="glyphicon glyphicon-plus"></span></li>
 				</ul> 
 				
 				<span class="listhead">Uhrwerk</span>
 				<ul class="list-group">
 					<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item" data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 2 <span class="glyphicon glyphicon-plus"></span></li>
+					<li class="notAavailable list-group-item">Punkt 3</li>
 				</ul>
 				</div>
 			</div>
@@ -186,20 +188,20 @@
 				<span class="listhead">Geh&auml;use</span>
 				<ul class="list-group">
 					<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item" data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 2 <span class="glyphicon glyphicon-plus"></span></li>
+					<li class="notAavailable list-group-item">Punkt 3</li>
 				</ul>
 				<span class="listhead">Armband</span>
 				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item" data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 1 <span class="glyphicon glyphicon-plus"></span></li>
+					<li class="notAavailable list-group-item">Punkt 2</li>
+					<li class="notAavailable list-group-item">Punkt 3</li>
 				</ul>
 				<span class="listhead">Uhrwerk</span>
 				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item" data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 1 <span class="glyphicon glyphicon-plus"></span></li>
+					<li class="notAavailable list-group-item">Punkt 2</li>
+					<li class="notAavailable list-group-item">Punkt 3</li>
 				</ul>
 				</div>
 			</div>
@@ -242,23 +244,23 @@
 				<p></p>
 				<span class="listhead">Verbesserung</span>
 				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
 					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul>
 				
 				<span class="listhead">Verbesserung</span>
 				<ul class="list-group">
 					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul> 
 				
 				<span class="listhead">Verbesserung</span>
 				<ul class="list-group">
 					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul>
 				<ul class="list-group">
 					<li class="list-group-item">Produktionslimit <span class="productionLimit">3000</span></li>
@@ -273,20 +275,20 @@
 				<span class="listhead">Verbesserung</span>
 				<ul class="list-group">
 					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul>
 				<span class="listhead">Verbesserung</span>
 				<ul class="list-group">
 					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul>
 				<span class="listhead">Verbesserung</span>
 				<ul class="list-group">
 					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul>
 				<ul class="list-group">
 					<li class="list-group-item">Produktionslimit <span class="productionLimit">900</span></li>
@@ -336,15 +338,15 @@
 				<p></p>
 				<span class="listhead">Verbesserung</span>
 				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 60.000 &euro;</a></li>
 					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
 				</ul>
 				
 				<span class="listhead">Verbesserung</span>
 				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
+					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 70.000 &euro;</a></li>
 					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
 				</ul> 
 				

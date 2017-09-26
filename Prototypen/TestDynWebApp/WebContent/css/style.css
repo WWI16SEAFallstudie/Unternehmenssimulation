@@ -68,17 +68,27 @@ button:hover{
 }
 
 .dropdown-menu span{
-	padding: 3px 13px 3px 10px;
-	font-weight: 400;
+	padding-right: 12px;
+	padding-left: 6px;
+}
+
+.dropdown-menu li{
+	margin: 5px;
+}
+
+.dropdown-menu{
+	background-color: rgba(255,255,255, 0.9);
+	width: 250px;
 }
 
 
 .dropdown-menu span:first-child{
-	float: left;
+	left: 0px;
 }
 
 .dropdown-menu span:last-child{
-	float: right;
+	position: absolute;
+	right: 0px;
 }
 
 .addBtn, .card .glyphicon, .ekVal, .vkVal, .numProduction, .verkauf, .productionLimit{
@@ -87,6 +97,10 @@ button:hover{
 
 .addBtn{
 	cursor: pointer;
+}
+
+a.addBtn:hover{
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 }
 
 .card .addBtn{
@@ -178,10 +192,13 @@ a.addBtn{
 	padding-bottom: 7px;
 }
 
-.card-inaktive, .card-inaktive li, li.notAavailable{
-	background-color: #f2f3f2;
+.card-inaktive, .card-inaktive li, li.notAavailable, a.addBtn.notAavailable{
+	background-color: #f9f9f9;
 	color: grey;
-	cursor: default;
+	cursor: not-allowed;
+}
+a.addBtn.notAavailable{
+	box-shadow: none;
 }
 
 li.selected{
@@ -195,6 +212,10 @@ li.selected{
 
 .glyphicon-ok{
 	color: #92B558;
+}
+
+.glyphicon-plus{
+	color: #599A59;
 }
 
 .list-group{
@@ -228,6 +249,7 @@ li.selected{
 	width: 28px;
 	margin-top: -6px;
 	margin-bottom: -6px;
+	margin-right: 5px;
 }
 
 .glyphicon-ok{
