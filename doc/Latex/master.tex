@@ -29,8 +29,8 @@
 \begin{document}
 
 %% BITTE GEBEN SIE HIER DEN TITEL UND DIE AUTORIN / DEN AUTOR DER ARBEIT AN!
-\TitelDerArbeit{Demotitel einer Arbeit: Entwurf und Implementierung eines verteilten, direkten Suchverfahrens}
-\AutorDerArbeit{Erika Musterfrau}
+\TitelDerArbeit{Watch Tycoon 2017}
+%\AutorDerArbeit{Erika Musterfrau}
 
 \input{titlepage}
 
@@ -51,16 +51,13 @@
 \tableofcontents
 
 %	Abbildungsverzeichnis
-\listoffigures
+%\listoffigures
 
 %	Tabellenverzeichnis
-\listoftables
+%\listoftables
 
 %	Listingsverzeichnis
-\lstlistoflistings
- 
-% 	TEXT
-\input{docu.tex} 
+%\lstlistoflistings
 
 % 	Algorithmenverzeichnis
 % \listofalgorithms
@@ -75,9 +72,32 @@
 \ihead{\chaptername~\thechapter} % Neue Header-Definition
 \pagenumbering{arabic}  % Arabische Seitenzahlen
 
-%	Anleitungs-Datei anleitung.tex einziehen. Auf diese Weise sollten Sie versuchen, für jedes einzelne
-% Kapitel eine eigene Datei anzulegen und mittels input-Kommando einzuziehen.
-%\input{anleitung}
+% 	Einleitung
+\input{docu.tex}
+
+% 	Grundgedanke des Spiels
+\input{grundgedanke.tex}
+
+% 	Industriezweig Uhr
+\input{uhr.tex}
+
+% 	Abteilungen
+\input{abteilungen.tex}
+
+% 	Spielplan
+\input{spieplan.tex}
+
+% 	Architektur/tech. Grundlagen
+\input{tech_grundlagen.tex}
+
+% 	Projektorganisation
+\input{prj_orga.tex}
+
+% 	Ausbaumöglichkeiten
+\input{verbesserung.tex}
+
+% 	Fazit/Ausblick
+\input{fazit.tex} 
 
 %	Literaturverzeichnis
 \ihead{} % Neue Header-Definition
@@ -89,7 +109,7 @@
 \ihead{\appendixname~\thechapter} % Neue Header-Definition
 
 % appendix.tex einziehen
-%\input{appendix}
+\input{appendix}
 
 % Ehrenwörtliche Erklärung ewerkl.tex einziehen
 %\input{ewerkl.tex}

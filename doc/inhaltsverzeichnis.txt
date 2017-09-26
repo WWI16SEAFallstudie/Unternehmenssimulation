@@ -10,7 +10,7 @@
    - Marktsituation (real/fiktiv; irgendwas zum Uhrenmarkt + Überleitung zu unserem Markt)
 - Abteilungen/primäre Spieloptionen (sprich, die einzelnen Abteilung und was wir uns darunter vorstellen)
 - Spielplan (fertig)
-- Archiktektur (technische Bechreibung)
+- Archiktektur/tech. Grundlagen (technische Bechreibung)
    - verwendete Programme etc.
    - Diagramme
    - spezieller Code (bsp. Zufallsgenerator, diverse Schnittstellen u.a.)
@@ -22,6 +22,7 @@
 - Fazit/Ausblick
 
 Wichtige Punkte:
-- Warum kein Personal
-- Datenhaltung ja/nein -> Warum? Wie sonst?
--
+- Beschriebung/Warum Uhr? -> Einleitung
+- Warum kein Personal? -> Abteilungen
+- Datenhaltung ja/nein -> Warum? Wie sonst? -> tech Grundlagen
+- Warum Java? Warum Tomcat? -> tech Grundlagen
