@@ -26,7 +26,7 @@
 	<h1>Unternehmenssimulation</h1>
 	<h2>Watch Tycoon</h2>
 </div>
-
+<!-- 
 <div class="container">
 	<ul class="playerCard">
 		<li>1 Spieler</li>
@@ -35,6 +35,17 @@
 		<li>4 Spieler</li>
 	</ul>
 </div>
+ -->
+ 
+<div class="container">
+	<div class="playerCard">
+		<input id="checkOne" type="radio" name="spielerAnzahl" value="1"><label for="checkOne" class="radio">1 Spieler</label>
+		<input id="checkTwo" type="radio" name="spielerAnzahl" value="2" checked><label for="checkTwo" class="radio">2 Spieler</label>
+		<input id="checkThree" type="radio" name="spielerAnzahl" value="3"><label for="checkThree" class="radio">3 Spieler</label>
+		<input id="checkFour" type="radio" name="spielerAnzahl" value="4"><label for="checkFour" class="radio">4 Spieler</label>
+	</div>
+</div>
+
 
 <div class="container">
 	<div id="inpframe">
