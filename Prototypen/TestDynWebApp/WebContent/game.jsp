@@ -63,21 +63,21 @@
 					<p>Produktlinie: Umwelt</p>
 					<span class="listhead">Geh&auml;use</span>				
 					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="selected list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span></li>
-						<li class="list-group-item">Punkt 3</li>
+						<li class="list-group-item">Holz</li>
+						<li class="selected list-group-item">Wurzelholz <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="list-group-item">Gebeiztes Holz</li>
 					</ul>				
 					<span class="listhead">Armband</span>
 					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="selected list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span></li>
-						<li class="notAavailable list-group-item">Punkt 3</li>
+						<li class="list-group-item">Stoff</li>
+						<li class="selected list-group-item">Leinenfasern <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="notAavailable list-group-item">Holz</li>
 					</ul>
 					<span class="listhead">Uhrwerk</span>
 					<ul class="list-group">
-						<li class="selected list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
-						<li class="notAavailable list-group-item">Punkt 2</li>
-						<li class="notAavailable list-group-item">Punkt 3</li>
+						<li class="selected list-group-item">Quarz <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="notAavailable list-group-item">Funk</li>
+						<li class="notAavailable list-group-item">Automatik</li>
 					</ul>
 					<ul class="list-group">
 						<li class="list-group-item">Einkaufspreis: <span class="ekVal">220 &euro;</span></li>
@@ -161,23 +161,23 @@
 				<p></p>
 				<span class="listhead">Geh&auml;use</span>
 				<ul class="list-group">
-					<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="done list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="done list-group-item">Punkt 3 <span class="glyphicon glyphicon-ok"></span></li>
+					<li class="done list-group-item">Holz <span class="glyphicon glyphicon-ok"></span></li>
+					<li class="done list-group-item">Wurzelholz <span class="glyphicon glyphicon-ok"></span></li>
+					<li class="done list-group-item">Gebeiztes Holz <span class="glyphicon glyphicon-ok"></span></li>
 				</ul>
 				
 				<span class="listhead">Armband</span>
 				<ul class="list-group">
-					<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="done list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item"  data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 3 <span class="glyphicon glyphicon-plus"></span></li>
+					<li class="done list-group-item">Stoff <span class="glyphicon glyphicon-ok"></span></li>
+					<li class="done list-group-item">Leinenfasern <span class="glyphicon glyphicon-ok"></span></li>
+					<li class="list-group-item">Holz <a class="addBtn">+ 100.000 &euro;</a></li>
 				</ul> 
 				
 				<span class="listhead">Uhrwerk</span>
 				<ul class="list-group">
-					<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item" data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 2 <span class="glyphicon glyphicon-plus"></span></li>
-					<li class="notAavailable list-group-item">Punkt 3</li>
+					<li class="done list-group-item">Quarz <span class="glyphicon glyphicon-ok"></span></li>
+					<li class="list-group-item">Funk <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Automatik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul>
 				</div>
 			</div>
@@ -187,21 +187,21 @@
 				<p></p>
 				<span class="listhead">Geh&auml;use</span>
 				<ul class="list-group">
-					<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item" data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 2 <span class="glyphicon glyphicon-plus"></span></li>
-					<li class="notAavailable list-group-item">Punkt 3</li>
+					<li class="done list-group-item">Stahl <span class="glyphicon glyphicon-ok"></span></li>
+					<li class="list-group-item">Titan <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Platin <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul>
 				<span class="listhead">Armband</span>
 				<ul class="list-group">
-					<li class="list-group-item" data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 1 <span class="glyphicon glyphicon-plus"></span></li>
-					<li class="notAavailable list-group-item">Punkt 2</li>
-					<li class="notAavailable list-group-item">Punkt 3</li>
+					<li class="list-group-item">Leder <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Geh&auml;usematerial <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Keramik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul>
 				<span class="listhead">Uhrwerk</span>
 				<ul class="list-group">
-					<li class="list-group-item" data-toggle="tooltip" title="Entwicklungskosten: 100.000&nbsp;&euro;">Punkt 1 <span class="glyphicon glyphicon-plus"></span></li>
-					<li class="notAavailable list-group-item">Punkt 2</li>
-					<li class="notAavailable list-group-item">Punkt 3</li>
+					<li class="list-group-item">Quarz <a class="addBtn">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Automatik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					<li class="list-group-item">Skelett/Kalender <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
 				</ul>
 				</div>
 			</div>
@@ -212,20 +212,20 @@
 				<p></p>
 				<span class="listhead">Geh&auml;use</span>				
 				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
+					<li class="list-group-item">Plastik</li>
+					<li class="list-group-item">Gummi</li>
+					<li class="list-group-item">Stoff</li>
 				</ul>				
 				<span class="listhead">Armband</span>
 				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
+					<li class="list-group-item">Plastik</li>
+					<li class="list-group-item">Gef&auml;rbtes Plastik</li>
+					<li class="list-group-item">Durchsichtiges Plastik</li>
 				</ul>
 				<span class="listhead">Uhrwerk</span>
 				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
+					<li class="list-group-item">Quarz</li>
+					<li class="list-group-item">Funk</li>
 					<li class="list-group-item">Punkt 3</li>
 				</ul>
 				<div id="overlay">

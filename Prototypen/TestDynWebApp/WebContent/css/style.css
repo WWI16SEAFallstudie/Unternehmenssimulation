@@ -187,9 +187,12 @@ a.addBtn{
 }
 
 .card li{
-	cursor: pointer;
 	padding-top: 7px;
 	padding-bottom: 7px;
+}
+
+#menu1 li{
+	cursor: pointer;
 }
 
 .card-inaktive, .card-inaktive li, li.notAavailable, a.addBtn.notAavailable{
@@ -236,7 +239,7 @@ li.selected{
 }
 
 #player a, .player{
-	background-color: rgba(79, 132, 196, 0.9);
+	background-color: #101626;
 	color: white;
 	text-align: center;
 }

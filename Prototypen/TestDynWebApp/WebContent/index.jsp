@@ -26,16 +26,6 @@
 	<h1>Unternehmenssimulation</h1>
 	<h2>Watch Tycoon</h2>
 </div>
-<!-- 
-<div class="container">
-	<ul class="playerCard">
-		<li>1 Spieler</li>
-		<li class="selected">2 Spieler</li>
-		<li>3 Spieler</li>
-		<li>4 Spieler</li>
-	</ul>
-</div>
- -->
  
 <div class="container">
 	<div class="playerCard">
