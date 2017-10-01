@@ -26,7 +26,7 @@
 	<h1>Unternehmenssimulation</h1>
 	<h2>Watch Tycoon</h2>
 </div>
- 
+<form action="${pageContext.request.contextPath}/servlet" method="post">
 <div class="container">
 	<div class="playerCard">
 		<input id="checkOne" type="radio" name="spielerAnzahl" value="1"><label for="checkOne" class="radio">1 Spieler</label>
@@ -40,12 +40,12 @@
 <div class="container">
 	<div id="inpframe">
 		<!-- Hinzugefügt um absenden zu testen -->
-		<form action="${pageContext.request.contextPath}/servlet" method="post">
-			<input type="submit" name="startbtn" value="Button" class="input">
-		</form>
+		
+			<input class="input" type="submit" name="startbtn" id="startbtn" value="START" class="input">
+		
 	</div>
 </div>
-
+</form>
     <!-- Footer -->
     <footer>
       <div class="container">

@@ -55,42 +55,20 @@ public class MyServlet extends HttpServlet {
 		if (request.getParameter("startbtn") != null) {
 
 			// Entscheiden welcher spieler ausgewählt ist
-			/* 
-			 * Leider habe ich keinen Plan :(
-			 * spielerAnz muss ausgelesen werden
-			 */
-			int spielerAnz = 4;
+			
+			// Ermitteln der Spieleranzahl
+			int spielerAnz = Integer.parseInt(request.getParameter("spielerAnzahl"));
 			
 			for(int i = 0; i < spielerAnz; i++) {
 				u[i] = new Unternehmen("Uhrii " + i);
+				System.out.println("Unternehmensname: " + u[i].getName());
 			}
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
-			
-			System.out.println("Unternehmensname: " + u[0].getName());
-			System.out.println("Unternehmensname: " + u[1].getName());
-			System.out.println("Unternehmensname: " + u[2].getName());
-			System.out.println("Unternehmensname: " + u[3].getName());
 
 			dispatcher.forward(request, response);
 			
 		}
-		
-		
-		
-		
-		/*MyClass myClass = new MyClass();
-		if (request.getParameter("button1") != null) {
-            int test[] = myClass.method1(param);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
-			request.setAttribute("li1", "Wert aus Array[0] => "+test[0]); // set your String value in the attribute
-			request.setAttribute("li2", "Wert aus Array[1] => "+test[1]); // set your String value in the attribute
-			request.setAttribute("li3", "Wert aus Array[2] => "+test[2]); // set your String value in the attribute
-			request.setAttribute("li4", "Wert aus Array[3] => "+test[3]); // set your String value in the attribute
-			request.setAttribute("li5", "Wert aus Array[4] => "+test[4]); // set your String value in the attribute
-			request.setAttribute("li6", "Wert aus Array[5] => "+test[5]); // set your String value in the attribute
-			dispatcher.forward( request, response );
-        }*/
         
 
 		
