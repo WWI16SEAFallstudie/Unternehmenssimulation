@@ -39,7 +39,10 @@
 
 <div class="container">
 	<div id="inpframe">
-		<button class="input" name="start" id="startbtn" onclick="start();">START</button>
+		<!-- Hinzugefügt um absenden zu testen -->
+		<form action="${pageContext.request.contextPath}/servlet" method="post">
+			<input type="submit" name="startbtn" value="Button" class="input">
+		</form>
 	</div>
 </div>
 

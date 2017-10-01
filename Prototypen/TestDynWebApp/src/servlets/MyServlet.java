@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import func.MyClass;
+import org.eclipse.jdt.internal.compiler.ast.UnionTypeReference;
+
+import com.sun.xml.internal.txw2.Document;
+
+import func.Unternehmen;
 
 /**
  * Servlet implementation class MyServlet
@@ -18,6 +22,7 @@ import func.MyClass;
 public class MyServlet extends HttpServlet {
 	
 	int param[] = {0,1,2,3,4,5};
+	Unternehmen u[] = new Unternehmen[4];
 	
 	private static final long serialVersionUID = 1L;
        
@@ -43,7 +48,38 @@ public class MyServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MyClass myClass = new MyClass();
+
+		/*
+		 * Hier kommt mein Code hin
+		 */
+		if (request.getParameter("startbtn") != null) {
+
+			// Entscheiden welcher spieler ausgewählt ist
+			/* 
+			 * Leider habe ich keinen Plan :(
+			 * spielerAnz muss ausgelesen werden
+			 */
+			int spielerAnz = 4;
+			
+			for(int i = 0; i < spielerAnz; i++) {
+				u[i] = new Unternehmen("Uhrii " + i);
+			}
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
+			
+			System.out.println("Unternehmensname: " + u[0].getName());
+			System.out.println("Unternehmensname: " + u[1].getName());
+			System.out.println("Unternehmensname: " + u[2].getName());
+			System.out.println("Unternehmensname: " + u[3].getName());
+
+			dispatcher.forward(request, response);
+			
+		}
+		
+		
+		
+		
+		/*MyClass myClass = new MyClass();
 		if (request.getParameter("button1") != null) {
             int test[] = myClass.method1(param);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
@@ -54,7 +90,7 @@ public class MyServlet extends HttpServlet {
 			request.setAttribute("li5", "Wert aus Array[4] => "+test[4]); // set your String value in the attribute
 			request.setAttribute("li6", "Wert aus Array[5] => "+test[5]); // set your String value in the attribute
 			dispatcher.forward( request, response );
-        }
+        }*/
         
 
 		
