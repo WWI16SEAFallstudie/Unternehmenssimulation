@@ -1,114 +1,93 @@
-body{
-	font-size: 23px;
-}
+/* Allgemein */
+	body{
+		font-size: 23px;
+	}
+	
+	h3{
+		color: grey;
+	}
+	
+	.container{
+		margin: 10px auto 25px auto;
+		padding: 10px;
+		border-radius: 6px;
+		text-align: center;
+	}
+	
+	input{
+		text-align: center;
+	}
+	
+	#start{
+		background-image: url("../images/watch2.jpg");
+		background-size: 100%;
+	    background-repeat: no-repeat;
+	}
 
-h3{
-	color: grey;
-}
+	.inpframe, .playerCard{
+		text-align: center;
+		border-radius: 4px;
+		padding: 8px;
+		margin: 8px
+	}
 
-.radio{
-	display: block;
-}
+/* Überschrift */
+	.head{
+		background-color: rgba(255,255,255, 0.8);
+	}
 
-input[type="radio"]{
-	display: none;
-}
+/* Spieleranzahlauswahl */
+	.playerCard{
+		display: inline-block;
+		width: 25%;
+		min-width: 180px;
+		background-color: rgba(255,255,255, 0.8);
+	}
+	
+	.radioLabel{
+		display: block;
+	}
+	
+	input[type="radio"]{
+		display: none;
+	}
+	
+	input[type="radio"]:checked+label{
+		color: red;
+	}
+	
+	label{
+		height: 25px;
+		transition: 0.15s;
+	}
+	
+	label:hover{
+		font-size: 1.15em;
+		transition: 0.15s;
+	}
 
-input[type="radio"]:checked+label{
-	color: red;
-}
-
-label{
-	height: 25px;
-	transition: 0.15s;
-}
-
-label:hover{
-	font-size: 1.15em;
-	transition: 0.15s;
-}
-
-.head{
-	background-color: rgba(255,255,255, 0.8);
-}
-
-#start{
-	background-image: url("../images/watch2.jpg");
-	background-size: 100%;
-    background-repeat: no-repeat;
-}
-
-.container{
-	margin: 10px auto 25px auto;
-	padding: 10px;
-	border-radius: 6px;
-	text-align: center;
-}
-
-.inpframe, .playerCard{
-	text-align: center;
-	border-radius: 4px;
-	padding: 8px;
-	margin: 8px
-}
-
-.playerCard{
-	display: inline-block;
-	width: 25%;
-	min-width: 180px;
-	background-color: rgba(255,255,255, 0.8);
-}
-
-.input{
-	display: block;
-	border: none;
-	border-radius: 4px;
-	background-color: white;
-	color: rgb(85,85,85);
-	box-shadow: 1px 1px 2px 0 rgb(0,0,0);
-	padding: 7px 15px;
-	margin: 2px auto 20px auto;
-}
-
-
-.playerBtn{
-	background-color: #DCDCDC;
-}
-
-#startbtn{
-	padding: 10px 35px;
-	font-size: 1.3em;
-	background-color: #4F84C4;
-	color: black;
-	font-weight: bold;
-	-webkit-transition: 0.2s; /* Safari */
-    transition: 0.2s;
-}
-
-#startbtn:hover{
-	box-shadow: 2px 2px 6px 1px rgb(50,50,50);
-	color: white;
-	-webkit-transition: 0.2s; /* Safari */
-    transition: 0.2s;
-}
-
-input{
-	text-align: center;
-}
-
-ul {
-  list-style-type: none;
-  cursor: pointer;
-}
-li{
-	font-weight: 400;
-	height: 30px;
-}
-
-li:hover{
-	font-size: 1.2em;
-}
-
-.playerOption{
-	decoration: none;
-}
+/* Startbutton */
+	.input{
+		display: block;
+		border: none;
+		border-radius: 4px;
+		box-shadow: 1px 1px 2px 0 rgb(0,0,0);
+		margin: 2px auto 20px auto;
+	}
+	
+	#startbtn{
+		padding: 10px 35px;
+		font-size: 1.3em;
+		background-color: #4F84C4;
+		color: black;
+		font-weight: bold;
+		-webkit-transition: 0.2s; /* Safari */
+	    transition: 0.2s;
+	}
+	
+	#startbtn:hover{
+		box-shadow: 2px 2px 6px 1px rgb(50,50,50);
+		color: white;
+		-webkit-transition: 0.2s; /* Safari */
+	    transition: 0.2s;
+	}

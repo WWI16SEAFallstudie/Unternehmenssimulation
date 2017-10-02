@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.eclipse.jdt.internal.compiler.ast.UnionTypeReference;
-
-import com.sun.xml.internal.txw2.Document;
 
 import func.Unternehmen;
 
@@ -21,8 +18,11 @@ import func.Unternehmen;
 @WebServlet("/servlet")
 public class MyServlet extends HttpServlet {
 	
-	int param[] = {0,1,2,3,4,5};
+	/**
+	 * Initiierung der für das Spiel benötigten Instanzen
+	 */
 	Unternehmen u[] = new Unternehmen[4];
+	// Markt markt = new Markt;
 	
 	private static final long serialVersionUID = 1L;
        
@@ -33,16 +33,6 @@ public class MyServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.getWriter().append("Mein Text ");
-		request.setAttribute("Name", "Temp");
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -59,8 +49,9 @@ public class MyServlet extends HttpServlet {
 			// Ermitteln der Spieleranzahl
 			int spielerAnz = Integer.parseInt(request.getParameter("spielerAnzahl"));
 			
+			// Erzeugen der Unternehmen/Spieler
 			for(int i = 0; i < spielerAnz; i++) {
-				u[i] = new Unternehmen("Uhrii " + i);
+				u[i] = new Unternehmen("Spieler " + (i+1));
 				System.out.println("Unternehmensname: " + u[i].getName());
 			}
 			
@@ -71,8 +62,6 @@ public class MyServlet extends HttpServlet {
 		}
         
 
-		
-		//doGet(request, response);
 	}
 
 }
