@@ -22,7 +22,7 @@
   </head>
 
   <body>
-
+	<form id="roundData" action="${pageContext.request.contextPath}/servlet" method="post">
     <!-- Navigation -->
       <ul id="mainNav" class="nav nav-tabs">
       	<li id="player"><a><img alt="" src="images/Boss.png"> <span id="countdown" class="player">10:00</span></a></li>
@@ -44,7 +44,7 @@
 	    <li><a data-toggle="tab" href="#menu5">Vertrieb</a></li>
 	    <li><a data-toggle="tab" href="#menu6">Marketing</a></li>
 	    <li><a data-toggle="tab" href="#menu7">Statistik</a></li>
-	    <li><a id="nextRound" href="next.jsp">Runde beenden</a></li>
+	    <li><button id="nextRound" name="nextRound" type="submit" class="btn">Runde beenden</button></li>
 	    <li onclick="uiSwitch();"><a id="uiSwitch"><span class="glyphicon glyphicon-menu-hamburger"></span></a></li>
 	    <li><a data-toggle="tab" href="#help">?</a></li>
 	  </ul>
@@ -53,546 +53,548 @@
     <div id="content" class="container">
 
 
-  <div class="tab-content">
-  	<!-- Produkte -->
-    <div id="menu1" class="tab-pane fade in active">
-		<div class="row">
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch1" class="card card-aktive">
-					<h4>Modell 1</h4>
-					<p>Produktlinie: Umwelt</p>
-					<span class="listhead">Geh&auml;use</span>				
+	  <div class="tab-content">
+	  	<!-- Produkte -->
+	    <div id="menu1" class="tab-pane fade in active">
+			<div class="row">
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch1" class="card card-aktive">
+						<h4>Modell 1</h4>
+						<p>Produktlinie: Umwelt</p>
+						<span class="listhead">Geh&auml;use</span>				
+						<ul class="list-group">
+							<li class="list-group-item">Holz</li>
+							<li class="selected list-group-item">Wurzelholz <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="list-group-item">Gebeiztes Holz</li>
+						</ul>				
+						<span class="listhead">Armband</span>
+						<ul class="list-group">
+							<li class="list-group-item">Stoff</li>
+							<li class="selected list-group-item">Leinenfasern <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAavailable list-group-item">Holz</li>
+						</ul>
+						<span class="listhead">Uhrwerk</span>
+						<ul class="list-group">
+							<li class="selected list-group-item">Quarz <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAavailable list-group-item">Funk</li>
+							<li class="notAavailable list-group-item">Automatik</li>
+						</ul>
+						<ul class="list-group">
+							<li class="list-group-item">Einkaufspreis: <span class="ekVal">220 &euro;</span></li>
+							<li class="list-group-item">Verkaufspreis: <span class="vkVal">280 &euro;</span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch2" class="card card-inaktive">
+						<h4>Modell 2</h4>
+						<button class="addBtn">Freischalten 100.000 &euro;</button>
+						<p>Produktlinie: noch zu w&auml;hlen</p>
+						<span class="listhead">Geh&auml;use</span>				
+						<ul class="list-group">
+							<li class="list-group-item">Punkt 1</li>
+							<li class="list-group-item">Punkt 2</li>
+							<li class="list-group-item">Punkt 3</li>
+						</ul>				
+						<span class="listhead">Armband</span>
+						<ul class="list-group">
+							<li class="list-group-item">Punkt 1</li>
+							<li class="list-group-item">Punkt 2</li>
+							<li class="list-group-item">Punkt 3</li>
+						</ul>
+						<span class="listhead">Uhrwerk</span>
+						<ul class="list-group">
+							<li class="list-group-item">Punkt 1</li>
+							<li class="list-group-item">Punkt 2</li>
+							<li class="list-group-item">Punkt 3</li>
+						</ul>
+						<ul class="list-group">
+							<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
+							<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
+						</ul>
+						<div id="overlay">
+							<div id="ol-text">nicht verf&uuml;gbar</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch3" class="card card-inaktive">
+						<h4>Modell 3</h4>
+						<button class="addBtn">Freischalten 100.000 &euro;</button>
+						<p>Produktlinie: noch zu w&auml;hlen</p>
+						<span class="listhead">Geh&auml;use</span>				
+						<ul class="list-group">
+							<li class="list-group-item">Punkt 1</li>
+							<li class="list-group-item">Punkt 2</li>
+							<li class="list-group-item">Punkt 3</li>
+						</ul>				
+						<span class="listhead">Armband</span>
+						<ul class="list-group">
+							<li class="list-group-item">Punkt 1</li>
+							<li class="list-group-item">Punkt 2</li>
+							<li class="list-group-item">Punkt 3</li>
+						</ul>
+						<span class="listhead">Uhrwerk</span>
+						<ul class="list-group">
+							<li class="list-group-item">Punkt 1</li>
+							<li class="list-group-item">Punkt 2</li>
+							<li class="list-group-item">Punkt 3</li>
+						</ul>
+						<ul class="list-group">
+							<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
+							<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
+						</ul>
+						<div id="overlay">
+							<div id="ol-text">nicht verf&uuml;gbar</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+	    
+	    <!-- Forschung und Entwicklung -->
+	    <div id="menu2" class="tab-pane fade">
+	      	<div class="row">
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch1" class="card umwelt">
+					<h4>Umwelt</h4>
+					<p></p>
+					<span class="listhead">Geh&auml;use</span>
 					<ul class="list-group">
-						<li class="list-group-item">Holz</li>
-						<li class="selected list-group-item">Wurzelholz <span class="glyphicon glyphicon-ok"></span></li>
-						<li class="list-group-item">Gebeiztes Holz</li>
-					</ul>				
+						<li class="done list-group-item">Holz <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="done list-group-item">Wurzelholz <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="done list-group-item">Gebeiztes Holz <span class="glyphicon glyphicon-ok"></span></li>
+					</ul>
+					
 					<span class="listhead">Armband</span>
 					<ul class="list-group">
+						<li class="done list-group-item">Stoff <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="done list-group-item">Leinenfasern <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="list-group-item">Holz <a class="addBtn">+ 100.000 &euro;</a></li>
+					</ul> 
+					
+					<span class="listhead">Uhrwerk</span>
+					<ul class="list-group">
+						<li class="done list-group-item">Quarz <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="list-group-item">Funk <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Automatik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch2" class="card luxus card-aktive">
+					<h4>Luxus</h4>
+					<p></p>
+					<span class="listhead">Geh&auml;use</span>
+					<ul class="list-group">
+						<li class="done list-group-item">Stahl <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="list-group-item">Titan <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Platin <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul>
+					<span class="listhead">Armband</span>
+					<ul class="list-group">
+						<li class="list-group-item">Leder <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Geh&auml;usematerial <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Keramik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul>
+					<span class="listhead">Uhrwerk</span>
+					<ul class="list-group">
+						<li class="list-group-item">Quarz <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Automatik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Skelett/Kalender <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch3" class="card preisbewusst card-inaktive">
+					<h4>Gro&szlig;serienfertigung</h4>
+					<button class="addBtn">Freischalten 100.000 &euro;</button>
+					<p></p>
+					<span class="listhead">Geh&auml;use</span>				
+					<ul class="list-group">
+						<li class="list-group-item">Plastik</li>
+						<li class="list-group-item">Gummi</li>
 						<li class="list-group-item">Stoff</li>
-						<li class="selected list-group-item">Leinenfasern <span class="glyphicon glyphicon-ok"></span></li>
-						<li class="notAavailable list-group-item">Holz</li>
+					</ul>				
+					<span class="listhead">Armband</span>
+					<ul class="list-group">
+						<li class="list-group-item">Plastik</li>
+						<li class="list-group-item">Gef&auml;rbtes Plastik</li>
+						<li class="list-group-item">Durchsichtiges Plastik</li>
 					</ul>
 					<span class="listhead">Uhrwerk</span>
 					<ul class="list-group">
-						<li class="selected list-group-item">Quarz <span class="glyphicon glyphicon-ok"></span></li>
-						<li class="notAavailable list-group-item">Funk</li>
-						<li class="notAavailable list-group-item">Automatik</li>
+						<li class="list-group-item">Quarz</li>
+						<li class="list-group-item">Funk</li>
+						<li class="list-group-item">Punkt 3</li>
 					</ul>
-					<ul class="list-group">
-						<li class="list-group-item">Einkaufspreis: <span class="ekVal">220 &euro;</span></li>
-						<li class="list-group-item">Verkaufspreis: <span class="vkVal">280 &euro;</span></li>
-					</ul>
+					<div id="overlay">
+							<div id="ol-text">nicht verf&uuml;gbar</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch2" class="card card-inaktive">
+	    </div>
+	    <!-- Produktion -->
+	    <div id="menu3" class="tab-pane fade">
+	      	<div class="row">
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch1" class="card umwelt">
+					<h4>Umwelt</h4>
+					<p></p>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul>
+					
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul> 
+					
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul>
+					<ul class="list-group">
+						<li class="list-group-item">Produktionslimit <span class="productionLimit">3000</span></li>
+						<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
+					</ul>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch2" class="card luxus card-aktive">
+					<h4>Luxus</h4>
+					<p></p>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+					</ul>
+					<ul class="list-group">
+						<li class="list-group-item">Produktionslimit <span class="productionLimit">900</span></li>
+						<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
+					</ul>				
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch3" class="card preisbewusst card-inaktive">
+					<h4>Gro&szlig;serienfertigung</h4>
+					<p></p>
+					<span class="listhead">Verbesserung</span>				
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1</li>
+						<li class="list-group-item">Punkt 2</li>
+						<li class="list-group-item">Punkt 3</li>
+					</ul>				
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1</li>
+						<li class="list-group-item">Punkt 2</li>
+						<li class="list-group-item">Punkt 3</li>
+					</ul>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1</li>
+						<li class="list-group-item">Punkt 2</li>
+						<li class="list-group-item">Punkt 3</li>
+					</ul>
+					<ul class="list-group">
+						<li class="list-group-item">Produktionslimit <span class="productionLimit"></span></li>
+						<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
+					</ul>
+					<div id="overlay">
+							<div id="ol-text">nicht verf&uuml;gbar</div>
+						</div>				
+					</div>
+				</div>
+			</div>
+	    </div>
+	    <!-- Einkauf -->
+	    <div id="menu4" class="tab-pane fade">
+	      	<div class="row">
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch1" class="card umwelt">
+					<h4>Umwelt</h4>
+					<p></p>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 60.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					</ul>
+					
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 70.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					</ul> 
+					
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					</ul>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch2" class="card luxus card-aktive">
+					<h4>Luxus</h4>
+					<p></p>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					</ul>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					</ul>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
+					</ul>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch3" class="card preisbewusst card-inaktive">
+					<h4>Gro&szlig;serienfertigung</h4>
+					<p></p>
+					<span class="listhead">Verbesserung</span>				
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1</li>
+						<li class="list-group-item">Punkt 2</li>
+						<li class="list-group-item">Punkt 3</li>
+					</ul>				
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1</li>
+						<li class="list-group-item">Punkt 2</li>
+						<li class="list-group-item">Punkt 3</li>
+					</ul>
+					<span class="listhead">Verbesserung</span>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1</li>
+						<li class="list-group-item">Punkt 2</li>
+						<li class="list-group-item">Punkt 3</li>
+					</ul>
+					<div id="overlay">
+							<div id="ol-text">nicht verf&uuml;gbar</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+	    <!-- Vertrieb -->
+	    <div id="menu5" class="tab-pane fade">
+	      		<div class="row">
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch1" class="card card-aktive">
+					<h4>Modell 1</h4>
+					<ul class="list-group">
+						<li class="list-group-item">geplanter Absatz <span class="verkauf"></span></li>
+						<li class="list-group-item">geplanter Umsatz <span class="verkauf"></span></li>
+					</ul>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch2" class="card card-inaktive">
 					<h4>Modell 2</h4>
-					<button class="addBtn">Freischalten 100.000 &euro;</button>
-					<p>Produktlinie: noch zu w&auml;hlen</p>
-					<span class="listhead">Geh&auml;use</span>				
 					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="list-group-item">Punkt 2</li>
-						<li class="list-group-item">Punkt 3</li>
-					</ul>				
-					<span class="listhead">Armband</span>
-					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="list-group-item">Punkt 2</li>
-						<li class="list-group-item">Punkt 3</li>
-					</ul>
-					<span class="listhead">Uhrwerk</span>
-					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="list-group-item">Punkt 2</li>
-						<li class="list-group-item">Punkt 3</li>
-					</ul>
-					<ul class="list-group">
-						<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
-						<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
+						<li class="list-group-item">geplanter Absatz <span class="verkauf"></span></li>
+						<li class="list-group-item">geplanter Umsatz <span class="verkauf"></span></li>
 					</ul>
 					<div id="overlay">
-						<div id="ol-text">nicht verf&uuml;gbar</div>
+							<div id="ol-text">nicht verf&uuml;gbar</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch3" class="card card-inaktive">
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch3" class="card card-inaktive">
 					<h4>Modell 3</h4>
-					<button class="addBtn">Freischalten 100.000 &euro;</button>
-					<p>Produktlinie: noch zu w&auml;hlen</p>
-					<span class="listhead">Geh&auml;use</span>				
 					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="list-group-item">Punkt 2</li>
-						<li class="list-group-item">Punkt 3</li>
-					</ul>				
-					<span class="listhead">Armband</span>
-					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="list-group-item">Punkt 2</li>
-						<li class="list-group-item">Punkt 3</li>
-					</ul>
-					<span class="listhead">Uhrwerk</span>
-					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="list-group-item">Punkt 2</li>
-						<li class="list-group-item">Punkt 3</li>
-					</ul>
-					<ul class="list-group">
-						<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
-						<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
+						<li class="list-group-item">geplanter Absatz <span class="verkauf"></span></li>
+						<li class="list-group-item">geplanter Umsatz <span class="verkauf"></span></li>
 					</ul>
 					<div id="overlay">
-						<div id="ol-text">nicht verf&uuml;gbar</div>
+							<div id="ol-text">nicht verf&uuml;gbar</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-    </div>
-    
-    <!-- Forschung und Entwicklung -->
-    <div id="menu2" class="tab-pane fade">
-      	<div class="row">
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch1" class="card umwelt">
-				<h4>Umwelt</h4>
-				<p></p>
-				<span class="listhead">Geh&auml;use</span>
-				<ul class="list-group">
-					<li class="done list-group-item">Holz <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="done list-group-item">Wurzelholz <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="done list-group-item">Gebeiztes Holz <span class="glyphicon glyphicon-ok"></span></li>
-				</ul>
-				
-				<span class="listhead">Armband</span>
-				<ul class="list-group">
-					<li class="done list-group-item">Stoff <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="done list-group-item">Leinenfasern <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item">Holz <a class="addBtn">+ 100.000 &euro;</a></li>
-				</ul> 
-				
-				<span class="listhead">Uhrwerk</span>
-				<ul class="list-group">
-					<li class="done list-group-item">Quarz <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item">Funk <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Automatik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul>
+	    </div>
+	    <!-- Marketing -->
+	    <div id="menu6" class="tab-pane fade marketing">
+	    	<div class="row">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div id="" class="card card-aktive">
+						<h4>Unternehmsweit</h4>
+						<ul class="list-group">
+							<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
+							<li class="list-group-item">Punkt 2 <a class="addBtn">+ 10.000 &euro;</a></li>
+							<li class="list-group-item">Punkt 3 <a class="addBtn">+ 10.000 &euro;</a></li>
+						</ul>
+					</div>
 				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch2" class="card luxus card-aktive">
-				<h4>Luxus</h4>
-				<p></p>
-				<span class="listhead">Geh&auml;use</span>
-				<ul class="list-group">
-					<li class="done list-group-item">Stahl <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item">Titan <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Platin <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul>
-				<span class="listhead">Armband</span>
-				<ul class="list-group">
-					<li class="list-group-item">Leder <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Geh&auml;usematerial <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Keramik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul>
-				<span class="listhead">Uhrwerk</span>
-				<ul class="list-group">
-					<li class="list-group-item">Quarz <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Automatik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Skelett/Kalender <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch3" class="card preisbewusst card-inaktive">
-				<h4>Gro&szlig;serienfertigung</h4>
-				<button class="addBtn">Freischalten 100.000 &euro;</button>
-				<p></p>
-				<span class="listhead">Geh&auml;use</span>				
-				<ul class="list-group">
-					<li class="list-group-item">Plastik</li>
-					<li class="list-group-item">Gummi</li>
-					<li class="list-group-item">Stoff</li>
-				</ul>				
-				<span class="listhead">Armband</span>
-				<ul class="list-group">
-					<li class="list-group-item">Plastik</li>
-					<li class="list-group-item">Gef&auml;rbtes Plastik</li>
-					<li class="list-group-item">Durchsichtiges Plastik</li>
-				</ul>
-				<span class="listhead">Uhrwerk</span>
-				<ul class="list-group">
-					<li class="list-group-item">Quarz</li>
-					<li class="list-group-item">Funk</li>
-					<li class="list-group-item">Punkt 3</li>
-				</ul>
-				<div id="overlay">
-						<div id="ol-text">nicht verf&uuml;gbar</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div id="" class="card card-aktive">
+						<h4>Ergebnisse letzter Runde</h4>
+						<ul class="list-group">
+							<li class="list-group-item bad"><span class="glyphicon glyphicon-remove"></span> Die Imagekampagne ist fehlgeschlagen. Die Verk&auml;ufe haben sich reduziert.</li>
+							<li class="list-group-item good"><span class="glyphicon glyphicon-ok"></span> Die Produktwerbung f&uuml;r Uhr 1 war erfolgreich. Es konnten mehr Uhren abgesetzt werden.</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-		</div>
-    </div>
-    <!-- Produktion -->
-    <div id="menu3" class="tab-pane fade">
-      	<div class="row">
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch1" class="card umwelt">
-				<h4>Umwelt</h4>
-				<p></p>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="done list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul>
-				
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul> 
-				
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul>
-				<ul class="list-group">
-					<li class="list-group-item">Produktionslimit <span class="productionLimit">3000</span></li>
-					<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
-				</ul>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch2" class="card luxus card-aktive">
-				<h4>Luxus</h4>
-				<p></p>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-				</ul>
-				<ul class="list-group">
-					<li class="list-group-item">Produktionslimit <span class="productionLimit">900</span></li>
-					<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
-				</ul>				
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch3" class="card preisbewusst card-inaktive">
-				<h4>Gro&szlig;serienfertigung</h4>
-				<p></p>
-				<span class="listhead">Verbesserung</span>				
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
-				</ul>				
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
-				</ul>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
-				</ul>
-				<ul class="list-group">
-					<li class="list-group-item">Produktionslimit <span class="productionLimit"></span></li>
-					<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
-				</ul>
-				<div id="overlay">
-						<div id="ol-text">nicht verf&uuml;gbar</div>
-					</div>				
-				</div>
-			</div>
-		</div>
-    </div>
-    <!-- Einkauf -->
-    <div id="menu4" class="tab-pane fade">
-      	<div class="row">
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch1" class="card umwelt">
-				<h4>Umwelt</h4>
-				<p></p>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 60.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
-				</ul>
-				
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 70.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
-				</ul> 
-				
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
-				</ul>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch2" class="card luxus card-aktive">
-				<h4>Luxus</h4>
-				<p></p>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
-				</ul>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
-				</ul>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
-				</ul>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch3" class="card preisbewusst card-inaktive">
-				<h4>Gro&szlig;serienfertigung</h4>
-				<p></p>
-				<span class="listhead">Verbesserung</span>				
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
-				</ul>				
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
-				</ul>
-				<span class="listhead">Verbesserung</span>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
-				</ul>
-				<div id="overlay">
-						<div id="ol-text">nicht verf&uuml;gbar</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
-    <!-- Vertrieb -->
-    <div id="menu5" class="tab-pane fade">
-      		<div class="row">
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch1" class="card card-aktive">
-				<h4>Modell 1</h4>
-				<ul class="list-group">
-					<li class="list-group-item">geplanter Absatz <span class="verkauf"></span></li>
-					<li class="list-group-item">geplanter Umsatz <span class="verkauf"></span></li>
-				</ul>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch2" class="card card-inaktive">
-				<h4>Modell 2</h4>
-				<ul class="list-group">
-					<li class="list-group-item">geplanter Absatz <span class="verkauf"></span></li>
-					<li class="list-group-item">geplanter Umsatz <span class="verkauf"></span></li>
-				</ul>
-				<div id="overlay">
-						<div id="ol-text">nicht verf&uuml;gbar</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch3" class="card card-inaktive">
-				<h4>Modell 3</h4>
-				<ul class="list-group">
-					<li class="list-group-item">geplanter Absatz <span class="verkauf"></span></li>
-					<li class="list-group-item">geplanter Umsatz <span class="verkauf"></span></li>
-				</ul>
-				<div id="overlay">
-						<div id="ol-text">nicht verf&uuml;gbar</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
-    <!-- Marketing -->
-    <div id="menu6" class="tab-pane fade marketing">
-    	<div class="row">
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div id="" class="card card-aktive">
-					<h4>Unternehmsweit</h4>
+	      	<div class="row">
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch1" class="card card-aktive">
+					<h4>Modell 1</h4>
 					<ul class="list-group">
 						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
 						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 10.000 &euro;</a></li>
 						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 10.000 &euro;</a></li>
 					</ul>
+					</div>
 				</div>
-			</div>
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div id="" class="card card-aktive">
-					<h4>Ergebnisse letzter Runde</h4>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch2" class="card card-inaktive">
+					<h4>Modell 2</h4>
 					<ul class="list-group">
-						<li class="list-group-item bad"><span class="glyphicon glyphicon-remove"></span> Die Imagekampagne ist fehlgeschlagen. Die Verk&auml;ufe haben sich reduziert.</li>
-						<li class="list-group-item good"><span class="glyphicon glyphicon-ok"></span> Die Produktwerbung f&uuml;r Uhr 1 war erfolgreich. Es konnten mehr Uhren abgesetzt werden.</li>
+						<li class="list-group-item">Punkt 1</li>
+						<li class="list-group-item">Punkt 2</li>
+						<li class="list-group-item">Punkt 3</li>
 					</ul>
+					<div id="overlay">
+							<div id="ol-text">nicht verf&uuml;gbar</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-      	<div class="row">
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch1" class="card card-aktive">
-				<h4>Modell 1</h4>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 2 <a class="addBtn">+ 10.000 &euro;</a></li>
-					<li class="list-group-item">Punkt 3 <a class="addBtn">+ 10.000 &euro;</a></li>
-				</ul>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch2" class="card card-inaktive">
-				<h4>Modell 2</h4>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
-				</ul>
-				<div id="overlay">
-						<div id="ol-text">nicht verf&uuml;gbar</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch3" class="card card-inaktive">
+					<h4>Modell 3</h4>
+					<ul class="list-group">
+						<li class="list-group-item">Punkt 1</li>
+						<li class="list-group-item">Punkt 2</li>
+						<li class="list-group-item">Punkt 3</li>
+					</ul>
+					<div id="overlay">
+							<div id="ol-text">nicht verf&uuml;gbar</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div id="watch3" class="card card-inaktive">
-				<h4>Modell 3</h4>
-				<ul class="list-group">
-					<li class="list-group-item">Punkt 1</li>
-					<li class="list-group-item">Punkt 2</li>
-					<li class="list-group-item">Punkt 3</li>
-				</ul>
-				<div id="overlay">
-						<div id="ol-text">nicht verf&uuml;gbar</div>
+	    </div>
+	    <!-- Statistik -->
+	    <div id="menu7" class="tab-pane fade">
+	        <div class="row">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div id="" class="card card-aktive">
+					  <table class="table table-striped">
+					    <tbody>
+					      <tr>
+					        <td>Kapital</td>
+					        <td>300.500 &euro;</td>
+					      </tr>
+					      <tr>
+					        <td>Bestand Modell 1</td>
+					        <td>2000</td>
+					      </tr>
+					      <tr>
+					        <td>Bestand Modell 2</td>
+					        <td>-</td>
+					      </tr>
+					      <tr>
+					        <td>Bestand Modell 3</td>
+					        <td>-</td>
+					      </tr>
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div id="" class="card card-aktive">
+					  	<canvas id="myChart" width="400" height="400"></canvas>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div id="" class="card card-aktive">
+					  <table class="table table-striped">
+					    <tbody>
+					      <tr>
+					        <td>bisheriger Umsatz</td>
+					        <td>500.000 &euro;</td>
+					      </tr>
+					      <tr>
+					        <td>bisheriger Gewinn</td>
+					        <td>200.500 &euro;</td>
+					      </tr>
+					      <tr>
+					        <td>Imagepunkte</td>
+					        <td>5.000</td>
+					      </tr>
+					      <tr>
+					        <td>Umweltpunkte</td>
+					        <td>3.000</td>
+					      </tr>
+					    </tbody>
+					    <tfoot>
+					    	<tr>
+						    	<td>Gesamtscore</td>
+						        <td>10.000</td>
+					      </tr>
+					    </tfoot>
+					  </table>
 					</div>
 				</div>
 			</div>
-		</div>
-    </div>
-    <!-- Statistik -->
-    <div id="menu7" class="tab-pane fade">
-        <div class="row">
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div id="" class="card card-aktive">
-				  <table class="table table-striped">
-				    <tbody>
-				      <tr>
-				        <td>Kapital</td>
-				        <td>300.500 &euro;</td>
-				      </tr>
-				      <tr>
-				        <td>Bestand Modell 1</td>
-				        <td>2000</td>
-				      </tr>
-				      <tr>
-				        <td>Bestand Modell 2</td>
-				        <td>-</td>
-				      </tr>
-				      <tr>
-				        <td>Bestand Modell 3</td>
-				        <td>-</td>
-				      </tr>
-				    </tbody>
-				  </table>
+	    </div>
+	    <!-- Hilfe -->
+	    <div id="help" class="tab-pane fade">
+	      		<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div id="watch1" class="card card-aktive">
+					<h4>Hilfe</h4>
+					<ul class="list-group">
+						<li class="list-group-item">Erläuterungen zum Menüpunkt Produkte</li>
+						<li class="list-group-item">Erläuterungen zum Menüpunkt F&E</li>
+					</ul>
+					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div id="" class="card card-aktive">
-				  	<canvas id="myChart" width="400" height="400"></canvas>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div id="" class="card card-aktive">
-				  <table class="table table-striped">
-				    <tbody>
-				      <tr>
-				        <td>bisheriger Umsatz</td>
-				        <td>500.000 &euro;</td>
-				      </tr>
-				      <tr>
-				        <td>bisheriger Gewinn</td>
-				        <td>200.500 &euro;</td>
-				      </tr>
-				      <tr>
-				        <td>Imagepunkte</td>
-				        <td>5.000</td>
-				      </tr>
-				      <tr>
-				        <td>Umweltpunkte</td>
-				        <td>3.000</td>
-				      </tr>
-				    </tbody>
-				    <tfoot>
-				    	<tr>
-					    	<td>Gesamtscore</td>
-					        <td>10.000</td>
-				      </tr>
-				    </tfoot>
-				  </table>
-				</div>
-			</div>
-		</div>
-    </div>
-    <!-- Hilfe -->
-    <div id="help" class="tab-pane fade">
-      		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div id="watch1" class="card card-aktive">
-				<h4>Hilfe</h4>
-				<ul class="list-group">
-					<li class="list-group-item">Erläuterungen zum Menüpunkt Produkte</li>
-					<li class="list-group-item">Erläuterungen zum Menüpunkt F&E</li>
-				</ul>
-				</div>
-			</div>
-		</div>
-    </div>
-  </div>
+	    </div>
+	  </div>
 
     </div>
     <!-- /.container -->
+
+	</form>
 
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery.min.js"></script>

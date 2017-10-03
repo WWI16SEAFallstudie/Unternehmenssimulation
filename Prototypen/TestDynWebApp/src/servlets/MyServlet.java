@@ -42,6 +42,8 @@ public class MyServlet extends HttpServlet {
 		/*
 		 * Hier kommt mein Code hin
 		 */
+		
+		// Start des Spiels mit der ausgewählten Anzahl an Spielern
 		if (request.getParameter("startbtn") != null) {
 
 			// Entscheiden welcher spieler ausgewählt ist
@@ -55,13 +57,48 @@ public class MyServlet extends HttpServlet {
 				System.out.println("Unternehmensname: " + u[i].getName());
 			}
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
-
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/segment.jsp");
 			dispatcher.forward(request, response);
 			
 		}
+		
+		// Auswahl der Sparte zu Spielbeginn
+		
+			// Wahl der Ökosparte
+			if (request.getParameter("selectoeko") != null) {
+				
+				u[0].erforscheUhr("Oeko");// u[0] muss noch gegen den aktuellen Spieler ausgetauscht werden
+				System.out.println("Uhr erstellt: ");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
+				dispatcher.forward(request, response);
+			}
+			
+			// Wahl der Luxussparte
+			if (request.getParameter("selectluxus") != null) {
+				
+				u[0].erforscheUhr("Luxus");// u[0] muss noch gegen den aktuellen Spieler ausgetauscht werden
+				System.out.println("Uhr erstellt: ");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
+				dispatcher.forward(request, response);
+			}
+						
+			// Wahl der sparte
+			if (request.getParameter("selectbillig") != null) {
+				
+				u[0].erforscheUhr("Billig");// u[0] muss noch gegen den aktuellen Spieler ausgetauscht werden
+				System.out.println("Uhr erstellt: ");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
+				dispatcher.forward(request, response);
+			}
         
-
+		// Beenden der aktuellen Runde
+		if (request.getParameter("nextRound") != null) {
+			
+			System.out.println("Runde beendet.");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/next.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 }
