@@ -49,6 +49,15 @@
 		background-color: #FCE6EA;
 	}
 
+/* Überschrift */
+	.head{
+		background-color: rgba(255,255,255, 0.8);
+		margin: 10px auto 25px auto;
+		padding: 10px;
+		border-radius: 6px;
+		text-align: center;
+	}
+
 /* Card-Divs 
  * Beinhalten den Content
  * */
