@@ -1,15 +1,16 @@
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
 
+/* Testfunktion zur Demonstation des Spielstarts
 function start(){
 	window.open("game.jsp","_self")
-}
+}*/
 
+// Testfunktion zur Demonstation des Spielerwechsels
 function next(){
 	window.open("index.jsp","_self")
 }
 
+
+// Chart.js Diagramm für Statistik der verkauften Uhren
 var ctx = document.getElementById("myChart").getContext('2d');
 ctx.height = 800;
 var myChart = new Chart(ctx, {
@@ -54,9 +55,6 @@ var myChart = new Chart(ctx, {
     }
 });
 
-/*
-
-*/
 
 // Umschaltung der Navigation von Top to side
 function uiSwitch(){
@@ -74,7 +72,7 @@ function uiSwitch(){
 	}
 }
 
-
+// Timerfunktion
 function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
     setInterval(function () {
@@ -92,8 +90,9 @@ function startTimer(duration, display) {
     }, 1000);
 }
 
+// Start des Timers
 window.onload = function () {
-    var starttime = 60 * 10,
-        display = document.querySelector('#countdown');
-    startTimer(starttime, display);
+    var starttime = 10;// Countdown-Zeit in Minuten
+    var display = document.querySelector('#countdown');
+    startTimer((starttime*60), display);
 };

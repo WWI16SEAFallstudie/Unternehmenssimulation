@@ -1,2 +1,4 @@
-/func/
 /servlets/
+/tests/
+/.settings
+/func/

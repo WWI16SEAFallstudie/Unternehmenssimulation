@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import func.MyClass;
+
+import func.Unternehmen;
 
 /**
  * Servlet implementation class MyServlet
@@ -17,7 +18,11 @@ import func.MyClass;
 @WebServlet("/servlet")
 public class MyServlet extends HttpServlet {
 	
-	int param[] = {0,1,2,3,4,5};
+	/**
+	 * Initiierung der für das Spiel benötigten Instanzen
+	 */
+	Unternehmen u[] = new Unternehmen[4];
+	// Markt markt = new Markt;
 	
 	private static final long serialVersionUID = 1L;
        
@@ -30,35 +35,70 @@ public class MyServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.getWriter().append("Mein Text ");
-		request.setAttribute("Name", "Temp");
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MyClass myClass = new MyClass();
-		if (request.getParameter("button1") != null) {
-            int test[] = myClass.method1(param);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
-			request.setAttribute("li1", "Wert aus Array[0] => "+test[0]); // set your String value in the attribute
-			request.setAttribute("li2", "Wert aus Array[1] => "+test[1]); // set your String value in the attribute
-			request.setAttribute("li3", "Wert aus Array[2] => "+test[2]); // set your String value in the attribute
-			request.setAttribute("li4", "Wert aus Array[3] => "+test[3]); // set your String value in the attribute
-			request.setAttribute("li5", "Wert aus Array[4] => "+test[4]); // set your String value in the attribute
-			request.setAttribute("li6", "Wert aus Array[5] => "+test[5]); // set your String value in the attribute
-			dispatcher.forward( request, response );
-        }
-        
 
+		/*
+		 * Hier kommt mein Code hin
+		 */
 		
-		//doGet(request, response);
+		// Start des Spiels mit der ausgewählten Anzahl an Spielern
+		if (request.getParameter("startbtn") != null) {
+
+			// Entscheiden welcher spieler ausgewählt ist
+			
+			// Ermitteln der Spieleranzahl
+			int spielerAnz = Integer.parseInt(request.getParameter("spielerAnzahl"));
+			
+			// Erzeugen der Unternehmen/Spieler
+			for(int i = 0; i < spielerAnz; i++) {
+				u[i] = new Unternehmen("Spieler " + (i+1));
+				System.out.println("Unternehmensname: " + u[i].getName());
+			}
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/segment.jsp");
+			dispatcher.forward(request, response);
+			
+		}
+		
+		// Auswahl der Sparte zu Spielbeginn
+		
+			// Wahl der Ökosparte
+			if (request.getParameter("selectoeko") != null) {
+				
+				u[0].erforscheUhr("Oeko");// u[0] muss noch gegen den aktuellen Spieler ausgetauscht werden
+				System.out.println("Uhr erstellt: ");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
+				dispatcher.forward(request, response);
+			}
+			
+			// Wahl der Luxussparte
+			if (request.getParameter("selectluxus") != null) {
+				
+				u[0].erforscheUhr("Luxus");// u[0] muss noch gegen den aktuellen Spieler ausgetauscht werden
+				System.out.println("Uhr erstellt: ");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
+				dispatcher.forward(request, response);
+			}
+						
+			// Wahl der sparte
+			if (request.getParameter("selectbillig") != null) {
+				
+				u[0].erforscheUhr("Billig");// u[0] muss noch gegen den aktuellen Spieler ausgetauscht werden
+				System.out.println("Uhr erstellt: ");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
+				dispatcher.forward(request, response);
+			}
+        
+		// Beenden der aktuellen Runde
+		if (request.getParameter("nextRound") != null) {
+			
+			System.out.println("Runde beendet.");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/next.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 }
