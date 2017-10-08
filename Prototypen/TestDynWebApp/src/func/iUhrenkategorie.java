@@ -14,9 +14,9 @@ public interface iUhrenkategorie {
 	
 	public void uhrMarketingstrategie();
 	
-	public String[] getUhrwerk();
+	public boolean[] getUhrwerk();
 	
-	public String[] getGehaeuse();
+	public boolean[] getGehaeuse();
 	
-	public String[] getArmband();
+	public boolean[] getArmband();
 }

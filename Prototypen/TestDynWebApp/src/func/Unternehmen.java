@@ -7,27 +7,31 @@ public class Unternehmen {
 	 */
 	private String name;
 	private double kapital;
+	private double kapitalAlt;
+	private String info;
 	
 	/*
 	 * Array für entsprechenden Uhren angelegt 
 	 * iUhrenkategorie ist ein Interface, welches von BilligUhr, OekoUhr und PremiumUhr implementiert wurde
 	 * -> Polymorphismus
 	 */
-	private iUhrenkategorie kate[] = new iUhrenkategorie[3];
+	private iUhrenkategorie uhr[] = new iUhrenkategorie[3];
 	
 	/*
 	 * Produktionserweiterungen pro Segment
 	 */
-	private String prodStraßeBillig[] = {"x", "x", "x"};
-	private String prodStraßeOeko[] = {"x", "x", "x"};
-	private String prodStraßePremium[] = {"x", "x", "x"};
+	private boolean prodStraßeBillig[] = { false, false, false};
+	private boolean prodStraßeOeko[] = { false, false, false};
+	private boolean prodStraßePremium[] = { false, false, false};
 		
 	/*
 	 * Konstruktor
 	 */
 	public Unternehmen(String name) {
-		this.name = name;
+		this.setInfo("Hier könnte Ihre Werbung stehen");
 		this.setKapital(100000.00);		
+		this.setKapitalAlt(0);
+		this.setName(name);
 	}
 	
 	/**
@@ -46,18 +50,21 @@ public class Unternehmen {
 		if(index != -1 ) {
 			switch(segment) {
 			case "Billig":
-				this.kate[index] = new BilligUhr();
+				this.uhr[index] = new BilligUhr();
 				break;
-			case "Luxus":
-				this.kate[index] = new PremiumUhr();
+			case "Premium":
+				this.uhr[index] = new PremiumUhr();
 				break;
 			case "Oeko":
-				this.kate[index] = new OekoUhr();
+				this.uhr[index] = new OekoUhr();
 				break;
 			default:
 				System.out.println("Falsches Segment");
 				break;
 			}
+		}
+		else {
+			System.out.println("Es kann keine weitere Uhr erforscht werden!");
 		}
 	}
 	
@@ -71,7 +78,7 @@ public class Unternehmen {
 	 * ein neues Uhrwerk erforscht werden soll
 	 */
 	public void erforscheUhrwerk(int uhr) {
-		this.kate[uhr].entwickleUhrwerk();
+		this.uhr[uhr].entwickleUhrwerk();
 	}
 	
 	/**
@@ -84,7 +91,7 @@ public class Unternehmen {
 	 * ein neues Armband erforscht werden soll
 	 */
 	public void erforscheArmband(int uhr) {
-		this.kate[uhr].entwickleArmband();
+		this.uhr[uhr].entwickleArmband();
 	}
 	
 	/**
@@ -97,7 +104,7 @@ public class Unternehmen {
 	 * ein neues Gehäuse erforscht werden soll
 	 */
 	public void erforscheGehaeuse(int uhr) {
-		this.kate[uhr].entwickleGehause();
+		this.uhr[uhr].entwickleGehause();
 	}
 	
 	
@@ -107,8 +114,8 @@ public class Unternehmen {
 	 * @param uhr: Zu welcher Uhr das Uhrwerk zurückgegeben werden soll
 	 * @return: Array der freigeschalteten Uhrwerke
 	 */
-	public String[] getUhrwerk(int uhr) {
-		return this.kate[uhr].getUhrwerk();
+	public boolean[] getUhrwerk(int uhr) {
+		return this.uhr[uhr].getUhrwerk();
 	}
 
 	/**
@@ -117,8 +124,8 @@ public class Unternehmen {
 	 * @param uhr: Zu welcher Uhr das Armband zurückgegeben werden soll
 	 * @return: Array der freigeschalteten Armband
 	 */
-	public String[] getArmband(int uhr) {
-		return this.kate[uhr].getArmband();
+	public boolean[] getArmband(int uhr) {
+		return this.uhr[uhr].getArmband();
 	}
 	
 	/**
@@ -127,8 +134,8 @@ public class Unternehmen {
 	 * @param uhr: Zu welcher Uhr das Gehäuse zurückgegeben werden soll
 	 * @return: Array der freigeschalteten Gehäuse
 	 */
-	public String[] getGehaeuse(int uhr) {
-		return this.kate[uhr].getGehaeuse();
+	public boolean[] getGehaeuse(int uhr) {
+		return this.uhr[uhr].getGehaeuse();
 	}
 	
 	/**
@@ -145,24 +152,24 @@ public class Unternehmen {
 		switch(segment) {
 		case "Billig":
 			for(int i = 0; i < 3; i++) {
-				if(prodStraßeBillig[i].equals("x")) {
-					prodStraßeBillig[i] = "ok";
+				if(prodStraßeBillig[i] == false) {
+					prodStraßeBillig[i] = true;
 					return true;
 				}
 			}
 			break;
-		case "Luxus":
+		case "Premium":
 			for(int i = 0; i < 3; i++) {
-				if(prodStraßePremium[i].equals("x")) {
-					prodStraßePremium[i] = "ok";
+				if(prodStraßePremium[i] == false) {
+					prodStraßePremium[i] = true;
 					return true;
 				}
 			}
 			break;
 		case "Oeko":
 			for(int i = 0; i < 3; i++) {
-				if(prodStraßeOeko[i].equals("x")) {
-					prodStraßeOeko[i] = "ok";
+				if(prodStraßeOeko[i] == false) {
+					prodStraßeOeko[i] = true;
 					return true;
 				}
 			}
@@ -173,6 +180,7 @@ public class Unternehmen {
 		}
 		return false;
 	}	
+	
 	
 	/**
 	 * 
@@ -191,7 +199,7 @@ public class Unternehmen {
 	private int indexFreieUhr() {
 		int result = -1;
 		for(int i = 0; i < 3; i++) {
-			if(kate[i] == null) {
+			if(uhr[i] == null) {
 				result = i;
 				break;
 			}
@@ -202,10 +210,19 @@ public class Unternehmen {
 	@Override
 	public String toString() {			
 		String temp = name + "\n";
-		for(int i = 0; i < 3; i++) {
-			if(kate[i] != null) {
-				temp += "Uhr" + i + " Segment: " + kate[i].getClass().getName().substring(12, 19) + " ";
-				for(String s : kate[i].getUhrwerk()) {
+		for(int i = 0; i < uhr.length; i++) {
+			if(uhr[i] != null) {
+				temp += "Uhr" + i + " Segment: " + uhr[i].getClass() + " ";
+				temp += " Uhrwerk: ";
+				for(boolean s : uhr[i].getUhrwerk()) {
+					temp += s + " ";
+				}
+				temp += " Armband: ";
+				for(boolean s : uhr[i].getArmband()) {
+					temp += s + " ";
+				}
+				temp += " Gehäuse: ";
+				for(boolean s : uhr[i].getGehaeuse()) {
 					temp += s + " ";
 				}
 				temp += "\n";
@@ -218,15 +235,15 @@ public class Unternehmen {
 	 * Getter / Setter
 	 */
 	
-	public String[] getProdStraßeBillig() {
+	public boolean[] getProdStraßeBillig() {
 		return prodStraßeBillig;
 	}
 
-	public String[] getProdStraßeOeko() {
+	public boolean[] getProdStraßeOeko() {
 		return prodStraßeOeko;
 	}
 
-	public String[] getProdStraßePremium() {
+	public boolean[] getProdStraßePremium() {
 		return prodStraßePremium;
 	}
 
@@ -244,6 +261,27 @@ public class Unternehmen {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public double getKapitalAlt() {
+		return kapitalAlt;
+	}
+
+	private void setKapitalAlt(double kapitalAlt) {
+		this.kapitalAlt = kapitalAlt;
+	}
+	
+	public void setSpielerDaten(double kapital) {
+		this.setKapitalAlt(this.getKapital());
+		this.setKapital(kapital);
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
 	}
 	
 	

@@ -13,30 +13,30 @@ public class Uhrmodell {
 	 * @param uhrwerk: altes Array
 	 * @return: neues Array mit erweitertem Inhalt
 	 */	
-	public static String[] entwickleUhrwerk(String[] uhrwerk) {
+	public static boolean[] entwickleUhrwerk(boolean[] uhrwerk) {
 		for(int i = 0; i < 3; i++) {
-			if(uhrwerk[i].equals("x")) {
-				uhrwerk[i] = "ok";
+			if(uhrwerk[i] == false) {
+				uhrwerk[i] = true;
 				break;
 			}
 		}
 		return uhrwerk;
 	}
 	
-	public static String[] entwickleArmband(String[] armband) {
+	public static boolean[] entwickleArmband(boolean[] armband) {
 		for(int i = 0; i < 3; i++) {
-			if(armband[i].equals("x")) {
-				armband[i] = "ok";
+			if(armband[i] == false) {
+				armband[i] = true;
 				break;
 			}
 		}
 		return armband;
 	}
 	
-	public static String[] entwickleGehaeuse(String[] gehaeuse) {
+	public static boolean[] entwickleGehaeuse(boolean[] gehaeuse) {
 		for(int i = 0; i < 3; i++) {
-			if(gehaeuse[i].equals("x")) {
-				gehaeuse[i] = "ok";
+			if(gehaeuse[i] == false) {
+				gehaeuse[i] = true;
 				break;
 			}
 		}

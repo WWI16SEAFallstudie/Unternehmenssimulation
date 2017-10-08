@@ -1,0 +1,56 @@
+Unternehmen:
+
+- Unternehmen()
+- erforscheUhr(String) : void
+- erforscheUhrwerk(int) : void
+- erforscheArmband(int) : void
+- erforscheGehaeuse(int) : void
+- getUhrwerk(int) : boolean
+- getArmband(int) : boolean
+- getGehaeuse(int) : boolean
+- erweitereProduktion(String) : void
+- uhrenMarketing(int)
+- indexFreieUhr() : int //privat
+- getProdStraßeBillig() : boolean
+- getProdStraßeOeko() : boolean
+- getProdStraßePremium() : boolean
+- getKapital() : double
+- setKapital(double) : void
+- getName() : String
+- setName(String) : void
+- getKapitalAlt() : double
+- setKapitalAlt(double) : void //privat
+- setSpielerDaten(double) : void
+- setInfo(String) : void
+- geInfo() : String
+
+Uhrmodell
+
+- entwickleUhrwerk(boolean[]) : boolean[]
+- entwickleArmband(boolean[]) : boolean[]
+- entwickleGehaeuse(boolean[]) : boolean[]
+
+Spielbrett:
+
+- erstelleSpieler(int) : void
+- naechsteRunde() : boolean
+- naechsterSpieler() : void
+- getSpieler() : Unternehmen[]
+- setSpieler(Unternehmen[] ) : void
+- getAktuellerSpieler() : int
+- getRundeAktuell() : int
+- getRundenMax() : int
+
+Info: Da können die verschiedenen Attribute ausgelesen werden
+
+BilligUhr / OekoUhr / PremiumUhr
+
+- entwickleUhrwerk() : void
+- entwickleArmband() : void
+- entwickleGehaeuse() : void
+- uhrMarketingstrategie() : void
+- getUhrwerk() : boolean[]
+- getArmband() : boolean[]
+- getGehaeuse() : boolean[]
+- getScore() : int
+- setScore(int) : void

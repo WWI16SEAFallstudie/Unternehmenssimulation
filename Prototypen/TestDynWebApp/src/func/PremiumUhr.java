@@ -3,20 +3,23 @@ package func;
 public class PremiumUhr implements iUhrenkategorie {
 	
 	//*** Speziell für die Uhr 
-	private String[] uhrwerk = new String[3];
-	private String[] gehaeuse = new String[3];
-	private String[] armband = new String[3];
+	private boolean[] uhrwerk = new boolean[3];
+	private boolean[] gehaeuse = new boolean[3];
+	private boolean[] armband = new boolean[3];
+	
+	private int score;
 	
 	public PremiumUhr() {
+		this.setScore(0);
 		for( int i = 0; i < 3; i++) {
 			if(i == 0) {
-				uhrwerk[i] = "ok";
-				gehaeuse[i] = "ok";
-				armband[i] = "ok";
+				uhrwerk[i] = true;
+				gehaeuse[i] = true;
+				armband[i] = true;
 			}else {
-				uhrwerk[i] = "x";
-				gehaeuse[i] = "x";
-				armband[i] = "x";
+				uhrwerk[i] = false;
+				gehaeuse[i] = false;
+				armband[i] = false;
 			}
 		}
 	}
@@ -44,17 +47,17 @@ public class PremiumUhr implements iUhrenkategorie {
 	}
 	
 	@Override
-	public String[] getUhrwerk() {
+	public boolean[] getUhrwerk() {
 		return this.uhrwerk;
 	}
 
 	@Override
-	public String[] getGehaeuse() {
+	public boolean[] getGehaeuse() {
 		return this.gehaeuse;
 	}
 
 	@Override
-	public String[] getArmband() {
+	public boolean[] getArmband() {
 		return this.armband;
 	}
 
@@ -62,5 +65,13 @@ public class PremiumUhr implements iUhrenkategorie {
 	public void uhrMarketingstrategie() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 }
