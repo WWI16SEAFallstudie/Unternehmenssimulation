@@ -16,6 +16,7 @@ public class OekoUhr implements iUhrenkategorie{
 	 */
 	public OekoUhr() {
 		this.setScore(0);
+		// Fülle das Array mit Defaultwerte
 		for( int i = 0; i < 3; i++) {
 			if(i == 0) {
 				uhrwerk[i] = true;

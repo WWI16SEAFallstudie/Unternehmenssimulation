@@ -29,7 +29,7 @@ public class Unternehmen {
 	 */
 	public Unternehmen(String name) {
 		this.setInfo("Hier könnte Ihre Werbung stehen");
-		this.setKapital(100000.00);		
+		this.setKapital(1000000);		
 		this.setKapitalAlt(0);
 		this.setName(name);
 	}
@@ -39,24 +39,35 @@ public class Unternehmen {
 	 * 
 	 * Funktionsweise: Durch Übergabe des Segments, wird über einen switch-case abgefragt,
 	 * welches Segment ausgewählt wurde und dementsprechend wird ein neues Uhrmodell an der
-	 * Stelle 'index' erzeugt. Der 'index' wird durch eine private Methode abgefragt, um
+	 * Stelle 'index' erzeugt. Jedoch nur, wenn genug Kapital vorhanden ist. Dies wird in einer
+	 * privaten Methode getestet und das Kapital wird vermindert, wenn es ausreichend ist.
+	 * Der 'index' wird durch eine private Methode abgefragt, um
 	 * herauszufinden welches die nächste Freie Uhr ist.
 	 * 
 	 * @param segment: Gibt an, in welchem Segment die Uhr erforscht werden soll
 	 * Mögliche Segmente: Billig, Luxus, Öko
 	 */
-	public void erforscheUhr(String segment) {
+	public void erforscheUhr(String segment) {		
 		int index = indexFreieUhr();
 		if(index != -1 ) {
 			switch(segment) {
 			case "Billig":
-				this.uhr[index] = new BilligUhr();
+				if(checkeKapital(Info.kostenUhrBillig))
+					this.uhr[index] = new BilligUhr();
+				else
+					System.out.println("Nicht genug Kohle!");
 				break;
 			case "Premium":
-				this.uhr[index] = new PremiumUhr();
+				if(checkeKapital(Info.kostenUhrPremium))
+					this.uhr[index] = new PremiumUhr();
+				else
+					System.out.println("Nicht genug Kohle!");
 				break;
 			case "Oeko":
-				this.uhr[index] = new OekoUhr();
+				if(checkeKapital(Info.kostenUhrOeko))
+					this.uhr[index] = new OekoUhr();
+				else
+					System.out.println("Nicht genug Kohle!");
 				break;
 			default:
 				System.out.println("Falsches Segment");
@@ -73,12 +84,14 @@ public class Unternehmen {
 	 * 
 	 * Funktion: Ausgewählte Uhr ruft die Methode in der iUhrenkategorie auf,
 	 * welches auf das jeweilige Segment weiterleitet und da das Uhrwerk erforscht
+	 * Es wird nur erforscht, wenn diese Uhr überhaupt vorhanden ist
 	 * 
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Uhrwerk erforscht werden soll
 	 */
 	public void erforscheUhrwerk(int uhr) {
-		this.uhr[uhr].entwickleUhrwerk();
+		if(this.uhr[uhr] != null)
+			this.uhr[uhr].entwickleUhrwerk();
 	}
 	
 	/**
@@ -86,12 +99,14 @@ public class Unternehmen {
 	 * 
 	 * Funktion: Ausgewählte Uhr ruft die Methode in der iUhrenkategorie auf,
 	 * welches auf das jeweilige Segment weiterleitet und da das Armband erforscht
+	 * Es wird nur erforscht, wenn diese Uhr überhaupt vorhanden ist
 	 * 
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Armband erforscht werden soll
 	 */
 	public void erforscheArmband(int uhr) {
-		this.uhr[uhr].entwickleArmband();
+		if(this.uhr[uhr] != null)
+			this.uhr[uhr].entwickleArmband();
 	}
 	
 	/**
@@ -99,12 +114,14 @@ public class Unternehmen {
 	 * 
 	 * Funktion: Ausgewählte Uhr ruft die Methode in der iUhrenkategorie auf,
 	 * welches auf das jeweilige Segment weiterleitet und da das Gehäuse erforscht
+	 * Es wird nur erforscht, wenn diese Uhr überhaupt vorhanden ist
 	 * 
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Gehäuse erforscht werden soll
 	 */
 	public void erforscheGehaeuse(int uhr) {
-		this.uhr[uhr].entwickleGehause();
+		if(this.uhr[uhr] != null)
+			this.uhr[uhr].entwickleGehause();
 	}
 	
 	
@@ -143,7 +160,9 @@ public class Unternehmen {
 	 * 
 	 * Funktion: Durch ein Switch-Case wird das Segment überprüft, in dem die
 	 * Erweiterung durchgeführt werden soll. Anschließend wird das Array
-	 * durchlaufen um an der nächsten Stelle die Produktion freizuschalten
+	 * durchlaufen um an der nächsten Stelle die Produktion freizuschalten, 
+	 * vorausgesetzt das Kapital ist ausreichend. Auch hier die private Methode zum
+	 * testen und zum Kapitalvermindern
 	 * 
 	 * @param segment: In welchem Segment erweitert werden soll
 	 * @return: Rückgabe ob die Erweiterung erfolgreich war
@@ -153,24 +172,30 @@ public class Unternehmen {
 		case "Billig":
 			for(int i = 0; i < 3; i++) {
 				if(prodStraßeBillig[i] == false) {
-					prodStraßeBillig[i] = true;
-					return true;
+					if(checkeKapital(Info.getKostenProduktionBillig()[i])) {
+						prodStraßeBillig[i] = true;
+						return true;
+					}
 				}
 			}
 			break;
 		case "Premium":
 			for(int i = 0; i < 3; i++) {
 				if(prodStraßePremium[i] == false) {
-					prodStraßePremium[i] = true;
-					return true;
+					if(checkeKapital(Info.getKostenProduktionPremium()[i])) {
+						prodStraßePremium[i] = true;
+						return true;
+					}
 				}
 			}
 			break;
 		case "Oeko":
 			for(int i = 0; i < 3; i++) {
 				if(prodStraßeOeko[i] == false) {
-					prodStraßeOeko[i] = true;
-					return true;
+					if(checkeKapital(Info.getKostenProduktionOeko()[i])) {
+						prodStraßeOeko[i] = true;
+						return true;
+					}
 				}
 			}
 			break;
@@ -205,6 +230,22 @@ public class Unternehmen {
 			}
 		}
 		return result;
+	}
+	
+	/**
+	 * Private Methode um zu testen, ob genug Kapital vorhanden ist
+	 * Kapital wird auch direkt um die Kosten vermindert
+	 * 
+	 * @param kosten: Übergabewert der anstehenden Kosten
+	 * @return true -> Wenn genug Kosten vorhanden; false wenn nicht
+	 */
+	private boolean checkeKapital(double kosten) {
+		if( (this.kapital - kosten) >= 0) {
+			this.kapital -= kosten;
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	@Override

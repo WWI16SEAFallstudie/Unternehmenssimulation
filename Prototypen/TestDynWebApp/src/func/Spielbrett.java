@@ -55,9 +55,6 @@ public class Spielbrett {
 	// -> Runde beenden: Rückgabe aktueller Spieler, Spielerdaten direkt erfassen
 	// -> Periode beenden: Marktsimmulation starten; Rückgabe der Infos an die Spieler
 	
-	// Spieler ist dran: Spielobjekt laden (Wie in HTML anzeigen?)
-	
-	
 	
 	// Getter & Setter
 	
@@ -70,7 +67,6 @@ public class Spielbrett {
 	}
 
 	public int getAktuellerSpieler() {
-		
 		return aktuellerSpieler;
 	}
 

@@ -15,6 +15,7 @@ public class BilligUhr implements iUhrenkategorie {
 	 */
 	public BilligUhr() {
 		this.setScore(0);
+		// Füllen des Arrays mit Defaultwerten
 		for( int i = 0; i < 3; i++) {
 			if(i == 0) {
 				uhrwerk[i] = true;

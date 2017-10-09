@@ -11,6 +11,7 @@ public class PremiumUhr implements iUhrenkategorie {
 	
 	public PremiumUhr() {
 		this.setScore(0);
+		// Fülle das Array mit Defaultwerten
 		for( int i = 0; i < 3; i++) {
 			if(i == 0) {
 				uhrwerk[i] = true;
