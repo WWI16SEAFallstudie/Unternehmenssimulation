@@ -54,3 +54,7 @@ BilligUhr / OekoUhr / PremiumUhr
 - getGehaeuse() : boolean[]
 - getScore() : int
 - setScore(int) : void
+
+Abhängigkeit der Klassen:
+
+Spielbrett > Unternehmen > iUhrenkategorie > BilligUhr / ÖkoUhr / PremiumUhr (implementiert die iUhrenkategorie); Uhrmodell hat ausgelagerte Methoden auf die die Uhren zugreifen

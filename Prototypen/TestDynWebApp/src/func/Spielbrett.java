@@ -41,7 +41,7 @@ public class Spielbrett {
 	
 	// Nächster Spieler
 	public void naechsterSpieler() {
-		if(this.aktuellerSpieler == 4) {
+		if(this.aktuellerSpieler == 3) {
 			this.aktuellerSpieler = 0;
 		}
 		else {
