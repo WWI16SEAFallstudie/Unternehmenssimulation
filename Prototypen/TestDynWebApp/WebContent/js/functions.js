@@ -1,9 +1,3 @@
-
-/* Testfunktion zur Demonstation des Spielstarts
-function start(){
-	window.open("game.jsp","_self")
-}*/
-
 // Testfunktion zur Demonstation des Spielerwechsels
 function next(){
 	window.open("index.jsp","_self")
@@ -96,3 +90,46 @@ window.onload = function () {
     var display = document.querySelector('#countdown');
     startTimer((starttime*60), display);
 };
+
+// Auswahl des zu Nutzenden Gehäuse, Armband, Uhrwerk
+
+function usedItem(input, item){
+	
+	itemOne = document.getElementsByClassName(input)[0].children[0];
+	itemTwo = document.getElementsByClassName(input)[0].children[1];
+	itemThree = document.getElementsByClassName(input)[0].children[2];
+	
+	switch(item) {
+	    case 1:
+	    	if(itemOne.classList.contains("notAvailable")) return false;
+	        if(!itemOne.classList.contains("selected"))itemOne.classList.add("selected");
+	        if(itemTwo.classList.contains("selected"))itemTwo.classList.remove("selected");
+	        if(itemThree.classList.contains("selected"))itemThree.classList.remove("selected");
+	        break;
+	    case 2:
+	    	if(itemTwo.classList.contains("notAvailable")) return false;
+	        if(!itemTwo.classList.contains("selected"))itemTwo.classList.add("selected");
+	        if(itemOne.classList.contains("selected"))itemOne.classList.remove("selected");
+	        if(itemThree.classList.contains("selected"))itemThree.classList.remove("selected");
+	        break;
+	    case 3:
+	    	if(itemThree.classList.contains("notAvailable")) return false;
+	        if(!itemThree.classList.contains("selected"))itemThree.classList.add("selected");
+	        if(itemOne.classList.contains("selected"))itemOne.classList.remove("selected");
+	        if(itemTwo.classList.contains("selected"))itemTwo.classList.remove("selected");
+	        break;
+	}
+	document.getElementById(input).value = item;
+}
+
+// Freischalten einer weiteren Uhr
+
+function researchModel(card,input){
+	if(document.getElementById(input).value == ""){
+		alert("Eine weiter Uhr steht in der nächsten Runde zur Verfügung");
+		document.getElementById(input).value = 1;
+	}else{
+		alert("Die Uhr wird nicht erforscht");
+		document.getElementById(input).value = "";
+	}
+}

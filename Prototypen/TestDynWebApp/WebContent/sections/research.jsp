@@ -22,7 +22,7 @@
 					<ul class="list-group">
 						<li class="done list-group-item">Quarz <span class="glyphicon glyphicon-ok"></span></li>
 						<li class="list-group-item">Funk <a class="addBtn">+ 100.000 &euro;</a></li>
-						<li class="list-group-item">Automatik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Automatik <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 					</ul>
 					</div>
 				</div>
@@ -34,19 +34,19 @@
 					<ul class="list-group">
 						<li class="done list-group-item">Stahl <span class="glyphicon glyphicon-ok"></span></li>
 						<li class="list-group-item">Titan <a class="addBtn">+ 100.000 &euro;</a></li>
-						<li class="list-group-item">Platin <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Platin <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 					</ul>
 					<span class="listhead">Armband</span>
 					<ul class="list-group">
 						<li class="list-group-item">Leder <a class="addBtn">+ 100.000 &euro;</a></li>
-						<li class="list-group-item">Geh&auml;usematerial <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-						<li class="list-group-item">Keramik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Geh&auml;usematerial <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Keramik <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 					</ul>
 					<span class="listhead">Uhrwerk</span>
 					<ul class="list-group">
 						<li class="list-group-item">Quarz <a class="addBtn">+ 100.000 &euro;</a></li>
-						<li class="list-group-item">Automatik <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
-						<li class="list-group-item">Skelett/Kalender <a class="addBtn notAavailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Automatik <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
+						<li class="list-group-item">Skelett/Kalender <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 					</ul>
 					</div>
 				</div>

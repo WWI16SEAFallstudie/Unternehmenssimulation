@@ -7,13 +7,17 @@
 	}
 	
 	button{
+		margin: 3px;
+	}
+	
+	button, a.addBtn{
 		border: none;
 		border-radius: 3px;
 		box-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 		padding: 4px 7px;
-		margin: 3px;
 		background-color: rgba(79, 132, 196, 0.9);
 		color: white;
+		
 	}
 	
 	button:hover{
@@ -124,18 +128,14 @@
 		box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 	}
 	
-	.card .addBtn{
-		border: none;
-		border-radius: 3px;
-		box-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-		padding: 3px 7px;
+	
+	a.addBtn{
 		text-decoration: none;
 		vertical-align: middle;
-		color: white;
 		cursor: pointer;
 	}
 	
-	a.addBtn{
+	li a.addBtn{
 		margin: -3px;
 	}
 	
@@ -144,15 +144,27 @@
 		background-color: white!important;
 	}
 	
+	.card-aktive .segment.addBtn{
+		display: none;
+	}
+	
 	/* Inaktive und gesperrte Elemente der Card-Divs */
 	
-	a.addBtn.notAavailable{
+	a.addBtn.notAvailable{
 		box-shadow: none;
 	}
-	.card-inaktive, .card-inaktive li, li.notAavailable, a.addBtn.notAavailable{
+	.card-inaktive, .card-inaktive li, li.notAvailable, a.addBtn.notAvailable{
 		background-color: #f9f9f9;
 		color: grey;
-		cursor: not-allowed;
+		cursor: not-allowed!important;
+	}
+	
+	.list-group-item>span{
+		display: none;
+	}
+	
+	.selected>span{
+		display:initial;
 	}
 	
 	#overlay {

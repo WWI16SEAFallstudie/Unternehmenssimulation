@@ -24,14 +24,14 @@
 	<form id="roundData" action="${pageContext.request.contextPath}/servlet" method="post">
     <!-- Navigation -->
       <ul id="mainNav" class="nav nav-tabs">
-      	<li id="player"><a><img alt="" src="images/Boss.png"> <span id="countdown" class="player">10:00</span></a></li>
+      	<li id="player"><a><img alt="" src="images/Man${pic}.png"> <span id="countdown" class="player">10:00</span></a></li>
 		<li class="dropdown">
-			<a id="player" class=" player dropdown-toggle" data-toggle="dropdown" href="#"> 300.500 &euro; <span class="caret"></span></a>
+			<a id="player" class=" player dropdown-toggle" data-toggle="dropdown" href="#"> ${kapital} &euro; <span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><span class="first-elem">Anfangskapital</span><span class="last-elem">400.500 &euro;</span></li>
-				<li><span class="first-elem">Geplante Ausgaben</span><span class="last-elem">100.000 &euro;</span></li>
-				<li><span class="first-elem">Endkapital</span><span class="last-elem">300.500 &euro;</span></li>
-				<li><span class="first-elem">Uhr 1</span><span class="last-elem">2000 St.</span></li>
+				<li><span class="first-elem">Anfangskapital</span><span class="last-elem">${kapital} &euro;</span></li>
+				<li><span class="first-elem">Geplante Ausgaben</span><span class="last-elem">? &euro;</span></li>
+				<li><span class="first-elem">Endkapital</span><span class="last-elem">? &euro;</span></li>
+				<li><span class="first-elem">Uhr 1</span><span class="last-elem">? St.</span></li>
 				<li><span class="first-elem">Uhr 2</span><span class="last-elem">- St.</span></li>
 				<li><span class="first-elem">Uhr 3</span><span class="last-elem">- St.</span></li>                       
 			</ul>
@@ -71,7 +71,8 @@
 	    <jsp:include page="sections/marketing.jsp"></jsp:include>
 
 	    <!-- Statistik -->
-		<jsp:include page="sections/statistics.jsp"></jsp:include>		
+		<jsp:include page="sections/statistics.jsp"></jsp:include>
+		
 		
 	    <!-- Hilfe -->
 		<jsp:include page="sections/help.jsp"></jsp:include>

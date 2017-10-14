@@ -27,9 +27,11 @@
     <div id="content" class="container">
 		<div id="next" class="card card-aktive">
 			<h4>N&auml;chster Spieler</h4>
-			<h3>Spieler 2</h3>
-			<img alt="" src="images/ManB.png">
-			<button class="input" name="start" id="startbtn" onclick="next();">WEITER</button>
+			<h4>Runde ${round}</h4>
+			<h3>Spieler ${picNext}</h3>
+			<img alt="" src="images/Man${picNext}.png"><form id="roundData" action="${pageContext.request.contextPath}/servlet" method="post">
+			<button class="input" name="nextPlayer" id="nextBtn" onclick="next();">WEITER</button>
+			</form>
 		</div>
     </div>
     <!-- /.container -->
