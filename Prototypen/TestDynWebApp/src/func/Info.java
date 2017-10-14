@@ -3,40 +3,40 @@ package func;
 public class Info {
 	
 	// Attribute für die Uhr
-	public static String uhrwerkOeko[] = {"Quarz","Funk","Automatik"};
-	public static String gehaeuseOeko[] = {"Holz","Wurzelholz","Gebeiztes Holz"};
-	public static String armbandOeko[] = {"Stoff","Leinenfasern","Holz"};
+	private static String uhrwerkOeko[] = {"Quarz","Funk","Automatik"};
+	private static String gehaeuseOeko[] = {"Holz","Wurzelholz","Gebeiztes Holz"};
+	private static String armbandOeko[] = {"Stoff","Leinenfasern","Holz"};
 
-	public static String uhrwerkPremium[] = {"Quarz","Automatik","Skelett/Kalender"};
-	public static String gehaeusePremium[] = {"Stahl","Titan","Platin"};
-	public static String armbandPremium[] = {"Leder","Gehäusematerial","Keramik"};
+	private static String uhrwerkPremium[] = {"Quarz","Automatik","Skelett/Kalender"};
+	private static String gehaeusePremium[] = {"Stahl","Titan","Platin"};
+	private static String armbandPremium[] = {"Leder","Gehäusematerial","Keramik"};
 
-	public static String uhrwerkBillig[] = {"Quarz","Funk","NochOffen"};
-	public static String gehaeuseBillig[] = {"Plastik","Gefärbtes Plastik","Durchsichtiges Plastik"};
-	public static String armbandBillig[] = {"Plastik","Gumi","Stoff"};
+	private static String uhrwerkBillig[] = {"Quarz","Funk","NochOffen"};
+	private static String gehaeuseBillig[] = {"Plastik","Gefärbtes Plastik","Durchsichtiges Plastik"};
+	private static String armbandBillig[] = {"Plastik","Gumi","Stoff"};
 	
 	// Kosten für die Entwicklungen der Attribute
-	public static double kostenUhrwerkOeko[] = { 1000 , 2000 , 3000 };
-	public static double kostenGehaeuseOeko[] = { 1000 , 2000 , 3000 };
-	public static double kostenArmbandOeko[] = { 1000 , 2000 , 3000 };
+	private static double kostenUhrwerkOeko[] = { 1000 , 2000 , 3000 };
+	private static double kostenGehaeuseOeko[] = { 1000 , 2000 , 3000 };
+	private static double kostenArmbandOeko[] = { 1000 , 2000 , 3000 };
 	
-	public static double kostenUhrwerkPremium[] = { 1000 , 2000 , 3000 };
-	public static double kostenGehaeusePremium[] = { 1000 , 2000 , 3000 };
-	public static double kostenArmbandPremium[] = { 1000 , 2000 , 3000 };
+	private static double kostenUhrwerkPremium[] = { 1000 , 2000 , 3000 };
+	private static double kostenGehaeusePremium[] = { 1000 , 2000 , 3000 };
+	private static double kostenArmbandPremium[] = { 1000 , 2000 , 3000 };
 
-	public static double kostenUhrwerkBillig[] = { 1000 , 2000 , 3000 };
-	public static double kostenGehaeuseBillig[] = { 1000 , 2000 , 3000 };
-	public static double kostenArmbandBillig[] = { 1000 , 2000 , 3000 };
+	private static double kostenUhrwerkBillig[] = { 1000 , 2000 , 3000 };
+	private static double kostenGehaeuseBillig[] = { 1000 , 2000 , 3000 };
+	private static double kostenArmbandBillig[] = { 1000 , 2000 , 3000 };
 	
 	// Kosten für die Entwicklung der neuen Uhr
-	public static double kostenUhrBillig = 1000;
-	public static double kostenUhrPremium = 2000;
-	public static double kostenUhrOeko = 1500;
+	private static double kostenUhrBillig = 1000;
+	private static double kostenUhrPremium = 2000;
+	private static double kostenUhrOeko = 1500;
 	
 	// Kosten für die Entwicklung der Produktion
-	public static double kostenProduktionBillig[] = { 1000 , 2000 , 3000 };
-	public static double kostenProduktionOeko[] = { 1000 , 2000 , 3000 };
-	public static double kostenProduktionPremium[] = { 1000 , 2000 , 3000 };
+	private static double kostenProduktionBillig[] = { 1000 , 2000 , 3000 };
+	private static double kostenProduktionOeko[] = { 1000 , 2000 , 3000 };
+	private static double kostenProduktionPremium[] = { 1000 , 2000 , 3000 };
 	
 	
 	// Getter & Setter

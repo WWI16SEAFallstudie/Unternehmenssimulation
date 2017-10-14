@@ -52,19 +52,19 @@ public class Unternehmen {
 		if(index != -1 ) {
 			switch(segment) {
 			case "Billig":
-				if(checkeKapital(Info.kostenUhrBillig))
+				if(checkeKapital(Info.getKostenUhrBillig()))
 					this.uhr[index] = new BilligUhr();
 				else
 					System.out.println("Nicht genug Kohle!");
 				break;
 			case "Premium":
-				if(checkeKapital(Info.kostenUhrPremium))
+				if(checkeKapital(Info.getKostenUhrPremium()))
 					this.uhr[index] = new PremiumUhr();
 				else
 					System.out.println("Nicht genug Kohle!");
 				break;
 			case "Oeko":
-				if(checkeKapital(Info.kostenUhrOeko))
+				if(checkeKapital(Info.getKostenUhrOeko()))
 					this.uhr[index] = new OekoUhr();
 				else
 					System.out.println("Nicht genug Kohle!");
