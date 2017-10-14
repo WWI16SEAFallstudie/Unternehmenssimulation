@@ -5,15 +5,15 @@ public class Info {
 	// Attribute für die Uhr
 	public static String uhrwerkOeko[] = {"Quarz","Funk","Automatik"};
 	public static String gehaeuseOeko[] = {"Holz","Wurzelholz","Gebeiztes Holz"};
-	public static String ArmbandOeko[] = {"Stoff","Leinenfasern","Holz"};
+	public static String armbandOeko[] = {"Stoff","Leinenfasern","Holz"};
 
 	public static String uhrwerkPremium[] = {"Quarz","Automatik","Skelett/Kalender"};
 	public static String gehaeusePremium[] = {"Stahl","Titan","Platin"};
-	public static String ArmbandPremium[] = {"Leder","Gehäusematerial","Keramik"};
+	public static String armbandPremium[] = {"Leder","Gehäusematerial","Keramik"};
 
 	public static String uhrwerkBillig[] = {"Quarz","Funk","NochOffen"};
 	public static String gehaeuseBillig[] = {"Plastik","Gefärbtes Plastik","Durchsichtiges Plastik"};
-	public static String ArmbandBillig[] = {"Plastik","Gumi","Stoff"};
+	public static String armbandBillig[] = {"Plastik","Gumi","Stoff"};
 	
 	// Kosten für die Entwicklungen der Attribute
 	public static double kostenUhrwerkOeko[] = { 1000 , 2000 , 3000 };
@@ -47,7 +47,7 @@ public class Info {
 		return gehaeuseOeko;
 	}
 	public static String[] getArmbandOeko() {
-		return ArmbandOeko;
+		return armbandOeko;
 	}
 	public static String[] getUhrwerkPremium() {
 		return uhrwerkPremium;
@@ -56,7 +56,7 @@ public class Info {
 		return gehaeusePremium;
 	}
 	public static String[] getArmbandPremium() {
-		return ArmbandPremium;
+		return armbandPremium;
 	}
 	public static String[] getUhrwerkBillig() {
 		return uhrwerkBillig;
@@ -65,7 +65,7 @@ public class Info {
 		return gehaeuseBillig;
 	}
 	public static String[] getArmbandBillig() {
-		return ArmbandBillig;
+		return armbandBillig;
 	}
 	public static double[] getKostenUhrwerkOeko() {
 		return kostenUhrwerkOeko;
