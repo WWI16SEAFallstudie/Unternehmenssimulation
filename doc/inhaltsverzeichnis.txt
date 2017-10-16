@@ -1,25 +1,34 @@
 - Einleitung
-- Grundgedanke unseres Spiels
+   - Erläuterung der Aufgabenstellung
+   - Aufbau der Arbeit
+- Grundgedanke unseres Spiels/Allgemein
    - Unternehmensbeschreibung
-   - 3-Schichten-Modell (danach zuordnung zu den nächsten Punkten)
-   - Spielprinzip/-konzept
+   - Spielprinzip/-konzept	
    - Fachkonzept
-   - Mockup/UI
+   - 3-Schichten-Modell (danach Zuordnung zu den konkrete)
 - Industriezweig
+   - Geschichte zum Uhrenmarkt
    - Warum Uhr?
-   - Marktsituation (real/fiktiv; irgendwas zum Uhrenmarkt + Überleitung zu unserem Markt)
-- Abteilungen/primäre Spieloptionen (sprich, die einzelnen Abteilung und was wir uns darunter vorstellen)
+   - Marktsituation (real; irgendwas zum Uhrenmarkt + Statistiken)
+- Abteilungen/primäre Spieloptionen (sprich, die einzelnen Abteilung und was wir uns darunter vorstellen + unser Markt)
 - Spielplan (fertig)
-- Archiktektur/tech. Grundlagen (technische Bechreibung)
+- Archiktektur/tech. Grundlagen (technische Beschreibung)
    - verwendete Programme etc.
-   - Diagramme
+   - UML-Diagramm
    - spezieller Code (bsp. Zufallsgenerator, diverse Schnittstellen u.a.)
+   - Mockup/UI
+- Test
+   - Testarten
+   - Testergebnisse
+- Use Cases (max 5 Use Cases, Diagramm)
+   - ...
 - Projektorganisation
    - Aufgabenverteilung
    - Meilensteine
    - Herangehensweise bei der Umsetzung
 - Ausbaumöglichkeiten (theoretisch)
-- Fazit/Ausblick
+- Fazit/Ausblick (pers Statement)
+
 
 Wichtige Punkte:
 - Beschriebung/Warum Uhr? -> Einleitung
