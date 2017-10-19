@@ -30,7 +30,6 @@
 	<form action="${pageContext.request.contextPath}/servlet" method="post">
 		<div class="container">
 			<div class="playerCard">
-				<input id="checkOne" type="radio" name="spielerAnzahl" value="1"><label for="checkOne" class="radioLabel">1 Spieler</label>
 				<input id="checkTwo" type="radio" name="spielerAnzahl" value="2" checked><label for="checkTwo" class="radioLabel">2 Spieler</label>
 				<input id="checkThree" type="radio" name="spielerAnzahl" value="3"><label for="checkThree" class="radioLabel">3 Spieler</label>
 				<input id="checkFour" type="radio" name="spielerAnzahl" value="4"><label for="checkFour" class="radioLabel">4 Spieler</label>

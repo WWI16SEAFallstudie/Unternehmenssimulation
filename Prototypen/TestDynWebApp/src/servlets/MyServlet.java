@@ -220,6 +220,12 @@ public class MyServlet extends HttpServlet {
 					System.out.println("Start neuer Runde.");
 					
 				}
+				
 	}
 
+	// Initialisierung der Spielseite
+	public void initGame(){
+		
+	}
+	
 }
