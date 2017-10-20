@@ -1,14 +1,16 @@
 package tests;
 
-import org.junit.Test;
-import func;
+import static org.junit.Assert.*;
+import org.junit.*;
+import func.*;
 
 public class BilliguhrTest {
 	
 	@Test
 	public void entwickleZweitesUhrwerk() {
-		Billiguhr billiguhr = new Billiguhr();
-		boolean[] result = billiguhr.entwickleUhrwerk().getUhrwerk();
+		BilligUhr billiguhr = new BilligUhr();
+		billiguhr.entwickleUhrwerk();
+		boolean[] result = billiguhr.getUhrwerk();
 		
 		assertTrue("erstes Uhrwerk wurde nicht erstellt", result[0]);
 		assertTrue("zweites Uhrwerk wurde nicht entwickelt", result[1]);
@@ -17,8 +19,9 @@ public class BilliguhrTest {
 	
 	@Test
 	public void entwickleZweitesGehaeuse() {
-		Billiguhr billiguhr = new Billiguhr();
-		boolean[] result = billiguhr.entwickleGehause().getGehause();
+		BilligUhr billiguhr = new BilligUhr();
+		billiguhr.entwickleGehause();
+		boolean[] result = billiguhr.getGehaeuse();
 		
 		assertTrue("erstes Gehäuse wurde nicht erstellt", result[0]);
 		assertTrue("zweites Gehäuse wurde nicht entwickelt", result[1]);
@@ -27,8 +30,9 @@ public class BilliguhrTest {
 	
 	@Test
 	public void entwickleZweitesArmband() {
-		Billiguhr billiguhr = new Billiguhr();
-		boolean[] result = billiguhr.entwickleArmband().getArmband();
+		BilligUhr billiguhr = new BilligUhr();
+		billiguhr.entwickleArmband();
+		boolean[] result = billiguhr.getArmband();
 		
 		assertTrue("erstes Armband wurde nicht erstellt", result[0]);
 		assertTrue("zweites Armband wurde nicht entwickelt", result[1]);
