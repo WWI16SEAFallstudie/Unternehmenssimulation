@@ -6,6 +6,7 @@ import func.*;
 
 public class BilliguhrTest {
 	
+	/*
 	@Test
 	public void entwickleZweitesUhrwerk() {
 		BilligUhr billiguhr = new BilligUhr();
@@ -38,5 +39,5 @@ public class BilliguhrTest {
 		assertTrue("zweites Armband wurde nicht entwickelt", result[1]);
 		assertFalse("drittes Armband wurde entwickelt", result[2]);
 	}
-
+*/
 }

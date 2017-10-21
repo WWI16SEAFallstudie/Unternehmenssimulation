@@ -38,6 +38,32 @@ public class Info {
 	private static double kostenProduktionOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenProduktionPremium[] = { 1000 , 2000 , 3000 };
 	
+	// Wert, wie viel die Verbesserung des Attributs zählt
+	private static double scoreUhrwerkBillig[] = { 0.1, 0.2, 0.3 };
+	private static double scoreGehaeuseBillig[] = { 0.1, 0.2, 0.3 };
+	private static double scoreArmbandBillig[] = { 0.1, 0.2, 0.3 };
+
+	private static double scoreUhrwerkOeko[] = { 0.1, 0.2, 0.3 };
+	private static double scoreGehaeuseOeko[] = { 0.1, 0.2, 0.3 };
+	private static double scoreArmbandOeko[] = { 0.1, 0.2, 0.3 };
+	
+	private static double scoreUhrwerkPremium[] = { 0.1, 0.2, 0.3 };
+	private static double scoreGehaeusePremium[] = { 0.1, 0.2, 0.3 };
+	private static double scoreArmbandPremium[] = { 0.1, 0.2, 0.3 };
+	
+	// Produktion - Kosten pro erweiterung um ... senken
+	private static double erweiterungMaschineBillig[] = { 0.1, 0.2, 0.3 };
+	private static double erweiterungMaschineOeko[] = { 0.1, 0.2, 0.3 };
+	private static double erweiterungMaschinePremium[] = { 0.1, 0.2, 0.3 };
+	
+	private static double erweitereKapazitätBillig[] = { 0.1, 0.2, 0.3 };
+	private static double erweitereKapazitätOeko[] = { 0.1, 0.2, 0.3 };
+	private static double erweitereKapazitätPremium[] = { 0.1, 0.2, 0.3 };
+	
+	// Einkauf - kosten senken
+	private static double rabatteEinkaufBillig[] = { 0.1, 0.2, 0.3 };
+	private static double rabatteEinkaufOeko[] = { 0.1, 0.2, 0.3 };
+	private static double rabatteEinkaufPremium[] = { 0.1, 0.2, 0.3 };
 	
 	// Getter & Setter
 	public static String[] getUhrwerkOeko() {

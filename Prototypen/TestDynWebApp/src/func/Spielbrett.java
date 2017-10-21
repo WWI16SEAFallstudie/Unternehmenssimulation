@@ -39,9 +39,9 @@ public class Spielbrett {
 		return result;
 	}
 	
-	// Nächster Spieler
+	// Nächster Spieler (2-4 spieler)
 	public void naechsterSpieler() {
-		if(this.aktuellerSpieler == 3) {
+		if(this.aktuellerSpieler == 2) {
 			this.aktuellerSpieler = 0;
 		}
 		else {
