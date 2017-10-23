@@ -41,7 +41,8 @@ public class Spielbrett {
 	
 	// Nächster Spieler (2-4 spieler)
 	public void naechsterSpieler() {
-		if(this.aktuellerSpieler == 2) {
+		int lastPlayer = spieler.length-1;
+		if(this.aktuellerSpieler == lastPlayer) {
 			this.aktuellerSpieler = 0;
 		}
 		else {
