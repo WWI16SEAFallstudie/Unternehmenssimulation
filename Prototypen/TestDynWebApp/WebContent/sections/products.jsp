@@ -20,21 +20,21 @@
 							<li class="notAvailable list-group-item" onclick="usedItem('usedCase1',2);">${m1c2} <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item" onclick="usedItem('usedCase1',3);">${m1c3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedCase1">				
+						<input type="hidden" id="usedCase1" name="usedCase1">				
 						<span class="listhead">Armband</span>
 						<ul class="list-group usedBracelet1">
 							<li class="selected list-group-item" onclick="usedItem('usedBracelet1',1);">${m1b1} <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item" onclick="usedItem('usedBracelet1',2);">${m1b2} <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item" onclick="usedItem('usedBracelet1',3);">${m1b3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedBracelet1">
+						<input type="hidden" id="usedBracelet1" name="usedBracelet1">
 						<span class="listhead">Uhrwerk</span>
 						<ul class="list-group usedClockWork1">
 							<li class="selected list-group-item" onclick="usedItem('usedClockWork1',1);">${m1cw1} <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item" onclick="usedItem('usedClockWork1',2);">${m1cw2} <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item" onclick="usedItem('usedClockWork1',3);">${m1cw3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedClockWork1">
+						<input type="hidden" id="usedClockWork1" name="usedClockWork1">
 						<ul class="list-group">
 							<li class="list-group-item">Einkaufspreis: <span class="ekVal">220 &euro;</span></li>
 							<li class="list-group-item">Verkaufspreis: <span class="vkVal">280 &euro;</span></li>
@@ -54,26 +54,26 @@
 							<li class="notAvailable list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item">Punkt 3 <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedCase2">				
+						<input type="hidden" id="usedCase2" name="usedCase2">				
 						<span class="listhead">Armband</span>
 						<ul class="list-group">
 							<li class="notAvailable list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item">Punkt 3 <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedBracelet2">
+						<input type="hidden" id="usedBracelet2" name="usedBracelet2">
 						<span class="listhead">Uhrwerk</span>
 						<ul class="list-group">
 							<li class="notAvailable list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span></li>
 							<li class="notAvailable list-group-item">Punkt 3 <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedClockWork2">
+						<input type="hidden" id="usedClockWork2" name="usedClockWork2">
 						<ul class="list-group">
 							<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
 							<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
 						</ul>
-						<input type="hidden" id="researchModel2" value="">
+						<input type="hidden" id="researchModel2" name="researchModel2" value="">
 						<div id="overlay">
 							<div id="ol-text">nicht verf&uuml;gbar</div>
 						</div>
@@ -92,26 +92,26 @@
 							<li class="notAvailable list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></li>
 							<li class="notAvailable list-group-item">Punkt 3 <span class="glyphicon glyphicon-ok"></li>
 						</ul>
-						<input type="hidden" id="usedCase3">				
+						<input type="hidden" id="usedCase3" name="usedCase3">				
 						<span class="listhead">Armband</span>
 						<ul class="list-group">
 							<li class="notAvailable list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></li>
 							<li class="notAvailable list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></li>
 							<li class="notAvailable list-group-item">Punkt 3 <span class="glyphicon glyphicon-ok"></li>
 						</ul>
-						<input type="hidden" id="usedBracelet3">
+						<input type="hidden" id="usedBracelet3" name="usedBracelet3">
 						<span class="listhead">Uhrwerk</span>
 						<ul class="list-group">
 							<li class="notAvailable list-group-item">Punkt 1 <span class="glyphicon glyphicon-ok"></li>
 							<li class="notAvailable list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></li>
 							<li class="notAvailable list-group-item">Punkt 3 <span class="glyphicon glyphicon-ok"></li>
 						</ul>
-						<input type="hidden" id="usedClockWork3">
+						<input type="hidden" id="usedClockWork3" name="usedClockWork3">
 						<ul class="list-group">
 							<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
 							<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
 						</ul>
-						<input type="hidden" id="researchModel3" value="">
+						<input type="hidden" id="researchModel3" name="researchModel3" value="">
 						<div id="overlay">
 							<div id="ol-text">nicht verf&uuml;gbar</div>
 						</div>

@@ -164,6 +164,15 @@ public class MyServlet extends HttpServlet {
 			int anzeigeRunde;
 			int anzeigeSpieler; 
 			
+			// Übergabe der Formularwerte aus dem UI an den Spieler
+			// Testausgabe
+			System.out.println(request.getParameter("usedCase1"));
+			System.out.println(request.getParameter("usedBracelet1"));
+			System.out.println(request.getParameter("usedClockWork1"));
+			
+			// Ender der Datenübergabe
+			
+			
 			System.out.println("Runde " + spiel.getRundenAktuell() + " von Spieler" + spiel.getAktuellerSpieler() + "beendet.");
 			
 			// Auswahl des nächsten Spielers, wenn aktueller Spieler nicht der letzte ist
@@ -213,19 +222,29 @@ public class MyServlet extends HttpServlet {
 					// Der neue Spieler wird zu seinem Spielinterface weitergeleitet
 					else{
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
+						
+						// setzen des Spielerbildes sowie des aktuellen Kapitals
 						request.setAttribute("pic", spiel.getAktuellerSpieler());
 						request.setAttribute("kapital", spieler[spiel.getAktuellerSpieler()].getKapital());
+						
+						// setzen der getätigten Auswahl für F&E
+						
+						// setzen der getätigten Auswahl für Produktion
+						
+						// setzen der getätigten Auswahl für Einkauf
+						
+						// setzen der getätigten Auswahl für Vertrieb
+						
+						// setzen der getätigten Auswahl für Marketing
+						
+						//spieler[spiel.getAktuellerSpieler()].
+						
 						dispatcher.forward(request, response);
 					}
 					System.out.println("Start neuer Runde.");
 					
 				}
-				
-	}
-
-	// Initialisierung der Spielseite
-	public void initGame(){
-		
+			
 	}
 	
 }
