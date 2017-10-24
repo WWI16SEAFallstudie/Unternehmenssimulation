@@ -38,6 +38,11 @@ public class Info {
 	private static double kostenProduktionOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenProduktionPremium[] = { 1000 , 2000 , 3000 };
 	
+	// Kosten für die Entwicklung des Einkaufs
+	private static double kostenEinkaufBillig[] = { 1000 , 2000 , 3000 };
+	private static double kostenEinkaufOeko[] = { 1000 , 2000 , 3000 };
+	private static double kostenEinkaufPremium[] = { 1000 , 2000 , 3000 };
+	
 	// Wert, wie viel die Verbesserung des Attributs zählt
 	private static double scoreUhrwerkBillig[] = { 0.1, 0.2, 0.3 };
 	private static double scoreGehaeuseBillig[] = { 0.1, 0.2, 0.3 };
@@ -61,6 +66,7 @@ public class Info {
 	private static double erweitereKapazitätPremium[] = { 0.1, 0.2, 0.3 };
 	
 	// Einkauf - kosten senken
+	
 	private static double rabatteEinkaufBillig[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufOeko[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufPremium[] = { 0.1, 0.2, 0.3 };
@@ -137,6 +143,69 @@ public class Info {
 	}
 	public static double[] getKostenProduktionPremium() {
 		return kostenProduktionPremium;
+	}
+	public static double[] getErweitereKapazitätBillig() {
+		return erweitereKapazitätBillig;
+	}
+	public static double[] getErweitereKapazitätOeko() {
+		return erweitereKapazitätOeko;
+	}
+	public static double[] getErweitereKapazitätPremium() {
+		return erweitereKapazitätPremium;
+	}
+	public static double[] getKostenEinkaufBillig() {
+		return kostenEinkaufBillig;
+	}
+	public static double[] getKostenEinkaufOeko() {
+		return kostenEinkaufOeko;
+	}
+	public static double[] getKostenEinkaufPremium() {
+		return kostenEinkaufPremium;
+	}
+	public static double[] getScoreUhrwerkBillig() {
+		return scoreUhrwerkBillig;
+	}
+	public static double[] getScoreGehaeuseBillig() {
+		return scoreGehaeuseBillig;
+	}
+	public static double[] getScoreArmbandBillig() {
+		return scoreArmbandBillig;
+	}
+	public static double[] getScoreUhrwerkOeko() {
+		return scoreUhrwerkOeko;
+	}
+	public static double[] getScoreGehaeuseOeko() {
+		return scoreGehaeuseOeko;
+	}
+	public static double[] getScoreArmbandOeko() {
+		return scoreArmbandOeko;
+	}
+	public static double[] getScoreUhrwerkPremium() {
+		return scoreUhrwerkPremium;
+	}
+	public static double[] getScoreGehaeusePremium() {
+		return scoreGehaeusePremium;
+	}
+	public static double[] getScoreArmbandPremium() {
+		return scoreArmbandPremium;
+	}
+	public static double[] getErweiterungMaschineBillig() {
+		return erweiterungMaschineBillig;
+	}
+	public static double[] getErweiterungMaschineOeko() {
+		return erweiterungMaschineOeko;
+	}
+	public static double[] getErweiterungMaschinePremium() {
+		return erweiterungMaschinePremium;
+	}
+	public static double[] getRabatteEinkaufBillig() {
+		return rabatteEinkaufBillig;
+	}
+	public static double[] getRabatteEinkaufOeko() {
+		return rabatteEinkaufOeko;
+	}
+	public static double[] getRabatteEinkaufPremium() {
+		return rabatteEinkaufPremium;
 	}
 	
 	

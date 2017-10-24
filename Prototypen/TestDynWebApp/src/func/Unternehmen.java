@@ -9,9 +9,14 @@ public class Unternehmen {
 	private double kapital;
 	private double kapitalAlt;
 	private String info;
+	private int bestandUhr;
 	private int produktionslimitBillig = 10000;
 	private int produktionslimitOeko = 10000;
 	private int produktionslimitPremium = 10000;
+
+	private double anschaffungskostenBillig = 10;
+	private double anschaffungskostenOeko = 10;
+	private double anschaffungskostenPremium = 10;
 	
 	/*
 	 * Array f¸r entsprechenden Uhren angelegt 
@@ -85,36 +90,40 @@ public class Unternehmen {
 		
 		// Wenn alle Uhren entwickelt oder nicht genug Kohle-> false zur¸ckgeben;
 		if(index != -1 ) {
-			// Segment freischalten
-			this.freischaltenSegment(segment);
-			switch(segment) {
-			case "Billig":
-				if(checkeKapital(Info.getKostenUhrBillig())) {
-					this.uhr[index] = new BilligUhr();
-					result = true;
+			// Checken ob Segment bereits freigeschalten
+			if(isFreigeschaltenSegment(segment)) {
+				switch(segment) {
+				case "Billig":
+					if(checkeKapital(Info.getKostenUhrBillig())) {
+						this.uhr[index] = new BilligUhr();
+						result = true;
+					}
+					else
+						System.out.println("Nicht genug Kohle!");
+					break;
+				case "Premium":
+					if(checkeKapital(Info.getKostenUhrPremium())) {
+						this.uhr[index] = new PremiumUhr();
+						result = true;
+					}
+					else
+						System.out.println("Nicht genug Kohle!");
+					break;
+				case "Oeko":
+					if(checkeKapital(Info.getKostenUhrOeko())) {
+						this.uhr[index] = new OekoUhr();
+						result = true;
+					}
+					else
+						System.out.println("Nicht genug Kohle!");
+					break;
+				default:
+					System.out.println("Falsches Segment");
+					break;
 				}
-				else
-					System.out.println("Nicht genug Kohle!");
-				break;
-			case "Premium":
-				if(checkeKapital(Info.getKostenUhrPremium())) {
-					this.uhr[index] = new PremiumUhr();
-					result = true;
-				}
-				else
-					System.out.println("Nicht genug Kohle!");
-				break;
-			case "Oeko":
-				if(checkeKapital(Info.getKostenUhrOeko())) {
-					this.uhr[index] = new OekoUhr();
-					result = true;
-				}
-				else
-					System.out.println("Nicht genug Kohle!");
-				break;
-			default:
-				System.out.println("Falsches Segment");
-				break;
+			}
+			else {
+				System.out.println("Segment noch nicht freigeschalten");
 			}
 		}
 		else {
@@ -149,12 +158,6 @@ public class Unternehmen {
 					break;
 			}	
 		}
-		
-		// **Alt
-		/*if(this.uhr[uhr] != null) {
-			this.uhr[uhr].entwickleUhrwerk();
-			entwickleAttrImSegment(segment, "Uhrwerk");
-		}*/
 	}
 	
 	/**
@@ -170,7 +173,6 @@ public class Unternehmen {
 	public void erforscheArmband(int uhr) {
 		if(this.uhr[uhr] != null) {
 			String segment = this.uhr[uhr].getSegment();
-			
 			switch (segment) {
 				case "Billig":
 					freigeschalteneAttrBillig = Uhrmodell.entwickleArmband(freigeschalteneAttrBillig, 1);
@@ -256,16 +258,25 @@ public class Unternehmen {
 //	}
 	
 	
-	public String getUhrwerk(int uhr) {
-		return this.uhr[uhr].getUhrwerk();
+	public int getUhrwerk(int uhr) {
+		if(this.uhr[uhr] != null)
+			return this.uhr[uhr].getUhrwerk();
+		else
+			return -1;
 	}
 	
-	public String getArmband(int uhr) {
-		return this.uhr[uhr].getArmband();
+	public int getArmband(int uhr) {
+		if(this.uhr[uhr] != null)
+			return this.uhr[uhr].getArmband();
+		else
+			return -1;
 	}
 	
-	public String getGehaeuse(int uhr) {
-		return this.uhr[uhr].getGehaeuse();
+	public int getGehaeuse(int uhr) {
+		if(this.uhr[uhr] != null)
+			return this.uhr[uhr].getGehaeuse();
+		else
+			return -1;
 	}
 	
 	/**
@@ -287,6 +298,7 @@ public class Unternehmen {
 					if(prodStraﬂeBillig[i] == false) {
 						if(checkeKapital(Info.getKostenProduktionBillig()[i])) {
 							prodStraﬂeBillig[i] = true;
+							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
 					}
@@ -297,6 +309,7 @@ public class Unternehmen {
 					if(prodStraﬂePremium[i] == false) {
 						if(checkeKapital(Info.getKostenProduktionPremium()[i])) {
 							prodStraﬂePremium[i] = true;
+							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
 					}
@@ -307,6 +320,7 @@ public class Unternehmen {
 					if(prodStraﬂeOeko[i] == false) {
 						if(checkeKapital(Info.getKostenProduktionOeko()[i])) {
 							prodStraﬂeOeko[i] = true;
+							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
 					}
@@ -319,8 +333,46 @@ public class Unternehmen {
 		return false;
 	}	
 		
-	public void erweitereEinkauf(String segment) {
-		// Hier sollen die Kosten im Einkauf gesenkt werden
+	public boolean erweitereEinkauf(String segment) {
+		switch(segment) {
+			case "Billig":
+				for(int i = 0; i < 3; i++) {
+					if(verbesserungEinkaufBillig[i] == false) {
+						if(checkeKapital(Info.getKostenEinkaufBillig()[i])) {
+							verbesserungEinkaufBillig[i] = true;
+							senkeAnschaffungskosten(segment, i);
+							return true;
+						}
+					}
+				}
+				break;
+			case "Premium":
+				for(int i = 0; i < 3; i++) {
+					if(verbesserungEinkaufPremium[i] == false) {
+						if(checkeKapital(Info.getKostenEinkaufPremium()[i])) {
+							verbesserungEinkaufPremium[i] = true;
+							senkeAnschaffungskosten(segment, i);
+							return true;
+						}
+					}
+				}
+				break;
+			case "Oeko":
+				for(int i = 0; i < 3; i++) {
+					if(verbesserungEinkaufOeko[i] == false) {
+						if(checkeKapital(Info.getKostenEinkaufOeko()[i])) {
+							verbesserungEinkaufOeko[i] = true;
+							senkeAnschaffungskosten(segment, i);
+							return true;
+						}
+					}
+				}
+				break;
+			default:
+				System.out.println("Falsches Segment");
+				break;
+		}
+		return false;
 	}
 	
 	/**
@@ -331,16 +383,110 @@ public class Unternehmen {
 	
 	}
 	
-	private void erhoeheProduktionslimit(String segment) {
-		// Soll durch erweitereProduktion aufgerufen werden!
-		// produktionslimitBillig, produktionslimitOeko, produktionslimitPremium
+	public void produzieren(int menge, int uhr) {
+		int m = 0;
+		// Segment abfragen
+		switch(this.uhr[uhr].getSegment()) {
+			case "Billig":
+				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitBillig(), this.getAnschaffungskostenBillig());
+				if(m != -1) 
+					this.uhr[uhr].setBestand(m);
+				break;
+			case "Oeko":
+				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitOeko(), this.getAnschaffungskostenOeko());
+				if(m != -1) 
+					this.uhr[uhr].setBestand(m);
+				break;
+			case "Premium":
+				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitPremium(), this.getAnschaffungskostenPremium());
+				if(m != -1) 
+					this.uhr[uhr].setBestand(m);
+				break;
+		}
+	}
+	
+	public int bieteUhren(int menge, int uhr) {	
+		int m = -1;
+		if(menge <= this.getBestandUhr(uhr)) {
+			m = menge;
+			this.uhr[uhr].setAngeboteneMenge(menge);
+		} else {
+			m = this.getBestandUhr(uhr);
+			this.uhr[uhr].setAngeboteneMenge(this.getBestandUhr(uhr));
+		}
+		return m;
+	}
+	
+	public void setAbgenommeneMenge(int menge, int uhr) {
+		if(this.uhr[uhr] != null) {
+			this.uhr[uhr].setAbgenommeneMenge(menge);
+			// Verringere den Bestand um abgenommene Menge
+			if( (this.uhr[uhr].getBestand() + menge) >= 0 )
+				this.uhr[uhr].setBestand(this.uhr[uhr].getBestand() - menge);
+			else
+				this.uhr[uhr].setBestand(0);
+		}
+	}
+	
+	private int testeMengeProduzieren(int menge, int limit, double prodKostenStueck) {
+		int m = -1;
+		// Produktionslimit testen
+		if(menge > limit)
+			menge = limit;
+		// Berechnen wie viele mit vorhandenem Kapital produziert werden kˆnnen
+		for(int i = menge; i > 0; i --) {
+			double prodKosten = menge * prodKostenStueck;
+			if(prodKosten <= this.kapital) {
+				m = i;
+				break;
+			}
+		}
+		return m;
 	}
 	
 	/**
-	 * Private Methode zum freischalten des Segments
+	 * Private Methode um Anschaffungskosten zu senken
+	 * @param segment: 
+	 * @param stufe
+	 */
+	private void senkeAnschaffungskosten(String segment, int stufe) {
+		switch(segment) {
+			case "Billig":
+				this.setAnschaffungskostenBillig(this.getAnschaffungskostenBillig() - (this.getAnschaffungskostenBillig() * Info.getRabatteEinkaufBillig()[stufe]));
+				break;
+			case "Oeko":
+				this.setAnschaffungskostenOeko(this.getAnschaffungskostenOeko() - (this.getAnschaffungskostenOeko() * Info.getRabatteEinkaufOeko()[stufe]));
+				break;
+			case "Premium":
+				this.setAnschaffungskostenPremium(this.getAnschaffungskostenPremium() - (this.getAnschaffungskostenPremium() * Info.getRabatteEinkaufPremium()[stufe]));
+				break;
+		}
+	}
+	
+	/**
+	 * Private Methode um Produktionslimit zu erhˆhen
+	 * @param segment: In welchem Segment die Produktion erhoht wird
+	 * @param stufe: Welche Erweiterungsstufe besteht
+	 */
+	private void erhoeheProduktionslimit(String segment, int stufe) {		
+		switch(segment) {
+			case "Billig":
+				this.setProduktionslimitBillig(this.getProduktionslimitBillig() + (int)(this.getProduktionslimitBillig() * Info.getErweitereKapazit‰tBillig()[stufe]));
+				break;
+			case "Oeko":
+				this.setProduktionslimitOeko(this.getProduktionslimitOeko() + (int)(this.getProduktionslimitOeko() * Info.getErweitereKapazit‰tOeko()[stufe]));
+				break;
+			case "Premium":
+				this.setProduktionslimitPremium(this.getProduktionslimitPremium() + (int)(this.getProduktionslimitPremium() * Info.getErweitereKapazit‰tPremium()[stufe]));
+				break;
+		}
+	}
+	
+	/**
+	 * Methode zum freischalten des Segments
 	 * @param segment
 	 */
-	private void freischaltenSegment(String segment) {
+	public void freischaltenSegment(String segment) {
 		switch(segment) {
 			case "Billig":
 				if(this.freieSegmenteAllgemein[0] == false)
@@ -357,89 +503,25 @@ public class Unternehmen {
 		}
 	}
 	
-	/*->Ungenutzt momentan
-	private void entwickleAttrImSegment(String segment, String attr) {
-		int index = -1;
+	private boolean isFreigeschaltenSegment(String segment) {
 		boolean result = false;
 		switch(segment) {
 			case "Billig":
-				switch(attr) {
-					case "Gehaeuse":
-						index = indexFreiesAttr(freigeschalteneAttrBillig, 0);
-						if(index != -1) {
-							this.freigeschalteneAttrBillig[0][index] = true;
-						}
-						break;
-					case "Armband":
-						index = indexFreiesAttr(freigeschalteneAttrBillig, 1);
-						if(index != -1) {
-							this.freigeschalteneAttrBillig[1][index] = true;
-						}
-						break;
-					case "Uhrwerk":
-						index = indexFreiesAttr(freigeschalteneAttrBillig, 2);
-						if(index != -1) {
-							this.freigeschalteneAttrBillig[2][index] = true;
-						}
-					break;
-				}
+				if(this.freieSegmenteAllgemein[0] == true)
+					result = true;
 				break;
 			case "Oeko":
-				switch(attr) {
-					case "Gehaeuse":
-						index = indexFreiesAttr(freigeschalteneAttrOeko, 0);
-						if(index != -1) {
-							this.freigeschalteneAttrOeko[0][index] = true;
-						}
-						break;
-					case "Armband":
-						index = indexFreiesAttr(freigeschalteneAttrOeko, 1);
-						if(index != -1) {
-							this.freigeschalteneAttrOeko[1][index] = true;
-						}
-						break;
-					case "Uhrwerk":
-						index = indexFreiesAttr(freigeschalteneAttrOeko, 2);
-						if(index != -1) {
-							this.freigeschalteneAttrOeko[2][index] = true;
-						}
-					break;
-				}
+				if(this.freieSegmenteAllgemein[1] == true)
+					result = true;
 				break;
 			case "Premium":
-				switch(attr) {
-					case "Gehaeuse":
-						index = indexFreiesAttr(freigeschalteneAttrPremium, 0);
-						if(index != -1) {
-							this.freigeschalteneAttrPremium[0][index] = true;
-						}
-						break;
-					case "Armband":
-						index = indexFreiesAttr(freigeschalteneAttrPremium, 1);
-						if(index != -1) {
-							this.freigeschalteneAttrPremium[1][index] = true;
-						}
-						break;
-					case "Uhrwerk":
-						index = indexFreiesAttr(freigeschalteneAttrPremium, 2);
-						if(index != -1) {
-							this.freigeschalteneAttrPremium[2][index] = true;
-						}
-					break;
-				}
+				if(this.freieSegmenteAllgemein[2] == true)
+					result = true;
 				break;
 		}
+		return result;
 	}
-	*/
-	
-	private int indexFreiesAttr(boolean[][] array, int indexFest) {
-		for(int i = 0; i < 3; i++) {
-			if( array[indexFest][i] == false ) 
-				return i;
-		}
-		return -1;
-	}
-	
+		
 	/**
 	 * Private Methode um den n‰chsten index herauszufinden, an den die n‰chste Uhr soll
 	 * 
@@ -543,6 +625,18 @@ public class Unternehmen {
 	public boolean[] getProdStraﬂePremium() {
 		return this.prodStraﬂePremium;
 	}
+	
+	public boolean[] getVerbesserungEinkaufBillig() {
+		return verbesserungEinkaufBillig;
+	}
+
+	public boolean[] getVerbesserungEinkaufOeko() {
+		return verbesserungEinkaufOeko;
+	}
+
+	public boolean[] getVerbesserungEinkaufPremium() {
+		return verbesserungEinkaufPremium;
+	}
 
 	public double getKapital() {
 		return this.kapital;
@@ -569,27 +663,27 @@ public class Unternehmen {
 	}
 	
 	public void setSpielerDaten(int uhr, int indexUhrwerk, int indexArmband, int indexGehaeuse) {
-		switch(this.uhr[uhr].getSegment()) {
-			case "Billig":
-				this.uhr[uhr].setSpielerDaten(Uhrmodell.sucheAttributImArmband("Billig", indexArmband),
-						Uhrmodell.sucheAttributImGehaeuse("Billig", indexGehaeuse),
-						Uhrmodell.sucheAttributImUhrwerk("Billig", indexUhrwerk));
-				break;
-			case "Oeko":
-				this.uhr[uhr].setSpielerDaten(Uhrmodell.sucheAttributImArmband("Oeko", indexArmband),
-						Uhrmodell.sucheAttributImGehaeuse("Oeko", indexGehaeuse),
-						Uhrmodell.sucheAttributImUhrwerk("Oeko", indexUhrwerk));
-				break;
-			case "Premium":
-				this.uhr[uhr].setSpielerDaten(Uhrmodell.sucheAttributImArmband("Premium", indexArmband),
-						Uhrmodell.sucheAttributImGehaeuse("Premium", indexGehaeuse),
-						Uhrmodell.sucheAttributImUhrwerk("Premium", indexUhrwerk));
-				break;
+		if(this.uhr[uhr] !=  null) {
+			this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
 		}
 	}
 	
 	public String getSpielerDaten(int uhr) {
-		return this.uhr[uhr].getSpielerDaten();
+		if(this.uhr[uhr] != null)
+			return this.uhr[uhr].getSpielerDaten();
+		else
+			return null;
+	}
+	
+	public int getBestandUhr(int uhr) {
+		if(this.uhr[uhr] != null)
+			return this.uhr[uhr].getBestand();
+		return -1;
+	}
+	
+	public void setBestandUhr(int uhr, int menge) {
+		if(this.uhr[uhr] != null)
+			this.uhr[uhr].setBestand(menge);
 	}
 
 	public String getInfo() {
@@ -603,6 +697,57 @@ public class Unternehmen {
 	public boolean[] getFreieSegmenteAllgemein() {
 		return this.freieSegmenteAllgemein;
 	}
+	
+	public int getProduktionslimitBillig() {
+		return produktionslimitBillig;
+	}
+
+	public void setProduktionslimitBillig(int produktionslimitBillig) {
+		this.produktionslimitBillig = produktionslimitBillig;
+	}
+
+	public int getProduktionslimitOeko() {
+		return produktionslimitOeko;
+	}
+
+	public void setProduktionslimitOeko(int produktionslimitOeko) {
+		this.produktionslimitOeko = produktionslimitOeko;
+	}
+
+	public int getProduktionslimitPremium() {
+		return produktionslimitPremium;
+	}
+
+	public void setProduktionslimitPremium(int produktionslimitPremium) {
+		this.produktionslimitPremium = produktionslimitPremium;
+	}
+
+	public double getAnschaffungskostenBillig() {
+		return anschaffungskostenBillig;
+	}
+
+	public void setAnschaffungskostenBillig(double anschaffungskostenBillig) {
+		this.anschaffungskostenBillig = anschaffungskostenBillig;
+	}
+
+	public double getAnschaffungskostenOeko() {
+		return anschaffungskostenOeko;
+	}
+
+	public void setAnschaffungskostenOeko(double anschaffungskostenOeko) {
+		this.anschaffungskostenOeko = anschaffungskostenOeko;
+	}
+
+	public double getAnschaffungskostenPremium() {
+		return anschaffungskostenPremium;
+	}
+
+	public void setAnschaffungskostenPremium(double anschaffungskostenPremium) {
+		this.anschaffungskostenPremium = anschaffungskostenPremium;
+	}
+	
+	
+	
 	
 	
 }

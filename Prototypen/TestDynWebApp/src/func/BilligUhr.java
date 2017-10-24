@@ -4,21 +4,14 @@ public class BilligUhr implements iUhrenkategorie {
 	/**
 	 * Attribute
 	 */
-	/*private boolean[] uhrwerk = new boolean[3];
-	private boolean[] gehaeuse = new boolean[3];
-	private boolean[] armband = new boolean[3];
-	*/
-	
-	private String uhrwerk;
-	private String gehaeuse;
-	private String armband;
+	private int uhrwerk;
+	private int gehaeuse;
+	private int armband;
 	
 	private int score;
 	private int bestand;
 	private int angeboteneMenge;
 	private int abgenommeneMenge;
-	private double herstellkosten;
-	private double angebotspreis;
 	
 	private final String segment = "Billig";
 	
@@ -28,47 +21,10 @@ public class BilligUhr implements iUhrenkategorie {
 	public BilligUhr() {
 		this.setScore(0);
 		
-		this.uhrwerk = Info.getUhrwerkBillig()[0];
-		this.gehaeuse = Info.getGehaeuseBillig()[0];
-		this.armband = Info.getArmbandBillig()[0];
-		
-		// Füllen des Arrays mit Defaultwerten
-		/*for( int i = 0; i < 3; i++) {
-			if(i == 0) {
-				uhrwerk[i] = true;
-				gehaeuse[i] = true;
-				armband[i] = true;
-			}else {
-				uhrwerk[i] = false;
-				gehaeuse[i] = false;
-				armband[i] = false;
-			}
-		}*/
+		this.uhrwerk = 0;
+		this.gehaeuse = 0;
+		this.armband = 0;
 	}
-	
-	/**
-	 * Gilt für die nächsten 3 Methoden:
-	 * 
-	 * Ausgelagerte Methode in die Klasse 'Uhrmodell' aufgerufen über den Klassennamen
-	 * Erweitert das entsprechende Attribut um das nächste
-	 */
-	/*
-	 * 
-	@Override
-	public void entwickleUhrwerk() {
-		uhrwerk = Uhrmodell.entwickleUhrwerk(uhrwerk);
-	}
-		
-	@Override
-	public void entwickleArmband() {
-		armband = Uhrmodell.entwickleArmband(armband);	
-	}
-	
-	@Override
-	public void entwickleGehause() {
-		gehaeuse = Uhrmodell.entwickleGehaeuse(gehaeuse);
-	}
-*/
 	
 	@Override
 	public void uhrMarketingstrategie() {
@@ -76,34 +32,27 @@ public class BilligUhr implements iUhrenkategorie {
 	}
 
 	@Override
-	public void setSpielerDaten(String armband, String gehaeuse, String uhrwerk) {
-		this.armband = armband;
-		this.uhrwerk = uhrwerk;
-		this.gehaeuse = gehaeuse;
+	public void setSpielerDaten(int armband, int gehaeuse, int uhrwerk) {
+		this.setArmband(armband);
+		this.setGehaeuse(gehaeuse);
+		this.setUhrwerk(uhrwerk);
 	}
 	
 	@Override
 	public String getSpielerDaten() {
-		return ("Gehäuse: " + this.gehaeuse + " - Armband: " + this.armband + " - Uhrwerk: " + this.uhrwerk);
+		return ("Gehäuse: " + this.getGehaeuse() + " - Armband: " + this.getArmband() + " - Uhrwerk: " + this.getUhrwerk());
 	}
 	
-	// Getter
-/*
 	@Override
-	public boolean[] getUhrwerk() {
-		return this.uhrwerk;
+	public void setAngeboteneMenge(int menge) {
+		this.angeboteneMenge = menge;
 	}
 
 	@Override
-	public boolean[] getGehaeuse() {
-		return this.gehaeuse;
+	public void setAbgenommeneMenge(int menge) {
+		this.abgenommeneMenge = menge;
 	}
-
-	@Override
-	public boolean[] getArmband() {
-		return this.armband;
-	}*/
-
+	
 	public int getScore() {
 		return score;
 	}
@@ -116,31 +65,38 @@ public class BilligUhr implements iUhrenkategorie {
 		return this.segment;
 	}
 
-	public String getUhrwerk() {
-		return uhrwerk;
+	public int getUhrwerk() {
+		return this.uhrwerk;
 	}
 
-	public void setUhrwerk(String uhrwerk) {
+	public void setUhrwerk(int uhrwerk) {
 		this.uhrwerk = uhrwerk;
 	}
 
-	public String getGehaeuse() {
+	public int getGehaeuse() {
 		return gehaeuse;
 	}
 
-	public void setGehaeuse(String gehaeuse) {
+	public void setGehaeuse(int gehaeuse) {
 		this.gehaeuse = gehaeuse;
 	}
 
-	public String getArmband() {
+	public int getArmband() {
 		return armband;
 	}
 
-	public void setArmband(String armband) {
+	public void setArmband(int armband) {
 		this.armband = armband;
 	}
 
-	
+	public int getBestand() {
+		return bestand;
+	}
+
+	public void setBestand(int bestand) {
+		this.bestand = bestand;
+	}
+
 
 
 	

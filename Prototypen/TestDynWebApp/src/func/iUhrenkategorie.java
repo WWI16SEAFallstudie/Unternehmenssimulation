@@ -15,21 +15,24 @@ public interface iUhrenkategorie {
 	
 	public void uhrMarketingstrategie();
 	
-	public void setSpielerDaten(String armband, String gehaeuse, String uhrwerk);
+	public void setSpielerDaten(int armband, int gehaeuse, int uhrwerk);
 	
 	public String getSpielerDaten();
+		
+	public int getUhrwerk();
 	
-	/*public boolean[] getUhrwerk();
+	public int getGehaeuse();
 	
-	public boolean[] getGehaeuse();
-	
-	public boolean[] getArmband();*/
-	
-	public String getUhrwerk();
-	
-	public String getGehaeuse();
-	
-	public String getArmband();
+	public int getArmband();
 	
 	public String getSegment();
+	
+	public void setAngeboteneMenge(int menge);
+	
+	public void setAbgenommeneMenge(int menge);
+	
+	public void setBestand(int menge);
+	
+	public int getBestand();
+	
 }
