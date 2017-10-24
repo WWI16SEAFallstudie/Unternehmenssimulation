@@ -10,6 +10,7 @@
 						<li class="done list-group-item">Wurzelholz <span class="glyphicon glyphicon-ok"></span></li>
 						<li class="done list-group-item">Gebeiztes Holz <span class="glyphicon glyphicon-ok"></span></li>
 					</ul>
+					<input type="hidden" id="researchCaseOeko" name="researchCaseOeko">
 					
 					<span class="listhead">Armband</span>
 					<ul class="list-group">
@@ -17,6 +18,7 @@
 						<li class="done list-group-item">Leinenfasern <span class="glyphicon glyphicon-ok"></span></li>
 						<li class="list-group-item">Holz <a class="addBtn">+ 100.000 &euro;</a></li>
 					</ul> 
+					<input type="hidden" id="researchBraceletOeko" name="researchBraceletOeko">
 					
 					<span class="listhead">Uhrwerk</span>
 					<ul class="list-group">
@@ -24,6 +26,7 @@
 						<li class="list-group-item">Funk <a class="addBtn">+ 100.000 &euro;</a></li>
 						<li class="list-group-item">Automatik <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 					</ul>
+					<input type="hidden" id="researchClockWorkOeko" name="researchClockWorkOeko">
 					</div>
 				</div>
 				<div class="col-sm-4 col-md-4 col-lg-4">
@@ -36,18 +39,23 @@
 						<li class="list-group-item">Titan <a class="addBtn">+ 100.000 &euro;</a></li>
 						<li class="list-group-item">Platin <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 					</ul>
+					<input type="hidden" id="researchCaseLuxus" name="researchCaseLuxus">
+					
 					<span class="listhead">Armband</span>
 					<ul class="list-group">
 						<li class="list-group-item">Leder <a class="addBtn">+ 100.000 &euro;</a></li>
 						<li class="list-group-item">Geh&auml;usematerial <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 						<li class="list-group-item">Keramik <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 					</ul>
+					<input type="hidden" id="researchBraceletLuxus" name="researchBraceletLuxus">
+					
 					<span class="listhead">Uhrwerk</span>
 					<ul class="list-group">
 						<li class="list-group-item">Quarz <a class="addBtn">+ 100.000 &euro;</a></li>
 						<li class="list-group-item">Automatik <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 						<li class="list-group-item">Skelett/Kalender <a class="addBtn notAvailable">+ 100.000 &euro;</a></li>
 					</ul>
+					<input type="hidden" id="researchClockWorkLuxus" name="researchClockWorkLuxus">
 					</div>
 				</div>
 				<div class="col-sm-4 col-md-4 col-lg-4">
@@ -60,19 +68,24 @@
 						<li class="list-group-item">Plastik</li>
 						<li class="list-group-item">Gummi</li>
 						<li class="list-group-item">Stoff</li>
-					</ul>				
+					</ul>
+					<input type="hidden" id="researchCaseBillig" name="researchCaseBillig">
+									
 					<span class="listhead">Armband</span>
 					<ul class="list-group">
 						<li class="list-group-item">Plastik</li>
 						<li class="list-group-item">Gef&auml;rbtes Plastik</li>
 						<li class="list-group-item">Durchsichtiges Plastik</li>
 					</ul>
+					<input type="hidden" id="researchBraceletBillig" name="researchBraceletBillig">
+					
 					<span class="listhead">Uhrwerk</span>
 					<ul class="list-group">
 						<li class="list-group-item">Quarz</li>
 						<li class="list-group-item">Funk</li>
 						<li class="list-group-item">Punkt 3</li>
 					</ul>
+					<input type="hidden" id="researchClockWorkBillig" name="researchClockWorkBillig">
 					<div id="overlay">
 							<div id="ol-text">nicht verf&uuml;gbar</div>
 						</div>

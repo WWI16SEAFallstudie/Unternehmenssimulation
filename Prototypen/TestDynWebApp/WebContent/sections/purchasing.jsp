@@ -10,6 +10,7 @@
 							<li class="list-group-item">Punkt 2 <a class="addBtn">+ 60.000 &euro;</a></li>
 							<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
 						</ul>
+						<input type="hidden" id="purchasingOeko" name="purchasingOeko">
 					</div>
 				</div>
 				<div class="col-sm-4 col-md-4 col-lg-4">
@@ -22,6 +23,7 @@
 							<li class="list-group-item">Punkt 2 <a class="addBtn">+ 100.000 &euro;</a></li>
 							<li class="list-group-item">Punkt 3 <a class="addBtn">+ 100.000 &euro;</a></li>
 						</ul>
+						<input type="hidden" id="purchasingLuxus" name="purchasingLuxus">
 					</div>
 				</div>
 				<div class="col-sm-4 col-md-4 col-lg-4">
@@ -33,7 +35,8 @@
 							<li class="list-group-item">Punkt 1</li>
 							<li class="list-group-item">Punkt 2</li>
 							<li class="list-group-item">Punkt 3</li>
-						</ul>				
+						</ul>
+						<input type="hidden" id="purchasingBillig" name="purchasingBillig">				
 					<div id="overlay">
 							<div id="ol-text">nicht verf&uuml;gbar</div>
 						</div>

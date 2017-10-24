@@ -49,24 +49,24 @@
 						<a class="segment addBtn" onclick="researchModel('watch2','researchModel2');">Freischalten 100.000 &euro;</a>
 						<p>Produktlinie: ${m1s}</p>
 						<span class="listhead">Geh&auml;use</span>				
-						<ul class="list-group">
-							<li class="notAvailable list-group-item">${m1c1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m1c2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m1c3} <span class="glyphicon glyphicon-ok"></span></li>
+						<ul class="list-group usedCase2">
+							<li class="notAvailable list-group-item" onclick="usedItem('usedCase2',1);">${m1c1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedCase2',2);">${m1c2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedCase2',3);">${m1c3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
 						<input type="hidden" id="usedCase2" name="usedCase2">				
 						<span class="listhead">Armband</span>
-						<ul class="list-group">
-							<li class="notAvailable list-group-item">${m1b1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m1b2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m1b3} <span class="glyphicon glyphicon-ok"></span></li>
+						<ul class="list-group usedBracelet2">
+							<li class="notAvailable list-group-item" onclick="usedItem('usedBracelet2',1);">${m1b1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedBracelet2',2);">${m1b2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedBracelet2',3);">${m1b3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
 						<input type="hidden" id="usedBracelet2" name="usedBracelet2">
 						<span class="listhead">Uhrwerk</span>
-						<ul class="list-group">
-							<li class="notAvailable list-group-item">${m1cw1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m1cw2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m1cw3} <span class="glyphicon glyphicon-ok"></span></li>
+						<ul class="list-group usedClockWork2">
+							<li class="notAvailable list-group-item" onclick="usedItem('usedClockWork2',1);">${m1cw1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedClockWork2',2);">${m1cw2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedClockWork2',3);">${m1cw3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
 						<input type="hidden" id="usedClockWork2" name="usedClockWork2">
 						<ul class="list-group">
@@ -87,24 +87,24 @@
 						<a class="segment addBtn" onclick="researchModel('watch3','researchModel3');">Freischalten 100.000 &euro;</a>
 						<p>Produktlinie: ${m2s}</p>
 						<span class="listhead">Geh&auml;use</span>				
-						<ul class="list-group">
-							<li class="notAvailable list-group-item">${m2c1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m2c2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m2c3} <span class="glyphicon glyphicon-ok"></span></li>
+						<ul class="list-group usedCase3">
+							<li class="notAvailable list-group-item" onclick="usedItem('usedCase3',1);">${m2c1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedCase3',2);">${m2c2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedCase3',3);">${m2c3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
 						<input type="hidden" id="usedCase3" name="usedCase3">				
 						<span class="listhead">Armband</span>
-						<ul class="list-group">
-							<li class="notAvailable list-group-item">${m2b1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m2b2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m2b3} <span class="glyphicon glyphicon-ok"></span></li>
+						<ul class="list-group usedBracelet3">
+							<li class="notAvailable list-group-item" onclick="usedItem('usedBracelet3',1);">${m2b1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedBracelet3',2);">${m2b2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedBracelet3',3);">${m2b3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
 						<input type="hidden" id="usedBracelet3" name="usedBracelet3">
 						<span class="listhead">Uhrwerk</span>
-						<ul class="list-group">
-							<li class="notAvailable list-group-item">${m2cw1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m2cw2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="notAvailable list-group-item">${m2cw3} <span class="glyphicon glyphicon-ok"></span></li>
+						<ul class="list-group usedClockWork3">
+							<li class="notAvailable list-group-item" onclick="usedItem('usedClockWork3',1);">${m2cw1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedClockWork3',2);">${m2cw2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="notAvailable list-group-item" onclick="usedItem('usedClockWork3',3);">${m2cw3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
 						<input type="hidden" id="usedClockWork3" name="usedClockWork3">
 						<ul class="list-group">
