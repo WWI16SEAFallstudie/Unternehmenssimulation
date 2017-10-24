@@ -91,8 +91,8 @@ window.onload = function () {
     startTimer((starttime*60), display);
 };
 
-// Auswahl des zu Nutzenden Gehäuse, Armband, Uhrwerk
 
+// Auswahl des zu Nutzenden Gehäuse, Armband, Uhrwerk
 function usedItem(input, item){
 	
 	itemOne = document.getElementsByClassName(input)[0].children[0];
@@ -123,7 +123,6 @@ function usedItem(input, item){
 }
 
 // Freischalten einer weiteren Uhr
-
 function researchModel(card,input){
 	if(document.getElementById(input).value == ""){
 		alert("Eine weiter Uhr steht in der nächsten Runde zur Verfügung");

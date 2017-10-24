@@ -23,7 +23,7 @@ public class Unternehmen {
 	 * iUhrenkategorie ist ein Interface, welches von BilligUhr, OekoUhr und PremiumUhr implementiert wurde
 	 * -> Polymorphismus
 	 */
-	private iUhrenkategorie uhr[] = new iUhrenkategorie[3];
+	public iUhrenkategorie uhr[] = new iUhrenkategorie[3];
 	
 	/*
 	 * Hier wird gespeichert, welche Segmente schon freigeschaltet wurden
