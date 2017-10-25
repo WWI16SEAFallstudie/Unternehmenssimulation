@@ -682,6 +682,30 @@ public class Unternehmen {
 		return this.freieSegmenteAllgemein;
 	}
 	
+	public boolean[][] getFreigeschalteneAttrBillig() {
+		return freigeschalteneAttrBillig;
+	}
+
+	public void setFreigeschalteneAttrBillig(boolean[][] freigeschalteneAttrBillig) {
+		this.freigeschalteneAttrBillig = freigeschalteneAttrBillig;
+	}
+
+	public boolean[][] getFreigeschalteneAttrOeko() {
+		return freigeschalteneAttrOeko;
+	}
+
+	public void setFreigeschalteneAttrOeko(boolean[][] freigeschalteneAttrOeko) {
+		this.freigeschalteneAttrOeko = freigeschalteneAttrOeko;
+	}
+
+	public boolean[][] getFreigeschalteneAttrPremium() {
+		return freigeschalteneAttrPremium;
+	}
+
+	public void setFreigeschalteneAttrPremium(boolean[][] freigeschalteneAttrPremium) {
+		this.freigeschalteneAttrPremium = freigeschalteneAttrPremium;
+	}
+
 	public int getProduktionslimitBillig() {
 		return produktionslimitBillig;
 	}
