@@ -75,8 +75,8 @@
 							<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
 						</ul>
 						<input type="hidden" id="researchModel2" name="researchModel2" value="">
-						<div id="overlay">
-							<div id="ol-text">nicht verf&uuml;gbar</div>
+						<div class="overlay">
+							<div class="ol-text">nicht verf&uuml;gbar</div>
 						</div>
 					</div>
 				</div>
@@ -113,8 +113,8 @@
 							<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
 						</ul>
 						<input type="hidden" id="researchModel3" name="researchModel3" value="">
-						<div id="overlay">
-							<div id="ol-text">nicht verf&uuml;gbar</div>
+						<div class="overlay">
+							<div class="ol-text">nicht verf&uuml;gbar</div>
 						</div>
 					</div>
 				</div>
