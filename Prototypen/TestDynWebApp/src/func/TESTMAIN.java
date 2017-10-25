@@ -54,6 +54,13 @@ public class TESTMAIN {
 			System.out.println(spieler[i].toString());
 		}
 		System.out.println();
+		
+		// Uhren im Spieler
+		System.out.println("Uhren im Spieler1");
+		for(iUhrenkategorie u : spieler[1].getUhr()) {
+			if(u != null) System.out.println(u.getSegment());
+		}
+		System.out.println();
 
 		System.out.println("Segmente pro Spieler freigeschalten: 0->Billig; 1->Oeko; 2->Premium");
 		for(int i = 0; i < spieler.length; i++) {
@@ -66,22 +73,22 @@ public class TESTMAIN {
 		System.out.println();
 		
 		
-		System.out.println("Spieler 1 entwickelt Uhrwerk in Uhr 0");
-		spieler[1].erforscheUhrwerk(0);
+		System.out.println("Spieler 1 entwickelt Uhrwerk im Premiummarkt");
+		spieler[1].erforscheUhrwerk("Premium");
 		// Spieler ausgabe
 		for(int i = 0; i < spieler.length; i++) {
 			System.out.println(spieler[i].toString());
 		}
 		System.out.println();
-		spieler[2].erforscheUhrwerk(0);
-		System.out.println("Spieler 2 entwickelt Uhrwerk in Uhr 0");
+		spieler[2].erforscheUhrwerk("Premium");
+		System.out.println("Spieler 2 entwickelt Uhrwerk im Premiummarkt");
 		// Spieler ausgabe
 		for(int i = 0; i < spieler.length; i++) {
 			System.out.println(spieler[i].toString());
 		}
 		System.out.println();
-		spieler[1].erforscheUhrwerk(1);
-		System.out.println("Spieler 1 entwickelt Uhrwerk in Uhr 1");
+		spieler[1].erforscheUhrwerk("Oeko");
+		System.out.println("Spieler 1 entwickelt Uhrwerk im Oekobereich");
 		// Spieler ausgabe
 		for(int i = 0; i < spieler.length; i++) {
 			System.out.println(spieler[i].toString());

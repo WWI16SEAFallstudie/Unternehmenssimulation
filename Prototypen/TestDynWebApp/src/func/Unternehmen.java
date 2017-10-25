@@ -23,7 +23,7 @@ public class Unternehmen {
 	 * iUhrenkategorie ist ein Interface, welches von BilligUhr, OekoUhr und PremiumUhr implementiert wurde
 	 * -> Polymorphismus
 	 */
-	public iUhrenkategorie uhr[] = new iUhrenkategorie[3];
+	private iUhrenkategorie uhr[] = new iUhrenkategorie[3];
 	
 	/*
 	 * Hier wird gespeichert, welche Segmente schon freigeschaltet wurden
@@ -142,22 +142,18 @@ public class Unternehmen {
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Uhrwerk erforscht werden soll
 	 */
-	public void erforscheUhrwerk(int uhr) {
-		if(this.uhr[uhr] != null) {
-			String segment = this.uhr[uhr].getSegment();
-					
-			switch (segment) {
-				case "Billig":
-					freigeschalteneAttrBillig = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 1);
-					break;
-				case "Oeko":
-					freigeschalteneAttrOeko = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrOeko, 1);				
-					break;
-				case "Premium":
-					freigeschalteneAttrPremium = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrPremium, 1);
-					break;
-			}	
-		}
+	public void erforscheUhrwerk(String segment) {
+		switch (segment) {
+			case "Billig":
+				freigeschalteneAttrBillig = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 1);
+				break;
+			case "Oeko":
+				freigeschalteneAttrOeko = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrOeko, 1);				
+				break;
+			case "Premium":
+				freigeschalteneAttrPremium = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrPremium, 1);
+				break;
+		}	
 	}
 	
 	/**
@@ -170,27 +166,18 @@ public class Unternehmen {
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Armband erforscht werden soll
 	 */
-	public void erforscheArmband(int uhr) {
-		if(this.uhr[uhr] != null) {
-			String segment = this.uhr[uhr].getSegment();
-			switch (segment) {
-				case "Billig":
-					freigeschalteneAttrBillig = Uhrmodell.entwickleArmband(freigeschalteneAttrBillig, 1);
-					break;
-				case "Oeko":
-					freigeschalteneAttrOeko = Uhrmodell.entwickleArmband(freigeschalteneAttrOeko, 1);				
-					break;
-				case "Premium":
-					freigeschalteneAttrPremium = Uhrmodell.entwickleArmband(freigeschalteneAttrPremium, 1);
-					break;
-			}	
-		}
-		
-		
-		// **ALT
-		/*
-		if(this.uhr[uhr] != null)
-			this.uhr[uhr].entwickleArmband(); */
+	public void erforscheArmband(String segment) {
+		switch (segment) {
+			case "Billig":
+				freigeschalteneAttrBillig = Uhrmodell.entwickleArmband(freigeschalteneAttrBillig, 1);
+				break;
+			case "Oeko":
+				freigeschalteneAttrOeko = Uhrmodell.entwickleArmband(freigeschalteneAttrOeko, 1);				
+				break;
+			case "Premium":
+				freigeschalteneAttrPremium = Uhrmodell.entwickleArmband(freigeschalteneAttrPremium, 1);
+				break;
+		}	
 	}
 	
 	/**
@@ -203,27 +190,18 @@ public class Unternehmen {
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Gehäuse erforscht werden soll
 	 */
-	public void erforscheGehaeuse(int uhr) {
-		if(this.uhr[uhr] != null) {
-			String segment = this.uhr[uhr].getSegment();
-			
-			switch (segment) {
-				case "Billig":
-					freigeschalteneAttrBillig = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrBillig, 1);
-					break;
-				case "Oeko":
-					freigeschalteneAttrOeko = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrOeko, 1);				
-					break;
-				case "Premium":
-					freigeschalteneAttrPremium = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrPremium, 1);
-					break;
-			}	
-		}
-		
-		// **ALT
-		/*
-		if(this.uhr[uhr] != null)
-			this.uhr[uhr].entwickleGehause();*/
+	public void erforscheGehaeuse(String segment) {
+		switch (segment) {
+			case "Billig":
+				freigeschalteneAttrBillig = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrBillig, 1);
+				break;
+			case "Oeko":
+				freigeschalteneAttrOeko = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrOeko, 1);				
+				break;
+			case "Premium":
+				freigeschalteneAttrPremium = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrPremium, 1);
+				break;
+		}	
 	}
 	
 	
@@ -614,8 +592,14 @@ public class Unternehmen {
 	 * Getter / Setter
 	 */
 	
+	
+	
 	public boolean[] getProdStraßeBillig() {
 		return this.prodStraßeBillig;
+	}
+
+	public iUhrenkategorie[] getUhr() {
+		return uhr;
 	}
 
 	public boolean[] getProdStraßeOeko() {
