@@ -9,15 +9,17 @@ public class Unternehmen {
 	private double kapital;
 	private double kapitalAlt;
 	private String info;
-	private int bestandUhr;
+	
+	// Produktionslimit speichern
 	private int produktionslimitBillig = 10000;
 	private int produktionslimitOeko = 10000;
 	private int produktionslimitPremium = 10000;
 
-	private double anschaffungskostenBillig = 10;
-	private double anschaffungskostenOeko = 10;
-	private double anschaffungskostenPremium = 10;
-	
+	// Produktionskosten speichern
+	private int produktionskostenBillig = 10000;
+	private int produktionskostenOeko = 10000;
+	private int produktionskostenPremium = 10000;
+		
 	/*
 	 * Array für entsprechenden Uhren angelegt 
 	 * iUhrenkategorie ist ein Interface, welches von BilligUhr, OekoUhr und PremiumUhr implementiert wurde
@@ -28,6 +30,7 @@ public class Unternehmen {
 	/*
 	 * Hier wird gespeichert, welche Segmente schon freigeschaltet wurden
 	 * index:
+	 * 
 	 * 	0->Billig
 	 * 	1->Oeko
 	 * 	2->Premium
@@ -45,12 +48,24 @@ public class Unternehmen {
 	private boolean freigeschalteneAttrOeko[][] = { {true,false,false}, {true,false,false}, {true,false,false} };
 	private boolean freigeschalteneAttrPremium[][] = { {true,false,false}, {true,false,false}, {true,false,false} };
 	
-	/*
-	 * Produktionserweiterungen pro Segment
+	/**
+	 * selbstkostenarray wie oben nur mit werten anstatt true/false
+	 * In Produktion dann die selbstkosten(einzelpositionen was freigeschaltet is) * menge und diese vom Kapital abziehen!!! -> Produziere() ändern
 	 */
-	private boolean prodStraßeBillig[] = { false, false, false};
-	private boolean prodStraßeOeko[] = { false, false, false};
-	private boolean prodStraßePremium[] = { false, false, false};
+	
+	/*
+	 * Produktionskostensenkung pro Segment
+	 */
+	private boolean prodKostenSenkungStraßeBillig[] = { false, false, false};
+	private boolean prodKostenSenkungStraßeOeko[] = { false, false, false};
+	private boolean prodKostenSenkungStraßePremium[] = { false, false, false};
+	
+	/*
+	 * Kapazitätserweiterung pro Segment
+	 */
+	private boolean kapaErwStraßeBillig[] = { false, false, false};
+	private boolean kapaErwStraßeOeko[] = { false, false, false};
+	private boolean kapaErwStraßePremium[] = { false, false, false};
 		
 	/*
 	 * Einkauf
@@ -145,13 +160,13 @@ public class Unternehmen {
 	public void erforscheUhrwerk(String segment) {
 		switch (segment) {
 			case "Billig":
-				freigeschalteneAttrBillig = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 1);
+				freigeschalteneAttrBillig = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 2);
 				break;
 			case "Oeko":
-				freigeschalteneAttrOeko = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrOeko, 1);				
+				freigeschalteneAttrOeko = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrOeko, 2);				
 				break;
 			case "Premium":
-				freigeschalteneAttrPremium = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrPremium, 1);
+				freigeschalteneAttrPremium = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrPremium, 2);
 				break;
 		}	
 	}
@@ -193,13 +208,13 @@ public class Unternehmen {
 	public void erforscheGehaeuse(String segment) {
 		switch (segment) {
 			case "Billig":
-				freigeschalteneAttrBillig = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrBillig, 1);
+				freigeschalteneAttrBillig = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrBillig, 0);
 				break;
 			case "Oeko":
-				freigeschalteneAttrOeko = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrOeko, 1);				
+				freigeschalteneAttrOeko = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrOeko, 0);				
 				break;
 			case "Premium":
-				freigeschalteneAttrPremium = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrPremium, 1);
+				freigeschalteneAttrPremium = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrPremium, 0);
 				break;
 		}	
 	}
@@ -270,12 +285,13 @@ public class Unternehmen {
 	 * @return: Rückgabe ob die Erweiterung erfolgreich war
 	 */
 	public boolean erweitereProduktion(String segment) {
+		// Erweitert die Kapazität -> erhöht also das Produktionslimit
 		switch(segment) {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
-					if(prodStraßeBillig[i] == false) {
-						if(checkeKapital(Info.getKostenProduktionBillig()[i])) {
-							prodStraßeBillig[i] = true;
+					if(this.getKapaErwStraßeBillig()[i] == false) {
+						if(checkeKapital(Info.getErweitereKapazitätBillig()[i])) {
+							kapaErwStraßeBillig[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -284,9 +300,9 @@ public class Unternehmen {
 				break;
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
-					if(prodStraßePremium[i] == false) {
-						if(checkeKapital(Info.getKostenProduktionPremium()[i])) {
-							prodStraßePremium[i] = true;
+					if(this.getKapaErwStraßePremium()[i] == false) {
+						if(checkeKapital(Info.getErweitereKapazitätPremium()[i])) {
+							kapaErwStraßePremium[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -295,9 +311,9 @@ public class Unternehmen {
 				break;
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
-					if(prodStraßeOeko[i] == false) {
-						if(checkeKapital(Info.getKostenProduktionOeko()[i])) {
-							prodStraßeOeko[i] = true;
+					if(this.getKapaErwStraßeOeko()[i] == false) {
+						if(checkeKapital(Info.getErweitereKapazitätOeko()[i])) {
+							kapaErwStraßeOeko[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -310,6 +326,49 @@ public class Unternehmen {
 		}
 		return false;
 	}	
+	
+	public boolean senkeProdKosten(String segment) {
+		// Senkt die Produktionskosten
+		switch(segment) {
+			case "Billig":
+				for(int i = 0; i < 3; i++) {
+					if(this.getProdKostenSenkungStraßeBillig()[i] == false) {
+						if(checkeKapital(Info.getSenkeProdKostenStraßeBillig()[i])) {
+							prodKostenSenkungStraßeBillig[i] = true;
+							senkeProduktionskosten(segment, i);
+							return true;
+						}
+					}
+				}
+				break;
+			case "Premium":
+				for(int i = 0; i < 3; i++) {
+					if(this.getProdKostenSenkungStraßePremium()[i] == false) {
+						if(checkeKapital(Info.getSenkeProdKostenStraßePremium()[i])) {
+							prodKostenSenkungStraßePremium[i] = true;
+							senkeProduktionskosten(segment, i);
+							return true;
+						}
+					}
+				}
+				break;
+			case "Oeko":
+				for(int i = 0; i < 3; i++) {
+					if(this.getProdKostenSenkungStraßeOeko()[i] == false) {
+						if(checkeKapital(Info.getSenkeProdKostenStraßeOeko()[i])) {
+							prodKostenSenkungStraßeOeko[i] = true;
+							senkeProduktionskosten(segment, i);
+							return true;
+						}
+					}
+				}
+				break;
+			default:
+				System.out.println("Falsches Segment");
+				break;
+		}
+		return false;
+	}
 		
 	public boolean erweitereEinkauf(String segment) {
 		switch(segment) {
@@ -363,20 +422,24 @@ public class Unternehmen {
 	
 	public void produzieren(int menge, int uhr) {
 		int m = 0;
+		int u = 0;
 		// Segment abfragen
 		switch(this.uhr[uhr].getSegment()) {
 			case "Billig":
-				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitBillig(), this.getAnschaffungskostenBillig());
+				u = errechneSelbstkosten(this.getFreigeschalteneAttrBillig(), "Billig");
+				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitBillig(), u);
 				if(m != -1) 
 					this.uhr[uhr].setBestand(m);
 				break;
 			case "Oeko":
-				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitOeko(), this.getAnschaffungskostenOeko());
+				u = errechneSelbstkosten(this.getFreigeschalteneAttrBillig(), "Oeko");
+				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitOeko(), u);
 				if(m != -1) 
 					this.uhr[uhr].setBestand(m);
 				break;
 			case "Premium":
-				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitPremium(), this.getAnschaffungskostenPremium());
+				u = errechneSelbstkosten(this.getFreigeschalteneAttrBillig(), "Premium");
+				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitPremium(), u);
 				if(m != -1) 
 					this.uhr[uhr].setBestand(m);
 				break;
@@ -419,6 +482,37 @@ public class Unternehmen {
 		}
 	}
 	
+	private int errechneSelbstkosten(boolean[][] freigeschalten, String segment) {
+		int result = 0;
+		switch(segment) {
+			case "Billig":
+				for(int i = 0; i < 3; i++) {
+					for(int j = 0; j < 3; j++) {
+						if(freigeschalten[i][j] == true)
+							result += Info.getSelbstkostenBillig()[i];
+					}
+				}
+				break;
+			case "Oeko":
+				for(int i = 0; i < 3; i++) {
+					for(int j = 0; j < 3; j++) {
+						if(freigeschalten[i][j] == true)
+							result += Info.getSelbstkostenBillig()[i];
+					}
+				}
+				break;
+			case "Premium":
+				for(int i = 0; i < 3; i++) {
+					for(int j = 0; j < 3; j++) {
+						if(freigeschalten[i][j] == true)
+							result += Info.getSelbstkostenBillig()[i];
+					}
+				}
+				break;
+		}
+		return result;
+	}
+	
 	private int testeMengeProduzieren(int menge, int limit, double prodKostenStueck) {
 		int m = -1;
 		// Produktionslimit testen
@@ -441,7 +535,7 @@ public class Unternehmen {
 	 * @param stufe
 	 */
 	private void senkeAnschaffungskosten(String segment, int stufe) {
-		switch(segment) {
+		/*switch(segment) {
 			case "Billig":
 				this.setAnschaffungskostenBillig(this.getAnschaffungskostenBillig() - (this.getAnschaffungskostenBillig() * Info.getRabatteEinkaufBillig()[stufe]));
 				break;
@@ -451,7 +545,7 @@ public class Unternehmen {
 			case "Premium":
 				this.setAnschaffungskostenPremium(this.getAnschaffungskostenPremium() - (this.getAnschaffungskostenPremium() * Info.getRabatteEinkaufPremium()[stufe]));
 				break;
-		}
+		}*/
 	}
 	
 	/**
@@ -469,6 +563,20 @@ public class Unternehmen {
 				break;
 			case "Premium":
 				this.setProduktionslimitPremium(this.getProduktionslimitPremium() + (int)(this.getProduktionslimitPremium() * Info.getErweitereKapazitätPremium()[stufe]));
+				break;
+		}
+	}
+	
+	private void senkeProduktionskosten(String segment, int stufe) {
+		switch(segment) {
+			case "Billig":
+				this.setProduktionskostenBillig(this.getProduktionskostenBillig() - (int)(this.getProduktionskostenBillig() * Info.getSenkeProdKostenStraßeBillig()[stufe]));
+				break;
+			case "Oeko":
+				this.setProduktionskostenOeko(this.getProduktionskostenOeko() - (int)(this.getProduktionskostenOeko() * Info.getSenkeProdKostenStraßeOeko()[stufe]));
+				break;
+			case "Premium":
+				this.setProduktionskostenPremium(this.getProduktionskostenPremium() - (int)(this.getProduktionskostenPremium() * Info.getSenkeProdKostenStraßePremium()[stufe]));
 				break;
 		}
 	}
@@ -605,24 +713,35 @@ public class Unternehmen {
 	 * Getter / Setter
 	 */
 	
-	
-	
-	public boolean[] getProdStraßeBillig() {
-		return this.prodStraßeBillig;
-	}
 
 	public iUhrenkategorie[] getUhr() {
 		return uhr;
 	}
-
-	public boolean[] getProdStraßeOeko() {
-		return this.prodStraßeOeko;
+	
+	public boolean[] getProdKostenSenkungStraßeBillig() {
+		return this.prodKostenSenkungStraßeBillig;
 	}
 
-	public boolean[] getProdStraßePremium() {
-		return this.prodStraßePremium;
+	public boolean[] getProdKostenSenkungStraßeOeko() {
+		return this.prodKostenSenkungStraßeOeko;
+	}
+
+	public boolean[] getProdKostenSenkungStraßePremium() {
+		return this.prodKostenSenkungStraßePremium;
 	}
 	
+	public boolean[] getKapaErwStraßeBillig() {
+		return kapaErwStraßeBillig;
+	}
+
+	public boolean[] getKapaErwStraßeOeko() {
+		return kapaErwStraßeOeko;
+	}
+
+	public boolean[] getKapaErwStraßePremium() {
+		return kapaErwStraßePremium;
+	}
+
 	public boolean[] getVerbesserungEinkaufBillig() {
 		return verbesserungEinkaufBillig;
 	}
@@ -743,28 +862,28 @@ public class Unternehmen {
 		this.produktionslimitPremium = produktionslimitPremium;
 	}
 
-	public double getAnschaffungskostenBillig() {
-		return anschaffungskostenBillig;
+	public int getProduktionskostenBillig() {
+		return produktionskostenBillig;
 	}
 
-	public void setAnschaffungskostenBillig(double anschaffungskostenBillig) {
-		this.anschaffungskostenBillig = anschaffungskostenBillig;
+	public void setProduktionskostenBillig(int produktionskostenBillig) {
+		this.produktionskostenBillig = produktionskostenBillig;
 	}
 
-	public double getAnschaffungskostenOeko() {
-		return anschaffungskostenOeko;
+	public int getProduktionskostenOeko() {
+		return produktionskostenOeko;
 	}
 
-	public void setAnschaffungskostenOeko(double anschaffungskostenOeko) {
-		this.anschaffungskostenOeko = anschaffungskostenOeko;
+	public void setProduktionskostenOeko(int produktionskostenOeko) {
+		this.produktionskostenOeko = produktionskostenOeko;
 	}
 
-	public double getAnschaffungskostenPremium() {
-		return anschaffungskostenPremium;
+	public int getProduktionskostenPremium() {
+		return produktionskostenPremium;
 	}
 
-	public void setAnschaffungskostenPremium(double anschaffungskostenPremium) {
-		this.anschaffungskostenPremium = anschaffungskostenPremium;
+	public void setProduktionskostenPremium(int produktionskostenPremium) {
+		this.produktionskostenPremium = produktionskostenPremium;
 	}
 	
 	
