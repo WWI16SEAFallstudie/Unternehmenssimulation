@@ -10,11 +10,23 @@ public class Spielbrett {
 	private int rundenAktuell;
 	private int rundenMax;
 	private int aktuellerSpieler;
+	Gesamtmarkt gesamtmarkt;
 	
-	public Spielbrett(int anzRunden) {
+//	public Spielbrett(int anzRunden) {
+//		this.rundenAktuell = 0;
+//		this.rundenMax = anzRunden;
+//		this.aktuellerSpieler = 0;
+//	}
+	
+	public Spielbrett(int anzRunden, int volume, double impactRange) {
 		this.rundenAktuell = 0;
 		this.rundenMax = anzRunden;
 		this.aktuellerSpieler = 0;
+		this.gesamtmarkt = new Gesamtmarkt(volume, impactRange);
+	}
+	
+	public void starteMarkt() {
+		gesamtmarkt.starteSimulation(spieler);
 	}
 	
 	// Spieler erstellen

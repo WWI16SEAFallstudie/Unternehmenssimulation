@@ -12,6 +12,9 @@ public class BilligUhr implements iUhrenkategorie {
 	private int bestand;
 	private int angeboteneMenge;
 	private int abgenommeneMenge;
+	private double herstellkosten;
+	private double angebotspreis;
+	private double marketingboost;
 	
 	private final String segment = "Billig";
 	
@@ -24,6 +27,25 @@ public class BilligUhr implements iUhrenkategorie {
 		this.uhrwerk = 0;
 		this.gehaeuse = 0;
 		this.armband = 0;
+	}
+	
+	@Override
+	public void verkaufen() {
+		System.out.println("Bestand davor: " + bestand);
+		bestand -= abgenommeneMenge;
+		System.out.println("Bestand danach:" + bestand);
+	}
+	
+	@Override
+	public int getAbnahmepotential() {
+		System.out.println(getAbnahmequote());
+		return (int) (angeboteneMenge * ((1 + marketingboost) * getAbnahmequote()));
+	}
+	
+	@Override
+	public double getAbnahmequote() {
+		if(angebotspreis != 0) return 1 / (1 + Math.pow(Math.E, ((2.5 * Math.log(angebotspreis / (double) score) / Math.log(2)))));
+		return 0;
 	}
 	
 	@Override
@@ -51,6 +73,11 @@ public class BilligUhr implements iUhrenkategorie {
 	@Override
 	public void setAbgenommeneMenge(int menge) {
 		this.abgenommeneMenge = menge;
+	}
+	
+	@Override
+	public int getAbgenommeneMenge() {
+		return abgenommeneMenge;
 	}
 	
 	public int getScore() {
@@ -97,7 +124,23 @@ public class BilligUhr implements iUhrenkategorie {
 		this.bestand = bestand;
 	}
 
+	@Override
+	public double getAngebotspreis() {
+		return this.angebotspreis;
+	}
 
+	@Override
+	public void setAngebotspreis(double angebotspreis) {
+		this.angebotspreis = angebotspreis;
+	}
 
-	
+	@Override
+	public double getMarketingboost() {
+		return marketingboost;
+	}
+
+	@Override
+	public void setMarketingboost(double marketingboost) {
+		this.marketingboost = marketingboost;
+	}
 }

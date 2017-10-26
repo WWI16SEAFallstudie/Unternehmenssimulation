@@ -383,7 +383,19 @@ public class Unternehmen {
 		}
 	}
 	
-	public int bieteUhren(int menge, int uhr) {	
+//	public int bieteUhren(int menge, int uhr) {	
+//		int m = -1;
+//		if(menge <= this.getBestandUhr(uhr)) {
+//			m = menge;
+//			this.uhr[uhr].setAngeboteneMenge(menge);
+//		} else {
+//			m = this.getBestandUhr(uhr);
+//			this.uhr[uhr].setAngeboteneMenge(this.getBestandUhr(uhr));
+//		}
+//		return m;
+//	}
+	
+	public int bieteUhren(int menge, int uhr, int preis) {	
 		int m = -1;
 		if(menge <= this.getBestandUhr(uhr)) {
 			m = menge;
@@ -392,6 +404,7 @@ public class Unternehmen {
 			m = this.getBestandUhr(uhr);
 			this.uhr[uhr].setAngeboteneMenge(this.getBestandUhr(uhr));
 		}
+		this.uhr[uhr].setAngebotspreis(preis);
 		return m;
 	}
 	

@@ -15,6 +15,7 @@ public class OekoUhr implements iUhrenkategorie{
 	private int abgenommeneMenge;
 	private double herstellkosten;
 	private double angebotspreis;
+	private double marketingboost;
 	
 	private final String segment = "Oeko";
 	
@@ -99,6 +100,50 @@ public class OekoUhr implements iUhrenkategorie{
 	public void uhrMarketingstrategie() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void verkaufen() {
+		System.out.println("Bestand davor: " + bestand);
+		bestand -= abgenommeneMenge;
+		System.out.println("Bestand danach:" + bestand);
+	}
+	
+	@Override
+	public int getAbnahmepotential() {
+		System.out.println(getAbnahmequote());
+		return (int) (angeboteneMenge * ((1 + marketingboost) * getAbnahmequote()));
+	}
+	
+	@Override
+	public double getAbnahmequote() {
+		if(angebotspreis != 0) return 1 / (1 + Math.pow(Math.E, ((2.5 * Math.log(angebotspreis / (double) score) / Math.log(2)))));
+		return 0;
+	}
+
+	@Override
+	public double getAngebotspreis() {
+		return this.angebotspreis;
+	}
+
+	@Override
+	public void setAngebotspreis(double angebotspreis) {
+		this.angebotspreis = angebotspreis;
+	}
+
+	@Override
+	public double getMarketingboost() {
+		return marketingboost;
+	}
+
+	@Override
+	public void setMarketingboost(double marketingboost) {
+		this.marketingboost = marketingboost;
+	}
+
+	@Override
+	public int getAbgenommeneMenge() {
+		return abgenommeneMenge;
 	}
 
 	
