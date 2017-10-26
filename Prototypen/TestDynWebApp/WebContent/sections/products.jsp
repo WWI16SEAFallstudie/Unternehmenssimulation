@@ -12,30 +12,30 @@
 			clM0c1 = Class Modell 1 Case 1	
 			 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch1" class="card ${watch0}">
+					<div id="watch0" class="card ${watch0}">
 						<h4>Modell 1</h4>
 						<p>Produktlinie: ${m0s}</p>
 						<span class="listhead">Geh&auml;use</span>				
 						<ul class="list-group usedCase1">
-							<li class="${clM0c0} list-group-item" onclick="usedItem('usedCase1',1);">${m0c1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM0c1} list-group-item" onclick="usedItem('usedCase1',2);">${m0c2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM0c2} list-group-item" onclick="usedItem('usedCase1',3);">${m0c3} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM0c0} list-group-item" onclick="usedItem('usedCase0',0);">${m0c1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM0c1} list-group-item" onclick="usedItem('usedCase0',1);">${m0c2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM0c2} list-group-item" onclick="usedItem('usedCase0',2);">${m0c3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedCase1" name="usedCase1">				
+						<input type="hidden" id="usedCase0" name="usedCase0">				
 						<span class="listhead">Armband</span>
 						<ul class="list-group usedBracelet1">
-							<li class="${clM0b0} list-group-item" onclick="usedItem('usedBracelet1',1);">${m0b1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM0b1} list-group-item" onclick="usedItem('usedBracelet1',2);">${m0b2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM0b2} list-group-item" onclick="usedItem('usedBracelet1',3);">${m0b3} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM0b0} list-group-item" onclick="usedItem('usedBracelet0',0);">${m0b1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM0b1} list-group-item" onclick="usedItem('usedBracelet0',1);">${m0b2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM0b2} list-group-item" onclick="usedItem('usedBracelet0',2);">${m0b3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedBracelet1" name="usedBracelet1">
+						<input type="hidden" id="usedBracelet0" name="usedBracelet0">
 						<span class="listhead">Uhrwerk</span>
 						<ul class="list-group usedClockWork1">
-							<li class="${clM0cw0} list-group-item" onclick="usedItem('usedClockWork1',1);">${m0cw1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM0cw1} list-group-item" onclick="usedItem('usedClockWork1',2);">${m0cw2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM0cw2} list-group-item" onclick="usedItem('usedClockWork1',3);">${m0cw3} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM0cw0} list-group-item" onclick="usedItem('usedClockWork0',0);">${m0cw1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM0cw1} list-group-item" onclick="usedItem('usedClockWork0',1);">${m0cw2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM0cw2} list-group-item" onclick="usedItem('usedClockWork0',2);">${m0cw3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedClockWork1" name="usedClockWork1">
+						<input type="hidden" id="usedClockWork0" name="usedClockWork0">
 						<ul class="list-group">
 							<li class="list-group-item">Einkaufspreis: <span class="ekVal">220 &euro;</span></li>
 							<li class="list-group-item">Verkaufspreis: <span class="vkVal">280 &euro;</span></li>
@@ -45,36 +45,36 @@
 				
 				<!-- Uhr Modell 2 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch2" class="card ${watch1}">
+					<div id="watch1" class="card ${watch1}">
 						<h4>Modell 2</h4>
-						<a class="segment addBtn" onclick="researchModel('watch2','researchModel2');">Freischalten 100.000 &euro;</a>
+						<a class="segment addBtn" onclick="researchModel('watch1','researchModel1');">Freischalten 100.000 &euro;</a>
 						<p>Produktlinie: ${m1s}</p>
 						<span class="listhead">Geh&auml;use</span>				
 						<ul class="list-group usedCase2">
-							<li class="${clM1c0} list-group-item" onclick="usedItem('usedCase2',1);">${m1c1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM1c1} list-group-item" onclick="usedItem('usedCase2',2);">${m1c2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM1c2} list-group-item" onclick="usedItem('usedCase2',3);">${m1c3} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM1c0} list-group-item" onclick="usedItem('usedCase1',0);">${m1c1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM1c1} list-group-item" onclick="usedItem('usedCase1',1);">${m1c2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM1c2} list-group-item" onclick="usedItem('usedCase1',2);">${m1c3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedCase2" name="usedCase2">				
+						<input type="hidden" id="usedCase1" name="usedCase1">				
 						<span class="listhead">Armband</span>
 						<ul class="list-group usedBracelet2">
-							<li class="${clM1b0} list-group-item" onclick="usedItem('usedBracelet2',1);">${m1b1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM1b1} list-group-item" onclick="usedItem('usedBracelet2',2);">${m1b2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM1b2} list-group-item" onclick="usedItem('usedBracelet2',3);">${m1b3} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM1b0} list-group-item" onclick="usedItem('usedBracelet1',0);">${m1b1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM1b1} list-group-item" onclick="usedItem('usedBracelet1',1);">${m1b2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM1b2} list-group-item" onclick="usedItem('usedBracelet1',2);">${m1b3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedBracelet2" name="usedBracelet2">
+						<input type="hidden" id="usedBracelet1" name="usedBracelet1">
 						<span class="listhead">Uhrwerk</span>
 						<ul class="list-group usedClockWork2">
-							<li class="${clM1cw0} list-group-item" onclick="usedItem('usedClockWork2',1);">${m1cw1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM1cw1} list-group-item" onclick="usedItem('usedClockWork2',2);">${m1cw2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM1cw2} list-group-item" onclick="usedItem('usedClockWork2',3);">${m1cw3} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM1cw0} list-group-item" onclick="usedItem('usedClockWork1',0);">${m1cw1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM1cw1} list-group-item" onclick="usedItem('usedClockWork1',1);">${m1cw2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM1cw2} list-group-item" onclick="usedItem('usedClockWork1',2);">${m1cw3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedClockWork2" name="usedClockWork2">
+						<input type="hidden" id="usedClockWork1" name="usedClockWork1">
 						<ul class="list-group">
 							<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
 							<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
 						</ul>
-						<input type="hidden" id="researchModel2" name="researchModel2" value="">
+						<input type="hidden" id="researchModel1" name="researchModel1" value="">
 						<div class="overlay">
 							<div class="ol-text">nicht verf&uuml;gbar</div>
 						</div>
@@ -83,36 +83,36 @@
 				
 				<!-- Uhr Modell 3 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch3" class="card ${watch2}">
+					<div id="watch2" class="card ${watch2}">
 						<h4>Modell 3</h4>
-						<a class="segment addBtn" onclick="researchModel('watch3','researchModel3');">Freischalten 100.000 &euro;</a>
+						<a class="segment addBtn" onclick="researchModel('watch2','researchModel2');">Freischalten 100.000 &euro;</a>
 						<p>Produktlinie: ${m2s}</p>
 						<span class="listhead">Geh&auml;use</span>				
-						<ul class="list-group usedCase3">
-							<li class="${clM2c0} list-group-item" onclick="usedItem('usedCase3',1);">${m2c1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM2c1} list-group-item" onclick="usedItem('usedCase3',2);">${m2c2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM2c2} list-group-item" onclick="usedItem('usedCase3',3);">${m2c3} <span class="glyphicon glyphicon-ok"></span></li>
+						<ul class="list-group usedCase2">
+							<li class="${clM2c0} list-group-item" onclick="usedItem('usedCase2',0);">${m2c1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM2c1} list-group-item" onclick="usedItem('usedCase2',1);">${m2c2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM2c2} list-group-item" onclick="usedItem('usedCase2',2);">${m2c3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedCase3" name="usedCase3">				
+						<input type="hidden" id="usedCase2" name="usedCase2">				
 						<span class="listhead">Armband</span>
 						<ul class="list-group usedBracelet3">
-							<li class="${clM2b0} list-group-item" onclick="usedItem('usedBracelet3',1);">${m2b1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM2b1} list-group-item" onclick="usedItem('usedBracelet3',2);">${m2b2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM2b2} list-group-item" onclick="usedItem('usedBracelet3',3);">${m2b3} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM2b0} list-group-item" onclick="usedItem('usedBracelet2',0);">${m2b1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM2b1} list-group-item" onclick="usedItem('usedBracelet2',1);">${m2b2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM2b2} list-group-item" onclick="usedItem('usedBracelet2',2);">${m2b3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedBracelet3" name="usedBracelet3">
+						<input type="hidden" id="usedBracelet2" name="usedBracelet2">
 						<span class="listhead">Uhrwerk</span>
 						<ul class="list-group usedClockWork3">
-							<li class="${clM2cw0} list-group-item" onclick="usedItem('usedClockWork3',1);">${m2cw1} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM2cw1} list-group-item" onclick="usedItem('usedClockWork3',2);">${m2cw2} <span class="glyphicon glyphicon-ok"></span></li>
-							<li class="${clM2cw2} list-group-item" onclick="usedItem('usedClockWork3',3);">${m2cw3} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM2cw0} list-group-item" onclick="usedItem('usedClockWork2',0);">${m2cw1} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM2cw1} list-group-item" onclick="usedItem('usedClockWork2',1);">${m2cw2} <span class="glyphicon glyphicon-ok"></span></li>
+							<li class="${clM2cw2} list-group-item" onclick="usedItem('usedClockWork2',2);">${m2cw3} <span class="glyphicon glyphicon-ok"></span></li>
 						</ul>
-						<input type="hidden" id="usedClockWork3" name="usedClockWork3">
+						<input type="hidden" id="usedClockWork2" name="usedClockWork2">
 						<ul class="list-group">
 							<li class="list-group-item">Einkaufspreis: <span class="ekVal"></span></li>
 							<li class="list-group-item">Verkaufspreis: <span class="vkVal"></span></li>
 						</ul>
-						<input type="hidden" id="researchModel3" name="researchModel3" value="">
+						<input type="hidden" id="researchModel2" name="researchModel2" value="">
 						<div class="overlay">
 							<div class="ol-text">nicht verf&uuml;gbar</div>
 						</div>

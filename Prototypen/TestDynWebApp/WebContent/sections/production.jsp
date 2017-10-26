@@ -92,7 +92,7 @@
 			
 				<!-- Uhr Modell 1 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch1" class="card ${watch0}">
+					<div id="productionW0" class="card ${watch0}">
 						<h4>Modell 1</h4>
 						<input type="hidden" id="usedClockWork1" name="usedClockWork1">
 						<ul class="list-group">
@@ -109,7 +109,7 @@
 				
 				<!-- Uhr Modell 2 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch1" class="card ${watch1}">
+					<div id="productionW1" class="card ${watch1}">
 						<h4>Modell 2</h4>
 						<input type="hidden" id="usedClockWork1" name="usedClockWork1">
 						<ul class="list-group">
@@ -126,7 +126,7 @@
 				
 				<!-- Uhr Modell 3 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch1" class="card ${watch2}">
+					<div id="productionW2" class="card ${watch2}">
 						<h4>Modell 3</h4>
 						<input type="hidden" id="usedClockWork1" name="usedClockWork1">
 						<ul class="list-group">

@@ -1,7 +1,7 @@
 	    <div id="menu2" class="tab-pane fade">
 	      	<div class="row">
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch1" class="card umwelt ${researchO}">
+					<div id="researchO" class="card umwelt ${researchO}">
 					<h4>Umwelt</h4>
 					<button class="segment addBtn">Freischalten 100.000 &euro;</button>
 					<p></p>
@@ -35,7 +35,7 @@
 				</div>
 				
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch2" class="card luxus ${researchL}">
+					<div id="researchL" class="card luxus ${researchL}">
 					<h4>Luxus</h4>
 					<button class="segment addBtn">Freischalten 100.000 &euro;</button>
 					<p></p>
@@ -69,7 +69,7 @@
 				</div>
 				
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch3" class="card preisbewusst ${researchB}">
+					<div id="researchB" class="card preisbewusst ${researchB}">
 					<h4>Gro&szlig;serienfertigung</h4>
 					<button class="segment addBtn">Freischalten 100.000 &euro;</button>
 					<p></p>

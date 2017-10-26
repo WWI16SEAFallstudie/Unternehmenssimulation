@@ -63,11 +63,14 @@ public class MyServlet extends HttpServlet {
 		
 			// Wahl der Ökosparte
 			if (request.getParameter("selectoeko") != null) {
-
-				spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Oeko");
-				spieler[spiel.getAktuellerSpieler()].erforscheUhr("Oeko");
-				System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Öko gewählt");
-				System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
+				
+				if(spieler[spiel.getAktuellerSpieler()].getUhr()[0] == null){
+					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Oeko");
+					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Oeko");
+					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Öko gewählt");
+					System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
+				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
+				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
 				
 				// setzen des Spielerbildes sowie des aktuellen Kapitals
@@ -100,10 +103,13 @@ public class MyServlet extends HttpServlet {
 			// Wahl der Luxussparte
 			if (request.getParameter("selectluxus") != null) {
 				
-				spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Premium");
-				spieler[spiel.getAktuellerSpieler()].erforscheUhr("Premium");
-				System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Luxus gewählt");
-				System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
+				if(spieler[spiel.getAktuellerSpieler()].getUhr()[0] == null){
+					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Premium");
+					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Premium");
+					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Luxus gewählt");
+					System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
+				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
+			
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
 				
 				// setzen des Spielerbildes sowie des aktuellen Kapitals
@@ -136,10 +142,14 @@ public class MyServlet extends HttpServlet {
 			// Wahl der Billigsparte
 			if (request.getParameter("selectbillig") != null) {
 				
-				spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Billig");
-				spieler[spiel.getAktuellerSpieler()].erforscheUhr("Billig");
-				System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Billig gewählt");
-				System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
+				if(spieler[spiel.getAktuellerSpieler()].getUhr()[0] == null){
+					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Billig");
+					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Billig");
+					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Billig");
+					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Billig gewählt");
+					System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
+				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
+				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
 				
 				// setzen des Spielerbildes sowie des aktuellen Kapitals
@@ -242,7 +252,7 @@ public class MyServlet extends HttpServlet {
 								
 						int anzahlUhren = spieler[spiel.getAktuellerSpieler()].getUhr().length;// Anzahl der erforschten Uhren
 					
-						for(int i=0; i<anzahlUhren; i++){
+						for(int i=0; i < anzahlUhren; i++){
 							if(spieler[spiel.getAktuellerSpieler()].getUhr()[i] != null){
 								
 								String segment = spieler[spiel.getAktuellerSpieler()].getUhr()[i].getSegment();
@@ -305,6 +315,7 @@ public class MyServlet extends HttpServlet {
 										request.setAttribute("m"+i+"cw3", Info.getUhrwerkPremium()[2]);
 										break;
 								}
+								System.out.println("Uhr " + i + " vorhanden und Bildschirmausgabe gesetzt");
 							}
 						}
 						
