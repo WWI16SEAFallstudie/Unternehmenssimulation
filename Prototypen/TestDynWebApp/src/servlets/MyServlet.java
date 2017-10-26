@@ -22,11 +22,8 @@ public class MyServlet extends HttpServlet {
 	/**
 	 * Initiierung der für das Spiel benötigten Instanzen
 	 */
-<<<<<<< HEAD
-	Spielbrett spiel = new Spielbrett(10,20000,0.6);
-=======
-	Spielbrett spiel = new Spielbrett(10,100000,0.1);
->>>>>>> 2fc4b23b930b600dfc24c438cbb66b6c458727da
+	 Spielbrett spiel = new Spielbrett(10,100000,0.1);
+
 	Unternehmen[] spieler;
 	// Markt markt = new Markt;
 	

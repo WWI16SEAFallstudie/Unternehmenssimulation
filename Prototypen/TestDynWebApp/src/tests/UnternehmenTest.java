@@ -132,7 +132,7 @@ public class UnternehmenTest {
 		
 		spieler[0].erforscheUhrwerk("Oeko"); 
 		
-		assertTrue("Uhrwerk wurde nicht erforscht", spieler[0].getFreigeschalteneAttrPremium()[2][1]);
+		assertTrue("Uhrwerk wurde nicht erforscht", spieler[0].getFreigeschalteneAttrOeko()[2][1]);
 	}
 	
 	@Test
@@ -146,7 +146,7 @@ public class UnternehmenTest {
 		
 		spieler[0].erforscheUhrwerk("Billig"); 
 		
-		assertTrue("Uhrwerk wurde nicht erforscht", spieler[0].getFreigeschalteneAttrPremium()[2][1]);
+		assertTrue("Uhrwerk wurde nicht erforscht", spieler[0].getFreigeschalteneAttrBillig()[2][1]);
 	}
 	
 	@Test
@@ -172,7 +172,7 @@ public class UnternehmenTest {
 		spieler[0].erforscheUhr("Oeko");
 		spieler[0].erforscheArmband("Oeko"); 
 		
-		assertTrue("Armband wurde nicht erforscht", spieler[0].getFreigeschalteneAttrPremium()[1][1]);
+		assertTrue("Armband wurde nicht erforscht", spieler[0].getFreigeschalteneAttrOeko()[1][1]);
 	}
 	
 	@Test
@@ -185,7 +185,7 @@ public class UnternehmenTest {
 		spieler[0].erforscheUhr("Billig");
 		spieler[0].erforscheArmband("Billig"); 
 		
-		assertTrue("Armband wurde nicht erforscht", spieler[0].getFreigeschalteneAttrPremium()[1][1]);
+		assertTrue("Armband wurde nicht erforscht", spieler[0].getFreigeschalteneAttrBillig()[1][1]);
 	}
 	
 	@Test
@@ -211,7 +211,7 @@ public class UnternehmenTest {
 		spieler[0].erforscheUhr("Oeko");
 		spieler[0].erforscheGehaeuse("Oeko"); 
 		
-		assertTrue("Gehäuse wurde nicht erforscht", spieler[0].getFreigeschalteneAttrPremium()[0][1]);
+		assertTrue("Gehäuse wurde nicht erforscht", spieler[0].getFreigeschalteneAttrOeko()[0][1]);
 	}
 	
 	@Test
@@ -224,21 +224,88 @@ public class UnternehmenTest {
 		spieler[0].erforscheUhr("Billig");
 		spieler[0].erforscheGehaeuse("Billig"); 
 		
-		assertTrue("Gehäuse wurde nicht erforscht", spieler[0].getFreigeschalteneAttrPremium()[0][1]);
+		assertTrue("Gehäuse wurde nicht erforscht", spieler[0].getFreigeschalteneAttrBillig()[0][1]);
 	}
 	
+//	@Test
+//	public void entwickleZweimalGehaeusePremiumTest() {
+//		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
+//		Unternehmen[] spieler;
+//		spielbrett.erstelleSpieler(1);
+//		spieler = spielbrett.getSpieler();
+//		spieler[0].freischaltenSegment("Premium");
+//		spieler[0].erforscheUhr("Premium");
+//		spieler[0].erforscheGehaeuse("Premium");
+//		spieler[0].erforscheGehaeuse("Premium");
+//		
+//		assertTrue("Gehäuse wurde nicht zweimal erforscht", spieler[0].getFreigeschalteneAttrPremium()[0][2]);
+//	}
+	
+	// kein Zugriff auf Index?
 	@Test
-	public void entwickleZweimalGehaeusePremiumTest() {
+	public void prodKostensenkungPremiumTest() {
 		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
 		Unternehmen[] spieler;
 		spielbrett.erstelleSpieler(1);
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Premium");
-		spieler[0].erforscheUhr("Premium");
-		spieler[0].erforscheGehaeuse("Premium");
-		spieler[0].erforscheGehaeuse("Premium");
 		
-		assertTrue("Gehäuse wurde nicht zweimal erforscht", spieler[0].getFreigeschalteneAttrPremium()[0][2]);
+		assertTrue("Produktionskosten wurden nicht gesenkt", spieler[0].senkeProdKosten("Premium"));
+	}
+	
+	@Test
+	public void prodKostensenkungOekoTest() {
+		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
+		Unternehmen[] spieler;
+		spielbrett.erstelleSpieler(1);
+		spieler = spielbrett.getSpieler();
+		spieler[0].freischaltenSegment("Oeko");
+		
+		assertTrue("Produktionskosten wurden nicht gesenkt", spieler[0].senkeProdKosten("Oeko"));
+	}
+	
+	@Test
+	public void prodKostensenkungBilligTest() {
+		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
+		Unternehmen[] spieler;
+		spielbrett.erstelleSpieler(1);
+		spieler = spielbrett.getSpieler();
+		spieler[0].freischaltenSegment("Billig");
+		
+		assertTrue("Produktionskosten wurden nicht gesenkt", spieler[0].senkeProdKosten("Billig"));
+	}
+	
+	@Test
+	public void erweitereEinkaufPremiumTest() {
+		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
+		Unternehmen[] spieler;
+		spielbrett.erstelleSpieler(1);
+		spieler = spielbrett.getSpieler();
+		spieler[0].freischaltenSegment("Premium");
+		
+		assertTrue("Einkauf wurde nicht erweitert", spieler[0].erweitereEinkauf("Premium"));
+	}
+	
+	@Test
+	public void erweitereEinkaufOekoTest() {
+		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
+		Unternehmen[] spieler;
+		spielbrett.erstelleSpieler(1);
+		spieler = spielbrett.getSpieler();
+		spieler[0].freischaltenSegment("Oeko");
+		
+		assertTrue("Einkauf wurde nicht erweitert", spieler[0].erweitereEinkauf("Oeko"));
+	}
+	
+	@Test
+	public void erweitereProduktionBilligTest() {
+		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
+		Unternehmen[] spieler;
+		spielbrett.erstelleSpieler(1);
+		spieler = spielbrett.getSpieler();
+		spieler[0].freischaltenSegment("Billig");
+		
+		assertTrue("Produktion wurde nicht erweitert", spieler[0].erweitereProduktion("Billig"));
 	}
 
 }
