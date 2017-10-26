@@ -1,4 +1,9 @@
 \clearpage
-\chapter{Programm-Tests}
-\section{Testarten}
+\chapter{Qualitätssicherung mittels JUnit-Tests}
+\section{Vorgehensweise}
+Zunächst wurde die Funktionalität der Methoden der Unternehmenssimulation anhand einfacher Konsolenausgaben durch die Entwickler unseres Teams getestet. Diese Art der Tests kann als Entwicklertest eingestuft werden. Die Entwicklertests werden in der Regel vom Entwickler selbst durchgeführt und dienen zur Überprüfung von Zwischenergebnissen und einzelnen Codezeilen. \par
+Nachdem die Funktionalität der Methoden überprüft und gegebenenfalls angepasst wurde, konnte mit dem Schreiben von JUnit-Tests begonnen werden. Unit-Tests, auch Modultests genannt, überprüfen einzelne isolierte Komponenten wie beispielsweise Methoden. Dadurch ist es möglich, Fehler schnell und einfach zu erkennen. Eine Änderung muss oft nur an einer Stelle vorgenommen werden, da die Methoden unabhängig voneinander sein sollen. Da sich in umserem Projekt viele Methoden aufeinander aufbauen, war es nicht möglich, alle Methoden isoliert zu testen. Es existiert jedoch immer ein Test, der zunächst die Grundlage testet, zum Beispiel einen Spieler zu erstellen. Diese Methode wird dann in nachfolgenden Tests erneut aufgerufen, um eine logische Einheit abbilden zu können. Das Testen einer sinnvollen Einheit ist uns wichtiger, als ein isoliertes Detail zu testen, das aber in dieser Form kein Mehrwert bringt.
+
+%% Codebeispiel (erforsche Uhr)? zum verdeutlichen vom aufeinander aufbauen
+
 \section{Testergebnisse}
