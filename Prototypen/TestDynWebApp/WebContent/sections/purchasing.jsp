@@ -1,7 +1,7 @@
 	    <div id="menu4" class="tab-pane fade">
 	      	<div class="row">
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch1" class="card umwelt ${purchasingO}">
+					<div id="purO" class="card umwelt ${purchasingO}">
 						<h4>Umwelt</h4>
 						<p></p>
 						<span class="listhead">Verbesserung</span>
@@ -18,7 +18,7 @@
 				</div>
 				
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch2" class="card luxus ${purchasingL}">
+					<div id="purL" class="card luxus ${purchasingL}">
 						<h4>Luxus</h4>
 						<p></p>
 						<span class="listhead">Verbesserung</span>
@@ -35,7 +35,7 @@
 				</div>
 				
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch3" class="card preisbewusst ${purchasingB}">
+					<div id="purB" class="card preisbewusst ${purchasingB}">
 						<h4>Gro&szlig;serienfertigung</h4>
 						<p></p>
 						<span class="listhead">Verbesserung</span>				

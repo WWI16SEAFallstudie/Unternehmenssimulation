@@ -138,8 +138,7 @@
 	}
 	
 	.card-aktive{
-		background-color: rgba(79, 132, 196, 0.15);
-		background-color: white!important;
+		background-color: white;
 	}
 	
 	.card-aktive .segment.addBtn{
@@ -173,11 +172,11 @@
 		display: none;
 	}
 	
-	.list-group-item>span{
+	.list-group-item>span.glyphicon-ok{
 		display: none;
 	}
 	
-	.selected>span, .done>span{
+	.selected>span, .done>span.glyphicon-ok{
 		display:initial;
 	}
 	

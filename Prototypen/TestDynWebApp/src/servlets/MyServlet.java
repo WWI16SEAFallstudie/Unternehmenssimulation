@@ -244,6 +244,7 @@ public class MyServlet extends HttpServlet {
 					
 						for(int i=0; i<anzahlUhren; i++){
 							if(spieler[spiel.getAktuellerSpieler()].getUhr()[i] != null){
+								
 								String segment = spieler[spiel.getAktuellerSpieler()].getUhr()[i].getSegment();
 								switch(segment) {
 									case "Billig":
@@ -345,6 +346,7 @@ public class MyServlet extends HttpServlet {
 		for(int i = 0; i < anzahlUhren; i++){
 			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
 			if(spieler[spiel.getAktuellerSpieler()].getUhr()[i] != null){
+				request.setAttribute("watch"+i, "card-aktive");
 				String[] item = {"c","b","cw"};
 				for(int j = 0; j <=2; j++){
 					
@@ -375,7 +377,7 @@ public class MyServlet extends HttpServlet {
 									
 					}
 				}
-			}
+			}else request.setAttribute("watch"+i, "card-inaktive");
 		}
 	}
 	

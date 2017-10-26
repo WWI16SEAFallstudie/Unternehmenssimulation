@@ -12,7 +12,7 @@
 			clM0c1 = Class Modell 1 Case 1	
 			 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch1" class="card card-aktive">
+					<div id="watch1" class="card ${watch0}">
 						<h4>Modell 1</h4>
 						<p>Produktlinie: ${m0s}</p>
 						<span class="listhead">Geh&auml;use</span>				
@@ -45,7 +45,7 @@
 				
 				<!-- Uhr Modell 2 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch2" class="card card-inaktive">
+					<div id="watch2" class="card ${watch1}">
 						<h4>Modell 2</h4>
 						<a class="segment addBtn" onclick="researchModel('watch2','researchModel2');">Freischalten 100.000 &euro;</a>
 						<p>Produktlinie: ${m1s}</p>
@@ -83,7 +83,7 @@
 				
 				<!-- Uhr Modell 3 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch3" class="card card-inaktive">
+					<div id="watch3" class="card ${watch2}">
 						<h4>Modell 3</h4>
 						<a class="segment addBtn" onclick="researchModel('watch3','researchModel3');">Freischalten 100.000 &euro;</a>
 						<p>Produktlinie: ${m2s}</p>

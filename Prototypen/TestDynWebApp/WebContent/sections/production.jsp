@@ -1,7 +1,7 @@
 	    <div id="menu3" class="tab-pane fade">
 	      	<div class="row">
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch1" class="card umwelt ${productionO}">
+					<div id="productionO" class="card umwelt ${productionO}">
 					<h4>Umwelt</h4>
 					<p></p>
 					<span class="listhead">Produktionskostensenkung</span>
@@ -22,7 +22,6 @@
 					
 					<ul class="list-group">
 						<li class="list-group-item">Produktionslimit <span class="productionLimit">3000</span></li>
-						<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
 					</ul>
 					<div class="overlay">
 						<div class="ol-text">nicht verf&uuml;gbar</div>
@@ -31,7 +30,7 @@
 				</div>
 				
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch2" class="card luxus ${productionL}">
+					<div id="productionL" class="card luxus ${productionL}">
 					<h4>Luxus</h4>
 					<p></p>
 					<span class="listhead">Produktionskostensenkung</span>
@@ -52,7 +51,6 @@
 					
 					<ul class="list-group">
 						<li class="list-group-item">Produktionslimit <span class="productionLimit">900</span></li>
-						<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
 					</ul>
 					<div class="overlay">
 						<div class="ol-text">nicht verf&uuml;gbar</div>
@@ -61,7 +59,7 @@
 				</div>
 				
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch3" class="card preisbewusst ${productionB}">
+					<div id="productionB" class="card preisbewusst ${productionB}">
 						<h4>Gro&szlig;serienfertigung</h4>
 						<p></p>
 						<span class="listhead">Produktionskostensenkung</span>				
@@ -82,11 +80,64 @@
 						
 						<ul class="list-group">
 							<li class="list-group-item">Produktionslimit <span class="productionLimit"></span></li>
-							<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
 						</ul>
 						<div class="overlay">
 							<div class="ol-text">nicht verf&uuml;gbar</div>
 						</div>			
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+			
+				<!-- Uhr Modell 1 -->
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch1" class="card ${watch0}">
+						<h4>Modell 1</h4>
+						<input type="hidden" id="usedClockWork1" name="usedClockWork1">
+						<ul class="list-group">
+							<li class="list-group-item">Vorrat <span class="stock"></span></li>
+							<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
+							<li class="list-group-item">Einkaufspreis/St&uuml;ck: <span class="ekVal">220 &euro;</span></li>							
+							<li class="list-group-item">Produktionskosten <span id="prodCost0" class=""></span></li>
+						</ul>
+						<div class="overlay">
+							<div class="ol-text">nicht verf&uuml;gbar</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Uhr Modell 2 -->
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch1" class="card ${watch1}">
+						<h4>Modell 2</h4>
+						<input type="hidden" id="usedClockWork1" name="usedClockWork1">
+						<ul class="list-group">
+							<li class="list-group-item">Vorrat <span class="stock"></span></li>
+							<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
+							<li class="list-group-item">Einkaufspreis/St&uuml;ck: <span class="ekVal">220 &euro;</span></li>							
+							<li class="list-group-item">Produktionskosten <span id="prodCost0" class=""></span></li>
+						</ul>
+						<div class="overlay">
+							<div class="ol-text">nicht verf&uuml;gbar</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Uhr Modell 3 -->
+				<div class="col-sm-4 col-md-4 col-lg-4">
+					<div id="watch1" class="card ${watch2}">
+						<h4>Modell 3</h4>
+						<input type="hidden" id="usedClockWork1" name="usedClockWork1">
+						<ul class="list-group">
+							<li class="list-group-item">Vorrat <span class="stock"></span></li>
+							<li class="list-group-item">Produktionsmenge <span class="numProduction"></span></li>
+							<li class="list-group-item">Einkaufspreis/St&uuml;ck: <span class="ekVal">220 &euro;</span></li>							
+							<li class="list-group-item">Produktionskosten <span id="prodCost0" class=""></span></li>
+						</ul>
+						<div class="overlay">
+							<div class="ol-text">nicht verf&uuml;gbar</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -23,7 +23,7 @@
 			</div>
 	      	<div class="row">
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch1" class="card card-aktive">
+					<div id="watch1" class="card ${watch0}">
 					<h4>Modell 1</h4>
 					<ul class="list-group">
 						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
@@ -34,31 +34,31 @@
 					</div>
 				</div>
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch2" class="card card-inaktive">
+					<div id="watch2" class="card ${watch1}">
 					<h4>Modell 2</h4>
 					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="list-group-item">Punkt 2</li>
-						<li class="list-group-item">Punkt 3</li>
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 10.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 10.000 &euro;</a></li>
 					</ul>
 					<input type="hidden" id="marketingClock2" name="marketingClock2">
-					<div id="overlay">
-							<div id="ol-text">nicht verf&uuml;gbar</div>
-						</div>
+					<div class="overlay">
+						<div class="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 					</div>
 				</div>
 				<div class="col-sm-4 col-md-4 col-lg-4">
-					<div id="watch3" class="card card-inaktive">
+					<div id="watch3" class="card ${watch2}">
 					<h4>Modell 3</h4>
 					<ul class="list-group">
-						<li class="list-group-item">Punkt 1</li>
-						<li class="list-group-item">Punkt 2</li>
-						<li class="list-group-item">Punkt 3</li>
+						<li class="list-group-item">Punkt 1 <a class="addBtn">+ 10.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 10.000 &euro;</a></li>
+						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 10.000 &euro;</a></li>
 					</ul>
 					<input type="hidden" id="marketingClock3" name="marketingClock3">
-					<div id="overlay">
-							<div id="ol-text">nicht verf&uuml;gbar</div>
-						</div>
+					<div class="overlay">
+						<div class="ol-text">nicht verf&uuml;gbar</div>
+					</div>
 					</div>
 				</div>
 			</div>
