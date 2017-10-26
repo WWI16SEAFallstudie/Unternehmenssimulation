@@ -22,10 +22,8 @@ public class MyServlet extends HttpServlet {
 	/**
 	 * Initiierung der für das Spiel benötigten Instanzen
 	 */
-	 Spielbrett spiel = new Spielbrett(10,100000,0.1);
-
+	Spielbrett spiel = new Spielbrett(10, 100000, 0.2);
 	Unternehmen[] spieler;
-	// Markt markt = new Markt;
 	
 	private static final long serialVersionUID = 1L;
        
@@ -96,6 +94,7 @@ public class MyServlet extends HttpServlet {
 				
 				setClockClass(request, response);
 				setFEOptions(request, response);
+				setProductionOptions(request, response);
 				
 				dispatcher.forward(request, response);
 			}
@@ -133,6 +132,7 @@ public class MyServlet extends HttpServlet {
 				
 				setClockClass(request, response);
 				setFEOptions(request, response);
+				setProductionOptions(request, response);
 				
 				dispatcher.forward(request, response);
 			}
@@ -170,6 +170,7 @@ public class MyServlet extends HttpServlet {
 				
 				setClockClass(request, response);
 				setFEOptions(request, response);
+				setProductionOptions(request, response);
 				
 				dispatcher.forward(request, response);
 			}
@@ -314,13 +315,12 @@ public class MyServlet extends HttpServlet {
 						
 						setClockClass(request, response);
 						
-						System.out.println("test");
 						
-						// setzen der getätigten Auswahl für F&E
-						
+						// setzen der getätigten Auswahl für F&E						
 						setFEOptions(request, response);
 						
 						// setzen der getätigten Auswahl für Produktion
+						setProductionOptions(request, response);
 						
 						// setzen der getätigten Auswahl für Einkauf
 						
@@ -338,52 +338,141 @@ public class MyServlet extends HttpServlet {
 				
 	}// doPost
 	
-	protected void setClockClass(HttpServletRequest request, HttpServletResponse response){
+	private void setClockClass(HttpServletRequest request, HttpServletResponse response){
 		
 		int anzahlUhren = spieler[spiel.getAktuellerSpieler()].getUhr().length;// Anzahl der erforschten Uhren
 		
 		for(int i = 0; i < anzahlUhren; i++){
-			System.out.println("i=" + i);
 			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
 			if(spieler[spiel.getAktuellerSpieler()].getUhr()[i] != null){
 				String[] item = {"c","b","cw"};
 				for(int j = 0; j <=2; j++){
-					System.out.println("j=" + j);
+					
+					if(spieler[spiel.getAktuellerSpieler()].getUhr()[i].getGehaeuse() == j)							
+						request.setAttribute("clM"+i+"c"+j, "selected");
+					if(spieler[spiel.getAktuellerSpieler()].getUhr()[i].getUhrwerk() == j)							
+						request.setAttribute("clM"+i+"cw"+j, "selected");
+					if(spieler[spiel.getAktuellerSpieler()].getUhr()[i].getArmband() == j)							
+						request.setAttribute("clM"+i+"b"+j, "selected");
+					
 					for(int k = 0; k <= 2; k++){
-						System.out.println("k=" + k);
-						if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrBillig()[j][k]  == false)
-							request.setAttribute("clM"+i+item[j]+k, "notAvailable");
-						if(spieler[spiel.getAktuellerSpieler()].getUhr()[i].getGehaeuse() == k)							
-							request.setAttribute("clM"+i+item[j]+k, "selected");
+						String segment = spieler[spiel.getAktuellerSpieler()].getUhr()[i].getSegment();
 						
+						switch(segment){
+						case "Billig":
+							if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrBillig()[j][k] == false)
+								request.setAttribute("clM"+i+item[j]+k, "notAvailable");
+							break;
+						case "Oeko":
+							if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrOeko()[j][k] == false)
+								request.setAttribute("clM"+i+item[j]+k, "notAvailable");
+							break;
+						case "Premium":
+							if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrPremium()[j][k] == false)
+								request.setAttribute("clM"+i+item[j]+k, "notAvailable");
+							break;
+						}
+									
 					}
 				}
 			}
 		}
 	}
 	
+	private void setFEOptions(HttpServletRequest request, HttpServletResponse response){
+			
+			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke des Segmentes Billig
+			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[0] == true){
+				request.setAttribute("researchB", "card-aktive");
+				String[] item = {"c","b","cw"};
+				for(int j = 0; j <=2; j++){
+					for(int k = 0; k <= 2; k++){						
+						if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrBillig()[j][k] == true)
+							request.setAttribute("clB"+item[j]+k, "done");
+						if(k== 2 && spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrBillig()[j][1] == false)
+							request.setAttribute("addB"+item[j]+k, "notAvailable");
+					}
+				}
+			}else request.setAttribute("researchB", "card-inaktive");
+			
+			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke des Segmentes Oeko
+			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[1] == true){
+				request.setAttribute("researchO", "card-aktive");
+				String[] item = {"c","b","cw"};
+				for(int j = 0; j <=2; j++){
+					for(int k = 0; k <= 2; k++){						
+						if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrOeko()[j][k] == true)
+							request.setAttribute("clO"+item[j]+k, "done");
+						if(k== 2 && spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrOeko()[j][1] == false)
+							request.setAttribute("addO"+item[j]+k, "notAvailable");
+					}
+				}
+			}else request.setAttribute("researchO", "card-inaktive");
+			
+			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke des Segmentes Luxus
+			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[2] == true){
+				request.setAttribute("researchL", "card-aktive");
+				String[] item = {"c","b","cw"};
+				for(int j = 0; j <=2; j++){
+					for(int k = 0; k <= 2; k++){						
+						if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrPremium()[j][k] == true)
+							request.setAttribute("clL"+item[j]+k, "done");
+						if(k== 2 && spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrPremium()[j][1] == false)
+							request.setAttribute("addL"+item[j]+k, "notAvailable");
+					}
+				}
+			}else request.setAttribute("researchL", "card-inaktive");
+	}
 	
-	protected void setFEOptions(HttpServletRequest request, HttpServletResponse response){
-		
-		int anzahlUhren = spieler[spiel.getAktuellerSpieler()].getUhr().length;// Anzahl der erforschten Uhren
-		// clOb0  clM2b0
-		for(int i = 0; i < anzahlUhren; i++){		
+	// setzen der möglichen und freigeshcaltenen Produktionserweiterungen
+	private void setProductionOptions(HttpServletRequest request, HttpServletResponse response){
+
+		for(int i = 0; i < 3; i++){		
 			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
 			String[] seg = {"B","O","L"};
 			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[i] == true){
-				request.setAttribute("research"+seg[i], "card-aktive");
-				System.out.println("Segment " + i + " ist freigeschalten");
-				String[] item = {"c","b","cw"};
-				for(int j = 0; j <=2; j++){
-					System.out.println("j=" + j);
+				request.setAttribute("production"+seg[i], "card-aktive");
 					for(int k = 0; k <= 2; k++){
-						System.out.println("k=" + k);						
-						if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrBillig()[j][k]  == true)
-							request.setAttribute("cl"+seg[i]+item[j]+k, "done");System.out.println("cl"+seg[i]+item[j]+k);
+						switch(i){
+							case 0:
+								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßeBillig()[k] == true)
+									request.setAttribute("prdBcr"+k, "done");
+								if(k >0  && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßeBillig()[k-1] == false)
+									request.setAttribute("addPrBcr"+k, "notAvailable");
+								
+								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStraßeBillig()[k] == true)
+									request.setAttribute("prdBce"+k, "done");
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStraßeBillig()[k-1] == false)
+									request.setAttribute("addPrBce"+k, "notAvailable");
+							break;
+							
+							case 1:
+								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßeOeko()[k] == true)
+									request.setAttribute("prdOcr"+k, "done");
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßeOeko()[k-1] == false)
+									request.setAttribute("addPr"+seg[i]+"cr"+k, "notAvailable");
+								
+								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStraßeOeko()[k] == true)
+									request.setAttribute("prdOce"+k, "done");
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStraßeOeko()[k-1] == false)
+									request.setAttribute("addPrOce"+k, "notAvailable");
+							break;
+							
+							case 2:
+								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßePremium()[k] == true)
+									request.setAttribute("prdLcr"+k, "done");
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßePremium()[k-1] == false)
+									request.setAttribute("addPrLcr"+k, "notAvailable");
+								
+								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStraßePremium()[k] == true)
+									request.setAttribute("prdLce"+k, "done");
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStraßePremium()[k-1] == false)
+									request.setAttribute("addPrLce"+k, "notAvailable");
+							break;
+						}
 					}
-				}
 			}
-			else request.setAttribute("research"+seg[i], "card-inaktive");
+			else request.setAttribute("production"+seg[i], "card-inaktive");
 		}
 	}
 	
