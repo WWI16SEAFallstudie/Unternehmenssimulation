@@ -92,9 +92,7 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("m0cw2", Info.getUhrwerkOeko()[1]);
 				request.setAttribute("m0cw3", Info.getUhrwerkOeko()[2]);
 				
-				setClockClass(request, response);
-				setFEOptions(request, response);
-				setProductionOptions(request, response);
+				setValuesOnUI(request, response);
 				
 				dispatcher.forward(request, response);
 			}
@@ -130,9 +128,7 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("m0cw2", Info.getUhrwerkPremium()[1]);
 				request.setAttribute("m0cw3", Info.getUhrwerkPremium()[2]);
 				
-				setClockClass(request, response);
-				setFEOptions(request, response);
-				setProductionOptions(request, response);
+				setValuesOnUI(request, response);
 				
 				dispatcher.forward(request, response);
 			}
@@ -168,9 +164,7 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("m0cw2", Info.getUhrwerkOeko()[1]);
 				request.setAttribute("m0cw3", Info.getUhrwerkOeko()[2]);
 				
-				setClockClass(request, response);
-				setFEOptions(request, response);
-				setProductionOptions(request, response);
+				setValuesOnUI(request, response);
 				
 				dispatcher.forward(request, response);
 			}
@@ -313,20 +307,9 @@ public class MyServlet extends HttpServlet {
 							}
 						}
 						
-						setClockClass(request, response);
+						setValuesOnUI(request, response);
 						
 						
-						// setzen der getätigten Auswahl für F&E						
-						setFEOptions(request, response);
-						
-						// setzen der getätigten Auswahl für Produktion
-						setProductionOptions(request, response);
-						
-						// setzen der getätigten Auswahl für Einkauf
-						
-						// setzen der getätigten Auswahl für Vertrieb
-						
-						// setzen der getätigten Auswahl für Marketing
 						
 						//spieler[spiel.getAktuellerSpieler()].
 						
@@ -337,6 +320,23 @@ public class MyServlet extends HttpServlet {
 				}
 				
 	}// doPost
+	
+	private void setValuesOnUI(HttpServletRequest request, HttpServletResponse response){
+		setClockClass(request, response);
+		
+		
+		// setzen der getätigten Auswahl für F&E						
+		setFEOptions(request, response);
+		
+		// setzen der getätigten Auswahl für Produktion
+		setProductionOptions(request, response);
+		
+		// setzen der getätigten Auswahl für Einkauf
+		setPurchasingOptions(request, response);
+		// setzen der getätigten Auswahl für Vertrieb
+		
+		// setzen der getätigten Auswahl für Marketing
+	}
 	
 	private void setClockClass(HttpServletRequest request, HttpServletResponse response){
 		
@@ -424,11 +424,11 @@ public class MyServlet extends HttpServlet {
 			}else request.setAttribute("researchL", "card-inaktive");
 	}
 	
-	// setzen der möglichen und freigeshcaltenen Produktionserweiterungen
+	// setzen der möglichen und freigeschaltenen Produktionserweiterungen
 	private void setProductionOptions(HttpServletRequest request, HttpServletResponse response){
 
 		for(int i = 0; i < 3; i++){		
-			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
+
 			String[] seg = {"B","O","L"};
 			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[i] == true){
 				request.setAttribute("production"+seg[i], "card-aktive");
@@ -473,6 +473,46 @@ public class MyServlet extends HttpServlet {
 					}
 			}
 			else request.setAttribute("production"+seg[i], "card-inaktive");
+		}
+	}
+	
+	// setzen der möglichen und freigeschaltenen Produktionserweiterungen
+	private void setPurchasingOptions(HttpServletRequest request, HttpServletResponse response){
+
+		for(int i = 0; i < 3; i++){		
+
+			String[] seg = {"B","O","L"};
+			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[i] == true){
+				request.setAttribute("purchasing"+seg[i], "card-aktive");
+					for(int k = 0; k <= 2; k++){
+						switch(i){
+							case 0:
+								if(spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufBillig()[k] == true)
+									request.setAttribute("purB"+k, "done");
+								if(k >0  && spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufBillig()[k-1] == false)
+									request.setAttribute("addPurB"+k, "notAvailable");
+								
+							break;
+							
+							case 1:
+								if(spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufOeko()[k] == true)
+									request.setAttribute("purO"+k, "done");
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufOeko()[k-1] == false)
+									request.setAttribute("addPurO"+seg[i]+"cr"+k, "notAvailable");
+								
+							break;
+							
+							case 2:
+								if(spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufPremium()[k] == true)
+									request.setAttribute("purL"+k, "done");
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufPremium()[k-1] == false)
+									request.setAttribute("addPurL"+k, "notAvailable");
+								
+							break;
+						}
+					}
+			}
+			else request.setAttribute("purchasing"+seg[i], "card-inaktive");
 		}
 	}
 	
