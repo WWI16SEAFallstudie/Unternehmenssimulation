@@ -142,22 +142,18 @@ public class Unternehmen {
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Uhrwerk erforscht werden soll
 	 */
-	public void erforscheUhrwerk(int uhr) {
-		if(this.uhr[uhr] != null) {
-			String segment = this.uhr[uhr].getSegment();
-					
-			switch (segment) {
-				case "Billig":
-					freigeschalteneAttrBillig = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 1);
-					break;
-				case "Oeko":
-					freigeschalteneAttrOeko = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrOeko, 1);				
-					break;
-				case "Premium":
-					freigeschalteneAttrPremium = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrPremium, 1);
-					break;
-			}	
-		}
+	public void erforscheUhrwerk(String segment) {
+		switch (segment) {
+			case "Billig":
+				freigeschalteneAttrBillig = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 1);
+				break;
+			case "Oeko":
+				freigeschalteneAttrOeko = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrOeko, 1);				
+				break;
+			case "Premium":
+				freigeschalteneAttrPremium = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrPremium, 1);
+				break;
+		}	
 	}
 	
 	/**
@@ -170,27 +166,18 @@ public class Unternehmen {
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Armband erforscht werden soll
 	 */
-	public void erforscheArmband(int uhr) {
-		if(this.uhr[uhr] != null) {
-			String segment = this.uhr[uhr].getSegment();
-			switch (segment) {
-				case "Billig":
-					freigeschalteneAttrBillig = Uhrmodell.entwickleArmband(freigeschalteneAttrBillig, 1);
-					break;
-				case "Oeko":
-					freigeschalteneAttrOeko = Uhrmodell.entwickleArmband(freigeschalteneAttrOeko, 1);				
-					break;
-				case "Premium":
-					freigeschalteneAttrPremium = Uhrmodell.entwickleArmband(freigeschalteneAttrPremium, 1);
-					break;
-			}	
-		}
-		
-		
-		// **ALT
-		/*
-		if(this.uhr[uhr] != null)
-			this.uhr[uhr].entwickleArmband(); */
+	public void erforscheArmband(String segment) {
+		switch (segment) {
+			case "Billig":
+				freigeschalteneAttrBillig = Uhrmodell.entwickleArmband(freigeschalteneAttrBillig, 1);
+				break;
+			case "Oeko":
+				freigeschalteneAttrOeko = Uhrmodell.entwickleArmband(freigeschalteneAttrOeko, 1);				
+				break;
+			case "Premium":
+				freigeschalteneAttrPremium = Uhrmodell.entwickleArmband(freigeschalteneAttrPremium, 1);
+				break;
+		}	
 	}
 	
 	/**
@@ -203,27 +190,18 @@ public class Unternehmen {
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Gehäuse erforscht werden soll
 	 */
-	public void erforscheGehaeuse(int uhr) {
-		if(this.uhr[uhr] != null) {
-			String segment = this.uhr[uhr].getSegment();
-			
-			switch (segment) {
-				case "Billig":
-					freigeschalteneAttrBillig = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrBillig, 1);
-					break;
-				case "Oeko":
-					freigeschalteneAttrOeko = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrOeko, 1);				
-					break;
-				case "Premium":
-					freigeschalteneAttrPremium = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrPremium, 1);
-					break;
-			}	
-		}
-		
-		// **ALT
-		/*
-		if(this.uhr[uhr] != null)
-			this.uhr[uhr].entwickleGehause();*/
+	public void erforscheGehaeuse(String segment) {
+		switch (segment) {
+			case "Billig":
+				freigeschalteneAttrBillig = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrBillig, 1);
+				break;
+			case "Oeko":
+				freigeschalteneAttrOeko = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrOeko, 1);				
+				break;
+			case "Premium":
+				freigeschalteneAttrPremium = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrPremium, 1);
+				break;
+		}	
 	}
 	
 	
@@ -405,7 +383,19 @@ public class Unternehmen {
 		}
 	}
 	
-	public int bieteUhren(int menge, int uhr) {	
+//	public int bieteUhren(int menge, int uhr) {	
+//		int m = -1;
+//		if(menge <= this.getBestandUhr(uhr)) {
+//			m = menge;
+//			this.uhr[uhr].setAngeboteneMenge(menge);
+//		} else {
+//			m = this.getBestandUhr(uhr);
+//			this.uhr[uhr].setAngeboteneMenge(this.getBestandUhr(uhr));
+//		}
+//		return m;
+//	}
+	
+	public int bieteUhren(int menge, int uhr, int preis) {	
 		int m = -1;
 		if(menge <= this.getBestandUhr(uhr)) {
 			m = menge;
@@ -414,6 +404,7 @@ public class Unternehmen {
 			m = this.getBestandUhr(uhr);
 			this.uhr[uhr].setAngeboteneMenge(this.getBestandUhr(uhr));
 		}
+		this.uhr[uhr].setAngebotspreis(preis);
 		return m;
 	}
 	
@@ -614,8 +605,14 @@ public class Unternehmen {
 	 * Getter / Setter
 	 */
 	
+	
+	
 	public boolean[] getProdStraßeBillig() {
 		return this.prodStraßeBillig;
+	}
+
+	public iUhrenkategorie[] getUhr() {
+		return uhr;
 	}
 
 	public boolean[] getProdStraßeOeko() {
@@ -698,6 +695,30 @@ public class Unternehmen {
 		return this.freieSegmenteAllgemein;
 	}
 	
+	public boolean[][] getFreigeschalteneAttrBillig() {
+		return freigeschalteneAttrBillig;
+	}
+
+	public void setFreigeschalteneAttrBillig(boolean[][] freigeschalteneAttrBillig) {
+		this.freigeschalteneAttrBillig = freigeschalteneAttrBillig;
+	}
+
+	public boolean[][] getFreigeschalteneAttrOeko() {
+		return freigeschalteneAttrOeko;
+	}
+
+	public void setFreigeschalteneAttrOeko(boolean[][] freigeschalteneAttrOeko) {
+		this.freigeschalteneAttrOeko = freigeschalteneAttrOeko;
+	}
+
+	public boolean[][] getFreigeschalteneAttrPremium() {
+		return freigeschalteneAttrPremium;
+	}
+
+	public void setFreigeschalteneAttrPremium(boolean[][] freigeschalteneAttrPremium) {
+		this.freigeschalteneAttrPremium = freigeschalteneAttrPremium;
+	}
+
 	public int getProduktionslimitBillig() {
 		return produktionslimitBillig;
 	}

@@ -13,6 +13,12 @@ public interface iUhrenkategorie {
 	public void entwickleGehause();
 	--> Wird im Unternehmen gemacht*/
 	
+	public void verkaufen();
+	
+	public int getAbnahmepotential();
+	
+	public double getAbnahmequote();
+	
 	public void uhrMarketingstrategie();
 	
 	public void setSpielerDaten(int armband, int gehaeuse, int uhrwerk);
@@ -31,8 +37,19 @@ public interface iUhrenkategorie {
 	
 	public void setAbgenommeneMenge(int menge);
 	
+	public int getAbgenommeneMenge();
+	
 	public void setBestand(int menge);
 	
 	public int getBestand();
 	
+	public double getAngebotspreis();
+	
+	public void setAngebotspreis(double angebotspreis);
+	
+	public double getMarketingboost();
+	
+	public void setMarketingboost(double marketingboost);
+	
+	public void setScore(int score);
 }

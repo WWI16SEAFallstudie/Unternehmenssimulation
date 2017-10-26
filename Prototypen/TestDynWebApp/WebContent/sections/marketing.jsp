@@ -8,6 +8,7 @@
 							<li class="list-group-item">Punkt 2 <a class="addBtn">+ 10.000 &euro;</a></li>
 							<li class="list-group-item">Punkt 3 <a class="addBtn">+ 10.000 &euro;</a></li>
 						</ul>
+						<input type="hidden" id="marketingCompany" name="marketingCompany">
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-6 col-lg-6">
@@ -29,6 +30,7 @@
 						<li class="list-group-item">Punkt 2 <a class="addBtn">+ 10.000 &euro;</a></li>
 						<li class="list-group-item">Punkt 3 <a class="addBtn">+ 10.000 &euro;</a></li>
 					</ul>
+					<input type="hidden" id="marketingClock1" name="marketingClock1">
 					</div>
 				</div>
 				<div class="col-sm-4 col-md-4 col-lg-4">
@@ -39,6 +41,7 @@
 						<li class="list-group-item">Punkt 2</li>
 						<li class="list-group-item">Punkt 3</li>
 					</ul>
+					<input type="hidden" id="marketingClock2" name="marketingClock2">
 					<div id="overlay">
 							<div id="ol-text">nicht verf&uuml;gbar</div>
 						</div>
@@ -52,6 +55,7 @@
 						<li class="list-group-item">Punkt 2</li>
 						<li class="list-group-item">Punkt 3</li>
 					</ul>
+					<input type="hidden" id="marketingClock3" name="marketingClock3">
 					<div id="overlay">
 							<div id="ol-text">nicht verf&uuml;gbar</div>
 						</div>

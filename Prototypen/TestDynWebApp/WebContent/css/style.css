@@ -28,10 +28,6 @@
 	.addBtn, .card .glyphicon, .ekVal, .vkVal, .numProduction, .verkauf, .productionLimit{
 		float: right;
 	}
-
-	.glyphicon-ok{
-		color: #92B558;
-	}
 	
 	.glyphicon-plus{
 		color: #599A59;
@@ -39,6 +35,7 @@
 	
 	.glyphicon-ok{
 		color: #92B558;
+		
 	}
 	
 	.glyphicon-remove{
@@ -94,6 +91,7 @@
 	.card li{
 		padding-top: 7px;
 		padding-bottom: 7px;
+		min-height: 35px;
 	}
 	
 	.card li>button{
@@ -148,6 +146,14 @@
 		display: none;
 	}
 	
+	.card-aktive .overlay{
+		display: none;
+	}
+	
+	.done>.addBtn{
+		display: none;
+	}
+	
 	/* Inaktive und gesperrte Elemente der Card-Divs */
 	
 	a.addBtn.notAvailable{
@@ -159,17 +165,24 @@
 		cursor: not-allowed!important;
 	}
 	
+	.card-inaktive .overlay{
+		display: block;
+	}
+	
+	.card-inaktive li>.addBtn{
+		display: none;
+	}
+	
 	.list-group-item>span{
 		display: none;
 	}
 	
-	.selected>span{
+	.selected>span, .done>span{
 		display:initial;
 	}
 	
-	#overlay {
+	.overlay {
 	    position: static;
-	    display: block;
 	    width: 100%;
 	    height: 100%;
 	    top: 0;
@@ -179,7 +192,7 @@
 	    z-index: 2;
 	}
 	
-	#ol-text{
+	.ol-text{
 		margin: 8px;
 		padding: 10px 25px;
 	    position: absolute;
@@ -317,6 +330,12 @@
 /* Produkte */
 #menu1 li{
 	cursor: pointer;
+}
+
+/* F&E */
+
+li.done>.glyphicon-ok{
+	
 }
 
 /* Marketing */
