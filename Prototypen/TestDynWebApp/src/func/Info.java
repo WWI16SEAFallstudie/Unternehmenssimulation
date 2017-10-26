@@ -56,20 +56,25 @@ public class Info {
 	private static double scoreGehaeusePremium[] = { 0.1, 0.2, 0.3 };
 	private static double scoreArmbandPremium[] = { 0.1, 0.2, 0.3 };
 	
-	// Produktion - Kosten pro erweiterung um ... senken
-	private static double erweiterungMaschineBillig[] = { 0.1, 0.2, 0.3 };
-	private static double erweiterungMaschineOeko[] = { 0.1, 0.2, 0.3 };
-	private static double erweiterungMaschinePremium[] = { 0.1, 0.2, 0.3 };
-	
+	// Produktion - Kosten pro erweiterung um ... senken	
 	private static double erweitereKapazit‰tBillig[] = { 0.1, 0.2, 0.3 };
 	private static double erweitereKapazit‰tOeko[] = { 0.1, 0.2, 0.3 };
 	private static double erweitereKapazit‰tPremium[] = { 0.1, 0.2, 0.3 };
+	
+	private static double senkeProdKostenStraﬂeBillig[] = { 0.1, 0.2, 0.3 };
+	private static double senkeProdKostenStraﬂeOeko[] = { 0.1, 0.2, 0.3 };
+	private static double senkeProdKostenStraﬂePremium[] = { 0.1, 0.2, 0.3 };
 	
 	// Einkauf - kosten senken
 	
 	private static double rabatteEinkaufBillig[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufOeko[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufPremium[] = { 0.1, 0.2, 0.3 };
+	
+	// Selbstkosten
+	private static int selbstkostenBillig[] = {10, 20, 30};
+	private static int selbstkostenOeko[] = {10, 20, 30};
+	private static int selbstkostenPremium[] = {10, 20, 30};
 	
 	// Getter & Setter
 	public static String[] getUhrwerkOeko() {
@@ -189,15 +194,6 @@ public class Info {
 	public static double[] getScoreArmbandPremium() {
 		return scoreArmbandPremium;
 	}
-	public static double[] getErweiterungMaschineBillig() {
-		return erweiterungMaschineBillig;
-	}
-	public static double[] getErweiterungMaschineOeko() {
-		return erweiterungMaschineOeko;
-	}
-	public static double[] getErweiterungMaschinePremium() {
-		return erweiterungMaschinePremium;
-	}
 	public static double[] getRabatteEinkaufBillig() {
 		return rabatteEinkaufBillig;
 	}
@@ -206,6 +202,36 @@ public class Info {
 	}
 	public static double[] getRabatteEinkaufPremium() {
 		return rabatteEinkaufPremium;
+	}
+	public static double[] getSenkeProdKostenStraﬂeBillig() {
+		return senkeProdKostenStraﬂeBillig;
+	}
+	public static double[] getSenkeProdKostenStraﬂeOeko() {
+		return senkeProdKostenStraﬂeOeko;
+	}
+	public static double[] getSenkeProdKostenStraﬂePremium() {
+		return senkeProdKostenStraﬂePremium;
+	}
+	public static int[] getSelbstkostenBillig() {
+		return selbstkostenBillig;
+	}
+	public static int[] getSelbstkostenOeko() {
+		return selbstkostenOeko;
+	}
+	public static int[] getSelbstkostenPremium() {
+		return selbstkostenPremium;
+	}
+	
+	
+	
+	public static void setSelbstkostenBillig(int[] selbstkostenBillig) {
+		Info.selbstkostenBillig = selbstkostenBillig;
+	}
+	public static void setSelbstkostenOeko(int[] selbstkostenOeko) {
+		Info.selbstkostenOeko = selbstkostenOeko;
+	}
+	public static void setSelbstkostenPremium(int[] selbstkostenPremium) {
+		Info.selbstkostenPremium = selbstkostenPremium;
 	}
 	
 	
