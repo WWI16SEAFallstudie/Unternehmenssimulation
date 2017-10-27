@@ -11,8 +11,8 @@ public class Unternehmen {
 	private String info;
 	
 	// Produktionslimit speichern
-	private int produktionslimitBillig = 10000;
-	private int produktionslimitOeko = 10000;
+	private int produktionslimitBillig = 100000;
+	private int produktionslimitOeko = 30000;
 	private int produktionslimitPremium = 10000;
 
 	// Produktionskosten speichern
