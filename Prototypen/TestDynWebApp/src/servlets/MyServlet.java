@@ -221,6 +221,11 @@ public class MyServlet extends HttpServlet {
 			if(!request.getParameter("researchBraceletBillig").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheArmband("Billig");
 			if(!request.getParameter("researchClockWorkBillig").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheUhrwerk("Billig");
 			
+			// Erforschung neues Segment
+			if(!request.getParameter("researchSegmentOeko").equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Oeko");
+			if(!request.getParameter("researchSegmentLuxus").equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment ("Premium");
+			if(!request.getParameter("researchSegmentBillig").equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment ("Billig");
+			
 			// Erforschung von Produktionsoptimierungen
 			
 			if(!request.getParameter("costReductionOeko").equals("")) spieler[spiel.getAktuellerSpieler()].senkeProdKosten("Oeko");
