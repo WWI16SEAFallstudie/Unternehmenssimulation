@@ -27,7 +27,8 @@ public class MyServlet extends HttpServlet {
 	Spielbrett spiel = new Spielbrett(10, 100000, 0.2);
 	Unternehmen[] spieler;
 	
-	DecimalFormat df = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN); //deutsche Zahlenformatierung
+	DecimalFormat df = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN); //deutsche Zahlenformatierung DecimalFormat
+	DecimalFormat sf = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN); //deutsche Zahlenformatierung shortFormat
 	
 	private static final long serialVersionUID = 1L;
        
@@ -38,6 +39,7 @@ public class MyServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
         df.applyPattern( "#,###,##0.00" );//Zahlenformatierung mit 1000er Trennzeichen und zwei Nachkommastellen
+        sf.applyPattern( "#,###,##0" );//Zahlenformatierung mit 1000er Trennzeichen und zwei Nachkommastellen
     }
 
 	/**
@@ -390,11 +392,16 @@ public class MyServlet extends HttpServlet {
 		// setzen der getätigten Auswahl für Vertrieb
 		
 		// setzen der getätigten Auswahl für Marketing
+		setMarketingOptions(request, response);
 	}
 	
 	private void setClockClass(HttpServletRequest request, HttpServletResponse response){
 		
 		int anzahlUhren = spieler[spiel.getAktuellerSpieler()].getUhr().length;// Anzahl der erforschten Uhren
+		
+		request.setAttribute("uO", sf.format(Info.getKostenUhrOeko()));
+		request.setAttribute("uB", sf.format(Info.getKostenUhrBillig()));
+		request.setAttribute("uP", sf.format(Info.getKostenUhrPremium()));
 		
 		for(int i = 0; i < anzahlUhren; i++){
 			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
@@ -458,7 +465,10 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("researchB", "card-aktive");
 				String[] item = {"c","b","cw"};
 				for(int j = 0; j <=2; j++){
-					for(int k = 0; k <= 2; k++){						
+					request.setAttribute("clCBc"+j, sf.format(Info.getKostenGehaeuseBillig()[j]));
+					request.setAttribute("clCBb"+j, sf.format(Info.getKostenArmbandBillig()[j]));
+					request.setAttribute("clCBcw"+j, sf.format(Info.getKostenUhrwerkBillig()[j]));
+					for(int k = 0; k <= 2; k++){
 						if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrBillig()[j][k] == true)
 							request.setAttribute("clB"+item[j]+k, "done");
 						if(k== 2 && spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrBillig()[j][1] == false)
@@ -472,6 +482,9 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("researchO", "card-aktive");
 				String[] item = {"c","b","cw"};
 				for(int j = 0; j <=2; j++){
+					request.setAttribute("clCOc"+j, sf.format(Info.getKostenGehaeuseOeko()[j]));
+					request.setAttribute("clCOb"+j, sf.format(Info.getKostenArmbandOeko()[j]));
+					request.setAttribute("clCOcw"+j, sf.format(Info.getKostenUhrwerkOeko()[j]));
 					for(int k = 0; k <= 2; k++){						
 						if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrOeko()[j][k] == true)
 							request.setAttribute("clO"+item[j]+k, "done");
@@ -486,6 +499,9 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("researchL", "card-aktive");
 				String[] item = {"c","b","cw"};
 				for(int j = 0; j <=2; j++){
+					request.setAttribute("clCLc"+j, sf.format(Info.getKostenGehaeusePremium()[j]));
+					request.setAttribute("clCLb"+j, sf.format(Info.getKostenArmbandPremium()[j]));
+					request.setAttribute("clCLcw"+j, sf.format(Info.getKostenUhrwerkPremium()[j]));
 					for(int k = 0; k <= 2; k++){						
 						if(spieler[spiel.getAktuellerSpieler()].getFreigeschalteneAttrPremium()[j][k] == true)
 							request.setAttribute("clL"+item[j]+k, "done");
@@ -508,11 +524,13 @@ public class MyServlet extends HttpServlet {
 						switch(i){
 							case 0:
 								request.setAttribute("prodLimitB", spieler[spiel.getAktuellerSpieler()].getProduktionslimitBillig());
+								request.setAttribute("prdCBcr"+k, sf.format(Info.getKostenProduktionBillig()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßeBillig()[k] == true)
 									request.setAttribute("prdBcr"+k, "done");
 								if(k >0  && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßeBillig()[k-1] == false)
 									request.setAttribute("addPrBcr"+k, "notAvailable");
 								
+								request.setAttribute("prdCBce"+k, sf.format(Info.getKostenProduktionBillig()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStraßeBillig()[k] == true)
 									request.setAttribute("prdBce"+k, "done");
 								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStraßeBillig()[k-1] == false)
@@ -521,11 +539,13 @@ public class MyServlet extends HttpServlet {
 							
 							case 1:
 								request.setAttribute("prodLimitO", spieler[spiel.getAktuellerSpieler()].getProduktionslimitOeko());
+								request.setAttribute("prdCOcr"+k, sf.format(Info.getKostenProduktionOeko()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßeOeko()[k] == true)
 									request.setAttribute("prdOcr"+k, "done");
 								if(k >0 && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßeOeko()[k-1] == false)
 									request.setAttribute("addPr"+seg[i]+"cr"+k, "notAvailable");
 								
+								request.setAttribute("prdCOce"+k, sf.format(Info.getKostenProduktionOeko()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStraßeOeko()[k] == true)
 									request.setAttribute("prdOce"+k, "done");
 								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStraßeOeko()[k-1] == false)
@@ -534,11 +554,13 @@ public class MyServlet extends HttpServlet {
 							
 							case 2:
 								request.setAttribute("prodLimitL", spieler[spiel.getAktuellerSpieler()].getProduktionslimitPremium());
+								request.setAttribute("prdCLcr"+k, sf.format(Info.getKostenProduktionPremium()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßePremium()[k] == true)
 									request.setAttribute("prdLcr"+k, "done");
 								if(k >0 && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraßePremium()[k-1] == false)
 									request.setAttribute("addPrLcr"+k, "notAvailable");
 								
+								request.setAttribute("prdCLce"+k, sf.format(Info.getKostenProduktionPremium()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStraßePremium()[k] == true)
 									request.setAttribute("prdLce"+k, "done");
 								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStraßePremium()[k-1] == false)
@@ -562,6 +584,7 @@ public class MyServlet extends HttpServlet {
 					for(int k = 0; k <= 2; k++){
 						switch(i){
 							case 0:
+								request.setAttribute("purCB"+k, sf.format(Info.getKostenEinkaufBillig()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufBillig()[k] == true)
 									request.setAttribute("purB"+k, "done");
 								if(k >0 && spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufBillig()[k-1] == false)
@@ -570,6 +593,7 @@ public class MyServlet extends HttpServlet {
 							break;
 							
 							case 1:
+								request.setAttribute("purCO"+k, sf.format(Info.getKostenEinkaufOeko()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufOeko()[k] == true)
 									request.setAttribute("purO"+k, "done");
 								if(k >0 && spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufOeko()[k-1] == false)
@@ -578,6 +602,7 @@ public class MyServlet extends HttpServlet {
 							break;
 							
 							case 2:
+								request.setAttribute("purCL"+k, sf.format(Info.getKostenEinkaufPremium()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufPremium()[k] == true)
 									request.setAttribute("purL"+k, "done");
 								if(k >0 && spieler[spiel.getAktuellerSpieler()].getVerbesserungEinkaufPremium()[k-1] == false)
@@ -597,6 +622,16 @@ public class MyServlet extends HttpServlet {
 			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
 			if(spieler[spiel.getAktuellerSpieler()].getUhr()[i] != null){
 				request.setAttribute("stock"+i, spieler[spiel.getAktuellerSpieler()].getUhr()[i].getBestand());
+			}
+		}
+	}
+	
+	//Marketing
+	private void setMarketingOptions(HttpServletRequest request, HttpServletResponse response){
+		for(int i = 0; i < 3; i++){
+			request.setAttribute("mCC"+i, sf.format(Info.getKostenMarketingUnternehmen()[i]));
+			for(int j = 0; j < 3; j++){
+				request.setAttribute("mCm"+i+""+j, sf.format(Info.getKostenMarketingUhr()[j]));
 			}
 		}
 	}

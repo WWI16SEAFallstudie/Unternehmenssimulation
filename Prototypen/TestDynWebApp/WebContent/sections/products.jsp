@@ -6,10 +6,11 @@
 			<!-- 
 			Beispiele f¸r Variablenname
 			m0s = Modell 1 Segment
-			m0c1 = Modell 1 Case 1
-			m1b2 = Modell 2 Bracelet 2
-			m2cw3 = Modell 3 ClockWork 3
-			clM0c1 = Class Modell 1 Case 1	
+			m0c0 = Modell 1 Case 1
+			m1b1 = Modell 2 Bracelet 2
+			m2cw2 = Modell 3 ClockWork 3
+			clM0c1 = Class Modell 1 Case 1
+			uO = Unlock Oeko-Uhr
 			 -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
 					<div id="watch0" class="card ${watch0}">
@@ -46,7 +47,7 @@
 				<div class="col-sm-4 col-md-4 col-lg-4">
 					<div id="watch1" class="card ${watch1}">
 						<h4>Modell 2</h4>
-						<a class="segment addBtn" onclick="openResearch('watch1');">Freischalten 100.000 &euro;</a>
+						<a class="segment addBtn" onclick="openResearch('watch1');">Freischalten</a>
 						<p>Produktlinie: ${m1s}</p>
 						<span class="listhead">Geh&auml;use</span>				
 						<ul class="list-group usedCase1">
@@ -80,9 +81,9 @@
 							<div class="selectSegment">
 								<span class="listhead">Uhrwerk</span>
 									<ul class="list-group researchModel1">
-										<li class="${rO} list-group-item" onclick="researchModel('researchModel1',0);">Umwelt <span class="glyphicon glyphicon-ok"></span></li>
-										<li class="${rL} list-group-item" onclick="researchModel('researchModel1',1);">Luxus <span class="glyphicon glyphicon-ok"></span></li>
-										<li class="${rB} list-group-item" onclick="researchModel('researchModel1',2);">Groﬂserienfertigung <span class="glyphicon glyphicon-ok"></span></li>
+										<li class="${rO} list-group-item" onclick="researchModel('researchModel1',0);">Umwelt <span>${uO} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
+										<li class="${rL} list-group-item" onclick="researchModel('researchModel1',1);">Luxus <span>${uP} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
+										<li class="${rB} list-group-item" onclick="researchModel('researchModel1',2);">Groﬂserienfertigung <span>${uB} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
 									</ul>
 								<a class="addBtn" onclick="acceptResearch('watch1');">Erforschen</a>
 								<a class="addBtn" onclick="cancelResearch('watch1','researchModel1');">Abbrechen</a>		
@@ -95,7 +96,7 @@
 				<div class="col-sm-4 col-md-4 col-lg-4">
 					<div id="watch2" class="card ${watch2}">
 						<h4>Modell 3</h4>
-						<a class="segment addBtn" onclick="openResearch('watch2');">Freischalten 100.000 &euro;</a>
+						<a class="segment addBtn" onclick="openResearch('watch2');">Freischalten</a>
 						<p>Produktlinie: ${m2s}</p>
 						<span class="listhead">Geh&auml;use</span>				
 						<ul class="list-group usedCase2">
@@ -129,9 +130,9 @@
 							<div class="selectSegment">
 								<span class="listhead">Uhrwerk</span>
 									<ul class="list-group researchModel2">
-										<li class="${rO} list-group-item" onclick="researchModel('researchModel2',0);">Umwelt <span class="glyphicon glyphicon-ok"></span></li>
-										<li class="${rL} list-group-item" onclick="researchModel('researchModel2',1);">Luxus <span class="glyphicon glyphicon-ok"></span></li>
-										<li class="${rB} list-group-item" onclick="researchModel('researchModel2',2);">Groﬂserienfertigung <span class="glyphicon glyphicon-ok"></span></li>
+										<li class="${rO} list-group-item" onclick="researchModel('researchModel2',0);">Umwelt <span>${uO} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
+										<li class="${rL} list-group-item" onclick="researchModel('researchModel2',1);">Luxus <span>${uP} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
+										<li class="${rB} list-group-item" onclick="researchModel('researchModel2',2);">Groﬂserienfertigung <span>${uB} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
 									</ul>
 								<a class="addBtn" onclick="acceptResearch('watch2');">Erforschen</a>
 								<a class="addBtn" onclick="cancelResearch('watch2','researchModel2');">Abbrechen</a>		

@@ -84,9 +84,12 @@ public class Info {
 	private static double rabatteEinkaufPremium[] = { 0.1, 0.2, 0.3 };
 
 	// Kosten für die Entwicklung des Einkaufs
-	private static double kostenMarketingBillig[] = { 1000 , 2000 , 3000 };
-	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };
-	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };
+	private static double kostenMarketingBillig[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
+	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
+	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
+	
+	private static double kostenMarketingUnternehmen[] = { 10000 , 20000 , 30000 };
+	private static double kostenMarketingUhr[] = { 1000 , 2000 , 3000 };
 	
 	// Marketingkampagnen
 	private static double scoreMarketingkampagne[] = { 0.1, 0.2, 0.3 };
@@ -265,6 +268,12 @@ public class Info {
 	}
 	public static double[] getScoreMarketingkampagne() {
 		return scoreMarketingkampagne;
+	}
+	public static double[] getKostenMarketingUnternehmen() {
+		return kostenMarketingUnternehmen;
+	}
+	public static double[] getKostenMarketingUhr() {
+		return kostenMarketingUhr;
 	}
 	
 	
