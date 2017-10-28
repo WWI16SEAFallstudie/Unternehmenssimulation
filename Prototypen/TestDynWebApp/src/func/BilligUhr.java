@@ -8,22 +8,20 @@ public class BilligUhr implements iUhrenkategorie {
 	private int gehaeuse;
 	private int armband;
 	
-	private int score;
+	private double marktwert;
 	private int bestand;
 	private int angeboteneMenge;
 	private int abgenommeneMenge;
-	private double herstellkosten;
 	private double angebotspreis;
 	private double marketingboost;
+	private double selbstkosten;
 	
 	private final String segment = "Billig";
 	
 	/**
 	 * Konstruktor : legt default-Werte fest
 	 */
-	public BilligUhr() {
-		this.setScore(0);
-		
+	public BilligUhr() {		
 		this.uhrwerk = 0;
 		this.gehaeuse = 0;
 		this.armband = 0;
@@ -44,13 +42,13 @@ public class BilligUhr implements iUhrenkategorie {
 	
 	@Override
 	public double getAbnahmequote() {
-		if(angebotspreis != 0) return 1 / (1 + Math.pow(Math.E, ((2.5 * Math.log(angebotspreis / (double) score) / Math.log(2)))));
+		if(angebotspreis != 0) return 1 / (1 + Math.pow(Math.E, ((2.5 * Math.log(angebotspreis / (double) marktwert) / Math.log(2)))));
 		return 0;
 	}
 	
 	@Override
 	public void uhrMarketingstrategie() {
-		System.out.println("Hier könnte ihre Marketingstrategie stehen");
+		
 	}
 
 	@Override
@@ -80,14 +78,6 @@ public class BilligUhr implements iUhrenkategorie {
 		return abgenommeneMenge;
 	}
 	
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
-	}
-
 	public String getSegment() {
 		return this.segment;
 	}
@@ -124,6 +114,14 @@ public class BilligUhr implements iUhrenkategorie {
 		this.bestand = bestand;
 	}
 
+	public double getSelbstkosten() {
+		return selbstkosten;
+	}
+	
+	public void setSelbstkosten() {
+		this.selbstkosten = berechneSelbstkosten();
+	}
+
 	@Override
 	public double getAngebotspreis() {
 		return this.angebotspreis;
@@ -142,5 +140,26 @@ public class BilligUhr implements iUhrenkategorie {
 	@Override
 	public void setMarketingboost(double marketingboost) {
 		this.marketingboost = marketingboost;
+	}
+	
+	@Override
+	public double getMarktwert() {
+		return this.marktwert;
+	}
+
+	@Override
+	public void setMarktwert(double marktwert) {
+		this.marktwert = marktwert;
+	}
+	
+	public double berechneSelbstkosten() {
+		return( Info.getSelbstkostenArmbandBillig()[this.getArmband()] + Info.getSelbstkostenGehaeuseBillig()[this.getGehaeuse()] 
+				+ Info.getSelbstkostenUhrwerkBillig()[this.getUhrwerk()] );
+	}
+
+	@Override
+	public double berechneMarktwert() {
+		this.setMarktwert( this.getSelbstkosten() * this.getMarktwert() ); 
+		return this.getMarktwert();
 	}
 }

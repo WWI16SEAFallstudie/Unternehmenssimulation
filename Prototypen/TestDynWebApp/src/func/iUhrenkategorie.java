@@ -51,5 +51,13 @@ public interface iUhrenkategorie {
 	
 	public void setMarketingboost(double marketingboost);
 	
-	public void setScore(int score);
+	public void setMarktwert(double marktwert);
+	
+	public double getMarktwert();
+	
+	public double berechneSelbstkosten();
+	
+	public double getSelbstkosten();
+	
+	public double berechneMarktwert();
 }
