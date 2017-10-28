@@ -3,6 +3,22 @@ function next(){
 	window.open("index.jsp","_self")
 }
 
+// Begrenzung der Inputmöglichkeiten auf Ziffern und Komma
+$('.numInput').keypress(function(event){
+	var keyPressed = (window.event) ? window.event.keyCode : event.which;
+	 v=String.fromCharCode(keyPressed);
+	 if ( eval('v.match(/^[0-9,]$/)'))  return true;
+	 event.preventDefault();
+	 event.stopPropagation();
+});
+
+$('.intInput').keypress(function(event){
+	var keyPressed = (window.event) ? window.event.keyCode : event.which;
+	v=String.fromCharCode(keyPressed);
+	if ( eval('v.match(/^[0-9]$/)'))  return true;
+	event.preventDefault();
+	event.stopPropagation();
+	});
 
 // Chart.js Diagramm für Statistik der verkauften Uhren
 var ctx = document.getElementById("myChart").getContext('2d');
@@ -95,40 +111,94 @@ window.onload = function () {
 // Auswahl des zu Nutzenden Gehäuse, Armband, Uhrwerk
 function usedItem(input, item){
 	
+	selectItem(input, item);
+	
+	document.getElementById(input).value = item;
+}
+
+// Freischalten einer weiteren Uhr
+function openResearch(card){
+	$("#"+card+">.selectSegmentOuter").css("display","block");
+}
+
+function selectItem(input, item){
+	if($("."+input).first().parent().hasClass("card-inaktive"))return false;
 	itemOne = document.getElementsByClassName(input)[0].children[0];
 	itemTwo = document.getElementsByClassName(input)[0].children[1];
 	itemThree = document.getElementsByClassName(input)[0].children[2];
 	
 	switch(item) {
-	    case 1:
+	    case 0:
 	    	if(itemOne.classList.contains("notAvailable")) return false;
 	        if(!itemOne.classList.contains("selected"))itemOne.classList.add("selected");
 	        if(itemTwo.classList.contains("selected"))itemTwo.classList.remove("selected");
 	        if(itemThree.classList.contains("selected"))itemThree.classList.remove("selected");
 	        break;
-	    case 2:
+	    case 1:
 	    	if(itemTwo.classList.contains("notAvailable")) return false;
 	        if(!itemTwo.classList.contains("selected"))itemTwo.classList.add("selected");
 	        if(itemOne.classList.contains("selected"))itemOne.classList.remove("selected");
 	        if(itemThree.classList.contains("selected"))itemThree.classList.remove("selected");
 	        break;
-	    case 3:
+	    case 2:
 	    	if(itemThree.classList.contains("notAvailable")) return false;
 	        if(!itemThree.classList.contains("selected"))itemThree.classList.add("selected");
 	        if(itemOne.classList.contains("selected"))itemOne.classList.remove("selected");
 	        if(itemTwo.classList.contains("selected"))itemTwo.classList.remove("selected");
 	        break;
 	}
-	document.getElementById(input).value = item;
 }
 
-// Freischalten einer weiteren Uhr
-function researchModel(card,input){
+function researchModel(input,item){
+	
+	selectItem(input, item);
+	
+	switch(item) {
+    case 0:
+    	document.getElementById(input).value = "Oeko";
+        break;
+    case 1:
+    	document.getElementById(input).value = "Premium";
+        break;
+    case 2:
+    	document.getElementById(input).value = "Billig";
+        break;
+	}
+}
+
+function acceptResearch(card){
+	$("#"+card+">.selectSegmentOuter").css("display","none");
+}
+
+function cancelResearch(card, input){
+	document.getElementById(input).value = "";
+	
+	$("#"+card+" .list-group-item").removeClass("selected");
+	
+	$("#"+card+">.selectSegmentOuter").css("display","none");
+}
+
+// Erforschung des übergebenen Parameters (
+// Diese Funktion wird von F&E, Produktion und Einkauf verwendet
+function research(input, item){
+	
 	if(document.getElementById(input).value == ""){
-		alert("Eine weiter Uhr steht in der nächsten Runde zur Verfügung");
-		document.getElementById(input).value = 1;
+		alert("Die Erforschung erfolgt");
+		document.getElementById(input).value = item;
 	}else{
-		alert("Die Uhr wird nicht erforscht");
+		alert("Die Erforschung wird abgebrochen");
+		document.getElementById(input).value = "";
+	}
+}
+
+//Diese Funktion wird von F&E, Produktion und Einkauf verwendet
+function marketing(input, item){
+	
+	if(document.getElementById(input).value == ""){
+		alert("Die Marketingkampagne erfolgt");
+		document.getElementById(input).value = item;
+	}else{
+		alert("Die Marketingkampagne wird abgebrochen");
 		document.getElementById(input).value = "";
 	}
 }
