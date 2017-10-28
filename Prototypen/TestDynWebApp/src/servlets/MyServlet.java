@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,22 +44,17 @@ public class MyServlet extends HttpServlet {
 		
 		// Start des Spiels mit der ausgewählten Anzahl an Spielern
 		if (request.getParameter("startbtn") != null) {
-			
-			// Ermitteln der Spieleranzahl
-			int spielerAnz = Integer.parseInt(request.getParameter("spielerAnzahl"));
-			
-			// Erzeugen der Unternehmen/Spieler
-			spiel.erstelleSpieler(spielerAnz);
-			spieler = spiel.getSpieler();
+						
+			int spielerAnz = Integer.parseInt(request.getParameter("spielerAnzahl")); // Ermitteln der Spieleranzahl			
+			spiel.erstelleSpieler(spielerAnz); // Erzeugen der Spieler
+			spieler = spiel.getSpieler(); 	// Zugriff auf Spielerobjekte über Variable ermöglichen
 
-			for(int i = 0; i < spieler.length; i++) {
-				System.out.println(spieler[i].toString());
-			}
+			for(int i = 0; i < spieler.length; i++) System.out.println(spieler[i].toString()); // Ausgabe der Spieler in Konsole
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/segment.jsp");
-			dispatcher.forward(request, response);
-			
+			dispatcher.forward(request, response); // aufruf der segmentauswahl für den ersten Spieler		
 		}
+		
 		
 		// Auswahl der Sparte zu Spielbeginn
 		
@@ -80,20 +77,11 @@ public class MyServlet extends HttpServlet {
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Umwelt");
 				
-				// setzen der Bezeichnungen der Gehäuse
-				request.setAttribute("m0c1", Info.getGehaeuseOeko()[0]);
-				request.setAttribute("m0c2", Info.getGehaeuseOeko()[1]);
-				request.setAttribute("m0c3", Info.getGehaeuseOeko()[2]);
-				
-				// setzen der Bezeichnungen der Armbänder
-				request.setAttribute("m0b1", Info.getArmbandOeko()[0]);
-				request.setAttribute("m0b2", Info.getArmbandOeko()[1]);
-				request.setAttribute("m0b3", Info.getArmbandOeko()[2]);
-				
-				// setzen der Bezeichnungen der Uhrwerke
-				request.setAttribute("m0cw1", Info.getUhrwerkOeko()[0]);
-				request.setAttribute("m0cw2", Info.getUhrwerkOeko()[1]);
-				request.setAttribute("m0cw3", Info.getUhrwerkOeko()[2]);
+				for(int i = 0; i < 3; i++){
+					request.setAttribute("m0c"+i, Info.getGehaeuseOeko()[i]); // setzen der Bezeichnungen der Gehäuse
+					request.setAttribute("m0b"+i, Info.getArmbandOeko()[i]); // setzen der Bezeichnungen der Armbänder
+					request.setAttribute("m0cw"+i, Info.getUhrwerkOeko()[i]); // setzen der Bezeichnungen der Uhrwerke
+				}
 				
 				setValuesOnUI(request, response);
 				
@@ -119,20 +107,11 @@ public class MyServlet extends HttpServlet {
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Luxus");
 				
-				// setzen der Bezeichnungen der Gehäuse
-				request.setAttribute("m0c1", Info.getGehaeusePremium()[0]);
-				request.setAttribute("m0c2", Info.getGehaeusePremium()[1]);
-				request.setAttribute("m0c3", Info.getGehaeusePremium()[2]);
-				
-				// setzen der Bezeichnungen der Armbänder
-				request.setAttribute("m0b1", Info.getArmbandPremium()[0]);
-				request.setAttribute("m0b2", Info.getArmbandPremium()[1]);
-				request.setAttribute("m0b3", Info.getArmbandPremium()[2]);
-				
-				// setzen der Bezeichnungen der Uhrwerke
-				request.setAttribute("m0cw1", Info.getUhrwerkPremium()[0]);
-				request.setAttribute("m0cw2", Info.getUhrwerkPremium()[1]);
-				request.setAttribute("m0cw3", Info.getUhrwerkPremium()[2]);
+				for(int i = 0; i < 3; i++){
+					request.setAttribute("m0c"+i, Info.getGehaeusePremium()[i]); // setzen der Bezeichnungen der Gehäuse
+					request.setAttribute("m0b"+i, Info.getArmbandPremium()[i]); // setzen der Bezeichnungen der Armbänder
+					request.setAttribute("m0cw"+i, Info.getUhrwerkPremium()[i]); // setzen der Bezeichnungen der Uhrwerke
+				}
 				
 				setValuesOnUI(request, response);
 				
@@ -158,20 +137,11 @@ public class MyServlet extends HttpServlet {
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Billig");
 				
-				// setzen der Bezeichnungen der Gehäuse
-				request.setAttribute("m0c1", Info.getGehaeuseBillig()[0]);
-				request.setAttribute("m0c2", Info.getGehaeuseBillig()[1]);
-				request.setAttribute("m0c3", Info.getGehaeuseBillig()[2]);
-				
-				// setzen der Bezeichnungen der Armbänder
-				request.setAttribute("m0b1", Info.getArmbandBillig()[0]);
-				request.setAttribute("m0b2", Info.getArmbandBillig()[1]);
-				request.setAttribute("m0b3", Info.getArmbandBillig()[2]);
-				
-				// setzen der Bezeichnungen der Uhrwerke
-				request.setAttribute("m0cw1", Info.getUhrwerkOeko()[0]);
-				request.setAttribute("m0cw2", Info.getUhrwerkOeko()[1]);
-				request.setAttribute("m0cw3", Info.getUhrwerkOeko()[2]);
+				for(int i = 0; i < 3; i++){
+					request.setAttribute("m0c"+i, Info.getGehaeuseBillig()[i]); // setzen der Bezeichnungen der Gehäuse
+					request.setAttribute("m0b"+i, Info.getArmbandBillig()[i]); // setzen der Bezeichnungen der Armbänder
+					request.setAttribute("m0cw"+i, Info.getUhrwerkOeko()[i]); // setzen der Bezeichnungen der Uhrwerke
+				}
 				
 				setValuesOnUI(request, response);
 				
@@ -226,8 +196,7 @@ public class MyServlet extends HttpServlet {
 			if(!request.getParameter("researchSegmentLuxus").equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment ("Premium");
 			if(!request.getParameter("researchSegmentBillig").equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment ("Billig");
 			
-			// Erforschung von Produktionsoptimierungen
-			
+			// Erforschung von Produktionsoptimierungen		
 			if(!request.getParameter("costReductionOeko").equals("")) spieler[spiel.getAktuellerSpieler()].senkeProdKosten("Oeko");
 			if(!request.getParameter("expansionOeko").equals("")) spieler[spiel.getAktuellerSpieler()].erweitereProduktion("Oeko");
 				
@@ -238,42 +207,36 @@ public class MyServlet extends HttpServlet {
 			if(!request.getParameter("expansionBillig").equals("")) spieler[spiel.getAktuellerSpieler()].erweitereProduktion("Billig");
 			
 			
-			// Produzieren von Uhren
-			
+			// Produzieren von Uhren			
 			if(!request.getParameter("output0").equals("")) spieler[spiel.getAktuellerSpieler()].produzieren(Integer.parseInt(request.getParameter("output0")), 0);
 			if(!request.getParameter("output1").equals("")) spieler[spiel.getAktuellerSpieler()].produzieren(Integer.parseInt(request.getParameter("output1")), 1);
 			if(!request.getParameter("output2").equals("")) spieler[spiel.getAktuellerSpieler()].produzieren(Integer.parseInt(request.getParameter("output2")), 2);
 			
-			//Optimierung der Einkaufskosten
-			
+			//Optimierung der Einkaufskosten		
 			if(!request.getParameter("purchasingOeko").equals("")) spieler[spiel.getAktuellerSpieler()].erweitereEinkauf("Oeko");
 			if(!request.getParameter("purchasingLuxus").equals("")) spieler[spiel.getAktuellerSpieler()].erweitereEinkauf("Premium");
 			if(!request.getParameter("purchasingBillig").equals("")) spieler[spiel.getAktuellerSpieler()].erweitereEinkauf("Billig");
 			
-			//Angebot der Uhren
-			
+			//Anbieten der Uhren zum Verkauf		
 			if(!request.getParameter("offerPrice0").equals("") && !request.getParameter("quantitySupplied0").equals("")){
 				spieler[spiel.getAktuellerSpieler()].bieteUhren(
 						Integer.parseInt(request.getParameter("quantitySupplied0")),
 						0,
-						//Float.parseFloat(request.getParameter("offerPrice0")))
-						Integer.parseInt(request.getParameter("offerPrice0")));
+						Double.parseDouble(request.getParameter("offerPrice0")));
 			}
 			
 			if(!request.getParameter("offerPrice1").equals("") && !request.getParameter("quantitySupplied1").equals("")){
 				spieler[spiel.getAktuellerSpieler()].bieteUhren(
 						Integer.parseInt(request.getParameter("quantitySupplied1")),
 						1,
-						//Float.parseFloat(request.getParameter("offerPrice1")))
-						Integer.parseInt(request.getParameter("offerPrice1")));
+						Double.parseDouble(request.getParameter("offerPrice1")));
 			}
 			
 			if(!request.getParameter("offerPrice2").equals("") && !request.getParameter("quantitySupplied2").equals("")){
 				spieler[spiel.getAktuellerSpieler()].bieteUhren(
 						Integer.parseInt(request.getParameter("quantitySupplied2")),
 						2,
-						//Float.parseFloat(request.getParameter("offerPrice2")))
-						Integer.parseInt(request.getParameter("offerPrice2")));
+						Double.parseDouble(request.getParameter("offerPrice2")));
 			}
 			
 			//Start der MarketingKampagnen des gesamten Unternehmens
@@ -281,25 +244,17 @@ public class MyServlet extends HttpServlet {
 			if(!request.getParameter("marketingCompany0").equals(""))
 			if(!request.getParameter("marketingCompany1").equals(""))
 			if(!request.getParameter("marketingCompany2").equals(""))
-			
-			//Start der MarketingKampagnen für Uhr0
-			
-			if(!request.getParameter("marketing0Clock0").equals("")) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(0);
-			if(!request.getParameter("marketing1Clock0").equals("")) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(0);
-			if(!request.getParameter("marketing2Clock0").equals("")) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(0);
-			
-			//Start der MarketingKampagnen für Uhr1
-			
-			if(!request.getParameter("marketing0Clock1").equals("")) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(1);
-			if(!request.getParameter("marketing1Clock1").equals("")) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(1);
-			if(!request.getParameter("marketing2Clock1").equals("")) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(1);
-			
-			//Start der MarketingKampagnen für Uhr2
-			
-			if(!request.getParameter("marketing0Clock2").equals("")) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(2);
-			if(!request.getParameter("marketing1Clock2").equals("")) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(2);
-			if(!request.getParameter("marketing2Clock2").equals("")) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(2);
 			*/
+			//Start der MarketingKampagnen der Uhren
+			
+			int[] anzahlMarketingUhr = {0,0,0};
+			
+			for(int i = 0; i < 3; i++){
+				if(!request.getParameter("marketing0Clock"+i).equals("")) anzahlMarketingUhr[i]++;
+				if(!request.getParameter("marketing1Clock"+i).equals("")) anzahlMarketingUhr[i]++;
+				if(!request.getParameter("marketing2Clock"+i).equals("")) anzahlMarketingUhr[i]++;
+				if(anzahlMarketingUhr[i] > 0) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(i, anzahlMarketingUhr[i]);
+			}
 			//-- Ender der Datenübergabe
 			
 			
@@ -370,58 +325,31 @@ public class MyServlet extends HttpServlet {
 										// setzen der Produktlinienbezeichnung
 										request.setAttribute("m"+i+"s", "Billig");
 										
-										// setzen der Bezeichnungen der Gehäuse
-										request.setAttribute("m"+i+"c1", Info.getGehaeuseBillig()[0]);
-										request.setAttribute("m"+i+"c2", Info.getGehaeuseBillig()[1]);
-										request.setAttribute("m"+i+"c3", Info.getGehaeuseBillig()[2]);
-										
-										// setzen der Bezeichnungen der Armbänder
-										request.setAttribute("m"+i+"b1", Info.getArmbandBillig()[0]);
-										request.setAttribute("m"+i+"b2", Info.getArmbandBillig()[1]);
-										request.setAttribute("m"+i+"b3", Info.getArmbandBillig()[2]);
-										
-										// setzen der Bezeichnungen der Uhrwerke
-										request.setAttribute("m"+i+"cw1", Info.getUhrwerkOeko()[0]);
-										request.setAttribute("m"+i+"cw2", Info.getUhrwerkOeko()[1]);
-										request.setAttribute("m"+i+"cw3", Info.getUhrwerkOeko()[2]);
+										for(int j = 0; j < 3; j++){
+											request.setAttribute("m"+i+"c"+j, Info.getGehaeuseBillig()[j]); // setzen der Bezeichnungen der Gehäuse
+											request.setAttribute("m"+i+"b"+j, Info.getArmbandBillig()[j]); // setzen der Bezeichnungen der Armbänder
+											request.setAttribute("m"+i+"cw"+j, Info.getUhrwerkBillig()[j]); // setzen der Bezeichnungen der Uhrwerke
+										}
 										break;
 									case "Oeko":
 										// setzen der Produktlinienbezeichnung
 										request.setAttribute("m"+i+"s", "Umwelt");
 										
-										// setzen der Bezeichnungen der Gehäuse
-										request.setAttribute("m"+i+"c1", Info.getGehaeuseOeko()[0]);
-										request.setAttribute("m"+i+"c2", Info.getGehaeuseOeko()[1]);
-										request.setAttribute("m"+i+"c3", Info.getGehaeuseOeko()[2]);
-										
-										// setzen der Bezeichnungen der Armbänder
-										request.setAttribute("m"+i+"b1", Info.getArmbandOeko()[0]);
-										request.setAttribute("m"+i+"b2", Info.getArmbandOeko()[1]);
-										request.setAttribute("m"+i+"b3", Info.getArmbandOeko()[2]);
-										
-										// setzen der Bezeichnungen der Uhrwerke
-										request.setAttribute("m"+i+"cw1", Info.getUhrwerkOeko()[0]);
-										request.setAttribute("m"+i+"cw2", Info.getUhrwerkOeko()[1]);
-										request.setAttribute("m"+i+"cw3", Info.getUhrwerkOeko()[2]);
+										for(int j = 0; j < 3; j++){
+											request.setAttribute("m"+i+"c"+j, Info.getGehaeuseOeko()[j]); // setzen der Bezeichnungen der Gehäuse
+											request.setAttribute("m"+i+"b"+j, Info.getArmbandOeko()[j]); // setzen der Bezeichnungen der Armbänder
+											request.setAttribute("m"+i+"cw"+j, Info.getUhrwerkOeko()[j]); // setzen der Bezeichnungen der Uhrwerke
+										}
 										break;
 									case "Premium":
 										// setzen der Produktlinienbezeichnung
 										request.setAttribute("m"+i+"s", "Luxus");
 										
-										// setzen der Bezeichnungen der Gehäuse
-										request.setAttribute("m"+i+"c1", Info.getGehaeusePremium()[0]);
-										request.setAttribute("m"+i+"c2", Info.getGehaeusePremium()[1]);
-										request.setAttribute("m"+i+"c3", Info.getGehaeusePremium()[2]);
-										
-										// setzen der Bezeichnungen der Armbänder
-										request.setAttribute("m"+i+"b1", Info.getArmbandPremium()[0]);
-										request.setAttribute("m"+i+"b2", Info.getArmbandPremium()[1]);
-										request.setAttribute("m"+i+"b3", Info.getArmbandPremium()[2]);
-										
-										// setzen der Bezeichnungen der Uhrwerke
-										request.setAttribute("m"+i+"cw1", Info.getUhrwerkPremium()[0]);
-										request.setAttribute("m"+i+"cw2", Info.getUhrwerkPremium()[1]);
-										request.setAttribute("m"+i+"cw3", Info.getUhrwerkPremium()[2]);
+										for(int j = 0; j < 3; j++){
+											request.setAttribute("m"+i+"c"+j, Info.getGehaeusePremium()[j]); // setzen der Bezeichnungen der Gehäuse
+											request.setAttribute("m"+i+"b"+j, Info.getArmbandPremium()[j]); // setzen der Bezeichnungen der Armbänder
+											request.setAttribute("m"+i+"cw"+j, Info.getUhrwerkPremium()[j]); // setzen der Bezeichnungen der Uhrwerke
+										}
 										break;
 								}
 								System.out.println("Uhr " + i + " vorhanden und Bildschirmausgabe gesetzt");
@@ -429,10 +357,6 @@ public class MyServlet extends HttpServlet {
 						}
 						
 						setValuesOnUI(request, response);
-						
-						
-						
-						//spieler[spiel.getAktuellerSpieler()].
 						
 						dispatcher.forward(request, response);
 					}
@@ -442,18 +366,20 @@ public class MyServlet extends HttpServlet {
 				
 	}// doPost
 	
+	
 	private void setValuesOnUI(HttpServletRequest request, HttpServletResponse response){
 		setClockClass(request, response);
-		
-		
+				
 		// setzen der getätigten Auswahl für F&E						
 		setFEOptions(request, response);
 		
 		// setzen der getätigten Auswahl für Produktion
 		setProductionOptions(request, response);
 		setStock(request, response);
+		
 		// setzen der getätigten Auswahl für Einkauf
 		setPurchasingOptions(request, response);
+		
 		// setzen der getätigten Auswahl für Vertrieb
 		
 		// setzen der getätigten Auswahl für Marketing
@@ -469,13 +395,23 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("watch"+i, "card-aktive");
 				String[] item = {"c","b","cw"};
 				
+				// Optische Markierung des ausgewählten Uhrenteils
 				request.setAttribute("clM"+i+"c"+spieler[spiel.getAktuellerSpieler()].getUhr()[i].getGehaeuse(), "selected");
 				request.setAttribute("clM"+i+"cw"+spieler[spiel.getAktuellerSpieler()].getUhr()[i].getUhrwerk(), "selected");
 				request.setAttribute("clM"+i+"b"+spieler[spiel.getAktuellerSpieler()].getUhr()[i].getArmband(), "selected");
 				
+				// Markierung des ausgewählten Uhrenteils in Inputfeld
 				request.setAttribute("usedCase"+i, spieler[spiel.getAktuellerSpieler()].getUhr()[i].getGehaeuse());
 				request.setAttribute("usedClockWork"+i, spieler[spiel.getAktuellerSpieler()].getUhr()[i].getUhrwerk());
 				request.setAttribute("usedBracelet"+i, spieler[spiel.getAktuellerSpieler()].getUhr()[i].getArmband());
+				
+				// setzen des Einkaufpreises
+				
+				DecimalFormat df = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN);
+				df.applyPattern( "#,###,##0.00" );
+				String ek = df.format( spieler[spiel.getAktuellerSpieler()].getUhr()[i].berechneSelbstkosten() );
+				
+				request.setAttribute("ekM"+i, ek);
 				
 				for(int j = 0; j <=2; j++){
 
