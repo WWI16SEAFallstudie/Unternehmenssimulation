@@ -42,8 +42,8 @@ public class UnternehmenTest {
 		spieler[0].freischaltenSegment("Oeko");
 		boolean segmente[] = spieler[0].getFreieSegmenteAllgemein();
 		
-		assertFalse("Falsches Segment wurde nicht erforscht", segmente[0]);
-		assertTrue("Segment wurde erforscht", segmente[1]);
+		assertFalse("Falsches Segment wurde erforscht", segmente[0]);
+		assertTrue("Segment wurde nicht erforscht", segmente[1]);
 		assertFalse("Falsches Segment wurde erforscht", segmente[2]);
 	}
 	
@@ -241,7 +241,6 @@ public class UnternehmenTest {
 //		assertTrue("Geh‰use wurde nicht zweimal erforscht", spieler[0].getFreigeschalteneAttrPremium()[0][2]);
 //	}
 	
-	// kein Zugriff auf Index?
 	@Test
 	public void prodKostensenkungPremiumTest() {
 		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
@@ -249,8 +248,10 @@ public class UnternehmenTest {
 		spielbrett.erstelleSpieler(1);
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Premium");
+		spieler[0].senkeProdKosten("Premium");
 		
-		assertTrue("Produktionskosten wurden nicht gesenkt", spieler[0].senkeProdKosten("Premium"));
+		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[2]);
+		assertTrue("Produktionskosten wurden nicht gesenkt", spieler[0].getProdKostenSenkungStraﬂePremium()[0]); 
 	}
 	
 	@Test
@@ -260,8 +261,10 @@ public class UnternehmenTest {
 		spielbrett.erstelleSpieler(1);
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Oeko");
+		spieler[0].senkeProdKosten("Oeko");
 		
-		assertTrue("Produktionskosten wurden nicht gesenkt", spieler[0].senkeProdKosten("Oeko"));
+		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[1]);
+		assertTrue("Produktionskosten wurden nicht gesenkt", spieler[0].getProdKostenSenkungStraﬂeOeko()[0]); 
 	}
 	
 	@Test
@@ -271,9 +274,13 @@ public class UnternehmenTest {
 		spielbrett.erstelleSpieler(1);
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Billig");
+		spieler[0].senkeProdKosten("Billig");
 		
-		assertTrue("Produktionskosten wurden nicht gesenkt", spieler[0].senkeProdKosten("Billig"));
+		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[0]);
+		assertTrue("Produktionskosten wurden nicht gesenkt", spieler[0].getProdKostenSenkungStraﬂeBillig()[0]); 
 	}
+	
+	// Erweiterung Produktionskostensenkung im falschen Segment
 	
 	@Test
 	public void erweitereEinkaufPremiumTest() {
@@ -282,8 +289,10 @@ public class UnternehmenTest {
 		spielbrett.erstelleSpieler(1);
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Premium");
+		spieler[0].erweitereEinkauf("Premium");
 		
-		assertTrue("Einkauf wurde nicht erweitert", spieler[0].erweitereEinkauf("Premium"));
+		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[2]);
+		assertTrue("Einkauf wurde nicht erweitert", spieler[0].getVerbesserungEinkaufPremium()[0]);
 	}
 	
 	@Test
@@ -293,19 +302,61 @@ public class UnternehmenTest {
 		spielbrett.erstelleSpieler(1);
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Oeko");
+spieler[0].erweitereEinkauf("Oeko");
 		
-		assertTrue("Einkauf wurde nicht erweitert", spieler[0].erweitereEinkauf("Oeko"));
+		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[1]);
+		assertTrue("Einkauf wurde nicht erweitert", spieler[0].getVerbesserungEinkaufOeko()[0]);
 	}
 	
 	@Test
-	public void erweitereProduktionBilligTest() {
+	public void erweitereEinkaufBilligTest() {
 		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
 		Unternehmen[] spieler;
 		spielbrett.erstelleSpieler(1);
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Billig");
+spieler[0].erweitereEinkauf("Billig");
 		
-		assertTrue("Produktion wurde nicht erweitert", spieler[0].erweitereProduktion("Billig"));
+		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[0]);
+		assertTrue("Einkauf wurde nicht erweitert", spieler[0].getVerbesserungEinkaufBillig()[0]);
 	}
-
+	
+	@Test
+	public void erweitereProduktionPremiumTest() {
+		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
+		Unternehmen[] spieler;
+		spielbrett.erstelleSpieler(1);
+		spieler = spielbrett.getSpieler();
+		spieler[0].freischaltenSegment("Premium");
+		spieler[0].erweitereProduktion("Premium");
+		
+		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[2]);
+		assertTrue("Produktion wurde nicht erweitert", spieler[0].getKapaErwStraﬂePremium()[0]);
+	}
+	
+	@Test
+	public void erweitereProduktionOekoTest() {
+		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
+		Unternehmen[] spieler;
+		spielbrett.erstelleSpieler(1);
+		spieler = spielbrett.getSpieler();
+		spieler[0].freischaltenSegment("Oeko");
+		spieler[0].erweitereProduktion("Oeko");
+		
+		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[1]);
+		assertTrue("Produktion wurde nicht erweitert", spieler[0].getKapaErwStraﬂeOeko()[0]);
+	}
+	
+	@Test
+	public void erweitereProduktionPremiumTest() {
+		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
+		Unternehmen[] spieler;
+		spielbrett.erstelleSpieler(1);
+		spieler = spielbrett.getSpieler();
+		spieler[0].freischaltenSegment("Billig");
+		spieler[0].erweitereProduktion("Billig");
+		
+		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[0]);
+		assertTrue("Produktion wurde nicht erweitert", spieler[0].getKapaErwStraﬂeBillig()[0]);
+	}
 }
