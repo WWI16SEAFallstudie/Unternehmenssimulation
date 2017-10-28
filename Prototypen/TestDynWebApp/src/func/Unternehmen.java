@@ -535,8 +535,11 @@ public class Unternehmen {
 	 * @param stufe
 	 */
 	private void senkeAnschaffungskosten(String segment, int stufe) {
-		/*switch(segment) {
+		/*int temp[];
+		switch(segment) {
 			case "Billig":
+				
+				Info.setSelbstkostenBillig({10, 20, 30});
 				this.setAnschaffungskostenBillig(this.getAnschaffungskostenBillig() - (this.getAnschaffungskostenBillig() * Info.getRabatteEinkaufBillig()[stufe]));
 				break;
 			case "Oeko":
