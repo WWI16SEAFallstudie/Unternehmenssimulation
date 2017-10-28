@@ -27,6 +27,8 @@ public class MyServlet extends HttpServlet {
 	Spielbrett spiel = new Spielbrett(10, 100000, 0.2);
 	Unternehmen[] spieler;
 	
+	DecimalFormat df = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN); //deutsche Zahlenformatierung
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -35,6 +37,7 @@ public class MyServlet extends HttpServlet {
     public MyServlet() {
         super();
         // TODO Auto-generated constructor stub
+        df.applyPattern( "#,###,##0.00" );//Zahlenformatierung mit 1000er Trennzeichen und zwei Nachkommastellen
     }
 
 	/**
@@ -72,7 +75,8 @@ public class MyServlet extends HttpServlet {
 				
 				// setzen des Spielerbildes sowie des aktuellen Kapitals
 				request.setAttribute("pic", spiel.getAktuellerSpieler());
-				request.setAttribute("kapital", spieler[spiel.getAktuellerSpieler()].getKapital());
+				String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
+				request.setAttribute("kapital", kapital);
 				
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Umwelt");
@@ -102,7 +106,8 @@ public class MyServlet extends HttpServlet {
 				
 				// setzen des Spielerbildes sowie des aktuellen Kapitals
 				request.setAttribute("pic", spiel.getAktuellerSpieler());
-				request.setAttribute("kapital", spieler[spiel.getAktuellerSpieler()].getKapital());
+				String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
+				request.setAttribute("kapital", kapital);
 				
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Luxus");
@@ -132,7 +137,8 @@ public class MyServlet extends HttpServlet {
 				
 				// setzen des Spielerbildes sowie des aktuellen Kapitals
 				request.setAttribute("pic", spiel.getAktuellerSpieler());
-				request.setAttribute("kapital", spieler[spiel.getAktuellerSpieler()].getKapital());
+				String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
+				request.setAttribute("kapital", kapital);
 				
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Billig");
@@ -310,7 +316,8 @@ public class MyServlet extends HttpServlet {
 						
 						// setzen des Spielerbildes sowie des aktuellen Kapitals
 						request.setAttribute("pic", spiel.getAktuellerSpieler());
-						request.setAttribute("kapital", spieler[spiel.getAktuellerSpieler()].getKapital());
+						String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
+						request.setAttribute("kapital", kapital);
 						
 						// setzen der getätigten Auswahl der Produkte
 								
@@ -407,10 +414,8 @@ public class MyServlet extends HttpServlet {
 				
 				// setzen des Einkaufpreises
 				
-				DecimalFormat df = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN);
-				df.applyPattern( "#,###,##0.00" );
-				String ek = df.format( spieler[spiel.getAktuellerSpieler()].getUhr()[i].berechneSelbstkosten() );
 				
+				String ek = df.format( spieler[spiel.getAktuellerSpieler()].getUhr()[i].berechneSelbstkosten() );				
 				request.setAttribute("ekM"+i, ek);
 				
 				for(int j = 0; j <=2; j++){
