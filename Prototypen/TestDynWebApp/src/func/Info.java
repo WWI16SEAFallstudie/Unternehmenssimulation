@@ -2,20 +2,20 @@ package func;
 
 public class Info {
 	
-	// Attribute für die Uhr
+	// Attribute fï¿½r die Uhr
 	private static String uhrwerkOeko[] = {"Quarz","Funk","Automatik"};
 	private static String gehaeuseOeko[] = {"Holz","Wurzelholz","Gebeiztes Holz"};
 	private static String armbandOeko[] = {"Stoff","Leinenfasern","Holz"};
 
 	private static String uhrwerkPremium[] = {"Quarz","Automatik","Skelett/Kalender"};
 	private static String gehaeusePremium[] = {"Stahl","Titan","Platin"};
-	private static String armbandPremium[] = {"Leder","Gehäusematerial","Keramik"};
+	private static String armbandPremium[] = {"Leder","Gehï¿½usematerial","Keramik"};
 
 	private static String uhrwerkBillig[] = {"Quarz","Funk","NochOffen"};
-	private static String gehaeuseBillig[] = {"Plastik","Gefärbtes Plastik","Durchsichtiges Plastik"};
+	private static String gehaeuseBillig[] = {"Plastik","Gefï¿½rbtes Plastik","Durchsichtiges Plastik"};
 	private static String armbandBillig[] = {"Plastik","Gumi","Stoff"};
 	
-	// Kosten für die Entwicklungen der Attribute
+	// Kosten fï¿½r die Entwicklungen der Attribute
 	private static double kostenUhrwerkOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenGehaeuseOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenArmbandOeko[] = { 1000 , 2000 , 3000 };
@@ -41,22 +41,22 @@ public class Info {
 	private static double selbstkostenGehaeuseBillig[] = { 10 , 20 , 30 };
 	private static double selbstkostenArmbandBillig[] = { 10 , 20 , 30 };
 	
-	// Kosten für die Entwicklung der neuen Uhr
+	// Kosten fï¿½r die Entwicklung der neuen Uhr
 	private static double kostenUhrBillig = 1000;
 	private static double kostenUhrPremium = 2000;
 	private static double kostenUhrOeko = 1500;
 	
-	// Kosten für die Entwicklung der Produktion
+	// Kosten fï¿½r die Entwicklung der Produktion
 	private static double kostenProduktionBillig[] = { 1000 , 2000 , 3000 };
 	private static double kostenProduktionOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenProduktionPremium[] = { 1000 , 2000 , 3000 };
 	
-	// Kosten für die Entwicklung des Einkaufs
+	// Kosten fï¿½r die Entwicklung des Einkaufs
 	private static double kostenEinkaufBillig[] = { 1000 , 2000 , 3000 };
 	private static double kostenEinkaufOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenEinkaufPremium[] = { 1000 , 2000 , 3000 };
 	
-	// Wert, wie viel die Verbesserung des Attributs zählt
+	// Wert, wie viel die Verbesserung des Attributs zï¿½hlt
 	private static double scoreUhrwerkBillig[] = { 0.1, 0.2, 0.3 };
 	private static double scoreGehaeuseBillig[] = { 0.1, 0.2, 0.3 };
 	private static double scoreArmbandBillig[] = { 0.1, 0.2, 0.3 };
@@ -70,23 +70,23 @@ public class Info {
 	private static double scoreArmbandPremium[] = { 0.1, 0.2, 0.3 };
 	
 	// Produktion - Kosten pro erweiterung um ... senken	
-	private static double erweitereKapazitätBillig[] = { 0.1, 0.2, 0.3 };
-	private static double erweitereKapazitätOeko[] = { 0.1, 0.2, 0.3 };
-	private static double erweitereKapazitätPremium[] = { 0.1, 0.2, 0.3 };
+	private static double erweitereKapazitaetBillig[] = { 0.1, 0.2, 0.3 };
+	private static double erweitereKapazitaetOeko[] = { 0.1, 0.2, 0.3 };
+	private static double erweitereKapazitaetPremium[] = { 0.1, 0.2, 0.3 };
 	
-	private static double senkeProdKostenStraßeBillig[] = { 0.1, 0.2, 0.3 };
-	private static double senkeProdKostenStraßeOeko[] = { 0.1, 0.2, 0.3 };
-	private static double senkeProdKostenStraßePremium[] = { 0.1, 0.2, 0.3 };
+	private static double senkeProdKostenStrasseBillig[] = { 0.1, 0.2, 0.3 };
+	private static double senkeProdKostenStrasseOeko[] = { 0.1, 0.2, 0.3 };
+	private static double senkeProdKostenStrassePremium[] = { 0.1, 0.2, 0.3 };
 	
 	// Einkauf - kosten senken
 	private static double rabatteEinkaufBillig[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufOeko[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufPremium[] = { 0.1, 0.2, 0.3 };
 
-	// Kosten für die Entwicklung des Einkaufs
-	private static double kostenMarketingBillig[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
-	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
-	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
+	// Kosten fï¿½r die Entwicklung des Einkaufs
+	private static double kostenMarketingBillig[] = { 1000 , 2000 , 3000 };//benï¿½tigen wir nicht
+	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };//benï¿½tigen wir nicht
+	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };//benï¿½tigen wir nicht
 	
 	private static double kostenMarketingUnternehmen[] = { 10000 , 20000 , 30000 };
 	private static double kostenMarketingUhr[] = { 1000 , 2000 , 3000 };
@@ -167,14 +167,14 @@ public class Info {
 	public static double[] getKostenProduktionPremium() {
 		return kostenProduktionPremium;
 	}
-	public static double[] getErweitereKapazitätBillig() {
-		return erweitereKapazitätBillig;
+	public static double[] getErweitereKapazitaetBillig() {
+		return erweitereKapazitaetBillig;
 	}
-	public static double[] getErweitereKapazitätOeko() {
-		return erweitereKapazitätOeko;
+	public static double[] getErweitereKapazitaetOeko() {
+		return erweitereKapazitaetOeko;
 	}
-	public static double[] getErweitereKapazitätPremium() {
-		return erweitereKapazitätPremium;
+	public static double[] getErweitereKapazitaetPremium() {
+		return erweitereKapazitaetPremium;
 	}
 	public static double[] getKostenEinkaufBillig() {
 		return kostenEinkaufBillig;
@@ -221,14 +221,14 @@ public class Info {
 	public static double[] getRabatteEinkaufPremium() {
 		return rabatteEinkaufPremium;
 	}
-	public static double[] getSenkeProdKostenStraßeBillig() {
-		return senkeProdKostenStraßeBillig;
+	public static double[] getSenkeProdKostenStrasseBillig() {
+		return senkeProdKostenStrasseBillig;
 	}
-	public static double[] getSenkeProdKostenStraßeOeko() {
-		return senkeProdKostenStraßeOeko;
+	public static double[] getSenkeProdKostenStrasseOeko() {
+		return senkeProdKostenStrasseOeko;
 	}
-	public static double[] getSenkeProdKostenStraßePremium() {
-		return senkeProdKostenStraßePremium;
+	public static double[] getSenkeProdKostenStrassePremium() {
+		return senkeProdKostenStrassePremium;
 	}
 	public static double[] getSelbstkostenUhrwerkOeko() {
 		return selbstkostenUhrwerkOeko;

@@ -21,7 +21,7 @@ public class Unternehmen {
 	private int produktionskostenPremium = 10000;
 		
 	/*
-	 * Array für entsprechenden Uhren angelegt 
+	 * Array fï¿½r entsprechenden Uhren angelegt 
 	 * iUhrenkategorie ist ein Interface, welches von BilligUhr, OekoUhr und PremiumUhr implementiert wurde
 	 * -> Polymorphismus
 	 */
@@ -51,16 +51,16 @@ public class Unternehmen {
 	/*
 	 * Produktionskostensenkung pro Segment
 	 */
-	private boolean prodKostenSenkungStraßeBillig[] = { false, false, false};
-	private boolean prodKostenSenkungStraßeOeko[] = { false, false, false};
-	private boolean prodKostenSenkungStraßePremium[] = { false, false, false};
+	private boolean prodKostenSenkungStrasseBillig[] = { false, false, false};
+	private boolean prodKostenSenkungStrasseOeko[] = { false, false, false};
+	private boolean prodKostenSenkungStrassePremium[] = { false, false, false};
 	
 	/*
-	 * Kapazitätserweiterung pro Segment
+	 * Kapazitaetserweiterung pro Segment
 	 */
-	private boolean kapaErwStraßeBillig[] = { false, false, false};
-	private boolean kapaErwStraßeOeko[] = { false, false, false};
-	private boolean kapaErwStraßePremium[] = { false, false, false};
+	private boolean kapaErwStrasseBillig[] = { false, false, false};
+	private boolean kapaErwStrasseOeko[] = { false, false, false};
+	private boolean kapaErwStrassePremium[] = { false, false, false};
 		
 	/*
 	 * Einkauf
@@ -73,7 +73,7 @@ public class Unternehmen {
 	 * Konstruktor
 	 */
 	public Unternehmen(String name) {
-		this.setInfo("Hier könnte Ihre Werbung stehen");
+		this.setInfo("Hier kï¿½nnte Ihre Werbung stehen");
 		this.setKapital(1000000);		
 		this.setKapitalAlt(0);
 		this.setName(name);
@@ -82,15 +82,15 @@ public class Unternehmen {
 	/**
 	 * Methoden soll eine weitere Uhr erforschen
 	 * 
-	 * Funktionsweise: Durch Übergabe des Segments, wird über einen switch-case abgefragt,
-	 * welches Segment ausgewählt wurde und dementsprechend wird ein neues Uhrmodell an der
+	 * Funktionsweise: Durch ï¿½bergabe des Segments, wird ï¿½ber einen switch-case abgefragt,
+	 * welches Segment ausgewï¿½hlt wurde und dementsprechend wird ein neues Uhrmodell an der
 	 * Stelle 'index' erzeugt. Jedoch nur, wenn genug Kapital vorhanden ist. Dies wird in einer
 	 * privaten Methode getestet und das Kapital wird vermindert, wenn es ausreichend ist.
 	 * Der 'index' wird durch eine private Methode abgefragt, um
-	 * herauszufinden welches die nächste Freie Uhr ist.
+	 * herauszufinden welches die nï¿½chste Freie Uhr ist.
 	 * 
 	 * @param segment: Gibt an, in welchem Segment die Uhr erforscht werden soll
-	 * Mögliche Segmente: Billig, Luxus, Öko
+	 * Mï¿½gliche Segmente: Billig, Luxus, ï¿½ko
 	 * @return: Uhrerforschung erfolgreich / nicht erfolgreich
 	 */
 	public boolean erforscheUhr(String segment) {
@@ -98,7 +98,7 @@ public class Unternehmen {
 		// Test auf naechste Freie Uhr
 		int index = indexFreieUhr();
 		
-		// Wenn alle Uhren entwickelt oder nicht genug Kohle-> false zurückgeben;
+		// Wenn alle Uhren entwickelt oder nicht genug Kohle-> false zurï¿½ckgeben;
 		if(index != -1 ) {
 			// Checken ob Segment bereits freigeschalten
 			if(isFreigeschaltenSegment(segment)) {
@@ -145,11 +145,11 @@ public class Unternehmen {
 	/**
 	 * Methode zum Erforschen eines Neuen Uhrwerkes
 	 * 
-	 * Funktion: Ausgewählte Uhr ruft die Methode in der iUhrenkategorie auf,
+	 * Funktion: Ausgewï¿½hlte Uhr ruft die Methode in der iUhrenkategorie auf,
 	 * welches auf das jeweilige Segment weiterleitet und da das Uhrwerk erforscht
-	 * Es wird nur erforscht, wenn diese Uhr überhaupt vorhanden ist
+	 * Es wird nur erforscht, wenn diese Uhr ï¿½berhaupt vorhanden ist
 	 * 
-	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
+	 * @param uhr: Gibt an, bei welche der drei Mï¿½glichen Uhren 
 	 * ein neues Uhrwerk erforscht werden soll
 	 */
 	public void erforscheUhrwerk(String segment) {
@@ -169,11 +169,11 @@ public class Unternehmen {
 	/**
 	 * Methode zum Erforschen eines Neuen Armbandes
 	 * 
-	 * Funktion: Ausgewählte Uhr ruft die Methode in der iUhrenkategorie auf,
+	 * Funktion: Ausgewï¿½hlte Uhr ruft die Methode in der iUhrenkategorie auf,
 	 * welches auf das jeweilige Segment weiterleitet und da das Armband erforscht
-	 * Es wird nur erforscht, wenn diese Uhr überhaupt vorhanden ist
+	 * Es wird nur erforscht, wenn diese Uhr ï¿½berhaupt vorhanden ist
 	 * 
-	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
+	 * @param uhr: Gibt an, bei welche der drei Mï¿½glichen Uhren 
 	 * ein neues Armband erforscht werden soll
 	 */
 	public void erforscheArmband(String segment) {
@@ -191,14 +191,14 @@ public class Unternehmen {
 	}
 	
 	/**
-	 * Methode zum Erforschen eines Neuen Gehäuses
+	 * Methode zum Erforschen eines Neuen Gehï¿½uses
 	 * 
-	 * Funktion: Ausgewählte Uhr ruft die Methode in der iUhrenkategorie auf,
-	 * welches auf das jeweilige Segment weiterleitet und da das Gehäuse erforscht
-	 * Es wird nur erforscht, wenn diese Uhr überhaupt vorhanden ist
+	 * Funktion: Ausgewï¿½hlte Uhr ruft die Methode in der iUhrenkategorie auf,
+	 * welches auf das jeweilige Segment weiterleitet und da das Gehï¿½use erforscht
+	 * Es wird nur erforscht, wenn diese Uhr ï¿½berhaupt vorhanden ist
 	 * 
-	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
-	 * ein neues Gehäuse erforscht werden soll
+	 * @param uhr: Gibt an, bei welche der drei Mï¿½glichen Uhren 
+	 * ein neues Gehï¿½use erforscht werden soll
 	 */
 	public void erforscheGehaeuse(String segment) {
 		switch (segment) {
@@ -216,9 +216,9 @@ public class Unternehmen {
 	
 	
 	/**
-	 * Gibt ein Array zurück, welches die freigeschalteten Uhrwerke enthält
+	 * Gibt ein Array zurï¿½ck, welches die freigeschalteten Uhrwerke enthï¿½lt
 	 * 
-	 * @param uhr: Zu welcher Uhr das Uhrwerk zurückgegeben werden soll
+	 * @param uhr: Zu welcher Uhr das Uhrwerk zurï¿½ckgegeben werden soll
 	 * @return: Array der freigeschalteten Uhrwerke
 	 */
 //	public boolean[] getUhrwerk(int uhr) {
@@ -226,9 +226,9 @@ public class Unternehmen {
 //	}
 
 	/**
-	 * Gibt ein Array zurück, welches die freigeschalteten Armbänder enthält
+	 * Gibt ein Array zurï¿½ck, welches die freigeschalteten Armbï¿½nder enthï¿½lt
 	 * 
-	 * @param uhr: Zu welcher Uhr das Armband zurückgegeben werden soll
+	 * @param uhr: Zu welcher Uhr das Armband zurï¿½ckgegeben werden soll
 	 * @return: Array der freigeschalteten Armband
 	 */
 //	public boolean[] getArmband(int uhr) {
@@ -236,10 +236,10 @@ public class Unternehmen {
 //	}
 	
 	/**
-	 * Gibt ein Array zurück, welches die freigeschalteten Gehäuse enthält
+	 * Gibt ein Array zurï¿½ck, welches die freigeschalteten Gehï¿½use enthï¿½lt
 	 * 
-	 * @param uhr: Zu welcher Uhr das Gehäuse zurückgegeben werden soll
-	 * @return: Array der freigeschalteten Gehäuse
+	 * @param uhr: Zu welcher Uhr das Gehï¿½use zurï¿½ckgegeben werden soll
+	 * @return: Array der freigeschalteten Gehï¿½use
 	 */
 //	public boolean[] getGehaeuse(int uhr) {
 //		return null; //this.uhr[uhr].getGehaeuse();
@@ -268,25 +268,25 @@ public class Unternehmen {
 	}
 	
 	/**
-	 * Methode erweitert die Produktion des ausgewählten Segmentes
+	 * Methode erweitert die Produktion des ausgewï¿½hlten Segmentes
 	 * 
-	 * Funktion: Durch ein Switch-Case wird das Segment überprüft, in dem die
-	 * Erweiterung durchgeführt werden soll. Anschließend wird das Array
-	 * durchlaufen um an der nächsten Stelle die Produktion freizuschalten, 
+	 * Funktion: Durch ein Switch-Case wird das Segment ï¿½berprï¿½ft, in dem die
+	 * Erweiterung durchgefï¿½hrt werden soll. Anschlieï¿½end wird das Array
+	 * durchlaufen um an der nï¿½chsten Stelle die Produktion freizuschalten, 
 	 * vorausgesetzt das Kapital ist ausreichend. Auch hier die private Methode zum
 	 * testen und zum Kapitalvermindern
 	 * 
 	 * @param segment: In welchem Segment erweitert werden soll
-	 * @return: Rückgabe ob die Erweiterung erfolgreich war
+	 * @return: Rï¿½ckgabe ob die Erweiterung erfolgreich war
 	 */
 	public boolean erweitereProduktion(String segment) {
-		// Erweitert die Kapazität -> erhöht also das Produktionslimit
+		// Erweitert die Kapazitaet -> erhï¿½ht also das Produktionslimit
 		switch(segment) {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
-					if(this.getKapaErwStraßeBillig()[i] == false) {
-						if(checkeKapital(Info.getErweitereKapazitätBillig()[i])) {
-							kapaErwStraßeBillig[i] = true;
+					if(this.getKapaErwStrasseBillig()[i] == false) {
+						if(checkeKapital(Info.getErweitereKapazitaetBillig()[i])) {
+							kapaErwStrasseBillig[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -295,9 +295,9 @@ public class Unternehmen {
 				break;
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
-					if(this.getKapaErwStraßePremium()[i] == false) {
-						if(checkeKapital(Info.getErweitereKapazitätPremium()[i])) {
-							kapaErwStraßePremium[i] = true;
+					if(this.getKapaErwStrassePremium()[i] == false) {
+						if(checkeKapital(Info.getErweitereKapazitaetPremium()[i])) {
+							kapaErwStrassePremium[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -306,9 +306,9 @@ public class Unternehmen {
 				break;
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
-					if(this.getKapaErwStraßeOeko()[i] == false) {
-						if(checkeKapital(Info.getErweitereKapazitätOeko()[i])) {
-							kapaErwStraßeOeko[i] = true;
+					if(this.getKapaErwStrasseOeko()[i] == false) {
+						if(checkeKapital(Info.getErweitereKapazitaetOeko()[i])) {
+							kapaErwStrasseOeko[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -327,9 +327,9 @@ public class Unternehmen {
 		switch(segment) {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
-					if(this.getProdKostenSenkungStraßeBillig()[i] == false) {
-						if(checkeKapital(Info.getSenkeProdKostenStraßeBillig()[i])) {
-							prodKostenSenkungStraßeBillig[i] = true;
+					if(this.getProdKostenSenkungStrasseBillig()[i] == false) {
+						if(checkeKapital(Info.getSenkeProdKostenStrasseBillig()[i])) {
+							prodKostenSenkungStrasseBillig[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
 						}
@@ -338,9 +338,9 @@ public class Unternehmen {
 				break;
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
-					if(this.getProdKostenSenkungStraßePremium()[i] == false) {
-						if(checkeKapital(Info.getSenkeProdKostenStraßePremium()[i])) {
-							prodKostenSenkungStraßePremium[i] = true;
+					if(this.getProdKostenSenkungStrassePremium()[i] == false) {
+						if(checkeKapital(Info.getSenkeProdKostenStrassePremium()[i])) {
+							prodKostenSenkungStrassePremium[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
 						}
@@ -349,9 +349,9 @@ public class Unternehmen {
 				break;
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
-					if(this.getProdKostenSenkungStraßeOeko()[i] == false) {
-						if(checkeKapital(Info.getSenkeProdKostenStraßeOeko()[i])) {
-							prodKostenSenkungStraßeOeko[i] = true;
+					if(this.getProdKostenSenkungStrasseOeko()[i] == false) {
+						if(checkeKapital(Info.getSenkeProdKostenStrasseOeko()[i])) {
+							prodKostenSenkungStrasseOeko[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
 						}
@@ -406,7 +406,7 @@ public class Unternehmen {
 	
 	/**
 	 * 
-	 * @param uhr: Für welche Uhr die Marketingstrategie ist
+	 * @param uhr: Fï¿½r welche Uhr die Marketingstrategie ist
 	 */
 	public void uhrenMarketing(int uhr, int anzKampagnen) {
 		/*if(this.uhr[uhr] != null && ( anzKampagnen >= 0 && anzKampagnen <= 3) ) {
@@ -501,7 +501,7 @@ public class Unternehmen {
 		// Produktionslimit testen
 		if(menge > limit)
 			menge = limit;
-		// Berechnen wie viele mit vorhandenem Kapital produziert werden können
+		// Berechnen wie viele mit vorhandenem Kapital produziert werden kï¿½nnen
 		for(int i = menge; i > 0; i --) {
 			double prodKosten = menge * prodKostenStueck;
 			if(prodKosten <= this.kapital) {
@@ -513,20 +513,20 @@ public class Unternehmen {
 	}
 	
 	/**
-	 * Private Methode um Produktionslimit zu erhöhen
+	 * Private Methode um Produktionslimit zu erhï¿½hen
 	 * @param segment: In welchem Segment die Produktion erhoht wird
 	 * @param stufe: Welche Erweiterungsstufe besteht
 	 */
 	private void erhoeheProduktionslimit(String segment, int stufe) {		
 		switch(segment) {
 			case "Billig":
-				this.setProduktionslimitBillig(this.getProduktionslimitBillig() + (int)(this.getProduktionslimitBillig() * Info.getErweitereKapazitätBillig()[stufe]));
+				this.setProduktionslimitBillig(this.getProduktionslimitBillig() + (int)(this.getProduktionslimitBillig() * Info.getErweitereKapazitaetBillig()[stufe]));
 				break;
 			case "Oeko":
-				this.setProduktionslimitOeko(this.getProduktionslimitOeko() + (int)(this.getProduktionslimitOeko() * Info.getErweitereKapazitätOeko()[stufe]));
+				this.setProduktionslimitOeko(this.getProduktionslimitOeko() + (int)(this.getProduktionslimitOeko() * Info.getErweitereKapazitaetOeko()[stufe]));
 				break;
 			case "Premium":
-				this.setProduktionslimitPremium(this.getProduktionslimitPremium() + (int)(this.getProduktionslimitPremium() * Info.getErweitereKapazitätPremium()[stufe]));
+				this.setProduktionslimitPremium(this.getProduktionslimitPremium() + (int)(this.getProduktionslimitPremium() * Info.getErweitereKapazitaetPremium()[stufe]));
 				break;
 		}
 	}
@@ -534,13 +534,13 @@ public class Unternehmen {
 	private void senkeProduktionskosten(String segment, int stufe) {
 		switch(segment) {
 			case "Billig":
-				this.setProduktionskostenBillig(this.getProduktionskostenBillig() - (int)(this.getProduktionskostenBillig() * Info.getSenkeProdKostenStraßeBillig()[stufe]));
+				this.setProduktionskostenBillig(this.getProduktionskostenBillig() - (int)(this.getProduktionskostenBillig() * Info.getSenkeProdKostenStrasseBillig()[stufe]));
 				break;
 			case "Oeko":
-				this.setProduktionskostenOeko(this.getProduktionskostenOeko() - (int)(this.getProduktionskostenOeko() * Info.getSenkeProdKostenStraßeOeko()[stufe]));
+				this.setProduktionskostenOeko(this.getProduktionskostenOeko() - (int)(this.getProduktionskostenOeko() * Info.getSenkeProdKostenStrasseOeko()[stufe]));
 				break;
 			case "Premium":
-				this.setProduktionskostenPremium(this.getProduktionskostenPremium() - (int)(this.getProduktionskostenPremium() * Info.getSenkeProdKostenStraßePremium()[stufe]));
+				this.setProduktionskostenPremium(this.getProduktionskostenPremium() - (int)(this.getProduktionskostenPremium() * Info.getSenkeProdKostenStrassePremium()[stufe]));
 				break;
 		}
 	}
@@ -586,9 +586,9 @@ public class Unternehmen {
 	}
 		
 	/**
-	 * Private Methode um den nächsten index herauszufinden, an den die nächste Uhr soll
+	 * Private Methode um den nï¿½chsten index herauszufinden, an den die nï¿½chste Uhr soll
 	 * 
-	 * @return: index des nächsten freien Platzes für die Uhr
+	 * @return: index des nï¿½chsten freien Platzes fï¿½r die Uhr
 	 */
 	private int indexFreieUhr() {
 		int result = -1;
@@ -605,7 +605,7 @@ public class Unternehmen {
 	 * Private Methode um zu testen, ob genug Kapital vorhanden ist
 	 * Kapital wird auch direkt um die Kosten vermindert
 	 * 
-	 * @param kosten: Übergabewert der anstehenden Kosten
+	 * @param kosten: ï¿½bergabewert der anstehenden Kosten
 	 * @return true -> Wenn genug Kosten vorhanden; false wenn nicht
 	 */
 	private boolean checkeKapital(double kosten) {
@@ -662,7 +662,7 @@ public class Unternehmen {
 				for(boolean s : uhr[i].getArmband()) {
 					temp += s + " ";
 				}
-				temp += " Gehäuse: ";
+				temp += " Gehï¿½use: ";
 				for(boolean s : uhr[i].getGehaeuse()) {
 					temp += s + " ";
 				}
@@ -682,28 +682,28 @@ public class Unternehmen {
 		return uhr;
 	}
 	
-	public boolean[] getProdKostenSenkungStraßeBillig() {
-		return this.prodKostenSenkungStraßeBillig;
+	public boolean[] getProdKostenSenkungStrasseBillig() {
+		return this.prodKostenSenkungStrasseBillig;
 	}
 
-	public boolean[] getProdKostenSenkungStraßeOeko() {
-		return this.prodKostenSenkungStraßeOeko;
+	public boolean[] getProdKostenSenkungStrasseOeko() {
+		return this.prodKostenSenkungStrasseOeko;
 	}
 
-	public boolean[] getProdKostenSenkungStraßePremium() {
-		return this.prodKostenSenkungStraßePremium;
+	public boolean[] getProdKostenSenkungStrassePremium() {
+		return this.prodKostenSenkungStrassePremium;
 	}
 	
-	public boolean[] getKapaErwStraßeBillig() {
-		return kapaErwStraßeBillig;
+	public boolean[] getKapaErwStrasseBillig() {
+		return kapaErwStrasseBillig;
 	}
 
-	public boolean[] getKapaErwStraßeOeko() {
-		return kapaErwStraßeOeko;
+	public boolean[] getKapaErwStrasseOeko() {
+		return kapaErwStrasseOeko;
 	}
 
-	public boolean[] getKapaErwStraßePremium() {
-		return kapaErwStraßePremium;
+	public boolean[] getKapaErwStrassePremium() {
+		return kapaErwStrassePremium;
 	}
 
 	public boolean[] getVerbesserungEinkaufBillig() {
@@ -744,13 +744,13 @@ public class Unternehmen {
 	
 	public void setSpielerDaten(int uhr, int indexUhrwerk, int indexArmband, int indexGehaeuse) {
 		if(this.uhr[uhr] !=  null) {
-			// Überprüfen ob eine Umrüstung stattgefunden hat
+			// ï¿½berprï¿½fen ob eine Umrï¿½stung stattgefunden hat
 			if(this.uhr[uhr].getUhrwerk() == indexUhrwerk && this.uhr[uhr].getArmband() == indexArmband 
 					&& this.uhr[uhr].getGehaeuse() == indexGehaeuse) {
 				// Uhrenkonfiguration ist identisch
 				this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
 			}else {
-				// Uhrenkonfiguration hat sich geändert - Umrüstkosten werden berechnet
+				// Uhrenkonfiguration hat sich geï¿½ndert - Umrï¿½stkosten werden berechnet
 				double umruest = this.uhr[uhr].berechneSelbstkosten() * 0.4 * this.uhr[uhr].getBestand();
 				if(checkeKapital(umruest)) {
 					this.setKapital( this.getKapital() - umruest);
