@@ -97,7 +97,7 @@
 					<ul class="list-group">
 						<li class="${clBcw0} list-group-item"onclick="research('researchClockWorkBillig',0);">Quarz <span class="glyphicon glyphicon-ok"></span><a class="addBtn">+ ${clCBcw0} &euro;</a></li>
 						<li class="${clBcw1} list-group-item"onclick="research('researchClockWorkBillig',1);">Funk <span class="glyphicon glyphicon-ok"></span><a class="addBtn">+ ${clCBcw1} &euro;</a></li>
-						<li class="${clBcw2} list-group-item"onclick="research('researchClockWorkBillig',2);">Automatik <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addBcw2}">+ ${clCBcw1} &euro;</a></li>
+						<li class="${clBcw2} list-group-item"onclick="research('researchClockWorkBillig',2);">Automatik <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addBcw2}">+ ${clCBcw2} &euro;</a></li>
 					</ul>
 					<input type="hidden" id="researchClockWorkBillig" name="researchClockWorkBillig">
 					

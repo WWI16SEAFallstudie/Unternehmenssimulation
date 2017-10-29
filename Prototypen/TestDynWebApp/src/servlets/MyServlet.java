@@ -24,7 +24,7 @@ public class MyServlet extends HttpServlet {
 	/**
 	 * Initiierung der für das Spiel benötigten Instanzen
 	 */
-	Spielbrett spiel = new Spielbrett(10, 100000, 0.2);
+	Spielbrett spiel = new Spielbrett(10, 1000000, 0.2);
 	Unternehmen[] spieler;
 	
 	DecimalFormat df = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN); //deutsche Zahlenformatierung DecimalFormat
@@ -523,7 +523,7 @@ public class MyServlet extends HttpServlet {
 					for(int k = 0; k <= 2; k++){
 						switch(i){
 							case 0:
-								request.setAttribute("prodLimitB", spieler[spiel.getAktuellerSpieler()].getProduktionslimitBillig());
+								request.setAttribute("prodLimitB", sf.format(spieler[spiel.getAktuellerSpieler()].getProduktionslimitBillig()));
 								request.setAttribute("prdCBcr"+k, sf.format(Info.getKostenProduktionBillig()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStrasseBillig()[k] == true)
 									request.setAttribute("prdBcr"+k, "done");
@@ -538,7 +538,7 @@ public class MyServlet extends HttpServlet {
 							break;
 							
 							case 1:
-								request.setAttribute("prodLimitO", spieler[spiel.getAktuellerSpieler()].getProduktionslimitOeko());
+								request.setAttribute("prodLimitO", sf.format(spieler[spiel.getAktuellerSpieler()].getProduktionslimitOeko()));
 								request.setAttribute("prdCOcr"+k, sf.format(Info.getKostenProduktionOeko()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStrasseOeko()[k] == true)
 									request.setAttribute("prdOcr"+k, "done");
@@ -553,7 +553,7 @@ public class MyServlet extends HttpServlet {
 							break;
 							
 							case 2:
-								request.setAttribute("prodLimitL", spieler[spiel.getAktuellerSpieler()].getProduktionslimitPremium());
+								request.setAttribute("prodLimitL", sf.format(spieler[spiel.getAktuellerSpieler()].getProduktionslimitPremium()));
 								request.setAttribute("prdCLcr"+k, sf.format(Info.getKostenProduktionPremium()[k]));
 								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStrassePremium()[k] == true)
 									request.setAttribute("prdLcr"+k, "done");
@@ -621,7 +621,7 @@ public class MyServlet extends HttpServlet {
 		for(int i = 0; i < anzahlUhren; i++){
 			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
 			if(spieler[spiel.getAktuellerSpieler()].getUhr()[i] != null){
-				request.setAttribute("stock"+i, spieler[spiel.getAktuellerSpieler()].getUhr()[i].getBestand());
+				request.setAttribute("stock"+i, sf.format(spieler[spiel.getAktuellerSpieler()].getUhr()[i].getBestand()));
 			}
 		}
 	}
