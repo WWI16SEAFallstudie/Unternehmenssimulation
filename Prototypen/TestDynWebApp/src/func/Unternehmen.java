@@ -21,7 +21,7 @@ public class Unternehmen {
 	private int produktionskostenPremium = 10000;
 		
 	/*
-	 * Array fï¿½r entsprechenden Uhren angelegt 
+	 * Array für entsprechenden Uhren angelegt 
 	 * iUhrenkategorie ist ein Interface, welches von BilligUhr, OekoUhr und PremiumUhr implementiert wurde
 	 * -> Polymorphismus
 	 */
@@ -56,7 +56,7 @@ public class Unternehmen {
 	private boolean prodKostenSenkungStrassePremium[] = { false, false, false};
 	
 	/*
-	 * Kapazitaetserweiterung pro Segment
+	 * Strasseserweiterung pro Segment
 	 */
 	private boolean kapaErwStrasseBillig[] = { false, false, false};
 	private boolean kapaErwStrasseOeko[] = { false, false, false};
@@ -73,7 +73,7 @@ public class Unternehmen {
 	 * Konstruktor
 	 */
 	public Unternehmen(String name) {
-		this.setInfo("Hier kï¿½nnte Ihre Werbung stehen");
+		this.setInfo("Hier könnte Ihre Werbung stehen");
 		this.setKapital(1000000);		
 		this.setKapitalAlt(0);
 		this.setName(name);
@@ -82,15 +82,15 @@ public class Unternehmen {
 	/**
 	 * Methoden soll eine weitere Uhr erforschen
 	 * 
-	 * Funktionsweise: Durch ï¿½bergabe des Segments, wird ï¿½ber einen switch-case abgefragt,
-	 * welches Segment ausgewï¿½hlt wurde und dementsprechend wird ein neues Uhrmodell an der
+	 * Funktionsweise: Durch Übergabe des Segments, wird über einen switch-case abgefragt,
+	 * welches Segment ausgewählt wurde und dementsprechend wird ein neues Uhrmodell an der
 	 * Stelle 'index' erzeugt. Jedoch nur, wenn genug Kapital vorhanden ist. Dies wird in einer
 	 * privaten Methode getestet und das Kapital wird vermindert, wenn es ausreichend ist.
 	 * Der 'index' wird durch eine private Methode abgefragt, um
-	 * herauszufinden welches die nï¿½chste Freie Uhr ist.
+	 * herauszufinden welches die nächste Freie Uhr ist.
 	 * 
 	 * @param segment: Gibt an, in welchem Segment die Uhr erforscht werden soll
-	 * Mï¿½gliche Segmente: Billig, Luxus, ï¿½ko
+	 * Mögliche Segmente: Billig, Luxus, Öko
 	 * @return: Uhrerforschung erfolgreich / nicht erfolgreich
 	 */
 	public boolean erforscheUhr(String segment) {
@@ -98,7 +98,7 @@ public class Unternehmen {
 		// Test auf naechste Freie Uhr
 		int index = indexFreieUhr();
 		
-		// Wenn alle Uhren entwickelt oder nicht genug Kohle-> false zurï¿½ckgeben;
+		// Wenn alle Uhren entwickelt oder nicht genug Kohle-> false zurückgeben;
 		if(index != -1 ) {
 			// Checken ob Segment bereits freigeschalten
 			if(isFreigeschaltenSegment(segment)) {
@@ -145,11 +145,11 @@ public class Unternehmen {
 	/**
 	 * Methode zum Erforschen eines Neuen Uhrwerkes
 	 * 
-	 * Funktion: Ausgewï¿½hlte Uhr ruft die Methode in der iUhrenkategorie auf,
+	 * Funktion: Ausgewählte Uhr ruft die Methode in der iUhrenkategorie auf,
 	 * welches auf das jeweilige Segment weiterleitet und da das Uhrwerk erforscht
-	 * Es wird nur erforscht, wenn diese Uhr ï¿½berhaupt vorhanden ist
+	 * Es wird nur erforscht, wenn diese Uhr überhaupt vorhanden ist
 	 * 
-	 * @param uhr: Gibt an, bei welche der drei Mï¿½glichen Uhren 
+	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Uhrwerk erforscht werden soll
 	 */
 	public void erforscheUhrwerk(String segment) {
@@ -169,11 +169,11 @@ public class Unternehmen {
 	/**
 	 * Methode zum Erforschen eines Neuen Armbandes
 	 * 
-	 * Funktion: Ausgewï¿½hlte Uhr ruft die Methode in der iUhrenkategorie auf,
+	 * Funktion: Ausgewählte Uhr ruft die Methode in der iUhrenkategorie auf,
 	 * welches auf das jeweilige Segment weiterleitet und da das Armband erforscht
-	 * Es wird nur erforscht, wenn diese Uhr ï¿½berhaupt vorhanden ist
+	 * Es wird nur erforscht, wenn diese Uhr überhaupt vorhanden ist
 	 * 
-	 * @param uhr: Gibt an, bei welche der drei Mï¿½glichen Uhren 
+	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Armband erforscht werden soll
 	 */
 	public void erforscheArmband(String segment) {
@@ -191,14 +191,14 @@ public class Unternehmen {
 	}
 	
 	/**
-	 * Methode zum Erforschen eines Neuen Gehï¿½uses
+	 * Methode zum Erforschen eines Neuen Gehäuses
 	 * 
-	 * Funktion: Ausgewï¿½hlte Uhr ruft die Methode in der iUhrenkategorie auf,
-	 * welches auf das jeweilige Segment weiterleitet und da das Gehï¿½use erforscht
-	 * Es wird nur erforscht, wenn diese Uhr ï¿½berhaupt vorhanden ist
+	 * Funktion: Ausgewählte Uhr ruft die Methode in der iUhrenkategorie auf,
+	 * welches auf das jeweilige Segment weiterleitet und da das Gehäuse erforscht
+	 * Es wird nur erforscht, wenn diese Uhr überhaupt vorhanden ist
 	 * 
-	 * @param uhr: Gibt an, bei welche der drei Mï¿½glichen Uhren 
-	 * ein neues Gehï¿½use erforscht werden soll
+	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
+	 * ein neues Gehäuse erforscht werden soll
 	 */
 	public void erforscheGehaeuse(String segment) {
 		switch (segment) {
@@ -216,9 +216,9 @@ public class Unternehmen {
 	
 	
 	/**
-	 * Gibt ein Array zurï¿½ck, welches die freigeschalteten Uhrwerke enthï¿½lt
+	 * Gibt ein Array zurück, welches die freigeschalteten Uhrwerke enthält
 	 * 
-	 * @param uhr: Zu welcher Uhr das Uhrwerk zurï¿½ckgegeben werden soll
+	 * @param uhr: Zu welcher Uhr das Uhrwerk zurückgegeben werden soll
 	 * @return: Array der freigeschalteten Uhrwerke
 	 */
 //	public boolean[] getUhrwerk(int uhr) {
@@ -226,9 +226,9 @@ public class Unternehmen {
 //	}
 
 	/**
-	 * Gibt ein Array zurï¿½ck, welches die freigeschalteten Armbï¿½nder enthï¿½lt
+	 * Gibt ein Array zurück, welches die freigeschalteten Armbänder enthält
 	 * 
-	 * @param uhr: Zu welcher Uhr das Armband zurï¿½ckgegeben werden soll
+	 * @param uhr: Zu welcher Uhr das Armband zurückgegeben werden soll
 	 * @return: Array der freigeschalteten Armband
 	 */
 //	public boolean[] getArmband(int uhr) {
@@ -236,10 +236,10 @@ public class Unternehmen {
 //	}
 	
 	/**
-	 * Gibt ein Array zurï¿½ck, welches die freigeschalteten Gehï¿½use enthï¿½lt
+	 * Gibt ein Array zurück, welches die freigeschalteten Gehäuse enthält
 	 * 
-	 * @param uhr: Zu welcher Uhr das Gehï¿½use zurï¿½ckgegeben werden soll
-	 * @return: Array der freigeschalteten Gehï¿½use
+	 * @param uhr: Zu welcher Uhr das Gehäuse zurückgegeben werden soll
+	 * @return: Array der freigeschalteten Gehäuse
 	 */
 //	public boolean[] getGehaeuse(int uhr) {
 //		return null; //this.uhr[uhr].getGehaeuse();
@@ -268,19 +268,19 @@ public class Unternehmen {
 	}
 	
 	/**
-	 * Methode erweitert die Produktion des ausgewï¿½hlten Segmentes
+	 * Methode erweitert die Produktion des ausgewählten Segmentes
 	 * 
-	 * Funktion: Durch ein Switch-Case wird das Segment ï¿½berprï¿½ft, in dem die
-	 * Erweiterung durchgefï¿½hrt werden soll. Anschlieï¿½end wird das Array
-	 * durchlaufen um an der nï¿½chsten Stelle die Produktion freizuschalten, 
+	 * Funktion: Durch ein Switch-Case wird das Segment überprüft, in dem die
+	 * Erweiterung durchgeführt werden soll. Anschließend wird das Array
+	 * durchlaufen um an der nächsten Stelle die Produktion freizuschalten, 
 	 * vorausgesetzt das Kapital ist ausreichend. Auch hier die private Methode zum
 	 * testen und zum Kapitalvermindern
 	 * 
 	 * @param segment: In welchem Segment erweitert werden soll
-	 * @return: Rï¿½ckgabe ob die Erweiterung erfolgreich war
+	 * @return: Rückgabe ob die Erweiterung erfolgreich war
 	 */
 	public boolean erweitereProduktion(String segment) {
-		// Erweitert die Kapazitaet -> erhï¿½ht also das Produktionslimit
+		// Erweitert die Kapazität -> erhöht also das Produktionslimit
 		switch(segment) {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
@@ -406,7 +406,7 @@ public class Unternehmen {
 	
 	/**
 	 * 
-	 * @param uhr: Fï¿½r welche Uhr die Marketingstrategie ist
+	 * @param uhr: Für welche Uhr die Marketingstrategie ist
 	 */
 	public void uhrenMarketing(int uhr, int anzKampagnen) {
 		/*if(this.uhr[uhr] != null && ( anzKampagnen >= 0 && anzKampagnen <= 3) ) {
@@ -501,7 +501,7 @@ public class Unternehmen {
 		// Produktionslimit testen
 		if(menge > limit)
 			menge = limit;
-		// Berechnen wie viele mit vorhandenem Kapital produziert werden kï¿½nnen
+		// Berechnen wie viele mit vorhandenem Kapital produziert werden können
 		for(int i = menge; i > 0; i --) {
 			double prodKosten = menge * prodKostenStueck;
 			if(prodKosten <= this.kapital) {
@@ -513,7 +513,7 @@ public class Unternehmen {
 	}
 	
 	/**
-	 * Private Methode um Produktionslimit zu erhï¿½hen
+	 * Private Methode um Produktionslimit zu erhöhen
 	 * @param segment: In welchem Segment die Produktion erhoht wird
 	 * @param stufe: Welche Erweiterungsstufe besteht
 	 */
@@ -586,9 +586,9 @@ public class Unternehmen {
 	}
 		
 	/**
-	 * Private Methode um den nï¿½chsten index herauszufinden, an den die nï¿½chste Uhr soll
+	 * Private Methode um den nächsten index herauszufinden, an den die nächste Uhr soll
 	 * 
-	 * @return: index des nï¿½chsten freien Platzes fï¿½r die Uhr
+	 * @return: index des nächsten freien Platzes für die Uhr
 	 */
 	private int indexFreieUhr() {
 		int result = -1;
@@ -605,7 +605,7 @@ public class Unternehmen {
 	 * Private Methode um zu testen, ob genug Kapital vorhanden ist
 	 * Kapital wird auch direkt um die Kosten vermindert
 	 * 
-	 * @param kosten: ï¿½bergabewert der anstehenden Kosten
+	 * @param kosten: Übergabewert der anstehenden Kosten
 	 * @return true -> Wenn genug Kosten vorhanden; false wenn nicht
 	 */
 	private boolean checkeKapital(double kosten) {
@@ -662,7 +662,7 @@ public class Unternehmen {
 				for(boolean s : uhr[i].getArmband()) {
 					temp += s + " ";
 				}
-				temp += " Gehï¿½use: ";
+				temp += " Gehäuse: ";
 				for(boolean s : uhr[i].getGehaeuse()) {
 					temp += s + " ";
 				}
@@ -744,13 +744,13 @@ public class Unternehmen {
 	
 	public void setSpielerDaten(int uhr, int indexUhrwerk, int indexArmband, int indexGehaeuse) {
 		if(this.uhr[uhr] !=  null) {
-			// ï¿½berprï¿½fen ob eine Umrï¿½stung stattgefunden hat
+			// Überprüfen ob eine Umrüstung stattgefunden hat
 			if(this.uhr[uhr].getUhrwerk() == indexUhrwerk && this.uhr[uhr].getArmband() == indexArmband 
 					&& this.uhr[uhr].getGehaeuse() == indexGehaeuse) {
 				// Uhrenkonfiguration ist identisch
 				this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
 			}else {
-				// Uhrenkonfiguration hat sich geï¿½ndert - Umrï¿½stkosten werden berechnet
+				// Uhrenkonfiguration hat sich geändert - Umrüstkosten werden berechnet
 				double umruest = this.uhr[uhr].berechneSelbstkosten() * 0.4 * this.uhr[uhr].getBestand();
 				if(checkeKapital(umruest)) {
 					this.setKapital( this.getKapital() - umruest);
@@ -864,8 +864,5 @@ public class Unternehmen {
 		this.produktionskostenPremium = produktionskostenPremium;
 	}
 	
-	
-	
-	
-	
 }
+

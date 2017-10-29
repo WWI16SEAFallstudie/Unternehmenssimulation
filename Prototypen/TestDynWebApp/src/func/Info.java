@@ -2,20 +2,20 @@ package func;
 
 public class Info {
 	
-	// Attribute fï¿½r die Uhr
+	// Attribute für die Uhr
 	private static String uhrwerkOeko[] = {"Quarz","Funk","Automatik"};
 	private static String gehaeuseOeko[] = {"Holz","Wurzelholz","Gebeiztes Holz"};
 	private static String armbandOeko[] = {"Stoff","Leinenfasern","Holz"};
 
 	private static String uhrwerkPremium[] = {"Quarz","Automatik","Skelett/Kalender"};
 	private static String gehaeusePremium[] = {"Stahl","Titan","Platin"};
-	private static String armbandPremium[] = {"Leder","Gehï¿½usematerial","Keramik"};
+	private static String armbandPremium[] = {"Leder","Gehäusematerial","Keramik"};
 
 	private static String uhrwerkBillig[] = {"Quarz","Funk","NochOffen"};
-	private static String gehaeuseBillig[] = {"Plastik","Gefï¿½rbtes Plastik","Durchsichtiges Plastik"};
+	private static String gehaeuseBillig[] = {"Plastik","Gefärbtes Plastik","Durchsichtiges Plastik"};
 	private static String armbandBillig[] = {"Plastik","Gumi","Stoff"};
 	
-	// Kosten fï¿½r die Entwicklungen der Attribute
+	// Kosten für die Entwicklungen der Attribute
 	private static double kostenUhrwerkOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenGehaeuseOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenArmbandOeko[] = { 1000 , 2000 , 3000 };
@@ -41,22 +41,22 @@ public class Info {
 	private static double selbstkostenGehaeuseBillig[] = { 10 , 20 , 30 };
 	private static double selbstkostenArmbandBillig[] = { 10 , 20 , 30 };
 	
-	// Kosten fï¿½r die Entwicklung der neuen Uhr
+	// Kosten für die Entwicklung der neuen Uhr
 	private static double kostenUhrBillig = 1000;
 	private static double kostenUhrPremium = 2000;
 	private static double kostenUhrOeko = 1500;
 	
-	// Kosten fï¿½r die Entwicklung der Produktion
+	// Kosten für die Entwicklung der Produktion
 	private static double kostenProduktionBillig[] = { 1000 , 2000 , 3000 };
 	private static double kostenProduktionOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenProduktionPremium[] = { 1000 , 2000 , 3000 };
 	
-	// Kosten fï¿½r die Entwicklung des Einkaufs
+	// Kosten für die Entwicklung des Einkaufs
 	private static double kostenEinkaufBillig[] = { 1000 , 2000 , 3000 };
 	private static double kostenEinkaufOeko[] = { 1000 , 2000 , 3000 };
 	private static double kostenEinkaufPremium[] = { 1000 , 2000 , 3000 };
 	
-	// Wert, wie viel die Verbesserung des Attributs zï¿½hlt
+	// Wert, wie viel die Verbesserung des Attributs zählt
 	private static double scoreUhrwerkBillig[] = { 0.1, 0.2, 0.3 };
 	private static double scoreGehaeuseBillig[] = { 0.1, 0.2, 0.3 };
 	private static double scoreArmbandBillig[] = { 0.1, 0.2, 0.3 };
@@ -83,10 +83,10 @@ public class Info {
 	private static double rabatteEinkaufOeko[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufPremium[] = { 0.1, 0.2, 0.3 };
 
-	// Kosten fï¿½r die Entwicklung des Einkaufs
-	private static double kostenMarketingBillig[] = { 1000 , 2000 , 3000 };//benï¿½tigen wir nicht
-	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };//benï¿½tigen wir nicht
-	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };//benï¿½tigen wir nicht
+	// Kosten für die Entwicklung des Einkaufs
+	private static double kostenMarketingBillig[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
+	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
+	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
 	
 	private static double kostenMarketingUnternehmen[] = { 10000 , 20000 , 30000 };
 	private static double kostenMarketingUhr[] = { 1000 , 2000 , 3000 };

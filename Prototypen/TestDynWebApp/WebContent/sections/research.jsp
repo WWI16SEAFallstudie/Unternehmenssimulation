@@ -3,7 +3,7 @@
 				<div class="col-sm-4 col-md-4 col-lg-4">
 					<div id="researchO" class="card umwelt ${researchO}">
 					<h4>Umwelt</h4>
-					<a class="segment addBtn" onclick="research('researchSegmentOeko',1);">Freischalten 100.000 &euro;</a>
+					<a class="segment addBtn" onclick="research('researchSegmentOeko',1);">Freischalten ${rCO} &euro;</a>
 					<p></p>
 					<span class="listhead">Geh&auml;use</span>
 					<ul class="list-group">
@@ -39,7 +39,7 @@
 				<div class="col-sm-4 col-md-4 col-lg-4">
 					<div id="researchL" class="card luxus ${researchL}">
 					<h4>Luxus</h4>
-					<a class="segment addBtn" onclick="research('researchSegmentLuxus',1);">Freischalten 100.000 &euro;</a>
+					<a class="segment addBtn" onclick="research('researchSegmentLuxus',1);">Freischalten ${rCL} &euro;</a>
 					<p></p>
 					<span class="listhead">Geh&auml;use</span>
 					<ul class="list-group">
@@ -75,7 +75,7 @@
 				<div class="col-sm-4 col-md-4 col-lg-4">
 					<div id="researchB" class="card preisbewusst ${researchB}">
 					<h4>Gro&szlig;serienfertigung</h4>
-					<a class="segment addBtn" onclick="research('researchSegmentBillig',1);">Freischalten 100.000 &euro;</a>
+					<a class="segment addBtn" onclick="research('researchSegmentBillig',1);">Freischalten ${rCB} &euro;</a>
 					<p></p>
 					<span class="listhead">Geh&auml;use</span>				
 					<ul class="list-group">
