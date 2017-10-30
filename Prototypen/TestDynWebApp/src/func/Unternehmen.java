@@ -11,9 +11,9 @@ public class Unternehmen {
 	private String info;
 	
 	// Produktionslimit speichern
-	private int produktionslimitBillig = 100000;
-	private int produktionslimitOeko = 30000;
-	private int produktionslimitPremium = 10000;
+	private int produktionslimitBillig = 10000;
+	private int produktionslimitOeko = 4000;
+	private int produktionslimitPremium = 400;
 
 	// Produktionskosten speichern
 	private int produktionskostenBillig = 10000;
@@ -51,16 +51,16 @@ public class Unternehmen {
 	/*
 	 * Produktionskostensenkung pro Segment
 	 */
-	private boolean prodKostenSenkungStraﬂeBillig[] = { false, false, false};
-	private boolean prodKostenSenkungStraﬂeOeko[] = { false, false, false};
-	private boolean prodKostenSenkungStraﬂePremium[] = { false, false, false};
+	private boolean prodKostenSenkungStrasseBillig[] = { false, false, false};
+	private boolean prodKostenSenkungStrasseOeko[] = { false, false, false};
+	private boolean prodKostenSenkungStrassePremium[] = { false, false, false};
 	
 	/*
-	 * Kapazit‰tserweiterung pro Segment
+	 * Strasseserweiterung pro Segment
 	 */
-	private boolean kapaErwStraﬂeBillig[] = { false, false, false};
-	private boolean kapaErwStraﬂeOeko[] = { false, false, false};
-	private boolean kapaErwStraﬂePremium[] = { false, false, false};
+	private boolean kapaErwStrasseBillig[] = { false, false, false};
+	private boolean kapaErwStrasseOeko[] = { false, false, false};
+	private boolean kapaErwStrassePremium[] = { false, false, false};
 		
 	/*
 	 * Einkauf
@@ -284,9 +284,9 @@ public class Unternehmen {
 		switch(segment) {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
-					if(this.getKapaErwStraﬂeBillig()[i] == false) {
-						if(checkeKapital(Info.getErweitereKapazit‰tBillig()[i])) {
-							kapaErwStraﬂeBillig[i] = true;
+					if(this.getKapaErwStrasseBillig()[i] == false) {
+						if(checkeKapital(Info.getErweitereKapazitaetBillig()[i])) {
+							kapaErwStrasseBillig[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -295,9 +295,9 @@ public class Unternehmen {
 				break;
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
-					if(this.getKapaErwStraﬂePremium()[i] == false) {
-						if(checkeKapital(Info.getErweitereKapazit‰tPremium()[i])) {
-							kapaErwStraﬂePremium[i] = true;
+					if(this.getKapaErwStrassePremium()[i] == false) {
+						if(checkeKapital(Info.getErweitereKapazitaetPremium()[i])) {
+							kapaErwStrassePremium[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -306,9 +306,9 @@ public class Unternehmen {
 				break;
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
-					if(this.getKapaErwStraﬂeOeko()[i] == false) {
-						if(checkeKapital(Info.getErweitereKapazit‰tOeko()[i])) {
-							kapaErwStraﬂeOeko[i] = true;
+					if(this.getKapaErwStrasseOeko()[i] == false) {
+						if(checkeKapital(Info.getErweitereKapazitaetOeko()[i])) {
+							kapaErwStrasseOeko[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -327,9 +327,9 @@ public class Unternehmen {
 		switch(segment) {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
-					if(this.getProdKostenSenkungStraﬂeBillig()[i] == false) {
-						if(checkeKapital(Info.getSenkeProdKostenStraﬂeBillig()[i])) {
-							prodKostenSenkungStraﬂeBillig[i] = true;
+					if(this.getProdKostenSenkungStrasseBillig()[i] == false) {
+						if(checkeKapital(Info.getSenkeProdKostenStrasseBillig()[i])) {
+							prodKostenSenkungStrasseBillig[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
 						}
@@ -338,9 +338,9 @@ public class Unternehmen {
 				break;
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
-					if(this.getProdKostenSenkungStraﬂePremium()[i] == false) {
-						if(checkeKapital(Info.getSenkeProdKostenStraﬂePremium()[i])) {
-							prodKostenSenkungStraﬂePremium[i] = true;
+					if(this.getProdKostenSenkungStrassePremium()[i] == false) {
+						if(checkeKapital(Info.getSenkeProdKostenStrassePremium()[i])) {
+							prodKostenSenkungStrassePremium[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
 						}
@@ -349,9 +349,9 @@ public class Unternehmen {
 				break;
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
-					if(this.getProdKostenSenkungStraﬂeOeko()[i] == false) {
-						if(checkeKapital(Info.getSenkeProdKostenStraﬂeOeko()[i])) {
-							prodKostenSenkungStraﬂeOeko[i] = true;
+					if(this.getProdKostenSenkungStrasseOeko()[i] == false) {
+						if(checkeKapital(Info.getSenkeProdKostenStrasseOeko()[i])) {
+							prodKostenSenkungStrasseOeko[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
 						}
@@ -520,13 +520,13 @@ public class Unternehmen {
 	private void erhoeheProduktionslimit(String segment, int stufe) {		
 		switch(segment) {
 			case "Billig":
-				this.setProduktionslimitBillig(this.getProduktionslimitBillig() + (int)(this.getProduktionslimitBillig() * Info.getErweitereKapazit‰tBillig()[stufe]));
+				this.setProduktionslimitBillig(this.getProduktionslimitBillig() + (int)(this.getProduktionslimitBillig() * Info.getErweitereKapazitaetBillig()[stufe]));
 				break;
 			case "Oeko":
-				this.setProduktionslimitOeko(this.getProduktionslimitOeko() + (int)(this.getProduktionslimitOeko() * Info.getErweitereKapazit‰tOeko()[stufe]));
+				this.setProduktionslimitOeko(this.getProduktionslimitOeko() + (int)(this.getProduktionslimitOeko() * Info.getErweitereKapazitaetOeko()[stufe]));
 				break;
 			case "Premium":
-				this.setProduktionslimitPremium(this.getProduktionslimitPremium() + (int)(this.getProduktionslimitPremium() * Info.getErweitereKapazit‰tPremium()[stufe]));
+				this.setProduktionslimitPremium(this.getProduktionslimitPremium() + (int)(this.getProduktionslimitPremium() * Info.getErweitereKapazitaetPremium()[stufe]));
 				break;
 		}
 	}
@@ -534,13 +534,13 @@ public class Unternehmen {
 	private void senkeProduktionskosten(String segment, int stufe) {
 		switch(segment) {
 			case "Billig":
-				this.setProduktionskostenBillig(this.getProduktionskostenBillig() - (int)(this.getProduktionskostenBillig() * Info.getSenkeProdKostenStraﬂeBillig()[stufe]));
+				this.setProduktionskostenBillig(this.getProduktionskostenBillig() - (int)(this.getProduktionskostenBillig() * Info.getSenkeProdKostenStrasseBillig()[stufe]));
 				break;
 			case "Oeko":
-				this.setProduktionskostenOeko(this.getProduktionskostenOeko() - (int)(this.getProduktionskostenOeko() * Info.getSenkeProdKostenStraﬂeOeko()[stufe]));
+				this.setProduktionskostenOeko(this.getProduktionskostenOeko() - (int)(this.getProduktionskostenOeko() * Info.getSenkeProdKostenStrasseOeko()[stufe]));
 				break;
 			case "Premium":
-				this.setProduktionskostenPremium(this.getProduktionskostenPremium() - (int)(this.getProduktionskostenPremium() * Info.getSenkeProdKostenStraﬂePremium()[stufe]));
+				this.setProduktionskostenPremium(this.getProduktionskostenPremium() - (int)(this.getProduktionskostenPremium() * Info.getSenkeProdKostenStrassePremium()[stufe]));
 				break;
 		}
 	}
@@ -682,28 +682,28 @@ public class Unternehmen {
 		return uhr;
 	}
 	
-	public boolean[] getProdKostenSenkungStraﬂeBillig() {
-		return this.prodKostenSenkungStraﬂeBillig;
+	public boolean[] getProdKostenSenkungStrasseBillig() {
+		return this.prodKostenSenkungStrasseBillig;
 	}
 
-	public boolean[] getProdKostenSenkungStraﬂeOeko() {
-		return this.prodKostenSenkungStraﬂeOeko;
+	public boolean[] getProdKostenSenkungStrasseOeko() {
+		return this.prodKostenSenkungStrasseOeko;
 	}
 
-	public boolean[] getProdKostenSenkungStraﬂePremium() {
-		return this.prodKostenSenkungStraﬂePremium;
+	public boolean[] getProdKostenSenkungStrassePremium() {
+		return this.prodKostenSenkungStrassePremium;
 	}
 	
-	public boolean[] getKapaErwStraﬂeBillig() {
-		return kapaErwStraﬂeBillig;
+	public boolean[] getKapaErwStrasseBillig() {
+		return kapaErwStrasseBillig;
 	}
 
-	public boolean[] getKapaErwStraﬂeOeko() {
-		return kapaErwStraﬂeOeko;
+	public boolean[] getKapaErwStrasseOeko() {
+		return kapaErwStrasseOeko;
 	}
 
-	public boolean[] getKapaErwStraﬂePremium() {
-		return kapaErwStraﬂePremium;
+	public boolean[] getKapaErwStrassePremium() {
+		return kapaErwStrassePremium;
 	}
 
 	public boolean[] getVerbesserungEinkaufBillig() {
@@ -864,8 +864,5 @@ public class Unternehmen {
 		this.produktionskostenPremium = produktionskostenPremium;
 	}
 	
-	
-	
-	
-	
 }
+

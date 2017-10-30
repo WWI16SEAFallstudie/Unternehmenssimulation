@@ -16,45 +16,45 @@ public class Info {
 	private static String armbandBillig[] = {"Plastik","Gumi","Stoff"};
 	
 	// Kosten für die Entwicklungen der Attribute
-	private static double kostenUhrwerkOeko[] = { 1000 , 2000 , 3000 };
-	private static double kostenGehaeuseOeko[] = { 1000 , 2000 , 3000 };
-	private static double kostenArmbandOeko[] = { 1000 , 2000 , 3000 };
+	private static double kostenUhrwerkOeko[] = { 100000 , 200000 , 300000 };
+	private static double kostenGehaeuseOeko[] = { 100000 , 200000 , 300000 };
+	private static double kostenArmbandOeko[] = { 100000 , 200000 , 300000 };
 	
-	private static double kostenUhrwerkPremium[] = { 1000 , 2000 , 3000 };
-	private static double kostenGehaeusePremium[] = { 1000 , 2000 , 3000 };
-	private static double kostenArmbandPremium[] = { 1000 , 2000 , 3000 };
+	private static double kostenUhrwerkPremium[] = { 100000 , 200000 , 300000 };
+	private static double kostenGehaeusePremium[] = { 100000 , 200000 , 300000 };
+	private static double kostenArmbandPremium[] = { 100000 , 200000 , 300000 };
 
-	private static double kostenUhrwerkBillig[] = { 1000 , 2000 , 3000 };
-	private static double kostenGehaeuseBillig[] = { 1000 , 2000 , 3000 };
-	private static double kostenArmbandBillig[] = { 1000 , 2000 , 3000 };
+	private static double kostenUhrwerkBillig[] = { 100000 , 200000 , 300000 };
+	private static double kostenGehaeuseBillig[] = { 100000 , 200000 , 300000 };
+	private static double kostenArmbandBillig[] = { 100000 , 200000 , 300000 };
 	
 	// Selbstkosten der Attribute
-	private static double selbstkostenUhrwerkOeko[] = { 10 , 20 , 30 };
-	private static double selbstkostenGehaeuseOeko[] = { 10 , 20 , 30 };
-	private static double selbstkostenArmbandOeko[] = { 10 , 20 , 30 };
+	private static double selbstkostenUhrwerkOeko[] = { 33 , 66 , 100 };
+	private static double selbstkostenGehaeuseOeko[] = { 25 , 50 , 75 };
+	private static double selbstkostenArmbandOeko[] = { 25 , 50 , 75 };
 	
-	private static double selbstkostenUhrwerkPremium[] = { 10 , 20 , 30 };
-	private static double selbstkostenGehaeusePremium[] = { 10 , 20 , 30 };
-	private static double selbstkostenArmbandPremium[] = { 10 , 20 , 30 };
+	private static double selbstkostenUhrwerkPremium[] = { 330 , 660 , 1000 };
+	private static double selbstkostenGehaeusePremium[] = { 250 , 500 , 750 };
+	private static double selbstkostenArmbandPremium[] = { 250 , 500 , 750 };
 
-	private static double selbstkostenUhrwerkBillig[] = { 10 , 20 , 30 };
+	private static double selbstkostenUhrwerkBillig[] = { 13 , 26 , 40 };
 	private static double selbstkostenGehaeuseBillig[] = { 10 , 20 , 30 };
 	private static double selbstkostenArmbandBillig[] = { 10 , 20 , 30 };
 	
 	// Kosten für die Entwicklung der neuen Uhr
-	private static double kostenUhrBillig = 1000;
-	private static double kostenUhrPremium = 2000;
-	private static double kostenUhrOeko = 1500;
+	private static double kostenUhrBillig = 100000;
+	private static double kostenUhrPremium = 200000;
+	private static double kostenUhrOeko = 150000;
 	
 	// Kosten für die Entwicklung der Produktion
-	private static double kostenProduktionBillig[] = { 1000 , 2000 , 3000 };
-	private static double kostenProduktionOeko[] = { 1000 , 2000 , 3000 };
-	private static double kostenProduktionPremium[] = { 1000 , 2000 , 3000 };
+	private static double kostenProduktionBillig[] = { 100000 , 200000 , 300000 };
+	private static double kostenProduktionOeko[] = { 100000 , 200000 , 300000 };
+	private static double kostenProduktionPremium[] = { 100000 , 200000 , 300000 };
 	
 	// Kosten für die Entwicklung des Einkaufs
-	private static double kostenEinkaufBillig[] = { 1000 , 2000 , 3000 };
-	private static double kostenEinkaufOeko[] = { 1000 , 2000 , 3000 };
-	private static double kostenEinkaufPremium[] = { 1000 , 2000 , 3000 };
+	private static double kostenEinkaufBillig[] = { 100000 , 200000 , 300000 };
+	private static double kostenEinkaufOeko[] = { 100000 , 200000 , 300000 };
+	private static double kostenEinkaufPremium[] = { 100000 , 200000 , 300000 };
 	
 	// Wert, wie viel die Verbesserung des Attributs zählt
 	private static double scoreUhrwerkBillig[] = { 0.1, 0.2, 0.3 };
@@ -70,13 +70,13 @@ public class Info {
 	private static double scoreArmbandPremium[] = { 0.1, 0.2, 0.3 };
 	
 	// Produktion - Kosten pro erweiterung um ... senken	
-	private static double erweitereKapazitätBillig[] = { 0.1, 0.2, 0.3 };
-	private static double erweitereKapazitätOeko[] = { 0.1, 0.2, 0.3 };
-	private static double erweitereKapazitätPremium[] = { 0.1, 0.2, 0.3 };
+	private static double erweitereKapazitaetBillig[] = { 0.1, 0.2, 0.3 };
+	private static double erweitereKapazitaetOeko[] = { 0.1, 0.2, 0.3 };
+	private static double erweitereKapazitaetPremium[] = { 0.1, 0.2, 0.3 };
 	
-	private static double senkeProdKostenStraßeBillig[] = { 0.1, 0.2, 0.3 };
-	private static double senkeProdKostenStraßeOeko[] = { 0.1, 0.2, 0.3 };
-	private static double senkeProdKostenStraßePremium[] = { 0.1, 0.2, 0.3 };
+	private static double senkeProdKostenStrasseBillig[] = { 0.1, 0.2, 0.3 };
+	private static double senkeProdKostenStrasseOeko[] = { 0.1, 0.2, 0.3 };
+	private static double senkeProdKostenStrassePremium[] = { 0.1, 0.2, 0.3 };
 	
 	// Einkauf - kosten senken
 	private static double rabatteEinkaufBillig[] = { 0.1, 0.2, 0.3 };
@@ -84,9 +84,12 @@ public class Info {
 	private static double rabatteEinkaufPremium[] = { 0.1, 0.2, 0.3 };
 
 	// Kosten für die Entwicklung des Einkaufs
-	private static double kostenMarketingBillig[] = { 1000 , 2000 , 3000 };
-	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };
-	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };
+	private static double kostenMarketingBillig[] = { 10000 , 15000 , 25000 };//benötigen wir nicht
+	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
+	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
+	
+	private static double kostenMarketingUnternehmen[] = { 29000 , 43000 , 73000 };
+	private static double kostenMarketingUhr[] = { 10000 , 15000 , 25000 };
 	
 	// Marketingkampagnen
 	private static double scoreMarketingkampagne[] = { 0.1, 0.2, 0.3 };
@@ -164,14 +167,14 @@ public class Info {
 	public static double[] getKostenProduktionPremium() {
 		return kostenProduktionPremium;
 	}
-	public static double[] getErweitereKapazitätBillig() {
-		return erweitereKapazitätBillig;
+	public static double[] getErweitereKapazitaetBillig() {
+		return erweitereKapazitaetBillig;
 	}
-	public static double[] getErweitereKapazitätOeko() {
-		return erweitereKapazitätOeko;
+	public static double[] getErweitereKapazitaetOeko() {
+		return erweitereKapazitaetOeko;
 	}
-	public static double[] getErweitereKapazitätPremium() {
-		return erweitereKapazitätPremium;
+	public static double[] getErweitereKapazitaetPremium() {
+		return erweitereKapazitaetPremium;
 	}
 	public static double[] getKostenEinkaufBillig() {
 		return kostenEinkaufBillig;
@@ -218,14 +221,14 @@ public class Info {
 	public static double[] getRabatteEinkaufPremium() {
 		return rabatteEinkaufPremium;
 	}
-	public static double[] getSenkeProdKostenStraßeBillig() {
-		return senkeProdKostenStraßeBillig;
+	public static double[] getSenkeProdKostenStrasseBillig() {
+		return senkeProdKostenStrasseBillig;
 	}
-	public static double[] getSenkeProdKostenStraßeOeko() {
-		return senkeProdKostenStraßeOeko;
+	public static double[] getSenkeProdKostenStrasseOeko() {
+		return senkeProdKostenStrasseOeko;
 	}
-	public static double[] getSenkeProdKostenStraßePremium() {
-		return senkeProdKostenStraßePremium;
+	public static double[] getSenkeProdKostenStrassePremium() {
+		return senkeProdKostenStrassePremium;
 	}
 	public static double[] getSelbstkostenUhrwerkOeko() {
 		return selbstkostenUhrwerkOeko;
@@ -265,6 +268,12 @@ public class Info {
 	}
 	public static double[] getScoreMarketingkampagne() {
 		return scoreMarketingkampagne;
+	}
+	public static double[] getKostenMarketingUnternehmen() {
+		return kostenMarketingUnternehmen;
+	}
+	public static double[] getKostenMarketingUhr() {
+		return kostenMarketingUhr;
 	}
 	
 	
