@@ -88,8 +88,8 @@ public class Info {
 	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
 	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
 	
-	private static double kostenMarketingUnternehmen[] = { 29000 , 43000 , 73000 };
-	private static double kostenMarketingUhr[] = { 10000 , 15000 , 25000 };
+	private static double kostenMarketingUnternehmen[] = { 100000 , 125000 , 165000 };
+	private static double kostenMarketingUhr[] = { 34000 , 64000 , 95000 };
 	
 	// Marketingkampagnen
 	private static double scoreMarketingkampagne[] = { 0.1, 0.2, 0.3 };
