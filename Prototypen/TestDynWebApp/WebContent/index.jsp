@@ -14,7 +14,7 @@
 
     <!-- CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles3.css" rel="stylesheet">
+    <link href="css/stylesStart.css" rel="stylesheet">
 
   </head>
 
@@ -50,12 +50,6 @@
         <p class="m-0 text-center text-white">Copyright &copy; Watch Tycoon 2017</p>
       </div><!-- /.container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/functions.js"></script>
 
   </body>
 
