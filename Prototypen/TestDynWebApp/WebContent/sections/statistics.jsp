@@ -6,19 +6,19 @@
 					    <tbody>
 					      <tr>
 					        <td>Kapital</td>
-					        <td>300.500 &euro;</td>
+					        <td>${kapital} &euro;</td>
 					      </tr>
 					      <tr>
 					        <td>Bestand Modell 1</td>
-					        <td>2000</td>
+					        <td>${stock0} St.</td>
 					      </tr>
 					      <tr>
 					        <td>Bestand Modell 2</td>
-					        <td>-</td>
+					        <td>${stock1} St.</td>
 					      </tr>
 					      <tr>
 					        <td>Bestand Modell 3</td>
-					        <td>-</td>
+					        <td>${stock2} St.</td>
 					      </tr>
 					    </tbody>
 					  </table>
