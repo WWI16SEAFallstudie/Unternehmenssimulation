@@ -24,8 +24,12 @@ public class MyServlet extends HttpServlet {
 	/**
 	 * Initiierung der fï¿½r das Spiel benï¿½tigten Instanzen
 	 */
-	/*Spielbrett spiel = new Spielbrett(10, 1000000, 0.2);*/
-	Spielbrett spiel = new Spielbrett(3, 1000000, 0.2);// für Test
+	// Festlegen der Startparameter für Spiel und Folgespiele
+	int Rundenanzahl = 3; //für Test 3 sonst 10
+	int startKapital = 1000000;
+	double impactRange = 0.2;
+	
+	Spielbrett spiel = new Spielbrett(Rundenanzahl, startKapital, impactRange);// für Test
 	Unternehmen[] spieler;
 	
 	DecimalFormat df = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN); //deutsche Zahlenformatierung DecimalFormat
@@ -249,20 +253,37 @@ public class MyServlet extends HttpServlet {
 			}
 			
 			//Start der MarketingKampagnen des gesamten Unternehmens
-			/*
-			if(!request.getParameter("marketingCompany0").equals(""))
-			if(!request.getParameter("marketingCompany1").equals(""))
-			if(!request.getParameter("marketingCompany2").equals(""))
-			*/
-			//Start der MarketingKampagnen der Uhren
 			
-			int[] anzahlMarketingUhr = {0,0,0};
+			boolean[] MarketingkampagneUnternehmen = {false,false,false};
+			int anzahlMarketingUnternehmen = 0;
 			
 			for(int i = 0; i < 3; i++){
-				if(!request.getParameter("marketing0Clock"+i).equals("")) anzahlMarketingUhr[i]++;
-				if(!request.getParameter("marketing1Clock"+i).equals("")) anzahlMarketingUhr[i]++;
-				if(!request.getParameter("marketing2Clock"+i).equals("")) anzahlMarketingUhr[i]++;
-				//if(anzahlMarketingUhr[i] > 0) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(i, anzahlMarketingUhr[i]);
+				if(!request.getParameter("marketingCompany"+i).equals("")){
+					MarketingkampagneUnternehmen[i] = true;
+					anzahlMarketingUnternehmen++;
+				}
+			}
+			if(anzahlMarketingUnternehmen > 0) spieler[spiel.getAktuellerSpieler()].unternehmenMarketing(MarketingkampagneUnternehmen);
+			
+				
+			//Start der MarketingKampagnen der Uhren
+			
+			for(int i = 0; i < anzahlUhren; i++){
+				boolean[] MarketingkampagneUhr = {false,false,false};
+				int anzahlMarketingUhr = 0;
+				if(!request.getParameter("marketing0Clock"+i).equals("")){
+					MarketingkampagneUhr[0] = true;
+					anzahlMarketingUhr++;
+				}
+				if(!request.getParameter("marketing1Clock"+i).equals("")){
+					MarketingkampagneUhr[1] = true;
+					anzahlMarketingUhr++;
+				}
+				if(!request.getParameter("marketing2Clock"+i).equals("")){
+					MarketingkampagneUhr[2] = true;
+					anzahlMarketingUhr++;
+				}
+				if(anzahlMarketingUhr > 0) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(i, MarketingkampagneUhr);
 			}
 			//-- Ender der Datenï¿½bergabe
 			
@@ -298,17 +319,17 @@ public class MyServlet extends HttpServlet {
 			
 			// Beenden des Spiels, da der letzte Spieler der letzen Runde seine Runde beendete.
 			else{
+				
+				spiel.naechsteRunde();
+				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/gewinner.jsp");
 				
-				int[] reihenfolge = {0,2,1,3};
-				double[] geld = {5000.20,3000.20,4000.20,1000.30};
-				
 				for(int i = 0; i<spieler.length;i++){
-					if(reihenfolge[i] > -1){
-						request.setAttribute("wp"+i, "Spieler " + reihenfolge[i] + "<img src='images/Man" + i +".png'>");
-						request.setAttribute("wc"+i, df.format(geld[reihenfolge[i]])+ "&nbsp;&euro;");
-					}
+					int gewinner = spiel.getSieger()[i];
+					request.setAttribute("wp"+i, "Spieler " + gewinner + "<img src='images/Man" + gewinner +".png'>");
+					request.setAttribute("wc"+i, df.format(spieler[gewinner].getKapital())+ "&nbsp;&euro;");					
 				}
+				spiel = null;
 				dispatcher.forward(request, response);
 				System.out.println("Beendigung der letzten Spielrunde.");
 			}
@@ -383,6 +404,13 @@ public class MyServlet extends HttpServlet {
 					System.out.println("Start neuer Runde.");
 					
 				}//nextPlayer
+				
+				if (request.getParameter("restart") != null) {
+					spiel = new Spielbrett(Rundenanzahl, startKapital, impactRange);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+					dispatcher.forward(request, response);
+					System.out.println("Start neues neuen Spiels wird vorbereitet.");
+				}//restart
 				
 	}// doPost
 	
@@ -486,7 +514,10 @@ public class MyServlet extends HttpServlet {
 							request.setAttribute("addB"+item[j]+k, "notAvailable");
 					}
 				}
-			}else request.setAttribute("researchB", "card-inaktive");
+			}else {
+				request.setAttribute("researchB", "card-inaktive");
+				request.setAttribute("rCB", sf.format(Info.getKostenSegmentBillig()));
+			}
 			
 			// setzen der Auswahl der Gehï¿½use, Armbï¿½nder und Uhrwerke des Segmentes Oeko
 			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[1] == true){
@@ -503,7 +534,10 @@ public class MyServlet extends HttpServlet {
 							request.setAttribute("addO"+item[j]+k, "notAvailable");
 					}
 				}
-			}else request.setAttribute("researchO", "card-inaktive");
+			}else {
+				request.setAttribute("researchO", "card-inaktive");
+				request.setAttribute("rCO", sf.format(Info.getKostenSegmentOeko()));
+			}
 			
 			// setzen der Auswahl der Gehï¿½use, Armbï¿½nder und Uhrwerke des Segmentes Luxus
 			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[2] == true){
@@ -520,7 +554,10 @@ public class MyServlet extends HttpServlet {
 							request.setAttribute("addL"+item[j]+k, "notAvailable");
 					}
 				}
-			}else request.setAttribute("researchL", "card-inaktive");
+			}else {
+				request.setAttribute("researchL", "card-inaktive");
+				request.setAttribute("rCL", sf.format(Info.getKostenSegmentPremium()));
+			}
 	}//setFEOptions
 	
 	// setzen der mï¿½glichen und freigeschaltenen Produktionserweiterungen

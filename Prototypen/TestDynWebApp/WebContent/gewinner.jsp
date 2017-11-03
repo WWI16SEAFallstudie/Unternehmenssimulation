@@ -65,6 +65,14 @@
     </div>
     <!-- /.container -->
 
+	<div class="container">
+		<div id="inpframe">
+		<form action="${pageContext.request.contextPath}/servlet" method="post">
+			<input class="input" type="submit" name="restart" id="restart" value="neues Spiel" class="input">
+		</form>
+		</div>
+	</div><!-- /.container -->
+
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">

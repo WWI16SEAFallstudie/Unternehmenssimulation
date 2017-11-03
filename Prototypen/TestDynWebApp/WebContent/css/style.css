@@ -460,3 +460,26 @@ tfoot>tr>td{
 	width: 100px;
 	display: inline-block;
 }
+/* Startbutton */
+	
+	#restart{
+		display: block;
+		border: none;
+		border-radius: 4px;
+		box-shadow: 1px 1px 2px 0 rgb(0,0,0);
+		margin: 20px auto 20px auto;
+		padding: 8px 30px;
+		font-size: 1.3em;
+		background-color: #4F84C4;
+		color: black;
+		font-weight: bold;
+		-webkit-transition: 0.2s; /* Safari */
+	    transition: 0.2s;
+	}
+	
+	#restart:hover{
+		box-shadow: 2px 2px 6px 1px rgb(50,50,50);
+		color: white;
+		-webkit-transition: 0.2s; /* Safari */
+	    transition: 0.2s;
+	}
