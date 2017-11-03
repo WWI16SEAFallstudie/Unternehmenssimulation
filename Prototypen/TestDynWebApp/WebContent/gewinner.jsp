@@ -25,9 +25,42 @@
 
     <!-- Page Content -->
     <div id="content" class="container">
-		<div id="next" class="card card-aktive">
+		<div id="win" class="card card-aktive">
 			<h4>Abschlieﬂende Spielstatistik</h4>
-			<h3>Hier wird der Gewinner stehen</h3>
+			
+			<ul class="list-group">
+				<li class="list-group-item">
+					<span class="pos">
+						1. Platz 
+						<img class="win" src="images/TrophyGold.png">
+					</span>
+					<span class="winner">${wp0}</span>
+					<span class="winner">${wc0}</span>
+				</li>
+				<li class="list-group-item">
+					<span class="pos">
+						2. Platz 
+						<img class="win" src="images/TrophySilver.png">
+					</span>
+					<span class="winner">${wp1}</span>
+					<span class="winner">${wc1}</span>
+				</li>
+				<li class="list-group-item">
+					<span class="pos">
+						3. Platz 
+						<img class="win" src="images/TrophyBronze.png">
+					</span>
+					<span class="winner">${wp2}</span>
+					<span class="winner">${wc2}</span>
+				</li>
+				<li class="list-group-item">
+					<span class="pos">
+						4. Platz
+					</span>
+					<span class="winner">${wp3}</span>
+					<span class="winner">${wc3}</span>
+				</li>
+			</ul>
 		</div>
     </div>
     <!-- /.container -->
@@ -43,8 +76,6 @@
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/chart.min.js"></script>
-	<script src="js/functions.js"></script>
   </body>
 
 </html>

@@ -430,3 +430,33 @@ tfoot>tr>td{
 		font-size: 1.2em;
 		font-weight: bold;
 	}
+	
+/* Styles für Gewinnerseite */
+#win{
+	width: 420px;
+	margin: 100px auto auto auto;
+}
+#win>h4{
+	text-align: center;
+	display: block;
+	margin: 20px auto 30px;
+}
+
+#win li{
+	height: 45px;
+}
+
+#win li img{
+	height: 30px;
+	margin-left: 10px;
+}
+
+.winner{
+	padding-left: 25px;
+	display: inline-block;
+}
+
+.pos{
+	width: 100px;
+	display: inline-block;
+}

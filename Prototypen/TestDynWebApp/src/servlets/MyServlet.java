@@ -22,9 +22,10 @@ import func.Info;
 public class MyServlet extends HttpServlet {
 	
 	/**
-	 * Initiierung der für das Spiel benötigten Instanzen
+	 * Initiierung der fï¿½r das Spiel benï¿½tigten Instanzen
 	 */
-	Spielbrett spiel = new Spielbrett(10, 1000000, 0.2);
+	/*Spielbrett spiel = new Spielbrett(10, 1000000, 0.2);*/
+	Spielbrett spiel = new Spielbrett(3, 1000000, 0.2);// für Test
 	Unternehmen[] spieler;
 	
 	DecimalFormat df = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN); //deutsche Zahlenformatierung DecimalFormat
@@ -47,29 +48,29 @@ public class MyServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Start des Spiels mit der ausgewählten Anzahl an Spielern
+		// Start des Spiels mit der ausgewï¿½hlten Anzahl an Spielern
 		if (request.getParameter("startbtn") != null) {
 						
 			int spielerAnz = Integer.parseInt(request.getParameter("spielerAnzahl")); // Ermitteln der Spieleranzahl			
 			spiel.erstelleSpieler(spielerAnz); // Erzeugen der Spieler
-			spieler = spiel.getSpieler(); 	// Zugriff auf Spielerobjekte über Variable ermöglichen
+			spieler = spiel.getSpieler(); 	// Zugriff auf Spielerobjekte ï¿½ber Variable ermï¿½glichen
 
 			for(int i = 0; i < spieler.length; i++) System.out.println(spieler[i].toString()); // Ausgabe der Spieler in Konsole
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/segment.jsp");
-			dispatcher.forward(request, response); // aufruf der segmentauswahl für den ersten Spieler		
+			dispatcher.forward(request, response); // aufruf der segmentauswahl fï¿½r den ersten Spieler		
 		}
 		
 		
 		// Auswahl der Sparte zu Spielbeginn
 		
-			// Wahl der Ökosparte
+			// Wahl der ï¿½kosparte
 			if (request.getParameter("selectoeko") != null) {
 				
 				if(spieler[spiel.getAktuellerSpieler()].getUhr()[0] == null){
 					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Oeko");
 					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Oeko");
-					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Öko gewählt");
+					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment ï¿½ko gewï¿½hlt");
 					System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
 				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
 				
@@ -84,8 +85,8 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("m0s", "Umwelt");
 				
 				for(int i = 0; i < 3; i++){
-					request.setAttribute("m0c"+i, Info.getGehaeuseOeko()[i]); // setzen der Bezeichnungen der Gehäuse
-					request.setAttribute("m0b"+i, Info.getArmbandOeko()[i]); // setzen der Bezeichnungen der Armbänder
+					request.setAttribute("m0c"+i, Info.getGehaeuseOeko()[i]); // setzen der Bezeichnungen der Gehï¿½use
+					request.setAttribute("m0b"+i, Info.getArmbandOeko()[i]); // setzen der Bezeichnungen der Armbï¿½nder
 					request.setAttribute("m0cw"+i, Info.getUhrwerkOeko()[i]); // setzen der Bezeichnungen der Uhrwerke
 				}
 				
@@ -100,7 +101,7 @@ public class MyServlet extends HttpServlet {
 				if(spieler[spiel.getAktuellerSpieler()].getUhr()[0] == null){
 					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Premium");
 					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Premium");
-					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Luxus gewählt");
+					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Luxus gewï¿½hlt");
 					System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
 				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
 			
@@ -115,8 +116,8 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("m0s", "Luxus");
 				
 				for(int i = 0; i < 3; i++){
-					request.setAttribute("m0c"+i, Info.getGehaeusePremium()[i]); // setzen der Bezeichnungen der Gehäuse
-					request.setAttribute("m0b"+i, Info.getArmbandPremium()[i]); // setzen der Bezeichnungen der Armbänder
+					request.setAttribute("m0c"+i, Info.getGehaeusePremium()[i]); // setzen der Bezeichnungen der Gehï¿½use
+					request.setAttribute("m0b"+i, Info.getArmbandPremium()[i]); // setzen der Bezeichnungen der Armbï¿½nder
 					request.setAttribute("m0cw"+i, Info.getUhrwerkPremium()[i]); // setzen der Bezeichnungen der Uhrwerke
 				}
 				
@@ -131,7 +132,7 @@ public class MyServlet extends HttpServlet {
 				if(spieler[spiel.getAktuellerSpieler()].getUhr()[0] == null){
 					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Billig");
 					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Billig");
-					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Billig gewählt");
+					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment Billig gewï¿½hlt");
 					System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
 				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
 				
@@ -146,8 +147,8 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("m0s", "Billig");
 				
 				for(int i = 0; i < 3; i++){
-					request.setAttribute("m0c"+i, Info.getGehaeuseBillig()[i]); // setzen der Bezeichnungen der Gehäuse
-					request.setAttribute("m0b"+i, Info.getArmbandBillig()[i]); // setzen der Bezeichnungen der Armbänder
+					request.setAttribute("m0c"+i, Info.getGehaeuseBillig()[i]); // setzen der Bezeichnungen der Gehï¿½use
+					request.setAttribute("m0b"+i, Info.getArmbandBillig()[i]); // setzen der Bezeichnungen der Armbï¿½nder
 					request.setAttribute("m0cw"+i, Info.getUhrwerkOeko()[i]); // setzen der Bezeichnungen der Uhrwerke
 				}
 				
@@ -163,7 +164,7 @@ public class MyServlet extends HttpServlet {
 			int anzeigeSpieler; 
 			int anzahlUhren = spieler[spiel.getAktuellerSpieler()].getUhr().length;// Anzahl der erforschten Uhren
 			
-			// Übergabe der Formularwerte aus dem UI an den Spieler
+			// ï¿½bergabe der Formularwerte aus dem UI an den Spieler
 			// Testausgabe
 			System.out.println(request.getParameter("usedCase0"));
 			System.out.println(request.getParameter("usedBracelet0"));
@@ -171,7 +172,7 @@ public class MyServlet extends HttpServlet {
 			
 			// Bestandteile der Uhren festlegen
 			for(int i = 0; i < anzahlUhren; i++){
-				// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
+				// setzen der Auswahl der Gehï¿½use, Armbï¿½nder und Uhrwerke
 				if(spieler[spiel.getAktuellerSpieler()].getUhr()[i] != null){
 					spieler[spiel.getAktuellerSpieler()].setSpielerDaten(
 							i,
@@ -263,12 +264,12 @@ public class MyServlet extends HttpServlet {
 				if(!request.getParameter("marketing2Clock"+i).equals("")) anzahlMarketingUhr[i]++;
 				if(anzahlMarketingUhr[i] > 0) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(i, anzahlMarketingUhr[i]);
 			}
-			//-- Ender der Datenübergabe
+			//-- Ender der Datenï¿½bergabe
 			
 			
 			System.out.println("Runde " + spiel.getRundenAktuell() + " von Spieler" + spiel.getAktuellerSpieler() + "beendet.");
 			
-			// Auswahl des nächsten Spielers, wenn aktueller Spieler nicht der letzte ist
+			// Auswahl des nï¿½chsten Spielers, wenn aktueller Spieler nicht der letzte ist
 			if(spiel.getAktuellerSpieler() != (spieler.length-1)){
 				
 				spiel.naechsterSpieler();
@@ -278,10 +279,10 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("picNext", spiel.getAktuellerSpieler());
 				dispatcher.forward(request, response);
 				
-				System.out.println("Auswahl des nächsten Spielers.");
+				System.out.println("Auswahl des nï¿½chsten Spielers.");
 			}
 			
-			// Start der nächsten Runde, wenn die aktuelle Runde nicht die letzte ist
+			// Start der nï¿½chsten Runde, wenn die aktuelle Runde nicht die letzte ist
 			else if((spiel.getRundenAktuell()+1) != spiel.getRundenMax()){
 				
 				spiel.naechsteRunde();
@@ -292,18 +293,28 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("picNext", spiel.getAktuellerSpieler());
 				dispatcher.forward(request, response);
 				
-				System.out.println("Auswahl des nächsten Spielers und Start einer neuen Runde.");
+				System.out.println("Auswahl des nï¿½chsten Spielers und Start einer neuen Runde.");
 			}
 			
 			// Beenden des Spiels, da der letzte Spieler der letzen Runde seine Runde beendete.
 			else{
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/gewinner.jsp");
+				
+				int[] reihenfolge = {0,2,1,3};
+				double[] geld = {5000.20,3000.20,4000.20,1000.30};
+				
+				for(int i = 0; i<spieler.length;i++){
+					if(reihenfolge[i] > -1){
+						request.setAttribute("wp"+i, "Spieler " + reihenfolge[i] + "<img src='images/Man" + i +".png'>");
+						request.setAttribute("wc"+i, df.format(geld[reihenfolge[i]])+ "&nbsp;&euro;");
+					}
+				}
 				dispatcher.forward(request, response);
 				System.out.println("Beendigung der letzten Spielrunde.");
 			}
 		}//nextRound
 		
-		// Start der nächsten Runde des angezeigten Spielers
+		// Start der nï¿½chsten Runde des angezeigten Spielers
 				if (request.getParameter("nextPlayer") != null) {
 					
 					// Auswahl des ersten Segmentes, sofern der Spieler in seiner ersten Runde ist.
@@ -321,7 +332,7 @@ public class MyServlet extends HttpServlet {
 						String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
 						request.setAttribute("kapital", kapital);
 						
-						// setzen der getätigten Auswahl der Produkte
+						// setzen der getï¿½tigten Auswahl der Produkte
 								
 						int anzahlUhren = spieler[spiel.getAktuellerSpieler()].getUhr().length;// Anzahl der erforschten Uhren
 					
@@ -335,8 +346,8 @@ public class MyServlet extends HttpServlet {
 										request.setAttribute("m"+i+"s", "Billig");
 										
 										for(int j = 0; j < 3; j++){
-											request.setAttribute("m"+i+"c"+j, Info.getGehaeuseBillig()[j]); // setzen der Bezeichnungen der Gehäuse
-											request.setAttribute("m"+i+"b"+j, Info.getArmbandBillig()[j]); // setzen der Bezeichnungen der Armbänder
+											request.setAttribute("m"+i+"c"+j, Info.getGehaeuseBillig()[j]); // setzen der Bezeichnungen der Gehï¿½use
+											request.setAttribute("m"+i+"b"+j, Info.getArmbandBillig()[j]); // setzen der Bezeichnungen der Armbï¿½nder
 											request.setAttribute("m"+i+"cw"+j, Info.getUhrwerkBillig()[j]); // setzen der Bezeichnungen der Uhrwerke
 										}
 										break;
@@ -345,8 +356,8 @@ public class MyServlet extends HttpServlet {
 										request.setAttribute("m"+i+"s", "Umwelt");
 										
 										for(int j = 0; j < 3; j++){
-											request.setAttribute("m"+i+"c"+j, Info.getGehaeuseOeko()[j]); // setzen der Bezeichnungen der Gehäuse
-											request.setAttribute("m"+i+"b"+j, Info.getArmbandOeko()[j]); // setzen der Bezeichnungen der Armbänder
+											request.setAttribute("m"+i+"c"+j, Info.getGehaeuseOeko()[j]); // setzen der Bezeichnungen der Gehï¿½use
+											request.setAttribute("m"+i+"b"+j, Info.getArmbandOeko()[j]); // setzen der Bezeichnungen der Armbï¿½nder
 											request.setAttribute("m"+i+"cw"+j, Info.getUhrwerkOeko()[j]); // setzen der Bezeichnungen der Uhrwerke
 										}
 										break;
@@ -355,8 +366,8 @@ public class MyServlet extends HttpServlet {
 										request.setAttribute("m"+i+"s", "Luxus");
 										
 										for(int j = 0; j < 3; j++){
-											request.setAttribute("m"+i+"c"+j, Info.getGehaeusePremium()[j]); // setzen der Bezeichnungen der Gehäuse
-											request.setAttribute("m"+i+"b"+j, Info.getArmbandPremium()[j]); // setzen der Bezeichnungen der Armbänder
+											request.setAttribute("m"+i+"c"+j, Info.getGehaeusePremium()[j]); // setzen der Bezeichnungen der Gehï¿½use
+											request.setAttribute("m"+i+"b"+j, Info.getArmbandPremium()[j]); // setzen der Bezeichnungen der Armbï¿½nder
 											request.setAttribute("m"+i+"cw"+j, Info.getUhrwerkPremium()[j]); // setzen der Bezeichnungen der Uhrwerke
 										}
 										break;
@@ -379,19 +390,19 @@ public class MyServlet extends HttpServlet {
 	private void setValuesOnUI(HttpServletRequest request, HttpServletResponse response){
 		setClockClass(request, response);
 				
-		// setzen der getätigten Auswahl für F&E						
+		// setzen der getï¿½tigten Auswahl fï¿½r F&E						
 		setFEOptions(request, response);
 		
-		// setzen der getätigten Auswahl für Produktion
+		// setzen der getï¿½tigten Auswahl fï¿½r Produktion
 		setProductionOptions(request, response);
 		setStock(request, response);
 		
-		// setzen der getätigten Auswahl für Einkauf
+		// setzen der getï¿½tigten Auswahl fï¿½r Einkauf
 		setPurchasingOptions(request, response);
 		
-		// setzen der getätigten Auswahl für Vertrieb
+		// setzen der getï¿½tigten Auswahl fï¿½r Vertrieb
 		
-		// setzen der getätigten Auswahl für Marketing
+		// setzen der getï¿½tigten Auswahl fï¿½r Marketing
 		setMarketingOptions(request, response);
 	}
 	
@@ -404,17 +415,17 @@ public class MyServlet extends HttpServlet {
 		request.setAttribute("uP", sf.format(Info.getKostenUhrPremium()));
 		
 		for(int i = 0; i < anzahlUhren; i++){
-			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
+			// setzen der Auswahl der Gehï¿½use, Armbï¿½nder und Uhrwerke
 			if(spieler[spiel.getAktuellerSpieler()].getUhr()[i] != null){
 				request.setAttribute("watch"+i, "card-aktive");
 				String[] item = {"c","b","cw"};
 				
-				// Optische Markierung des ausgewählten Uhrenteils
+				// Optische Markierung des ausgewï¿½hlten Uhrenteils
 				request.setAttribute("clM"+i+"c"+spieler[spiel.getAktuellerSpieler()].getUhr()[i].getGehaeuse(), "selected");
 				request.setAttribute("clM"+i+"cw"+spieler[spiel.getAktuellerSpieler()].getUhr()[i].getUhrwerk(), "selected");
 				request.setAttribute("clM"+i+"b"+spieler[spiel.getAktuellerSpieler()].getUhr()[i].getArmband(), "selected");
 				
-				// Markierung des ausgewählten Uhrenteils in Inputfeld
+				// Markierung des ausgewï¿½hlten Uhrenteils in Inputfeld
 				request.setAttribute("usedCase"+i, spieler[spiel.getAktuellerSpieler()].getUhr()[i].getGehaeuse());
 				request.setAttribute("usedClockWork"+i, spieler[spiel.getAktuellerSpieler()].getUhr()[i].getUhrwerk());
 				request.setAttribute("usedBracelet"+i, spieler[spiel.getAktuellerSpieler()].getUhr()[i].getArmband());
@@ -450,7 +461,7 @@ public class MyServlet extends HttpServlet {
 			}else request.setAttribute("watch"+i, "card-inaktive");
 		}
 
-		//setzen der zur Erforschung einer neuen Nuhr zur Verfügung stehenden Segmente
+		//setzen der zur Erforschung einer neuen Nuhr zur Verfï¿½gung stehenden Segmente
 		if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[0] == false)request.setAttribute("rB", "notAvailable");
 		if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[1] == false)request.setAttribute("rO", "notAvailable");
 		if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[2] == false)request.setAttribute("rL", "notAvailable");
@@ -460,7 +471,7 @@ public class MyServlet extends HttpServlet {
 	
 	private void setFEOptions(HttpServletRequest request, HttpServletResponse response){
 			
-			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke des Segmentes Billig
+			// setzen der Auswahl der Gehï¿½use, Armbï¿½nder und Uhrwerke des Segmentes Billig
 			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[0] == true){
 				request.setAttribute("researchB", "card-aktive");
 				String[] item = {"c","b","cw"};
@@ -477,7 +488,7 @@ public class MyServlet extends HttpServlet {
 				}
 			}else request.setAttribute("researchB", "card-inaktive");
 			
-			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke des Segmentes Oeko
+			// setzen der Auswahl der Gehï¿½use, Armbï¿½nder und Uhrwerke des Segmentes Oeko
 			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[1] == true){
 				request.setAttribute("researchO", "card-aktive");
 				String[] item = {"c","b","cw"};
@@ -494,7 +505,7 @@ public class MyServlet extends HttpServlet {
 				}
 			}else request.setAttribute("researchO", "card-inaktive");
 			
-			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke des Segmentes Luxus
+			// setzen der Auswahl der Gehï¿½use, Armbï¿½nder und Uhrwerke des Segmentes Luxus
 			if(spieler[spiel.getAktuellerSpieler()].getFreieSegmenteAllgemein()[2] == true){
 				request.setAttribute("researchL", "card-aktive");
 				String[] item = {"c","b","cw"};
@@ -512,7 +523,7 @@ public class MyServlet extends HttpServlet {
 			}else request.setAttribute("researchL", "card-inaktive");
 	}//setFEOptions
 	
-	// setzen der möglichen und freigeschaltenen Produktionserweiterungen
+	// setzen der mï¿½glichen und freigeschaltenen Produktionserweiterungen
 	private void setProductionOptions(HttpServletRequest request, HttpServletResponse response){
 
 		for(int i = 0; i < 3; i++){		
@@ -573,7 +584,7 @@ public class MyServlet extends HttpServlet {
 		}
 	}//setProductionOptions
 	
-	// setzen der möglichen und freigeschaltenen Produktionserweiterungen
+	// setzen der mï¿½glichen und freigeschaltenen Produktionserweiterungen
 	private void setPurchasingOptions(HttpServletRequest request, HttpServletResponse response){
 
 		for(int i = 0; i < 3; i++){		
@@ -619,7 +630,7 @@ public class MyServlet extends HttpServlet {
 	private void setStock(HttpServletRequest request, HttpServletResponse response){
 		int anzahlUhren = spieler[spiel.getAktuellerSpieler()].getUhr().length;// Anzahl der erforschten Uhren
 		for(int i = 0; i < anzahlUhren; i++){
-			// setzen der Auswahl der Gehäuse, Armbänder und Uhrwerke
+			// setzen der Auswahl der Gehï¿½use, Armbï¿½nder und Uhrwerke
 			if(spieler[spiel.getAktuellerSpieler()].getUhr()[i] != null){
 				request.setAttribute("stock"+i, sf.format(spieler[spiel.getAktuellerSpieler()].getUhr()[i].getBestand()));
 			}
