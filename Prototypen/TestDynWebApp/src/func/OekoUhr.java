@@ -9,22 +9,20 @@ public class OekoUhr implements iUhrenkategorie{
 	private int gehaeuse;
 	private int armband;
 	
-	private int score;
+	private double marktwert;
 	private int bestand;
 	private int angeboteneMenge;
 	private int abgenommeneMenge;
-	private double herstellkosten;
 	private double angebotspreis;
 	private double marketingboost;
+	private double selbstkosten;
 	
 	private final String segment = "Oeko";
 	
 	/**
 	 * Konstruktor: Legt die Standardwerte fest
 	 */
-	public OekoUhr() {
-		this.setScore(0);
-		
+	public OekoUhr() {		
 		this.uhrwerk = 0;
 		this.gehaeuse = 0;
 		this.armband = 0;
@@ -50,14 +48,6 @@ public class OekoUhr implements iUhrenkategorie{
 	@Override
 	public void setAbgenommeneMenge(int menge) {
 		this.abgenommeneMenge = menge;
-	}
-	
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
 	}
 	
 	public String getSegment() {
@@ -96,6 +86,14 @@ public class OekoUhr implements iUhrenkategorie{
 		this.bestand = bestand;
 	}
 
+	public double getSelbstkosten() {
+		return selbstkosten;
+	}
+
+	public void setSelbstkosten() {
+		this.selbstkosten = this.berechneSelbstkosten();
+	}
+
 	@Override
 	public void uhrMarketingstrategie() {
 		// TODO Auto-generated method stub
@@ -117,7 +115,7 @@ public class OekoUhr implements iUhrenkategorie{
 	
 	@Override
 	public double getAbnahmequote() {
-		if(angebotspreis != 0) return 1 / (1 + Math.pow(Math.E, ((2.5 * Math.log(angebotspreis / (double) score) / Math.log(2)))));
+		if(angebotspreis != 0) return 1 / (1 + Math.pow(Math.E, ((2.5 * Math.log(angebotspreis / (double) marktwert) / Math.log(2)))));
 		return 0;
 	}
 
@@ -145,6 +143,25 @@ public class OekoUhr implements iUhrenkategorie{
 	public int getAbgenommeneMenge() {
 		return abgenommeneMenge;
 	}
+	@Override
+	public void setMarktwert(double marktwert) {
+		this.marktwert = marktwert;
+	}
 
+	@Override
+	public double getMarktwert() {
+		return this.marktwert;
+	}
 	
+	@Override
+	public double berechneSelbstkosten() {
+		return ( Info.getSelbstkostenArmbandOeko()[this.getArmband()] + Info.getSelbstkostenGehaeuseOeko()[this.getGehaeuse()] 
+				+ Info.getSelbstkostenUhrwerkOeko()[this.getUhrwerk()] );
+	}
+	
+	@Override
+	public double berechneMarktwert() {
+		this.setMarktwert( this.getSelbstkosten() * this.getMarktwert() ); 
+		return this.getMarktwert();
+	}
 }

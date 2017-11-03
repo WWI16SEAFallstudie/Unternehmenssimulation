@@ -11,8 +11,8 @@ public class Unternehmen {
 	private String info;
 	
 	// Produktionslimit speichern
-	private int produktionslimitBillig = 10000;
-	private int produktionslimitOeko = 10000;
+	private int produktionslimitBillig = 100000;
+	private int produktionslimitOeko = 30000;
 	private int produktionslimitPremium = 10000;
 
 	// Produktionskosten speichern
@@ -47,12 +47,7 @@ public class Unternehmen {
 	private boolean freigeschalteneAttrBillig[][] = { {true,false,false}, {true,false,false}, {true,false,false} };
 	private boolean freigeschalteneAttrOeko[][] = { {true,false,false}, {true,false,false}, {true,false,false} };
 	private boolean freigeschalteneAttrPremium[][] = { {true,false,false}, {true,false,false}, {true,false,false} };
-	
-	/**
-	 * selbstkostenarray wie oben nur mit werten anstatt true/false
-	 * In Produktion dann die selbstkosten(einzelpositionen was freigeschaltet is) * menge und diese vom Kapital abziehen!!! -> Produziere() ändern
-	 */
-	
+		
 	/*
 	 * Produktionskostensenkung pro Segment
 	 */
@@ -377,7 +372,6 @@ public class Unternehmen {
 					if(verbesserungEinkaufBillig[i] == false) {
 						if(checkeKapital(Info.getKostenEinkaufBillig()[i])) {
 							verbesserungEinkaufBillig[i] = true;
-							senkeAnschaffungskosten(segment, i);
 							return true;
 						}
 					}
@@ -388,7 +382,6 @@ public class Unternehmen {
 					if(verbesserungEinkaufPremium[i] == false) {
 						if(checkeKapital(Info.getKostenEinkaufPremium()[i])) {
 							verbesserungEinkaufPremium[i] = true;
-							senkeAnschaffungskosten(segment, i);
 							return true;
 						}
 					}
@@ -399,7 +392,6 @@ public class Unternehmen {
 					if(verbesserungEinkaufOeko[i] == false) {
 						if(checkeKapital(Info.getKostenEinkaufOeko()[i])) {
 							verbesserungEinkaufOeko[i] = true;
-							senkeAnschaffungskosten(segment, i);
 							return true;
 						}
 					}
@@ -416,56 +408,50 @@ public class Unternehmen {
 	 * 
 	 * @param uhr: Für welche Uhr die Marketingstrategie ist
 	 */
-	public void uhrenMarketing(int uhr) {
-	
+	public void uhrenMarketing(int uhr, int anzKampagnen) {
+		/*if(this.uhr[uhr] != null && ( anzKampagnen >= 0 && anzKampagnen <= 3) ) {
+			if(checkeKapital(Info.getmark))
+			this.uhr[uhr].setMarketingboost(Info.getScoreMarketingkampagne()[anzKampagnen]);
+		}
+		*/
+		this.uhr[uhr].setMarketingboost(0);
 	}
 	
 	public void produzieren(int menge, int uhr) {
 		int m = 0;
-		int u = 0;
+		double s = this.uhr[uhr].berechneSelbstkosten();
 		// Segment abfragen
 		switch(this.uhr[uhr].getSegment()) {
 			case "Billig":
-				u = errechneSelbstkosten(this.getFreigeschalteneAttrBillig(), "Billig");
-				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitBillig(), u);
+				s *= sucheEinkaufsfaktor("Billig");
+				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitBillig(), s);
 				if(m != -1) 
 					this.uhr[uhr].setBestand(m);
 				break;
 			case "Oeko":
-				u = errechneSelbstkosten(this.getFreigeschalteneAttrBillig(), "Oeko");
-				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitOeko(), u);
+				s *= sucheEinkaufsfaktor("Oeko");
+				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitOeko(), s);
 				if(m != -1) 
 					this.uhr[uhr].setBestand(m);
 				break;
 			case "Premium":
-				u = errechneSelbstkosten(this.getFreigeschalteneAttrBillig(), "Premium");
-				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitPremium(), u);
+				s *= sucheEinkaufsfaktor("Premium");
+				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitPremium(), s);
 				if(m != -1) 
 					this.uhr[uhr].setBestand(m);
 				break;
 		}
 	}
 	
-//	public int bieteUhren(int menge, int uhr) {	
-//		int m = -1;
-//		if(menge <= this.getBestandUhr(uhr)) {
-//			m = menge;
-//			this.uhr[uhr].setAngeboteneMenge(menge);
-//		} else {
-//			m = this.getBestandUhr(uhr);
-//			this.uhr[uhr].setAngeboteneMenge(this.getBestandUhr(uhr));
-//		}
-//		return m;
-//	}
-	
-	public int bieteUhren(int menge, int uhr, int preis) {	
+	public int bieteUhren(int menge, int uhr, double preis) {	
 		int m = -1;
+		// Genug zum Produzieren im Bestand?
 		if(menge <= this.getBestandUhr(uhr)) {
 			m = menge;
-			this.uhr[uhr].setAngeboteneMenge(menge);
+			this.uhr[uhr].setAngeboteneMenge(m);
 		} else {
 			m = this.getBestandUhr(uhr);
-			this.uhr[uhr].setAngeboteneMenge(this.getBestandUhr(uhr));
+			this.uhr[uhr].setAngeboteneMenge(m);
 		}
 		this.uhr[uhr].setAngebotspreis(preis);
 		return m;
@@ -481,36 +467,33 @@ public class Unternehmen {
 				this.uhr[uhr].setBestand(0);
 		}
 	}
-	
-	private int errechneSelbstkosten(boolean[][] freigeschalten, String segment) {
-		int result = 0;
+
+	private double sucheEinkaufsfaktor(String segment) {
+		double faktor = 0;
 		switch(segment) {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
-					for(int j = 0; j < 3; j++) {
-						if(freigeschalten[i][j] == true)
-							result += Info.getSelbstkostenBillig()[i];
+					if(this.getVerbesserungEinkaufBillig()[i] == true) {
+						faktor = Info.getRabatteEinkaufBillig()[i];
 					}
 				}
 				break;
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
-					for(int j = 0; j < 3; j++) {
-						if(freigeschalten[i][j] == true)
-							result += Info.getSelbstkostenBillig()[i];
+					if(this.getVerbesserungEinkaufOeko()[i] == true) {
+						faktor = Info.getRabatteEinkaufOeko()[i];
 					}
 				}
 				break;
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
-					for(int j = 0; j < 3; j++) {
-						if(freigeschalten[i][j] == true)
-							result += Info.getSelbstkostenBillig()[i];
+					if(this.getVerbesserungEinkaufPremium()[i] == true) {
+						faktor = Info.getRabatteEinkaufPremium()[i];
 					}
 				}
 				break;
 		}
-		return result;
+		return faktor;
 	}
 	
 	private int testeMengeProduzieren(int menge, int limit, double prodKostenStueck) {
@@ -527,25 +510,6 @@ public class Unternehmen {
 			}
 		}
 		return m;
-	}
-	
-	/**
-	 * Private Methode um Anschaffungskosten zu senken
-	 * @param segment: 
-	 * @param stufe
-	 */
-	private void senkeAnschaffungskosten(String segment, int stufe) {
-		/*switch(segment) {
-			case "Billig":
-				this.setAnschaffungskostenBillig(this.getAnschaffungskostenBillig() - (this.getAnschaffungskostenBillig() * Info.getRabatteEinkaufBillig()[stufe]));
-				break;
-			case "Oeko":
-				this.setAnschaffungskostenOeko(this.getAnschaffungskostenOeko() - (this.getAnschaffungskostenOeko() * Info.getRabatteEinkaufOeko()[stufe]));
-				break;
-			case "Premium":
-				this.setAnschaffungskostenPremium(this.getAnschaffungskostenPremium() - (this.getAnschaffungskostenPremium() * Info.getRabatteEinkaufPremium()[stufe]));
-				break;
-		}*/
 	}
 	
 	/**
@@ -601,7 +565,7 @@ public class Unternehmen {
 				break;
 		}
 	}
-	
+		
 	private boolean isFreigeschaltenSegment(String segment) {
 		boolean result = false;
 		switch(segment) {
@@ -780,7 +744,21 @@ public class Unternehmen {
 	
 	public void setSpielerDaten(int uhr, int indexUhrwerk, int indexArmband, int indexGehaeuse) {
 		if(this.uhr[uhr] !=  null) {
-			this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
+			// Überprüfen ob eine Umrüstung stattgefunden hat
+			if(this.uhr[uhr].getUhrwerk() == indexUhrwerk && this.uhr[uhr].getArmband() == indexArmband 
+					&& this.uhr[uhr].getGehaeuse() == indexGehaeuse) {
+				// Uhrenkonfiguration ist identisch
+				this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
+			}else {
+				// Uhrenkonfiguration hat sich geändert - Umrüstkosten werden berechnet
+				double umruest = this.uhr[uhr].berechneSelbstkosten() * 0.4 * this.uhr[uhr].getBestand();
+				if(checkeKapital(umruest)) {
+					this.setKapital( this.getKapital() - umruest);
+					this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
+				} else {
+					System.out.println("Nicht genug Kohle!!!");
+				}
+			}			
 		}
 	}
 	

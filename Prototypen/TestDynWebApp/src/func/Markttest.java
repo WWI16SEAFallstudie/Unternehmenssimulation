@@ -25,8 +25,8 @@ public class Markttest {
 		
 		//setze score
 		iUhrenkategorie[] uhren = spieler[0].getUhr();
-		uhren[0].setScore(100);
-		uhren[1].setScore(150);
+		uhren[0].setMarktwert(100);
+		uhren[1].setMarktwert(150);
 		
 		spieler[0].bieteUhren(100, 0, 100);
 		spieler[0].bieteUhren(100, 1, 100);

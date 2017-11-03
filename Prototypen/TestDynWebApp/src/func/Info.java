@@ -28,6 +28,19 @@ public class Info {
 	private static double kostenGehaeuseBillig[] = { 1000 , 2000 , 3000 };
 	private static double kostenArmbandBillig[] = { 1000 , 2000 , 3000 };
 	
+	// Selbstkosten der Attribute
+	private static double selbstkostenUhrwerkOeko[] = { 10 , 20 , 30 };
+	private static double selbstkostenGehaeuseOeko[] = { 10 , 20 , 30 };
+	private static double selbstkostenArmbandOeko[] = { 10 , 20 , 30 };
+	
+	private static double selbstkostenUhrwerkPremium[] = { 10 , 20 , 30 };
+	private static double selbstkostenGehaeusePremium[] = { 10 , 20 , 30 };
+	private static double selbstkostenArmbandPremium[] = { 10 , 20 , 30 };
+
+	private static double selbstkostenUhrwerkBillig[] = { 10 , 20 , 30 };
+	private static double selbstkostenGehaeuseBillig[] = { 10 , 20 , 30 };
+	private static double selbstkostenArmbandBillig[] = { 10 , 20 , 30 };
+	
 	// Kosten für die Entwicklung der neuen Uhr
 	private static double kostenUhrBillig = 1000;
 	private static double kostenUhrPremium = 2000;
@@ -66,15 +79,17 @@ public class Info {
 	private static double senkeProdKostenStraßePremium[] = { 0.1, 0.2, 0.3 };
 	
 	// Einkauf - kosten senken
-	
 	private static double rabatteEinkaufBillig[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufOeko[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufPremium[] = { 0.1, 0.2, 0.3 };
+
+	// Kosten für die Entwicklung des Einkaufs
+	private static double kostenMarketingBillig[] = { 1000 , 2000 , 3000 };
+	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };
+	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };
 	
-	// Selbstkosten
-	private static int selbstkostenBillig[] = {10, 20, 30};
-	private static int selbstkostenOeko[] = {10, 20, 30};
-	private static int selbstkostenPremium[] = {10, 20, 30};
+	// Marketingkampagnen
+	private static double scoreMarketingkampagne[] = { 0.1, 0.2, 0.3 };
 	
 	// Getter & Setter
 	public static String[] getUhrwerkOeko() {
@@ -212,26 +227,44 @@ public class Info {
 	public static double[] getSenkeProdKostenStraßePremium() {
 		return senkeProdKostenStraßePremium;
 	}
-	public static int[] getSelbstkostenBillig() {
-		return selbstkostenBillig;
+	public static double[] getSelbstkostenUhrwerkOeko() {
+		return selbstkostenUhrwerkOeko;
 	}
-	public static int[] getSelbstkostenOeko() {
-		return selbstkostenOeko;
+	public static double[] getSelbstkostenGehaeuseOeko() {
+		return selbstkostenGehaeuseOeko;
 	}
-	public static int[] getSelbstkostenPremium() {
-		return selbstkostenPremium;
+	public static double[] getSelbstkostenArmbandOeko() {
+		return selbstkostenArmbandOeko;
 	}
-	
-	
-	
-	public static void setSelbstkostenBillig(int[] selbstkostenBillig) {
-		Info.selbstkostenBillig = selbstkostenBillig;
+	public static double[] getSelbstkostenUhrwerkPremium() {
+		return selbstkostenUhrwerkPremium;
 	}
-	public static void setSelbstkostenOeko(int[] selbstkostenOeko) {
-		Info.selbstkostenOeko = selbstkostenOeko;
+	public static double[] getSelbstkostenGehaeusePremium() {
+		return selbstkostenGehaeusePremium;
 	}
-	public static void setSelbstkostenPremium(int[] selbstkostenPremium) {
-		Info.selbstkostenPremium = selbstkostenPremium;
+	public static double[] getSelbstkostenArmbandPremium() {
+		return selbstkostenArmbandPremium;
+	}
+	public static double[] getSelbstkostenUhrwerkBillig() {
+		return selbstkostenUhrwerkBillig;
+	}
+	public static double[] getSelbstkostenGehaeuseBillig() {
+		return selbstkostenGehaeuseBillig;
+	}
+	public static double[] getSelbstkostenArmbandBillig() {
+		return selbstkostenArmbandBillig;
+	}
+	public static double[] getKostenMarketingBillig() {
+		return kostenMarketingBillig;
+	}
+	public static double[] getKostenMarketingOeko() {
+		return kostenMarketingOeko;
+	}
+	public static double[] getKostenMarketingPremium() {
+		return kostenMarketingPremium;
+	}
+	public static double[] getScoreMarketingkampagne() {
+		return scoreMarketingkampagne;
 	}
 	
 	
