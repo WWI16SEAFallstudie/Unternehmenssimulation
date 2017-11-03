@@ -302,7 +302,7 @@ public class UnternehmenTest {
 		spielbrett.erstelleSpieler(1);
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Oeko");
-spieler[0].erweitereEinkauf("Oeko");
+		spieler[0].erweitereEinkauf("Oeko");
 		
 		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[1]);
 		assertTrue("Einkauf wurde nicht erweitert", spieler[0].getVerbesserungEinkaufOeko()[0]);
@@ -348,7 +348,7 @@ spieler[0].erweitereEinkauf("Billig");
 	}
 	
 	@Test
-	public void erweitereProduktionPremiumTest() {
+	public void erweitereProduktionBillitTest() {
 		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
 		Unternehmen[] spieler;
 		spielbrett.erstelleSpieler(1);

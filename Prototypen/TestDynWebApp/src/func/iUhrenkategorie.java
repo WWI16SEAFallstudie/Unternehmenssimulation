@@ -19,12 +19,8 @@ public interface iUhrenkategorie {
 	
 	public double getAbnahmequote();
 	
-	public void uhrMarketingstrategie();
-	
 	public void setSpielerDaten(int armband, int gehaeuse, int uhrwerk);
-	
-	public String getSpielerDaten();
-		
+			
 	public int getUhrwerk();
 	
 	public int getGehaeuse();

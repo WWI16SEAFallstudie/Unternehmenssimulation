@@ -25,6 +25,13 @@ public class BilligUhr implements iUhrenkategorie {
 		this.uhrwerk = 0;
 		this.gehaeuse = 0;
 		this.armband = 0;
+		this.marketingboost = 0;
+		this.bestand = 0; 
+		this.angeboteneMenge = 0;
+		this.marktwert = 0;
+		this.abgenommeneMenge = 0;
+		this.selbstkosten = 0;
+		this.angebotspreis = 0;
 	}
 	
 	@Override
@@ -47,22 +54,12 @@ public class BilligUhr implements iUhrenkategorie {
 	}
 	
 	@Override
-	public void uhrMarketingstrategie() {
-		
-	}
-
-	@Override
 	public void setSpielerDaten(int armband, int gehaeuse, int uhrwerk) {
 		this.setArmband(armband);
 		this.setGehaeuse(gehaeuse);
 		this.setUhrwerk(uhrwerk);
 	}
-	
-	@Override
-	public String getSpielerDaten() {
-		return ("Gehäuse: " + this.getGehaeuse() + " - Armband: " + this.getArmband() + " - Uhrwerk: " + this.getUhrwerk());
-	}
-	
+		
 	@Override
 	public void setAngeboteneMenge(int menge) {
 		this.angeboteneMenge = menge;
@@ -159,7 +156,8 @@ public class BilligUhr implements iUhrenkategorie {
 
 	@Override
 	public double berechneMarktwert() {
-		this.setMarktwert( this.getSelbstkosten() * this.getMarktwert() ); 
+		this.setMarktwert( this.getSelbstkosten() * (1 + ( Info.getScoreArmbandBillig()[this.getArmband()] + Info.getScoreGehaeuseBillig()[this.getGehaeuse()] + 
+				Info.getScoreUhrwerkBillig()[this.getUhrwerk()])) ); 
 		return this.getMarktwert();
 	}
 }

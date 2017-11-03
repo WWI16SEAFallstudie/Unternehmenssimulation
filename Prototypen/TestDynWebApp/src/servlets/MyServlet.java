@@ -261,7 +261,7 @@ public class MyServlet extends HttpServlet {
 				if(!request.getParameter("marketing0Clock"+i).equals("")) anzahlMarketingUhr[i]++;
 				if(!request.getParameter("marketing1Clock"+i).equals("")) anzahlMarketingUhr[i]++;
 				if(!request.getParameter("marketing2Clock"+i).equals("")) anzahlMarketingUhr[i]++;
-				if(anzahlMarketingUhr[i] > 0) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(i, anzahlMarketingUhr[i]);
+				//if(anzahlMarketingUhr[i] > 0) spieler[spiel.getAktuellerSpieler()].uhrenMarketing(i, anzahlMarketingUhr[i]);
 			}
 			//-- Ender der Daten¸bergabe
 			
@@ -525,45 +525,45 @@ public class MyServlet extends HttpServlet {
 							case 0:
 								request.setAttribute("prodLimitB", sf.format(spieler[spiel.getAktuellerSpieler()].getProduktionslimitBillig()));
 								request.setAttribute("prdCBcr"+k, sf.format(Info.getKostenProduktionBillig()[k]));
-								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStrasseBillig()[k] == true)
+								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraﬂeBillig()[k] == true)
 									request.setAttribute("prdBcr"+k, "done");
-								if(k >0  && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStrasseBillig()[k-1] == false)
+								if(k >0  && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraﬂeBillig()[k-1] == false)
 									request.setAttribute("addPrBcr"+k, "notAvailable");
 								
 								request.setAttribute("prdCBce"+k, sf.format(Info.getKostenProduktionBillig()[k]));
-								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStrasseBillig()[k] == true)
+								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStraﬂeBillig()[k] == true)
 									request.setAttribute("prdBce"+k, "done");
-								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStrasseBillig()[k-1] == false)
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStraﬂeBillig()[k-1] == false)
 									request.setAttribute("addPrBce"+k, "notAvailable");
 							break;
 							
 							case 1:
 								request.setAttribute("prodLimitO", sf.format(spieler[spiel.getAktuellerSpieler()].getProduktionslimitOeko()));
 								request.setAttribute("prdCOcr"+k, sf.format(Info.getKostenProduktionOeko()[k]));
-								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStrasseOeko()[k] == true)
+								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraﬂeOeko()[k] == true)
 									request.setAttribute("prdOcr"+k, "done");
-								if(k >0 && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStrasseOeko()[k-1] == false)
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraﬂeOeko()[k-1] == false)
 									request.setAttribute("addPr"+seg[i]+"cr"+k, "notAvailable");
 								
 								request.setAttribute("prdCOce"+k, sf.format(Info.getKostenProduktionOeko()[k]));
-								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStrasseOeko()[k] == true)
+								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStraﬂeOeko()[k] == true)
 									request.setAttribute("prdOce"+k, "done");
-								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStrasseOeko()[k-1] == false)
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStraﬂeOeko()[k-1] == false)
 									request.setAttribute("addPrOce"+k, "notAvailable");
 							break;
 							
 							case 2:
 								request.setAttribute("prodLimitL", sf.format(spieler[spiel.getAktuellerSpieler()].getProduktionslimitPremium()));
 								request.setAttribute("prdCLcr"+k, sf.format(Info.getKostenProduktionPremium()[k]));
-								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStrassePremium()[k] == true)
+								if(spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraﬂePremium()[k] == true)
 									request.setAttribute("prdLcr"+k, "done");
-								if(k >0 && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStrassePremium()[k-1] == false)
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getProdKostenSenkungStraﬂePremium()[k-1] == false)
 									request.setAttribute("addPrLcr"+k, "notAvailable");
 								
 								request.setAttribute("prdCLce"+k, sf.format(Info.getKostenProduktionPremium()[k]));
-								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStrassePremium()[k] == true)
+								if(spieler[spiel.getAktuellerSpieler()].getKapaErwStraﬂePremium()[k] == true)
 									request.setAttribute("prdLce"+k, "done");
-								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStrassePremium()[k-1] == false)
+								if(k >0 && spieler[spiel.getAktuellerSpieler()].getKapaErwStraﬂePremium()[k-1] == false)
 									request.setAttribute("addPrLce"+k, "notAvailable");
 							break;
 						}

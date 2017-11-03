@@ -45,6 +45,11 @@ public class Info {
 	private static double kostenUhrBillig = 100000;
 	private static double kostenUhrPremium = 200000;
 	private static double kostenUhrOeko = 150000;
+
+	// Kosten für die Freischaltung des Segments
+	private static double kostenSegmentBillig = 100000;
+	private static double kostenSegmentPremium = 200000;
+	private static double kostenSegmentOeko = 150000;
 	
 	// Kosten für die Entwicklung der Produktion
 	private static double kostenProduktionBillig[] = { 100000 , 200000 , 300000 };
@@ -83,11 +88,7 @@ public class Info {
 	private static double rabatteEinkaufOeko[] = { 0.1, 0.2, 0.3 };
 	private static double rabatteEinkaufPremium[] = { 0.1, 0.2, 0.3 };
 
-	// Kosten für die Entwicklung des Einkaufs
-	private static double kostenMarketingBillig[] = { 10000 , 15000 , 25000 };//benötigen wir nicht
-	private static double kostenMarketingOeko[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
-	private static double kostenMarketingPremium[] = { 1000 , 2000 , 3000 };//benötigen wir nicht
-	
+	// Kosten für das erzeugen der Marketingkampagnen	
 	private static double kostenMarketingUnternehmen[] = { 100000 , 125000 , 165000 };
 	private static double kostenMarketingUhr[] = { 34000 , 64000 , 95000 };
 	
@@ -257,15 +258,6 @@ public class Info {
 	public static double[] getSelbstkostenArmbandBillig() {
 		return selbstkostenArmbandBillig;
 	}
-	public static double[] getKostenMarketingBillig() {
-		return kostenMarketingBillig;
-	}
-	public static double[] getKostenMarketingOeko() {
-		return kostenMarketingOeko;
-	}
-	public static double[] getKostenMarketingPremium() {
-		return kostenMarketingPremium;
-	}
 	public static double[] getScoreMarketingkampagne() {
 		return scoreMarketingkampagne;
 	}
@@ -274,6 +266,15 @@ public class Info {
 	}
 	public static double[] getKostenMarketingUhr() {
 		return kostenMarketingUhr;
+	}
+	public static double getKostenSegmentBillig() {
+		return kostenSegmentBillig;
+	}
+	public static double getKostenSegmentPremium() {
+		return kostenSegmentPremium;
+	}
+	public static double getKostenSegmentOeko() {
+		return kostenSegmentOeko;
 	}
 	
 	

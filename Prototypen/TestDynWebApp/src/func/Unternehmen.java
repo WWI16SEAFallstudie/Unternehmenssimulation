@@ -1,5 +1,7 @@
 package func;
 
+import java.util.*;
+
 public class Unternehmen {
 
 	/*
@@ -8,7 +10,9 @@ public class Unternehmen {
 	private String name;
 	private double kapital;
 	private double kapitalAlt;
-	private String info;
+	
+	// Array f¸r verkaufte Uhren pro Runde
+	private int verkaufteUhrenRunden[] = new int[10];
 	
 	// Produktionslimit speichern
 	private int produktionslimitBillig = 10000;
@@ -51,16 +55,16 @@ public class Unternehmen {
 	/*
 	 * Produktionskostensenkung pro Segment
 	 */
-	private boolean prodKostenSenkungStrasseBillig[] = { false, false, false};
-	private boolean prodKostenSenkungStrasseOeko[] = { false, false, false};
-	private boolean prodKostenSenkungStrassePremium[] = { false, false, false};
+	private boolean prodKostenSenkungStraﬂeBillig[] = { false, false, false};
+	private boolean prodKostenSenkungStraﬂeOeko[] = { false, false, false};
+	private boolean prodKostenSenkungStraﬂePremium[] = { false, false, false};
 	
 	/*
 	 * Strasseserweiterung pro Segment
 	 */
-	private boolean kapaErwStrasseBillig[] = { false, false, false};
-	private boolean kapaErwStrasseOeko[] = { false, false, false};
-	private boolean kapaErwStrassePremium[] = { false, false, false};
+	private boolean kapaErwStraﬂeBillig[] = { false, false, false};
+	private boolean kapaErwStraﬂeOeko[] = { false, false, false};
+	private boolean kapaErwStraﬂePremium[] = { false, false, false};
 		
 	/*
 	 * Einkauf
@@ -73,7 +77,6 @@ public class Unternehmen {
 	 * Konstruktor
 	 */
 	public Unternehmen(String name) {
-		this.setInfo("Hier kˆnnte Ihre Werbung stehen");
 		this.setKapital(1000000);		
 		this.setKapitalAlt(0);
 		this.setName(name);
@@ -153,9 +156,20 @@ public class Unternehmen {
 	 * ein neues Uhrwerk erforscht werden soll
 	 */
 	public void erforscheUhrwerk(String segment) {
+		double kosten = 0;
 		switch (segment) {
 			case "Billig":
-				freigeschalteneAttrBillig = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 2);
+				/*boolean[][] alt = freigeschalteneAttrBillig;
+				boolean[][] neu = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 2);
+				for(int i = 0; i < 3; i++) {
+					if( freigeschalteneAttrBillig[2][i] == true ){
+						kosten = Info.getKostenUhrwerkBillig()[i];
+					}
+				}*/
+				if(checkeKapital(kosten))
+					freigeschalteneAttrBillig = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 2);
+				//else
+					//freigeschalteneAttrBillig = alt;
 				break;
 			case "Oeko":
 				freigeschalteneAttrOeko = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrOeko, 2);				
@@ -214,38 +228,6 @@ public class Unternehmen {
 		}	
 	}
 	
-	
-	/**
-	 * Gibt ein Array zur¸ck, welches die freigeschalteten Uhrwerke enth‰lt
-	 * 
-	 * @param uhr: Zu welcher Uhr das Uhrwerk zur¸ckgegeben werden soll
-	 * @return: Array der freigeschalteten Uhrwerke
-	 */
-//	public boolean[] getUhrwerk(int uhr) {
-//		return null; //this.uhr[uhr].getUhrwerk();
-//	}
-
-	/**
-	 * Gibt ein Array zur¸ck, welches die freigeschalteten Armb‰nder enth‰lt
-	 * 
-	 * @param uhr: Zu welcher Uhr das Armband zur¸ckgegeben werden soll
-	 * @return: Array der freigeschalteten Armband
-	 */
-//	public boolean[] getArmband(int uhr) {
-//		return null; //this.uhr[uhr].getArmband();
-//	}
-	
-	/**
-	 * Gibt ein Array zur¸ck, welches die freigeschalteten Geh‰use enth‰lt
-	 * 
-	 * @param uhr: Zu welcher Uhr das Geh‰use zur¸ckgegeben werden soll
-	 * @return: Array der freigeschalteten Geh‰use
-	 */
-//	public boolean[] getGehaeuse(int uhr) {
-//		return null; //this.uhr[uhr].getGehaeuse();
-//	}
-	
-	
 	public int getUhrwerk(int uhr) {
 		if(this.uhr[uhr] != null)
 			return this.uhr[uhr].getUhrwerk();
@@ -284,9 +266,9 @@ public class Unternehmen {
 		switch(segment) {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
-					if(this.getKapaErwStrasseBillig()[i] == false) {
+					if(this.getKapaErwStraﬂeBillig()[i] == false) {
 						if(checkeKapital(Info.getErweitereKapazitaetBillig()[i])) {
-							kapaErwStrasseBillig[i] = true;
+							kapaErwStraﬂeBillig[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -295,9 +277,9 @@ public class Unternehmen {
 				break;
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
-					if(this.getKapaErwStrassePremium()[i] == false) {
+					if(this.getKapaErwStraﬂePremium()[i] == false) {
 						if(checkeKapital(Info.getErweitereKapazitaetPremium()[i])) {
-							kapaErwStrassePremium[i] = true;
+							kapaErwStraﬂePremium[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -306,9 +288,9 @@ public class Unternehmen {
 				break;
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
-					if(this.getKapaErwStrasseOeko()[i] == false) {
+					if(this.getKapaErwStraﬂeOeko()[i] == false) {
 						if(checkeKapital(Info.getErweitereKapazitaetOeko()[i])) {
-							kapaErwStrasseOeko[i] = true;
+							kapaErwStraﬂeOeko[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
 						}
@@ -327,9 +309,9 @@ public class Unternehmen {
 		switch(segment) {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
-					if(this.getProdKostenSenkungStrasseBillig()[i] == false) {
+					if(this.getProdKostenSenkungStraﬂeBillig()[i] == false) {
 						if(checkeKapital(Info.getSenkeProdKostenStrasseBillig()[i])) {
-							prodKostenSenkungStrasseBillig[i] = true;
+							prodKostenSenkungStraﬂeBillig[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
 						}
@@ -338,9 +320,9 @@ public class Unternehmen {
 				break;
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
-					if(this.getProdKostenSenkungStrassePremium()[i] == false) {
+					if(this.getProdKostenSenkungStraﬂePremium()[i] == false) {
 						if(checkeKapital(Info.getSenkeProdKostenStrassePremium()[i])) {
-							prodKostenSenkungStrassePremium[i] = true;
+							prodKostenSenkungStraﬂePremium[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
 						}
@@ -349,9 +331,9 @@ public class Unternehmen {
 				break;
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
-					if(this.getProdKostenSenkungStrasseOeko()[i] == false) {
+					if(this.getProdKostenSenkungStraﬂeOeko()[i] == false) {
 						if(checkeKapital(Info.getSenkeProdKostenStrasseOeko()[i])) {
-							prodKostenSenkungStrasseOeko[i] = true;
+							prodKostenSenkungStraﬂeOeko[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
 						}
@@ -407,66 +389,166 @@ public class Unternehmen {
 	/**
 	 * 
 	 * @param uhr: F¸r welche Uhr die Marketingstrategie ist
+	 * @param anzKampagnen: Wie viele Marketingkampagnen gestartet werden
 	 */
-	public void uhrenMarketing(int uhr, int anzKampagnen) {
-		/*if(this.uhr[uhr] != null && ( anzKampagnen >= 0 && anzKampagnen <= 3) ) {
-			if(checkeKapital(Info.getmark))
-			this.uhr[uhr].setMarketingboost(Info.getScoreMarketingkampagne()[anzKampagnen]);
+	public void uhrenMarketing(int uhr, boolean[] kampagne) {	
+		// Kosten der Kampagnen berechnen
+		double kostenMarketing = berechneMarketingkosten(kampagne, "Uhr");
+		
+		// Suche den Index
+		int boostIndex = -1;
+		for(int i = 0; i < 3; i++) {
+			if(kampagne[i] == true)
+				boostIndex = i;
 		}
-		*/
-		this.uhr[uhr].setMarketingboost(0);
+		
+		// Nur wenn Kapital ausreichend ist UND es einen boost gibt UND wenn die Zufallszahl nicht zugeschlagen hat
+		if(checkeKapital(kostenMarketing) && boostIndex != -1 && zufallMarketing())
+			this.uhr[uhr].setMarketingboost(this.uhr[uhr].getMarketingboost() + Info.getScoreMarketingkampagne()[boostIndex]);
+		else
+			this.uhr[uhr].setMarketingboost(this.uhr[uhr].getMarketingboost());
+	}
+	
+	public void unternehmenMarketing(boolean[] kampagne) {
+		// Kosten der Kampagnen berechnen
+		double kostenMarketing = berechneMarketingkosten(kampagne, "Unternehmen");
+		
+		// Suche den Index
+		int boostIndex = -1;
+		for(int i = 0; i < 3; i++) {
+			if(kampagne[i] == true)
+				boostIndex = i;
+		}
+		
+		// Nur wenn Kapital ausreichend ist UND es einen boost gibt UND wenn die Zufallszahl nicht zugeschlagen hat
+		if(checkeKapital(kostenMarketing) && boostIndex != -1 && zufallMarketing()) {
+			// Marketingbosst auf alle Uhren anrechnen
+			for(int i = 0; i < 3; i++) {
+				if(this.uhr[i] != null)
+					this.uhr[i].setMarketingboost(this.uhr[i].getMarketingboost() + Info.getScoreMarketingkampagne()[boostIndex]);
+			}
+		} else {
+			for(int i = 0; i < 3; i++) {
+				if(this.uhr[i] != null)
+					this.uhr[i].setMarketingboost(this.uhr[i].getMarketingboost());
+			}
+		}
 	}
 	
 	public void produzieren(int menge, int uhr) {
-		int m = 0;
-		double s = this.uhr[uhr].berechneSelbstkosten();
-		// Segment abfragen
-		switch(this.uhr[uhr].getSegment()) {
-			case "Billig":
-				s *= sucheEinkaufsfaktor("Billig");
-				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitBillig(), s);
-				if(m != -1) 
-					this.uhr[uhr].setBestand(m);
-				break;
-			case "Oeko":
-				s *= sucheEinkaufsfaktor("Oeko");
-				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitOeko(), s);
-				if(m != -1) 
-					this.uhr[uhr].setBestand(m);
-				break;
-			case "Premium":
-				s *= sucheEinkaufsfaktor("Premium");
-				m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitPremium(), s);
-				if(m != -1) 
-					this.uhr[uhr].setBestand(m);
-				break;
+		if(this.uhr[uhr] != null) {
+			int m = 0;
+			double s = this.uhr[uhr].berechneSelbstkosten();
+			// Segment abfragen
+			switch(this.uhr[uhr].getSegment()) {
+				case "Billig":
+					s *= sucheEinkaufsfaktor("Billig");
+					m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitBillig(), s);
+					if(m != -1) 
+						this.uhr[uhr].setBestand(m);
+					break;
+				case "Oeko":
+					s *= sucheEinkaufsfaktor("Oeko");
+					m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitOeko(), s);
+					if(m != -1) 
+						this.uhr[uhr].setBestand(m);
+					break;
+				case "Premium":
+					s *= sucheEinkaufsfaktor("Premium");
+					m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitPremium(), s);
+					if(m != -1) 
+						this.uhr[uhr].setBestand(m);
+					break;
+			}
 		}
 	}
 	
 	public int bieteUhren(int menge, int uhr, double preis) {	
-		int m = -1;
-		// Genug zum Produzieren im Bestand?
-		if(menge <= this.getBestandUhr(uhr)) {
-			m = menge;
-			this.uhr[uhr].setAngeboteneMenge(m);
-		} else {
-			m = this.getBestandUhr(uhr);
-			this.uhr[uhr].setAngeboteneMenge(m);
+		if(this.uhr[uhr] != null) {
+			int m = -1;
+			// Genug zum Produzieren im Bestand?
+			if(menge <= this.getBestandUhr(uhr)) {
+				m = menge;
+				this.uhr[uhr].setAngeboteneMenge(m);
+			} else {
+				m = this.getBestandUhr(uhr);
+				this.uhr[uhr].setAngeboteneMenge(m);
+			}
+			this.uhr[uhr].setAngebotspreis(preis);
+			return m;
 		}
-		this.uhr[uhr].setAngebotspreis(preis);
-		return m;
+		return -1;
 	}
 	
 	public void setAbgenommeneMenge(int menge, int uhr) {
 		if(this.uhr[uhr] != null) {
 			this.uhr[uhr].setAbgenommeneMenge(menge);
 			// Verringere den Bestand um abgenommene Menge
-			if( (this.uhr[uhr].getBestand() + menge) >= 0 )
+			if( (this.uhr[uhr].getBestand() - menge) >= 0 )
 				this.uhr[uhr].setBestand(this.uhr[uhr].getBestand() - menge);
 			else
 				this.uhr[uhr].setBestand(0);
 		}
+		this.addMengeZuArray(this.getBestandUhr(uhr));
 	}
+	
+	/**
+	 * Methode zum freischalten des Segments
+	 * @param segment
+	 */
+	public void freischaltenSegment(String segment) {
+		switch(segment) {
+			case "Billig":
+				if(checkeKapital(Info.getKostenSegmentBillig())) {
+					if(this.freieSegmenteAllgemein[0] == false)
+						this.freieSegmenteAllgemein[0] = true;
+				}
+				break;
+			case "Oeko":
+				if(checkeKapital(Info.getKostenSegmentOeko())) {
+					if(this.freieSegmenteAllgemein[1] == false)
+						this.freieSegmenteAllgemein[1] = true;
+				}
+				break;
+			case "Premium":
+				if(checkeKapital(Info.getKostenSegmentPremium())) {
+					if(this.freieSegmenteAllgemein[2] == false)
+						this.freieSegmenteAllgemein[2] = true;
+				}
+				break;
+		}
+	}
+	
+	// *** PRIVATE METHODEN
+	private void addMengeZuArray(int menge) {
+		for(int i = 0; i < 10; i++)
+			if(this.verkaufteUhrenRunden[i] != -1)
+				this.verkaufteUhrenRunden[i] = menge;
+	}
+
+	private boolean zufallMarketing() {
+		// Zufallszahl zwischen 0 und 1
+		Random rand = new Random();
+		double z = rand.nextDouble();
+		// zwischen 0.4 und 0.6 (incl)
+		if(z >= 0.4 && z <= 0.6)
+			return false;
+		return true;
+	}
+	
+	private double berechneMarketingkosten(boolean[] kampagne, String art) {
+		double kosten = 0;
+		for(int i = 0; i < 3; i++) {
+			if(kampagne[i] == true) {
+				if(art.equals("Uhr"))
+					kosten += Info.getKostenMarketingUhr()[i];
+				else
+					kosten += Info.getKostenMarketingUnternehmen()[i];
+			}
+		}
+		return kosten;
+	}
+	
 
 	private double sucheEinkaufsfaktor(String segment) {
 		double faktor = 0;
@@ -545,27 +627,7 @@ public class Unternehmen {
 		}
 	}
 	
-	/**
-	 * Methode zum freischalten des Segments
-	 * @param segment
-	 */
-	public void freischaltenSegment(String segment) {
-		switch(segment) {
-			case "Billig":
-				if(this.freieSegmenteAllgemein[0] == false)
-					this.freieSegmenteAllgemein[0] = true;
-				break;
-			case "Oeko":
-				if(this.freieSegmenteAllgemein[1] == false)
-					this.freieSegmenteAllgemein[1] = true;
-				break;
-			case "Premium":
-				if(this.freieSegmenteAllgemein[2] == false)
-					this.freieSegmenteAllgemein[2] = true;
-				break;
-		}
-	}
-		
+	
 	private boolean isFreigeschaltenSegment(String segment) {
 		boolean result = false;
 		switch(segment) {
@@ -617,93 +679,41 @@ public class Unternehmen {
 			return false;
 	}
 	
-	@Override
-	public String toString() {			
-		String temp = name + "\n";
-		for(int i = 0; i < uhr.length; i++) {
-			if(uhr[i] != null) {
-
-				temp += "Uhr" + i + " Segment: " + uhr[i].getSegment() + " ";
-				switch(uhr[i].getSegment()) {
-					case "Billig":
-						for(boolean s[] : this.freigeschalteneAttrBillig) {
-							for(boolean k : s) {
-								temp += k + " ";
-							}
-							temp += " - ";
-						}
-						break;
-					case "Oeko":
-						for(boolean s[] : this.freigeschalteneAttrOeko) {
-							for(boolean k : s) {
-								temp += k + " ";
-							}
-							temp += " - ";
-						}
-						break;
-					case "Premium":
-						for(boolean s[] : this.freigeschalteneAttrPremium) {
-							for(boolean k : s) {
-								temp += k + " ";
-							}
-							temp += " - ";
-						}
-						break;
-				}
-				
-				
-				// **ALT
-				/*temp += "Uhr" + i + " Segment: " + uhr[i].getSegment() + " ";
-				temp += " Uhrwerk: ";
-				for(boolean s : uhr[i].getUhrwerk()) {
-					temp += s + " ";
-				}
-				temp += " Armband: ";
-				for(boolean s : uhr[i].getArmband()) {
-					temp += s + " ";
-				}
-				temp += " Geh‰use: ";
-				for(boolean s : uhr[i].getGehaeuse()) {
-					temp += s + " ";
-				}
-				temp += "\n";*/
-				
-			}
-		}
-		return (temp);
-	}
-
 	/*
 	 * Getter / Setter
 	 */
 	
 
+	private void setKapitalAlt(double kapitalAlt) {
+		this.kapitalAlt = kapitalAlt;
+	}
+	
 	public iUhrenkategorie[] getUhr() {
 		return uhr;
 	}
 	
-	public boolean[] getProdKostenSenkungStrasseBillig() {
-		return this.prodKostenSenkungStrasseBillig;
+	public boolean[] getProdKostenSenkungStraﬂeBillig() {
+		return this.prodKostenSenkungStraﬂeBillig;
 	}
 
-	public boolean[] getProdKostenSenkungStrasseOeko() {
-		return this.prodKostenSenkungStrasseOeko;
+	public boolean[] getProdKostenSenkungStraﬂeOeko() {
+		return this.prodKostenSenkungStraﬂeOeko;
 	}
 
-	public boolean[] getProdKostenSenkungStrassePremium() {
-		return this.prodKostenSenkungStrassePremium;
+	public boolean[] getProdKostenSenkungStraﬂePremium() {
+		return this.prodKostenSenkungStraﬂePremium;
 	}
 	
-	public boolean[] getKapaErwStrasseBillig() {
-		return kapaErwStrasseBillig;
+	public boolean[] getKapaErwStraﬂeBillig() {
+		return kapaErwStraﬂeBillig;
 	}
 
-	public boolean[] getKapaErwStrasseOeko() {
-		return kapaErwStrasseOeko;
+	public boolean[] getKapaErwStraﬂeOeko() {
+		return kapaErwStraﬂeOeko;
 	}
 
-	public boolean[] getKapaErwStrassePremium() {
-		return kapaErwStrassePremium;
+	public boolean[] getKapaErwStraﬂePremium() {
+		return kapaErwStraﬂePremium;
 	}
 
 	public boolean[] getVerbesserungEinkaufBillig() {
@@ -737,10 +747,6 @@ public class Unternehmen {
 	public double getKapitalAlt() {
 		return this.kapitalAlt;
 	}
-
-	private void setKapitalAlt(double kapitalAlt) {
-		this.kapitalAlt = kapitalAlt;
-	}
 	
 	public void setSpielerDaten(int uhr, int indexUhrwerk, int indexArmband, int indexGehaeuse) {
 		if(this.uhr[uhr] !=  null) {
@@ -749,26 +755,21 @@ public class Unternehmen {
 					&& this.uhr[uhr].getGehaeuse() == indexGehaeuse) {
 				// Uhrenkonfiguration ist identisch
 				this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
+				this.uhr[uhr].berechneMarktwert();
 			}else {
 				// Uhrenkonfiguration hat sich ge‰ndert - Umr¸stkosten werden berechnet
 				double umruest = this.uhr[uhr].berechneSelbstkosten() * 0.4 * this.uhr[uhr].getBestand();
 				if(checkeKapital(umruest)) {
 					this.setKapital( this.getKapital() - umruest);
 					this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
+					this.uhr[uhr].berechneMarktwert();
 				} else {
 					System.out.println("Nicht genug Kohle!!!");
 				}
 			}			
 		}
 	}
-	
-	public String getSpielerDaten(int uhr) {
-		if(this.uhr[uhr] != null)
-			return this.uhr[uhr].getSpielerDaten();
-		else
-			return null;
-	}
-	
+		
 	public int getBestandUhr(int uhr) {
 		if(this.uhr[uhr] != null)
 			return this.uhr[uhr].getBestand();
@@ -778,14 +779,6 @@ public class Unternehmen {
 	public void setBestandUhr(int uhr, int menge) {
 		if(this.uhr[uhr] != null)
 			this.uhr[uhr].setBestand(menge);
-	}
-
-	public String getInfo() {
-		return this.info;
-	}
-
-	public void setInfo(String info) {
-		this.info = info;
 	}
 
 	public boolean[] getFreieSegmenteAllgemein() {
@@ -863,6 +856,9 @@ public class Unternehmen {
 	public void setProduktionskostenPremium(int produktionskostenPremium) {
 		this.produktionskostenPremium = produktionskostenPremium;
 	}
-	
+
+	public int[] getVerkaufteUhrenRunden() {
+		return verkaufteUhrenRunden;
+	}
 }
 

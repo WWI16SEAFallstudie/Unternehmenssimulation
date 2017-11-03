@@ -4,39 +4,7 @@ package func;
 
 public class TESTMAIN {
 	
-	public static void main(String[] args) {
-		/*Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
-		Unternehmen[] spieler;
-		
-		spielbrett.erstelleSpieler(2);
-		spieler = spielbrett.getSpieler();
-		
-		spieler[0].freischaltenSegment("Billig");
-		
-		spieler[0].erforscheUhr("Billig");
-		spieler[0].erforscheUhr("Billig");
-		
-		//produzieren
-		System.out.println("Spieler0 will 1000 Uhren (0) produzieren");
-		spieler[0].produzieren(1000, 0);
-		System.out.println("Bestand " + spieler[0].getBestandUhr(0));
-		
-		System.out.println("Spieler0 will 1000 Uhren (1) produzieren");
-		spieler[0].produzieren(1000, 1);
-		System.out.println("Bestand " + spieler[0].getBestandUhr(1));
-		
-		//setze score
-		iUhrenkategorie[] uhren = spieler[0].getUhr();
-		uhren[0].setScore(100);
-		uhren[1].setScore(150);
-		
-		spieler[0].bieteUhren(100, 0, 100);
-		spieler[0].bieteUhren(100, 1, 100);
-		
-		spielbrett.starteMarkt();
-		*/
-
-	
+	public static void main(String[] args) {	
 		Spielbrett spiel = new Spielbrett(10, 10000,0.1);
 		Unternehmen[] spieler;
 		
@@ -103,8 +71,8 @@ public class TESTMAIN {
 		}
 		System.out.println();
 		
-		System.out.println("Spieler 1 entwickelt Uhrwerk im Premiummarkt");
-		spieler[1].erforscheUhrwerk("Premium");
+		System.out.println("Spieler 0 entwickelt Uhrwerk im Premiummarkt");
+		spieler[0].erforscheUhrwerk("Billig");
 		// Spieler ausgabe
 		for(int i = 0; i < spieler.length; i++) {
 			System.out.println(spieler[i].toString());
@@ -147,18 +115,14 @@ public class TESTMAIN {
 		System.out.println("Rundenende - Spielerdaten erfassen");
 		System.out.println("Spieler 0 wählt: Armband 0; Uhrwerk 3; Gehaeuse 1");
 		spieler[0].setSpielerDaten(0, 2, 0, 1);
-		System.out.println(spieler[0].getSpielerDaten(0));
 		
 		System.out.println();
 		System.out.println("Spieler 1 wählt: Armband 1; Uhrwerk 2; Gehaeuse 2");
-		spieler[1].setSpielerDaten(0, 2, 1, 2);
-		System.out.println(spieler[1].getSpielerDaten(0));		
+		spieler[1].setSpielerDaten(0, 2, 1, 2);		
 
 		System.out.println();
 		System.out.println("Spieler 2 wählt: Armband 2; Uhrwerk 1; Gehaeuse 0");
 		spieler[2].setSpielerDaten(0, 1, 2, 0);
-		System.out.println(spieler[2].getSpielerDaten(0));	
-
 		System.out.println();
 		System.out.println("Alternative Ausgabe zu getSpielerDaten");
 		System.out.println(spieler[2].getUhrwerk(0));
@@ -212,12 +176,6 @@ public class TESTMAIN {
 
 		System.out.println("Spieler 2 erweitert Premiumproduktion");
 		spieler[2].erweitereEinkauf("Premium");
-
-		System.out.println();
-		/*System.out.println("Spieler0 Anschaffungskosten Billig: " + spieler[0].getAnschaffungskostenBillig());
-		System.out.println("Spieler1 Anschaffungskosten Premium: " + spieler[1].getAnschaffungskostenPremium());
-		System.out.println("Spieler1 Anschaffungskosten Oeko: " + spieler[1].getAnschaffungskostenOeko());
-		System.out.println("Spieler2 Anschaffungskosten Premium: " + spieler[2].getAnschaffungskostenPremium());*/
 		
 		System.out.println("Alternative Ausgabe für die Erweiterung des Einkaufs Billig");
 		for(boolean a : spieler[0].getVerbesserungEinkaufBillig())
@@ -229,10 +187,12 @@ public class TESTMAIN {
 		System.out.println("Spieler0 will 5000 Uhren (0) am Markt anbieten");
 		System.out.println("AB: " + spieler[0].getBestandUhr(0));
 		System.out.println("Angeboten: " + spieler[0].bieteUhren(5000, 0, 10));
+		System.out.println();
 
 		System.out.println("Spieler1 will 100000 Uhren am Markt anbieten");
 		System.out.println("AB: " + spieler[1].getBestandUhr(0));
 		System.out.println("Angeboten: " + spieler[1].bieteUhren(100000, 0,10));
+		System.out.println();
 
 		System.out.println("Spieler2 will 1000 Uhren am Markt anbieten");
 		System.out.println("AB: " + spieler[2].getBestandUhr(0));
@@ -248,10 +208,9 @@ public class TESTMAIN {
 		spieler[1].setAbgenommeneMenge(10000, 0);
 		System.out.println("EB " + spieler[1].getBestandUhr(0));
 		
-		System.out.println("Spieler 0 hat 500 Uhren verkauft");
-		spieler[2].setAbgenommeneMenge(500, 0);
+		System.out.println("Spieler 0 hat  Uhren verkauft");
+		spieler[2].setAbgenommeneMenge(5, 0);
 		System.out.println("EB " + spieler[2].getBestandUhr(0));	
-		
 		
 	}
 }

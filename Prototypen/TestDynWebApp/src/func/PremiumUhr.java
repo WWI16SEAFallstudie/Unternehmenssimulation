@@ -22,12 +22,13 @@ public class PremiumUhr implements iUhrenkategorie {
 		this.uhrwerk = 0;
 		this.gehaeuse = 0;
 		this.armband = 0;
-	}
-	
-	@Override
-	public void uhrMarketingstrategie() {
-		// TODO Auto-generated method stub
-		
+		this.marketingboost = 0;
+		this.bestand = 0; 
+		this.angeboteneMenge = 0;
+		this.marktwert = 0;
+		this.abgenommeneMenge = 0;
+		this.selbstkosten = 0;
+		this.angebotspreis = 0;
 	}
 
 	@Override
@@ -36,12 +37,7 @@ public class PremiumUhr implements iUhrenkategorie {
 		this.setGehaeuse(gehaeuse);
 		this.setUhrwerk(uhrwerk);
 	}
-	
-	@Override
-	public String getSpielerDaten() {
-		return ("Gehäuse: " + this.getGehaeuse() + " - Armband: " + this.getArmband() + " - Uhrwerk: " + this.getUhrwerk());
-	}
-	
+		
 	@Override
 	public void setAngeboteneMenge(int menge) {
 		this.angeboteneMenge = menge;
@@ -158,7 +154,8 @@ public class PremiumUhr implements iUhrenkategorie {
 	
 	@Override
 	public double berechneMarktwert() {
-		this.setMarktwert( this.getSelbstkosten() * this.getMarktwert() ); 
+		this.setMarktwert( this.getSelbstkosten() * (1 + ( Info.getScoreArmbandPremium()[this.getArmband()] + Info.getScoreGehaeusePremium()[this.getGehaeuse()] + 
+				Info.getScoreUhrwerkPremium()[this.getUhrwerk()])) ); 
 		return this.getMarktwert();
 	}
 }

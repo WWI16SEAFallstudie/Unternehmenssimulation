@@ -1,5 +1,8 @@
 package func;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 /*
  * Hier findet die ganze Spielsteuerung von Unternehmen und Markt statt
  */
@@ -11,22 +14,17 @@ public class Spielbrett {
 	private int rundenMax;
 	private int aktuellerSpieler;
 	Gesamtmarkt gesamtmarkt;
-	
-//	public Spielbrett(int anzRunden) {
-//		this.rundenAktuell = 0;
-//		this.rundenMax = anzRunden;
-//		this.aktuellerSpieler = 0;
-//	}
+	private int sieger[];
 	
 	public Spielbrett(int anzRunden, int volume, double impactRange) {
 		this.rundenAktuell = 0;
 		this.rundenMax = anzRunden;
 		this.aktuellerSpieler = 0;
-		this.gesamtmarkt = new Gesamtmarkt(volume, impactRange);
+		//this.gesamtmarkt = new Gesamtmarkt(volume, impactRange);
 	}
 	
 	public void starteMarkt() {
-		gesamtmarkt.starteSimulation(spieler);
+		//gesamtmarkt.starteSimulation(spieler);
 	}
 	
 	// Spieler erstellen
@@ -42,11 +40,15 @@ public class Spielbrett {
 		boolean result = true;
 		if(rundenAktuell+1 < rundenMax) {
 			rundenAktuell++;
+			starteMarkt();
 		}
 		else {
 			// Spiel beendet!!
 			result = false;
 			System.out.println("Spiel zu Ende!!");
+			starteMarkt();
+			gewinnermittlung();
+			
 		}
 		return result;
 	}
@@ -61,14 +63,35 @@ public class Spielbrett {
 			this.aktuellerSpieler++;
 		}
 	}
+	
+	private void gewinnermittlung() {
+		this.sieger = new int[spieler.length];
+		double kapi[] = new double[spieler.length];
+		// Kapital in extra array speichern
+		for(int i = 0; i < spieler.length; i++)
+			kapi[i] = spieler[i].getKapital();
+		
+		// Kapital nach größe sortieren und umdrehen
+		Arrays.sort(kapi);
+		double temp[] = new double[kapi.length];
+		int t = kapi.length-1;
+		for(int i = 0; i < kapi.length; i++)
+		{
+			temp[t] = kapi[i];
+			t--;
+		}
+		kapi = temp;
+		
+		// Kapital den Siegern zuordnen und in siegerarray speichern
+		for(int i = 0; i < spieler.length; i++) {
+			for(int j = 0; j < kapi.length; j++)
+				if(kapi[i] == spieler[j].getKapital()) {
+					sieger[i] = j;
+					break;
+				}
+		}
+	}
 
-	
-	// Markt
-	
-	// -> Runde beenden: Rückgabe aktueller Spieler, Spielerdaten direkt erfassen
-	// -> Periode beenden: Marktsimmulation starten; Rückgabe der Infos an die Spieler
-	
-	
 	// Getter & Setter
 	
 	public Unternehmen[] getSpieler() {
@@ -90,7 +113,10 @@ public class Spielbrett {
 	public int getRundenMax() {
 		return rundenMax;
 	}
-	
-	
 
+	public int[] getSieger() {
+		return sieger;
+	}
+	
+	
 }
