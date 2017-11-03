@@ -1,2 +1,6 @@
 /func/
+/func/**
 /servlets/
+/servlets/**
+/tests/
+/tests/**
