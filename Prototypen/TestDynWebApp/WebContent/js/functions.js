@@ -1,8 +1,3 @@
-// Testfunktion zur Demonstation des Spielerwechsels
-function next(){
-	window.open("index.jsp","_self")
-}
-
 // Begrenzung der Inputmöglichkeiten auf Ziffern und Komma
 $('.numInput').keypress(function(event){
 	var keyPressed = (window.event) ? window.event.keyCode : event.which;
@@ -109,10 +104,8 @@ window.onload = function () {
 
 
 // Auswahl des zu Nutzenden Gehäuse, Armband, Uhrwerk
-function usedItem(input, item){
-	
+function usedItem(input, item){	
 	selectItem(input, item);
-	
 	document.getElementById(input).value = item;
 }
 
@@ -174,7 +167,6 @@ function cancelResearch(card, input){
 	document.getElementById(input).value = "";
 	
 	$("#"+card+" .list-group-item").removeClass("selected");
-	
 	$("#"+card+">.selectSegmentOuter").css("display","none");
 }
 

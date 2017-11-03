@@ -297,7 +297,7 @@ public class MyServlet extends HttpServlet {
 			
 			// Beenden des Spiels, da der letzte Spieler der letzen Runde seine Runde beendete.
 			else{
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/statistik.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/gewinner.jsp");
 				dispatcher.forward(request, response);
 				System.out.println("Beendigung der letzten Spielrunde.");
 			}
