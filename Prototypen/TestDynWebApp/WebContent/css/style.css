@@ -157,6 +157,7 @@
 	border: none;
 	background-color: rgba(79, 132, 196, 0.25);
 	padding-right: 3px;
+	width: 80px;
 	}
 	
 	.done>.addBtn{

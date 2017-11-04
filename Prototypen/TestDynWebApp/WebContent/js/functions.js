@@ -1,7 +1,11 @@
 // Begrenzung der Inputmöglichkeiten auf Ziffern und Komma
+
 $('.numInput').keypress(function(event){
 	var keyPressed = (window.event) ? window.event.keyCode : event.which;
 	 v=String.fromCharCode(keyPressed);
+	 if(keyPressed == 37 || keyPressed == 38 || keyPressed == 39 || keyPressed == 40 || keyPressed == 8 || keyPressed == 46) {
+	     return true;
+	 }
 	 if ( eval('v.match(/^[0-9,]$/)'))  return true;
 	 event.preventDefault();
 	 event.stopPropagation();
@@ -10,10 +14,14 @@ $('.numInput').keypress(function(event){
 $('.intInput').keypress(function(event){
 	var keyPressed = (window.event) ? window.event.keyCode : event.which;
 	v=String.fromCharCode(keyPressed);
+	if(keyPressed == 37 || keyPressed == 38 || keyPressed == 39 || keyPressed == 40 || keyPressed == 8 || keyPressed == 46) {
+	     return true;
+	 }
 	if ( eval('v.match(/^[0-9]$/)'))  return true;
 	event.preventDefault();
 	event.stopPropagation();
 	});
+
 
 // Chart.js Diagramm für Statistik der verkauften Uhren
 var ctx = document.getElementById("myChart").getContext('2d');

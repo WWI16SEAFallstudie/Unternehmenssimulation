@@ -83,7 +83,9 @@ public class MyServlet extends HttpServlet {
 				// setzen des Spielerbildes sowie des aktuellen Kapitals
 				request.setAttribute("pic", spiel.getAktuellerSpieler());
 				String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
+				String gewinn = df.format( spieler[spiel.getAktuellerSpieler()].getKapital() - startKapital);
 				request.setAttribute("kapital", kapital);
+				request.setAttribute("gewinn", gewinn);
 				
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Umwelt");
@@ -114,7 +116,9 @@ public class MyServlet extends HttpServlet {
 				// setzen des Spielerbildes sowie des aktuellen Kapitals
 				request.setAttribute("pic", spiel.getAktuellerSpieler());
 				String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
+				String gewinn = df.format( spieler[spiel.getAktuellerSpieler()].getKapital() - startKapital);
 				request.setAttribute("kapital", kapital);
+				request.setAttribute("gewinn", gewinn);
 				
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Luxus");
@@ -145,7 +149,9 @@ public class MyServlet extends HttpServlet {
 				// setzen des Spielerbildes sowie des aktuellen Kapitals
 				request.setAttribute("pic", spiel.getAktuellerSpieler());
 				String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
+				String gewinn = df.format( spieler[spiel.getAktuellerSpieler()].getKapital() - startKapital);
 				request.setAttribute("kapital", kapital);
+				request.setAttribute("gewinn", gewinn);
 				
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Billig");
@@ -351,7 +357,9 @@ public class MyServlet extends HttpServlet {
 						// setzen des Spielerbildes sowie des aktuellen Kapitals
 						request.setAttribute("pic", spiel.getAktuellerSpieler());
 						String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
+						String gewinn = df.format( spieler[spiel.getAktuellerSpieler()].getKapital() - startKapital);
 						request.setAttribute("kapital", kapital);
+						request.setAttribute("gewinn", gewinn);
 						
 						// setzen der get�tigten Auswahl der Produkte
 								
