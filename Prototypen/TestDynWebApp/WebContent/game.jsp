@@ -29,8 +29,6 @@
 			<a id="player" class=" player dropdown-toggle" data-toggle="dropdown" href="#"><span id="money">${kapital}</span> &euro;<span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<li><span class="first-elem">Anfangskapital</span><span class="last-elem">${kapital} &euro;</span></li>
-				<li><span class="first-elem">Geplante Ausgaben</span><span class="last-elem">? &euro;</span></li>
-				<li><span class="first-elem">Endkapital</span><span class="last-elem">? &euro;</span></li>
 				<li><span class="first-elem">Uhr 1</span><span class="last-elem">${stock0} St.</span></li>
 				<li><span class="first-elem">Uhr 2</span><span class="last-elem">${stock1} St.</span></li>
 				<li><span class="first-elem">Uhr 3</span><span class="last-elem">${stock2} St.</span></li>                       
