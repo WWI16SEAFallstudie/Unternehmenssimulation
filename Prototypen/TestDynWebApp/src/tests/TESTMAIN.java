@@ -1,4 +1,8 @@
-package func;
+package tests;
+
+import func.Spielbrett;
+import func.Unternehmen;
+import func.iUhrenkategorie;
 
 //import javax.swing.plaf.synth.SynthSplitPaneUI;
 

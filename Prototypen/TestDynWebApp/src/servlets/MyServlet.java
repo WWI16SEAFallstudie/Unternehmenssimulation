@@ -59,7 +59,7 @@ public class MyServlet extends HttpServlet {
 			spiel.erstelleSpieler(spielerAnz); // Erzeugen der Spieler
 			spieler = spiel.getSpieler(); 	// Zugriff auf Spielerobjekte �ber Variable erm�glichen
 
-			for(int i = 0; i < spieler.length; i++) System.out.println(spieler[i].toString()); // Ausgabe der Spieler in Konsole
+			for(int i = 0; i < spieler.length; i++) System.out.println("Spiel mit " + spielerAnz + " Spielern gestartet"); // Ausgabe der Spieler in Konsole
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/segment.jsp");
 			dispatcher.forward(request, response); // aufruf der segmentauswahl f�r den ersten Spieler		
@@ -75,7 +75,6 @@ public class MyServlet extends HttpServlet {
 					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Oeko");
 					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Oeko");
 					System.out.println("Spieler: " + spiel.getAktuellerSpieler() + " hat das Segment �ko gew�hlt");
-					System.out.println(spieler[spiel.getAktuellerSpieler()].toString());
 				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
