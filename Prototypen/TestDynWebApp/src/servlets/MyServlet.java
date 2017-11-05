@@ -49,7 +49,7 @@ public class MyServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Start des Spiels mit der ausgew�hlten Anzahl an Spielern
 		if (request.getParameter("startbtn") != null) {
@@ -58,7 +58,7 @@ public class MyServlet extends HttpServlet {
 			spiel.erstelleSpieler(spielerAnz); // Erzeugen der Spieler
 			spieler = spiel.getSpieler(); 	// Zugriff auf Spielerobjekte �ber Variable erm�glichen
 
-			System.out.println("Spiel mit " + spielerAnz + " Spielern gestartet"); // Ausgabe der Spieler in Konsole
+			//System.out.println("Spiel mit " + spielerAnz + " Spielern gestartet"); // Ausgabe der Spieler in Konsole
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/segment.jsp");
 			dispatcher.forward(request, response); // aufruf der segmentauswahl f�r den ersten Spieler		
@@ -72,7 +72,7 @@ public class MyServlet extends HttpServlet {
 				if(spieler[spiel.getAktuellerSpieler()].getUhr()[0] == null){
 					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Oeko");
 					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Oeko");
-				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
+				}//else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
 				
@@ -94,7 +94,7 @@ public class MyServlet extends HttpServlet {
 				if(spieler[spiel.getAktuellerSpieler()].getUhr()[0] == null){
 					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Premium");
 					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Premium");
-				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
+				}//else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
 			
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
 				
@@ -116,7 +116,7 @@ public class MyServlet extends HttpServlet {
 				if(spieler[spiel.getAktuellerSpieler()].getUhr()[0] == null){
 					spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Billig");
 					spieler[spiel.getAktuellerSpieler()].erforscheUhr("Billig");
-				}else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
+				}//else System.out.println("Die Seite wurde neu geladen. Doppelterforschung verhindert!");
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");			
 				
@@ -158,33 +158,19 @@ public class MyServlet extends HttpServlet {
 			if(!request.getParameter("researchModel1").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheUhr(request.getParameter("researchModel1"));
 			if(!request.getParameter("researchModel2").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheUhr(request.getParameter("researchModel2"));
 			
-			// Erforschung neuer Uhrenbestandteile
-			if(!request.getParameter("researchCaseOeko").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheGehaeuse("Oeko");
-			if(!request.getParameter("researchBraceletOeko").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheArmband("Oeko");
-			if(!request.getParameter("researchClockWorkOeko").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheUhrwerk("Oeko");
 			
-			if(!request.getParameter("researchCaseLuxus").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheGehaeuse("Premium");
-			if(!request.getParameter("researchBraceletLuxus").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheArmband("Premium");
-			if(!request.getParameter("researchClockWorkLuxus").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheUhrwerk("Premium");
-			
-			if(!request.getParameter("researchCaseBillig").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheGehaeuse("Billig");
-			if(!request.getParameter("researchBraceletBillig").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheArmband("Billig");
-			if(!request.getParameter("researchClockWorkBillig").equals("")) spieler[spiel.getAktuellerSpieler()].erforscheUhrwerk("Billig");
-			
-			// Erforschung neues Segment
-			if(!request.getParameter("researchSegmentOeko").equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment("Oeko");
-			if(!request.getParameter("researchSegmentLuxus").equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment ("Premium");
-			if(!request.getParameter("researchSegmentBillig").equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment ("Billig");
-			
-			// Erforschung von Produktionsoptimierungen		
-			if(!request.getParameter("costReductionOeko").equals("")) spieler[spiel.getAktuellerSpieler()].senkeProdKosten("Oeko");
-			if(!request.getParameter("expansionOeko").equals("")) spieler[spiel.getAktuellerSpieler()].erweitereProduktion("Oeko");
-				
-			if(!request.getParameter("costReductionLuxus").equals("")) spieler[spiel.getAktuellerSpieler()].senkeProdKosten("Premium");
-			if(!request.getParameter("expansionLuxus").equals("")) spieler[spiel.getAktuellerSpieler()].erweitereProduktion("Premium");
-				
-			if(!request.getParameter("costReductionBillig").equals("")) spieler[spiel.getAktuellerSpieler()].senkeProdKosten("Billig");
-			if(!request.getParameter("expansionBillig").equals("")) spieler[spiel.getAktuellerSpieler()].erweitereProduktion("Billig");
+			String[] segment = {"Billig", "Oeko", "Premium"};
+			for(int j = 0; j < 3; j++){
+				// Erforschung neuer Uhrenbestandteile
+				if(!request.getParameter("researchCase" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erforscheGehaeuse(segment[j]);
+				if(!request.getParameter("researchBracelet" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erforscheArmband(segment[j]);
+				if(!request.getParameter("researchClockWork" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erforscheUhrwerk(segment[j]);
+				// Erforschung neues Segment	
+				if(!request.getParameter("researchSegment" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment (segment[j]);
+				// Erforschung von Produktionsoptimierungen
+				if(!request.getParameter("costReduction" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].senkeProdKosten(segment[j]);
+				if(!request.getParameter("expansion" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erweitereProduktion(segment[j]);
+			}
 			
 			
 			// Produzieren von Uhren			
@@ -253,7 +239,7 @@ public class MyServlet extends HttpServlet {
 			//-- Ender der Daten�bergabe
 			
 			
-			System.out.println("Runde " + spiel.getRundenAktuell() + " von Spieler" + spiel.getAktuellerSpieler() + "beendet.");
+			//System.out.println("Runde " + spiel.getRundenAktuell() + " von Spieler" + spiel.getAktuellerSpieler() + "beendet.");
 			
 			// Auswahl des n�chsten Spielers, wenn aktueller Spieler nicht der letzte ist
 			if(spiel.getAktuellerSpieler() != (spieler.length-1)){
@@ -265,7 +251,7 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("picNext", spiel.getAktuellerSpieler());
 				dispatcher.forward(request, response);
 				
-				System.out.println("Auswahl des n�chsten Spielers.");
+				//System.out.println("Auswahl des n�chsten Spielers.");
 			}
 			
 			// Start der n�chsten Runde, wenn die aktuelle Runde nicht die letzte ist
@@ -279,7 +265,7 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("picNext", spiel.getAktuellerSpieler());
 				dispatcher.forward(request, response);
 				
-				System.out.println("Auswahl des n�chsten Spielers und Start einer neuen Runde.");
+				//System.out.println("Auswahl des n�chsten Spielers und Start einer neuen Runde.");
 			}
 			
 			// Beenden des Spiels, da der letzte Spieler der letzen Runde seine Runde beendete.
@@ -296,7 +282,7 @@ public class MyServlet extends HttpServlet {
 				}
 				spiel = null;
 				dispatcher.forward(request, response);
-				System.out.println("Beendigung der letzten Spielrunde.");
+				//System.out.println("Beendigung der letzten Spielrunde.");
 			}
 		}//nextRound
 		
@@ -354,7 +340,7 @@ public class MyServlet extends HttpServlet {
 										}
 										break;
 								}
-								System.out.println("Uhr " + i + " vorhanden und Bildschirmausgabe gesetzt");
+								//System.out.println("Uhr " + i + " vorhanden und Bildschirmausgabe gesetzt");
 							}
 						}
 						
@@ -362,7 +348,7 @@ public class MyServlet extends HttpServlet {
 						
 						dispatcher.forward(request, response);
 					}
-					System.out.println("Start neuer Runde.");
+					//System.out.println("Start neuer Runde.");
 					
 				}//nextPlayer
 				
@@ -370,7 +356,7 @@ public class MyServlet extends HttpServlet {
 					spiel = new Spielbrett(rundenanzahl, marktvolumen, impactRange);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 					dispatcher.forward(request, response);
-					System.out.println("Start neues neuen Spiels wird vorbereitet.");
+					//System.out.println("Start neues neuen Spiels wird vorbereitet.");
 				}//restart
 				
 	}// doPost
