@@ -25,11 +25,11 @@ public class MyServlet extends HttpServlet {
 	 * Initiierung der fï¿½r das Spiel benï¿½tigten Instanzen
 	 */
 	// Festlegen der Startparameter für Spiel und Folgespiele
-	int Rundenanzahl = 3; //für Test 3 sonst 10
-	int startKapital = 1000000;
+	int rundenanzahl = 3; //für Test 3 sonst 10
+	int marktvolumen = 1000000;
 	double impactRange = 0.2;
 	
-	Spielbrett spiel = new Spielbrett(Rundenanzahl, startKapital, impactRange);// für Test
+	Spielbrett spiel = new Spielbrett(rundenanzahl, marktvolumen, impactRange);// für Test
 	Unternehmen[] spieler;
 	
 	DecimalFormat df = (DecimalFormat)DecimalFormat.getInstance(Locale.GERMAN); //deutsche Zahlenformatierung DecimalFormat
@@ -80,12 +80,10 @@ public class MyServlet extends HttpServlet {
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
 				
-				// setzen des Spielerbildes sowie des aktuellen Kapitals
+				// Anzeige des Spielerbildes, des aktuellen Kapitals sowie der aktuellen Runde
 				request.setAttribute("pic", spiel.getAktuellerSpieler());
-				String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
-				String gewinn = df.format( spieler[spiel.getAktuellerSpieler()].getKapital() - startKapital);
-				request.setAttribute("kapital", kapital);
-				request.setAttribute("gewinn", gewinn);
+				setKapital(request, response);
+				setRound(request, response);
 				
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Umwelt");
@@ -113,12 +111,10 @@ public class MyServlet extends HttpServlet {
 			
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
 				
-				// setzen des Spielerbildes sowie des aktuellen Kapitals
+				// Anzeige des Spielerbildes, des aktuellen Kapitals sowie der aktuellen Runde
 				request.setAttribute("pic", spiel.getAktuellerSpieler());
-				String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
-				String gewinn = df.format( spieler[spiel.getAktuellerSpieler()].getKapital() - startKapital);
-				request.setAttribute("kapital", kapital);
-				request.setAttribute("gewinn", gewinn);
+				setKapital(request, response);
+				setRound(request, response);
 				
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Luxus");
@@ -146,12 +142,10 @@ public class MyServlet extends HttpServlet {
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
 				
-				// setzen des Spielerbildes sowie des aktuellen Kapitals
+				// Anzeige des Spielerbildes, des aktuellen Kapitals sowie der aktuellen Runde
 				request.setAttribute("pic", spiel.getAktuellerSpieler());
-				String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
-				String gewinn = df.format( spieler[spiel.getAktuellerSpieler()].getKapital() - startKapital);
-				request.setAttribute("kapital", kapital);
-				request.setAttribute("gewinn", gewinn);
+				setKapital(request, response);
+				setRound(request, response);
 				
 				// setzen der Produktlinienbezeichnung
 				request.setAttribute("m0s", "Billig");
@@ -302,7 +296,7 @@ public class MyServlet extends HttpServlet {
 				spiel.naechsterSpieler();
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/next.jsp");
-				request.setAttribute("round", spiel.getRundenAktuell());
+				request.setAttribute("round", spiel.getRundenAktuell()+1);
 				request.setAttribute("picNext", spiel.getAktuellerSpieler());
 				dispatcher.forward(request, response);
 				
@@ -316,7 +310,7 @@ public class MyServlet extends HttpServlet {
 				spiel.naechsterSpieler();
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/next.jsp");
-				request.setAttribute("round", spiel.getRundenAktuell());
+				request.setAttribute("round", spiel.getRundenAktuell()+1);
 				request.setAttribute("picNext", spiel.getAktuellerSpieler());
 				dispatcher.forward(request, response);
 				
@@ -332,7 +326,7 @@ public class MyServlet extends HttpServlet {
 				
 				for(int i = 0; i<spieler.length;i++){
 					int gewinner = spiel.getSieger()[i];
-					request.setAttribute("wp"+i, "Spieler " + gewinner + "<img src='images/Man" + gewinner +".png'>");
+					request.setAttribute("wp"+i, "Spieler " + (gewinner+1) + "<img src='images/Man" + gewinner +".png'>");
 					request.setAttribute("wc"+i, df.format(spieler[gewinner].getKapital())+ "&nbsp;&euro;");					
 				}
 				spiel = null;
@@ -354,12 +348,10 @@ public class MyServlet extends HttpServlet {
 					else{
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/game.jsp");
 						
-						// setzen des Spielerbildes sowie des aktuellen Kapitals
+						// Anzeige des Spielerbildes, des aktuellen Kapitals sowie der aktuellen Runde
 						request.setAttribute("pic", spiel.getAktuellerSpieler());
-						String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
-						String gewinn = df.format( spieler[spiel.getAktuellerSpieler()].getKapital() - startKapital);
-						request.setAttribute("kapital", kapital);
-						request.setAttribute("gewinn", gewinn);
+						setKapital(request, response);
+						setRound(request, response);
 						
 						// setzen der getï¿½tigten Auswahl der Produkte
 								
@@ -414,7 +406,7 @@ public class MyServlet extends HttpServlet {
 				}//nextPlayer
 				
 				if (request.getParameter("restart") != null) {
-					spiel = new Spielbrett(Rundenanzahl, startKapital, impactRange);
+					spiel = new Spielbrett(rundenanzahl, marktvolumen, impactRange);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 					dispatcher.forward(request, response);
 					System.out.println("Start neues neuen Spiels wird vorbereitet.");
@@ -690,6 +682,20 @@ public class MyServlet extends HttpServlet {
 				request.setAttribute("mCm"+i+""+j, sf.format(Info.getKostenMarketingUhr()[j]));
 			}
 		}
+	}
+	
+	private void setKapital(HttpServletRequest request, HttpServletResponse response){
+		String kapital = df.format( spieler[spiel.getAktuellerSpieler()].getKapital());
+		String gewinn = df.format( spieler[spiel.getAktuellerSpieler()].getKapital() - marktvolumen);
+		request.setAttribute("kapital", kapital);
+		request.setAttribute("gewinn", gewinn);
+	}
+	
+	private void setRound(HttpServletRequest request, HttpServletResponse response){
+		int aktuelleRunde = spiel.getRundenAktuell()+1;
+		request.setAttribute("roundg", rundenanzahl);
+		request.setAttribute("rounda", aktuelleRunde);
+		request.setAttribute("roundtodo", rundenanzahl-aktuelleRunde);
 	}
 	
 }
