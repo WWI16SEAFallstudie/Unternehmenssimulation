@@ -25,7 +25,7 @@
 		background-color: rgba(79, 132, 196, 1);
 	}
 	
-	.addBtn, .card .glyphicon, .ekVal, .vkVal, .numProduction, .verkauf, .productionLimit, .stock, .numInput, .intInput{
+	.addBtn, .card .glyphicon, .ekVal, .vkVal, .numProduction, .verkauf, .productionLimit, .stock, .numInput, .intInput, .prodC{
 		float: right;
 	}
 	

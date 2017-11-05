@@ -98,7 +98,7 @@
 						<ul class="list-group">
 							<li class="list-group-item">Vorrat <span id="stockModel0" class="stock">${stock0}</span></li>
 							<li class="list-group-item">Produktionsmenge <input  type="text" class="numInput" id="output0" name="output0"></li>
-							<li class="list-group-item">Einkaufspreis/St&uuml;ck: <span class="ekVal" id="ekVal0">${ekM0}&euro;</span></li>							
+							<li class="list-group-item">Einkaufspreis/St&uuml;ck: <span class="ekVal" id="ekVal0">${ekM0} &euro;</span></li>							
 							<li class="list-group-item">Produktionskosten <span id="prodCost0" class="prodC"></span></li>
 						</ul>
 						<div class="overlay">
@@ -133,7 +133,7 @@
 							<li class="list-group-item">Vorrat <span id="stockModel2" class="stock">${stock2}</span></li>
 							<li class="list-group-item">Produktionsmenge <input type="text" class="numInput" id="output2" name="output2"></li>
 							<li class="list-group-item">Einkaufspreis/St&uuml;ck: <span class="ekVal" id="ekVal2">${ekM2} &euro;</span></li>							
-							<li class="list-group-item">Produktionskosten <span id="prodCost2" class="prodC" id="prodCost2"></span></li>
+							<li class="list-group-item">Produktionskosten <span id="prodCost2" class="prodC"></span></li>
 						</ul>
 						<div class="overlay">
 							<div class="ol-text">nicht verf&uuml;gbar</div>
