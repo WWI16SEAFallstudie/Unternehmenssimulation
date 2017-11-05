@@ -439,25 +439,38 @@ public class Unternehmen {
 		if(this.uhr[uhr] != null) {
 			int m = 0;
 			double s = this.uhr[uhr].berechneSelbstkosten();
+			double f = 0;
 			// Segment abfragen
 			switch(this.uhr[uhr].getSegment()) {
 				case "Billig":
-					s *= sucheEinkaufsfaktor("Billig");
-					m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitBillig(), s);
-					if(m != -1) 
+					f = sucheEinkaufsfaktor("Billig");
+					if(f != 0)
+						s *= f;
+					m = testeMengeProduzieren( menge, this.getBestandUhr(uhr) , this.getProduktionslimitBillig(), s);
+					if(m != -1) {
+						this.setKapital( this.getKapital() - (m * s) );
 						this.uhr[uhr].setBestand(m);
+						}
 					break;
 				case "Oeko":
-					s *= sucheEinkaufsfaktor("Oeko");
-					m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitOeko(), s);
-					if(m != -1) 
+					f = sucheEinkaufsfaktor("Oeko");
+					if(f != 0)
+						s *= f;
+					m = testeMengeProduzieren( menge, this.getBestandUhr(uhr) , this.getProduktionslimitOeko(), s);
+					if(m != -1)  {
+						this.setKapital( this.getKapital() - (m * s) );
 						this.uhr[uhr].setBestand(m);
+						}
 					break;
 				case "Premium":
-					s *= sucheEinkaufsfaktor("Premium");
-					m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitPremium(), s);
-					if(m != -1) 
+					f = sucheEinkaufsfaktor("Premium");
+					if(f != 0)
+						s *= f;
+					m = testeMengeProduzieren( menge, this.getBestandUhr(uhr) , this.getProduktionslimitPremium(), s);
+					if(m != -1)  {
+						this.setKapital( this.getKapital() - (m * s) );
 						this.uhr[uhr].setBestand(m);
+						}
 					break;
 			}
 		}
@@ -578,15 +591,15 @@ public class Unternehmen {
 		return faktor;
 	}
 	
-	private int testeMengeProduzieren(int menge, int limit, double prodKostenStueck) {
+	private int testeMengeProduzieren(int menge, int uhr, int limit, double prodKostenStueck) {
 		int m = -1;
 		// Produktionslimit testen
-		if(menge > limit)
+		if( (menge + this.getBestandUhr(uhr) ) > limit)
 			menge = limit;
 		// Berechnen wie viele mit vorhandenem Kapital produziert werden können
 		for(int i = menge; i > 0; i --) {
 			double prodKosten = menge * prodKostenStueck;
-			if(prodKosten <= this.kapital) {
+			if(prodKosten <= this.getKapital()) {
 				m = i;
 				break;
 			}
@@ -749,25 +762,32 @@ public class Unternehmen {
 	}
 	
 	public void setSpielerDaten(int uhr, int indexUhrwerk, int indexArmband, int indexGehaeuse) {
+		System.out.println("Erstens");
 		if(this.uhr[uhr] !=  null) {
 			// Überprüfen ob eine Umrüstung stattgefunden hat
 			if(this.uhr[uhr].getUhrwerk() == indexUhrwerk && this.uhr[uhr].getArmband() == indexArmband 
 					&& this.uhr[uhr].getGehaeuse() == indexGehaeuse) {
+				System.out.println("Zweitens");
 				// Uhrenkonfiguration ist identisch
 				this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
+				this.uhr[uhr].setSelbstkosten();
 				this.uhr[uhr].berechneMarktwert();
 			}else {
+				System.out.println("Drittens");
 				// Uhrenkonfiguration hat sich geändert - Umrüstkosten werden berechnet
 				double umruest = this.uhr[uhr].berechneSelbstkosten() * 0.4 * this.uhr[uhr].getBestand();
 				if(checkeKapital(umruest)) {
 					this.setKapital( this.getKapital() - umruest);
 					this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
+					this.uhr[uhr].setSelbstkosten();
 					this.uhr[uhr].berechneMarktwert();
 				} else {
 					System.out.println("Nicht genug Kohle!!!");
 				}
 			}			
 		}
+		System.out.println("Selbst " + this.uhr[uhr].getSelbstkosten());
+		System.out.println("Markt " + this.uhr[uhr].getMarktwert());
 	}
 		
 	public int getBestandUhr(int uhr) {
