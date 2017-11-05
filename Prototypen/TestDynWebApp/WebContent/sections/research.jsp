@@ -39,33 +39,33 @@
 				<div class="col-sm-4 col-md-4 col-lg-4">
 					<div id="researchL" class="card luxus ${researchL}">
 					<h4>Luxus</h4>
-					<a class="segment addBtn" onclick="research('researchSegmentLuxus',1);">Freischalten ${rCL} &euro;</a>
+					<a class="segment addBtn" onclick="research('researchSegmentPremium',1);">Freischalten ${rCL} &euro;</a>
 					<p></p>
 					<span class="listhead">Geh&auml;use</span>
 					<ul class="list-group">
-						<li class="${clLc0} list-group-item">Stahl <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchCaseLuxus',0);">+ ${clCLc0} &euro;</a></li>
-						<li class="${clLc1} list-group-item">Titan <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchCaseLuxus',1);">+ ${clCLc1} &euro;</a></li>
-						<li class="${clLc2} list-group-item">Platin <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addLc2}" onclick="research('researchCaseLuxus',2);">+ ${clCLc2} &euro;</a></li>
+						<li class="${clLc0} list-group-item">Stahl <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchCasePremium',0);">+ ${clCLc0} &euro;</a></li>
+						<li class="${clLc1} list-group-item">Titan <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchCasePremium',1);">+ ${clCLc1} &euro;</a></li>
+						<li class="${clLc2} list-group-item">Platin <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addLc2}" onclick="research('researchCasePremium',2);">+ ${clCLc2} &euro;</a></li>
 					</ul>
-					<input type="hidden" id="researchCaseLuxus" name="researchCaseLuxus">
+					<input type="hidden" id="researchCasePremium" name="researchCasePremium">
 					
 					<span class="listhead">Armband</span>
 					<ul class="list-group">
-						<li class="${clLb0} list-group-item">Leder <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchBraceletLuxus',0);">+ ${clCLb0} &euro;</a></li>
-						<li class="${clLb1} list-group-item">Geh&auml;usematerial <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchBraceletLuxus',1);">+ ${clCLb1} &euro;</a></li>
-						<li class="${clLb2} list-group-item">Keramik <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addLb2}" onclick="research('researchBraceletLuxus',2);">+ ${clCLb2} &euro;</a></li>
+						<li class="${clLb0} list-group-item">Leder <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchBraceletPremium',0);">+ ${clCLb0} &euro;</a></li>
+						<li class="${clLb1} list-group-item">Geh&auml;usematerial <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchBraceletPremium',1);">+ ${clCLb1} &euro;</a></li>
+						<li class="${clLb2} list-group-item">Keramik <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addLb2}" onclick="research('researchBraceletPremium',2);">+ ${clCLb2} &euro;</a></li>
 					</ul>
-					<input type="hidden" id="researchBraceletLuxus" name="researchBraceletLuxus">
+					<input type="hidden" id="researchBraceletPremium" name="researchBraceletPremium">
 					
 					<span class="listhead">Uhrwerk</span>
 					<ul class="list-group">
-						<li class="${clLcw0} list-group-item">Quarz <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchClockWorkLuxus',0);">+ ${clCLcw0} &euro;</a></li>
-						<li class="${clLcw1} list-group-item">Automatik <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchClockWorkLuxus',1);">+ ${clCLcw1} &euro;</a></li>
-						<li class="${clLcw2} list-group-item">Skelett/Kalender <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addLcw2}" onclick="research('researchClockWorkLuxus',2);">+ ${clCLcw2} &euro;</a></li>
+						<li class="${clLcw0} list-group-item">Quarz <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchClockWorkPremium',0);">+ ${clCLcw0} &euro;</a></li>
+						<li class="${clLcw1} list-group-item">Automatik <span class="glyphicon glyphicon-ok"></span><a class="addBtn" onclick="research('researchClockWorkPremium',1);">+ ${clCLcw1} &euro;</a></li>
+						<li class="${clLcw2} list-group-item">Skelett/Kalender <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addLcw2}" onclick="research('researchClockWorkPremium',2);">+ ${clCLcw2} &euro;</a></li>
 					</ul>
-					<input type="hidden" id="researchClockWorkLuxus" name="researchClockWorkLuxus">
+					<input type="hidden" id="researchClockWorkPremium" name="researchClockWorkPremium">
 					
-					<input type="hidden" id="researchSegmentLuxus" name="researchSegmentLuxus">
+					<input type="hidden" id="researchSegmentPremium" name="researchSegmentPremium">
 					<div class="overlay">
 						<div class="ol-text">nicht verf&uuml;gbar</div>
 					</div>

@@ -53,6 +53,8 @@ public interface iUhrenkategorie {
 	
 	public double berechneSelbstkosten();
 	
+	public void setSelbstkosten();
+	
 	public double getSelbstkosten();
 	
 	public double berechneMarktwert();

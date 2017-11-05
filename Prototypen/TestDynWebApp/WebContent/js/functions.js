@@ -1,5 +1,4 @@
 // Begrenzung der Inputmöglichkeiten auf Ziffern und Komma
-
 $('.numInput').keypress(function(event){
 	var keyPressed = (window.event) ? window.event.keyCode : event.which;
 	 v=String.fromCharCode(keyPressed);
@@ -11,6 +10,7 @@ $('.numInput').keypress(function(event){
 	 event.stopPropagation();
 });
 
+//Begrenzung der Inputmöglichkeiten auf Ziffern
 $('.intInput').keypress(function(event){
 	var keyPressed = (window.event) ? window.event.keyCode : event.which;
 	v=String.fromCharCode(keyPressed);
@@ -21,53 +21,6 @@ $('.intInput').keypress(function(event){
 	event.preventDefault();
 	event.stopPropagation();
 	});
-
-
-// Chart.js Diagramm für Statistik der verkauften Uhren
-var ctx = document.getElementById("myChart").getContext('2d');
-ctx.height = 800;
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["Runde 1", "Runde 2", "Runde 3", "Runde 4", "Runde 5", "Runde 6"],
-        datasets: [{
-            label: 'Modell 1',
-            data: [20000, 15000, 23000, 10000, 5000, 14000],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        },
-        {
-            label: 'Modell2',
-            data: [1000, 2000, 5000, 1000, 6000, 3000],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255,99,132,1)',
-            borderWidth: 1
-        },
-        {
-            label: 'Modell3',
-            data: [0, 0, 0, 0, 0, 0],
-            backgroundColor: 'rgba(255, 206, 86, 0.2)',
-            borderColor: 'rgba(255, 206, 86, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	title: {
-            display: true,
-            text: 'Modellabsatz je Runde'
-        },
-    	scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        },
-        maintainAspectRatio: false
-    }
-});
-
 
 // Umschaltung der Navigation von Top to side
 function uiSwitch(){
@@ -178,7 +131,7 @@ function cancelResearch(card, input){
 	$("#"+card+">.selectSegmentOuter").css("display","none");
 }
 
-// Erforschung des übergebenen Parameters (
+// Erforschung des übergebenen Parameters
 // Diese Funktion wird von F&E, Produktion und Einkauf verwendet
 function research(input, item){
 	
@@ -201,4 +154,266 @@ function marketing(input, item){
 		alert("Die Marketingkampagne wird abgebrochen");
 		document.getElementById(input).value = "";
 	}
+}
+
+
+
+
+
+
+
+
+
+function getMoney()
+{
+	return parseFloat($('#money').text().replace(/[\.\u20ac]/g,''));
+}
+
+function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+
+/*function change(button)
+{
+	if(button.hasClass('d'))
+	{
+		let sum = parseFloat(getMoney()) + parseFloat($(button).attr('value'));
+		let floatSum = parseFloat(sum);
+		$('#money').text(floatSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+		$(button).removeClass('d');
+		let buttonPrice = parseFloat($(button).attr('value'));
+		let formattedNumber = buttonPrice.toLocaleString('de-DE',{minimumFractionDigits: 0});
+		$(button).text('+ '+formattedNumber+' \u20ac');	
+	}
+	else
+	{
+		let priceFloat = parseFloat(button.text().replace(/[\.\+\u20ac\Freischalten]/g,''));
+		let difference = getMoney() - priceFloat;
+		//alert(difference);
+		$(button).attr('value',priceFloat);
+		$(button).text('Undo');
+		$(button).addClass('d');
+		$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+	}
+}*/
+
+function change(button)
+{
+	if(button.hasClass('d'))
+	{
+		let buttonText = $(button).attr('value');
+		$(button).text(buttonText);	
+		let priceFloat = parseFloat(buttonText.replace(/[\.\+\u20ac\Freischalten]/g,''));
+		let sum = parseFloat(getMoney()) + priceFloat;
+		let floatSum = parseFloat(sum);
+		$('#money').text(floatSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+		$(button).removeClass('d');
+		let formattedNumber = buttonPrice.toLocaleString('de-DE',{minimumFractionDigits: 0});
+		
+	}
+	else
+	{
+		let buttonText = button.text();
+		let priceFloat = parseFloat(buttonText.replace(/[\.\+\u20ac\Freischalten]/g,''));
+		let difference = getMoney() - priceFloat;
+		$(button).attr('value',buttonText);
+		$(button).text('Undo');
+		$(button).addClass('d');
+		$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+	}
+}
+
+function changeProd(button, changeCost)
+{
+	if(button.hasClass('d'))
+	{
+		let buttonText = $(button).attr('value');
+		let changeCostText = $(button).attr('id');
+		alert($(button).attr('id'));
+		$(button).text(buttonText);	
+		let priceFloat = parseFloat(buttonText.replace(/[\.\+\u20ac\Freischalten]/g,''));
+		let changeCostFloat = parseFloat(changeCostText);
+		alert(priceFloat);
+		alert(changeCostFloat);
+		
+		let sum = parseFloat(getMoney()) + priceFloat + changeCostFloat;
+		let floatSum = parseFloat(sum);
+		$('#money').text(floatSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+		$(button).removeClass('d');
+		let formattedNumber = buttonPrice.toLocaleString('de-DE',{minimumFractionDigits: 0});
+		
+	}
+	else
+	{
+		let buttonText = button.text();
+		let priceFloat = parseFloat(buttonText.replace(/[\.\+\u20ac\Freischalten]/g,''));
+		let difference = getMoney() - priceFloat - changeCost;
+		$(button).attr('value',buttonText);
+		$(button).attr('id',changeCost);
+		$(button).text('Undo');
+		$(button).addClass('d');
+		$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+	}
+}
+
+
+
+$('#output0').blur(function()
+{
+	if( !$(this).val() == '' ) 
+	{
+		
+		if($(this).val() > parseInt($('#productionLimit0').text().replace(/[\.]/g,'')))
+		{
+			alert('Die Produktionskapazit\u00e4ten reichen nicht aus! \nProduktionslimit liegt bei: ' +$('#productionLimit0').text());
+			$(this).val('');
+		}
+		else if($(this).val() > 0 && $(this).val() <= parseInt($('#productionLimit0').text().replace(/[\.]/g,'')))
+		{
+			let prodCost = parseFloat($(this).val()).toFixed(2) * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,'')).toFixed(2);
+			alert(prodCost);
+			if(prodCost > getMoney())
+			{
+				if($('#output0').hasClass('d'))
+				{
+					alert('Das Kontoguthaben reicht nicht aus!');
+					$(this).val($('#output0').attr('class').replace('numInput','').replace('d',''));
+				}
+				else
+				{
+					alert('Das Kontoguthaben reicht nicht aus!');
+					$(this).val('');
+				}
+				
+			}
+			else
+			{
+				if($('#output0').hasClass('d'))
+				{
+					let undoCost = $('#output0').attr('class').replace('numInput','').replace('d','');
+					let prodCost = parseFloat(undoCost) * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+					alert(parseFloat(prodCost));
+				}
+				else 
+				{
+					$('#prodCost0').text(parseFloat(prodCost).toFixed(2) + ' \u20ac');
+					let difference = getMoney() - prodCost;
+					$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+					$('#output0').addClass('d');
+					$('#output0').addClass($(this).val());
+				}
+				
+			}
+			
+		}
+	}
+	else if($(this).val() == '')
+	{
+		
+		if($('#outpout0').hasClass('d'))
+		{
+			alert('asdf');
+			alert($('#output0').attr('class').replace(/[\d\numInput]/g,''));
+			let prodCost = $('#output0').attr('class').replace(/[\d\numInput]/g,'') * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+		}
+	}
+});
+
+$('#output1').blur(function()
+		{
+			if( !$(this).val() == '' ) 
+			{
+				
+				if($(this).val() > parseInt($('#productionLimit1').text().replace(/[\.]/g,'')))
+				{
+					alert('Die Produktionskapazit\u00e4ten reichen nicht aus! \nProduktionslimit liegt bei: ' +$('#productionLimit1').text());
+					$(this).val('');
+				}
+				else if($(this).val() > 0 && $(this).val() <= parseInt($('#productionLimit1').text().replace(/[\.]/g,'')))
+				{
+					let prodCost = $(this).val() * parseFloat($('#ekVal1').text().replace(/[\.\u20ac]/g,''));
+					if(prodCost > getMoney())
+					{
+						alert('Das Kontoguthaben reicht nicht aus!');
+						$(this).val('');
+					}
+					else
+					{
+						$('#prodCost1').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2}) + ' \u20ac');
+						$('#money').text(getMoney() - prodCost);
+					}
+					
+				}
+			}
+		});
+
+$('#output2').blur(function()
+{
+	if( !$(this).val() == '' ) 
+	{
+			
+		if($(this).val() > parseInt($('#productionLimit2').text().replace(/[\.]/g,'')))
+		{
+			alert('Die Produktionskapazit\u00e4ten reichen nicht aus! \nProduktionslimit liegt bei: ' +$('#productionLimit2').text());
+			$(this).val('');
+		}
+		else if($(this).val() > 0 && $(this).val() <= parseInt($('#productionLimit2').text().replace(/[\.]/g,'')))
+		{
+			let prodCost = $(this).val() * parseFloat($('#ekVal2').text().replace(/[\.\u20ac]/g,''));
+			if(prodCost > getMoney())
+			{
+				alert('Das Kontoguthaben reicht nicht aus!');
+				$(this).val('');
+			}
+			else
+			{
+				$('#prodCost2').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2}) + ' \u20ac');
+			}	
+		}
+	}
+});
+
+
+$('#quantitySupplied0').blur(function()
+{
+	if( !$(this).val() == '')
+	{
+		if(!$('#offerPrice0').val() == '')
+		{
+			if($(this).val() > parseInt($('#stock0').text().replace(/[\.]/g,'')))
+			{
+				alert('Der Vorrat reicht nicht aus! \nVorrat: '+$('#stock0').text());
+				$(this).val('');
+			}
+			else if($(this).val() > 0 && $(this).val() <= parseInt($('#stock0').text().replace(/[\.]/g,'')))
+			{
+				alert($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2}));
+				alert($('#offerPrice0').val());
+				let verkauf = parseFloat($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2})) * parseFloat($('#offerPrice0').val());
+				
+				alert(verkauf);
+				$('#verkauf0').text(parseFloat(verkauf)+ ' \u20ac');
+			}
+		}
+		else
+		{
+			alert('Sie m\u00fcssen zuerst einen Verkaufspreis eingeben!');
+			$(this).val('');
+		}
+	}
+});
+
+
+
+function notEnough()
+{
+	alert('Das Kontoguthaben reicht nicht aus!');
+}
+
+function h(h)
+{
+	alert(h.text());
+	alert(getMoney());
 }

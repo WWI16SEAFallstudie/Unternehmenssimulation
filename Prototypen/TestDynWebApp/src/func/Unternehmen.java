@@ -155,27 +155,23 @@ public class Unternehmen {
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Uhrwerk erforscht werden soll
 	 */
-	public void erforscheUhrwerk(String segment) {
+	public void erforscheUhrwerk(String segment, int index) {
 		double kosten = 0;
 		switch (segment) {
 			case "Billig":
-				/*boolean[][] alt = freigeschalteneAttrBillig;
-				boolean[][] neu = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 2);
-				for(int i = 0; i < 3; i++) {
-					if( freigeschalteneAttrBillig[2][i] == true ){
-						kosten = Info.getKostenUhrwerkBillig()[i];
-					}
-				}*/
+				kosten = Info.getKostenUhrwerkBillig()[index];
 				if(checkeKapital(kosten))
 					freigeschalteneAttrBillig = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrBillig, 2);
-				//else
-					//freigeschalteneAttrBillig = alt;
 				break;
 			case "Oeko":
-				freigeschalteneAttrOeko = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrOeko, 2);				
+				kosten = Info.getKostenUhrwerkOeko()[index];
+				if(checkeKapital(kosten))
+					freigeschalteneAttrOeko = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrOeko, 2);				
 				break;
 			case "Premium":
-				freigeschalteneAttrPremium = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrPremium, 2);
+				kosten = Info.getKostenUhrwerkPremium()[index];
+				if(checkeKapital(kosten))
+					freigeschalteneAttrPremium = Uhrmodell.entwickleUhrwerk(freigeschalteneAttrPremium, 2);
 				break;
 		}	
 	}
@@ -190,16 +186,23 @@ public class Unternehmen {
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Armband erforscht werden soll
 	 */
-	public void erforscheArmband(String segment) {
+	public void erforscheArmband(String segment, int index) {
+		double kosten = 0;
 		switch (segment) {
 			case "Billig":
-				freigeschalteneAttrBillig = Uhrmodell.entwickleArmband(freigeschalteneAttrBillig, 1);
+				kosten = Info.getKostenArmbandBillig()[index];
+				if(checkeKapital(kosten))
+					freigeschalteneAttrBillig = Uhrmodell.entwickleArmband(freigeschalteneAttrBillig, 1);
 				break;
 			case "Oeko":
-				freigeschalteneAttrOeko = Uhrmodell.entwickleArmband(freigeschalteneAttrOeko, 1);				
+				kosten = Info.getKostenArmbandOeko()[index];
+				if(checkeKapital(kosten))
+					freigeschalteneAttrOeko = Uhrmodell.entwickleArmband(freigeschalteneAttrOeko, 1);				
 				break;
 			case "Premium":
-				freigeschalteneAttrPremium = Uhrmodell.entwickleArmband(freigeschalteneAttrPremium, 1);
+				kosten = Info.getKostenArmbandPremium()[index];
+				if(checkeKapital(kosten))
+					freigeschalteneAttrPremium = Uhrmodell.entwickleArmband(freigeschalteneAttrPremium, 1);
 				break;
 		}	
 	}
@@ -214,16 +217,23 @@ public class Unternehmen {
 	 * @param uhr: Gibt an, bei welche der drei Möglichen Uhren 
 	 * ein neues Gehäuse erforscht werden soll
 	 */
-	public void erforscheGehaeuse(String segment) {
+	public void erforscheGehaeuse(String segment, int index) {
+		double kosten = 0;
 		switch (segment) {
 			case "Billig":
-				freigeschalteneAttrBillig = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrBillig, 0);
+				kosten = Info.getKostenGehaeuseBillig()[index];
+				if(checkeKapital(kosten))
+					freigeschalteneAttrBillig = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrBillig, 0);
 				break;
 			case "Oeko":
-				freigeschalteneAttrOeko = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrOeko, 0);				
+				kosten = Info.getKostenGehaeuseOeko()[index];
+				if(checkeKapital(kosten))
+					freigeschalteneAttrOeko = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrOeko, 0);				
 				break;
 			case "Premium":
-				freigeschalteneAttrPremium = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrPremium, 0);
+				kosten = Info.getKostenGehaeusePremium()[index];
+				if(checkeKapital(kosten))
+					freigeschalteneAttrPremium = Uhrmodell.entwickleGehaeuse(freigeschalteneAttrPremium, 0);
 				break;
 		}	
 	}
@@ -439,25 +449,38 @@ public class Unternehmen {
 		if(this.uhr[uhr] != null) {
 			int m = 0;
 			double s = this.uhr[uhr].berechneSelbstkosten();
+			double f = 0;
 			// Segment abfragen
 			switch(this.uhr[uhr].getSegment()) {
 				case "Billig":
-					s *= sucheEinkaufsfaktor("Billig");
-					m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitBillig(), s);
-					if(m != -1) 
-						this.uhr[uhr].setBestand(m);
+					f = sucheEinkaufsfaktor("Billig");
+					if(f != 0)
+						s *= f;
+					m = testeMengeProduzieren( menge, uhr , this.getProduktionslimitBillig(), s);
+					if(m != -1) {
+						this.setKapital( this.getKapital() - (m * s) );
+						this.uhr[uhr].setBestand(this.getBestandUhr(uhr) + m);
+						}
 					break;
 				case "Oeko":
-					s *= sucheEinkaufsfaktor("Oeko");
-					m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitOeko(), s);
-					if(m != -1) 
-						this.uhr[uhr].setBestand(m);
+					f = sucheEinkaufsfaktor("Oeko");
+					if(f != 0)
+						s *= f;
+					m = testeMengeProduzieren( menge, uhr, this.getProduktionslimitOeko(), s);
+					if(m != -1)  {
+						this.setKapital( this.getKapital() - (m * s) );
+						this.uhr[uhr].setBestand(this.getBestandUhr(uhr) + m);
+						}
 					break;
 				case "Premium":
-					s *= sucheEinkaufsfaktor("Premium");
-					m = testeMengeProduzieren( (menge + this.getBestandUhr(uhr)) , this.getProduktionslimitPremium(), s);
-					if(m != -1) 
-						this.uhr[uhr].setBestand(m);
+					f = sucheEinkaufsfaktor("Premium");
+					if(f != 0)
+						s *= f;
+					m = testeMengeProduzieren( menge, uhr , this.getProduktionslimitPremium(), s);
+					if(m != -1)  {
+						this.setKapital( this.getKapital() - (m * s) );
+						this.uhr[uhr].setBestand(this.getBestandUhr(uhr) + m);
+						}
 					break;
 			}
 		}
@@ -578,15 +601,15 @@ public class Unternehmen {
 		return faktor;
 	}
 	
-	private int testeMengeProduzieren(int menge, int limit, double prodKostenStueck) {
+	private int testeMengeProduzieren(int menge, int uhr, int limit, double prodKostenStueck) {
 		int m = -1;
 		// Produktionslimit testen
-		if(menge > limit)
+		if( (menge + this.getBestandUhr(uhr) ) > limit)
 			menge = limit;
 		// Berechnen wie viele mit vorhandenem Kapital produziert werden können
 		for(int i = menge; i > 0; i --) {
-			double prodKosten = menge * prodKostenStueck;
-			if(prodKosten <= this.kapital) {
+			double prodKosten = i * prodKostenStueck;
+			if(prodKosten <= this.getKapital()) {
 				m = i;
 				break;
 			}
@@ -749,31 +772,38 @@ public class Unternehmen {
 	}
 	
 	public void setSpielerDaten(int uhr, int indexUhrwerk, int indexArmband, int indexGehaeuse) {
+		System.out.println("Erstens");
 		if(this.uhr[uhr] !=  null) {
 			// Überprüfen ob eine Umrüstung stattgefunden hat
 			if(this.uhr[uhr].getUhrwerk() == indexUhrwerk && this.uhr[uhr].getArmband() == indexArmband 
 					&& this.uhr[uhr].getGehaeuse() == indexGehaeuse) {
+				System.out.println("Zweitens");
 				// Uhrenkonfiguration ist identisch
 				this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
+				this.uhr[uhr].setSelbstkosten();
 				this.uhr[uhr].berechneMarktwert();
 			}else {
+				System.out.println("Drittens");
 				// Uhrenkonfiguration hat sich geändert - Umrüstkosten werden berechnet
 				double umruest = this.uhr[uhr].berechneSelbstkosten() * 0.4 * this.uhr[uhr].getBestand();
 				if(checkeKapital(umruest)) {
 					this.setKapital( this.getKapital() - umruest);
 					this.uhr[uhr].setSpielerDaten(indexArmband, indexGehaeuse, indexUhrwerk);
+					this.uhr[uhr].setSelbstkosten();
 					this.uhr[uhr].berechneMarktwert();
 				} else {
 					System.out.println("Nicht genug Kohle!!!");
 				}
 			}			
 		}
+		System.out.println("Selbst " + this.uhr[uhr].getSelbstkosten());
+		System.out.println("Markt " + this.uhr[uhr].getMarktwert());
 	}
 		
 	public int getBestandUhr(int uhr) {
 		if(this.uhr[uhr] != null)
 			return this.uhr[uhr].getBestand();
-		return -1;
+		return 0;
 	}
 	
 	public void setBestandUhr(int uhr, int menge) {
