@@ -162,9 +162,9 @@ public class MyServlet extends HttpServlet {
 			String[] segment = {"Billig", "Oeko", "Premium"};
 			for(int j = 0; j < 3; j++){
 				// Erforschung neuer Uhrenbestandteile
-				if(!request.getParameter("researchCase" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erforscheGehaeuse(segment[j]);
-				if(!request.getParameter("researchBracelet" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erforscheArmband(segment[j]);
-				if(!request.getParameter("researchClockWork" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erforscheUhrwerk(segment[j]);
+				if(!request.getParameter("researchCase" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erforscheGehaeuse(segment[j], Integer.parseInt(request.getParameter("researchCase" + segment[j])));
+				if(!request.getParameter("researchBracelet" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erforscheArmband(segment[j], Integer.parseInt(request.getParameter("researchBracelet" + segment[j])));
+				if(!request.getParameter("researchClockWork" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].erforscheUhrwerk(segment[j], Integer.parseInt(request.getParameter("researchClockWork" + segment[j])));
 				// Erforschung neues Segment	
 				if(!request.getParameter("researchSegment" + segment[j]).equals("")) spieler[spiel.getAktuellerSpieler()].freischaltenSegment (segment[j]);
 				// Erforschung von Produktionsoptimierungen
