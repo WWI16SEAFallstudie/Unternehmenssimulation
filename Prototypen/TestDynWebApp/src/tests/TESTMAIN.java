@@ -76,20 +76,20 @@ public class TESTMAIN {
 		System.out.println();
 		
 		System.out.println("Spieler 0 entwickelt Uhrwerk im Premiummarkt");
-		spieler[0].erforscheUhrwerk("Billig");
+		spieler[0].erforscheUhrwerk("Billig",1);
 		// Spieler ausgabe
 		for(int i = 0; i < spieler.length; i++) {
 			System.out.println(spieler[i].toString());
 		}
 		System.out.println();
-		spieler[2].erforscheUhrwerk("Premium");
+		spieler[2].erforscheUhrwerk("Premium",1);
 		System.out.println("Spieler 2 entwickelt Uhrwerk im Premiummarkt");
 		// Spieler ausgabe
 		for(int i = 0; i < spieler.length; i++) {
 			System.out.println(spieler[i].toString());
 		}
 		System.out.println();
-		spieler[1].erforscheUhrwerk("Oeko");
+		spieler[1].erforscheUhrwerk("Oeko",1);
 		System.out.println("Spieler 1 entwickelt Uhrwerk im Oekobereich");
 		// Spieler ausgabe
 		for(int i = 0; i < spieler.length; i++) {
@@ -100,6 +100,10 @@ public class TESTMAIN {
 		System.out.println();
 		System.out.println("Spieler0 will 2000 Uhren (0) produzieren");
 		spieler[0].produzieren(2000, 0);
+		System.out.println("Bestand " + spieler[0].getBestandUhr(0));
+
+		System.out.println("Spieler0 will 100 Uhren (0) produzieren");
+		spieler[0].produzieren(100, 0);
 		System.out.println("Bestand " + spieler[0].getBestandUhr(0));
 		
 		System.out.println("Spieler1 will 5000000 Uhren (0) produzieren");
@@ -154,7 +158,7 @@ public class TESTMAIN {
 		System.out.println("Spieler1 Produktionslimit Oeko: " + spieler[1].getProduktionslimitOeko());
 		System.out.println("Spieler2 Produktionslimit Premium: " + spieler[2].getProduktionslimitPremium());
 		
-		System.out.println("Spieler0 will 500 Uhren (0) produzieren");
+		System.out.println("Spieler0 will 2000 Uhren (0) produzieren");
 		spieler[0].produzieren(2000, 0);
 		System.out.println("Bestand " + spieler[0].getBestandUhr(0));
 

@@ -116,7 +116,7 @@ public class UnternehmenTest {
 		spieler[0].freischaltenSegment("Premium");
 		spieler[0].erforscheUhr("Premium");
 		
-		spieler[0].erforscheUhrwerk("Premium"); 
+		spieler[0].erforscheUhrwerk("Premium",1); 
 		
 		assertTrue("Uhrwerk wurde nicht erforscht", spieler[0].getFreigeschalteneAttrPremium()[2][1]);
 	}
@@ -130,7 +130,7 @@ public class UnternehmenTest {
 		spieler[0].freischaltenSegment("Oeko");
 		spieler[0].erforscheUhr("Oeko");
 		
-		spieler[0].erforscheUhrwerk("Oeko"); 
+		spieler[0].erforscheUhrwerk("Oeko",1); 
 		
 		assertTrue("Uhrwerk wurde nicht erforscht", spieler[0].getFreigeschalteneAttrOeko()[2][1]);
 	}
@@ -144,7 +144,7 @@ public class UnternehmenTest {
 		spieler[0].freischaltenSegment("Billig");
 		spieler[0].erforscheUhr("Billig");
 		
-		spieler[0].erforscheUhrwerk("Billig"); 
+		spieler[0].erforscheUhrwerk("Billig",1); 
 		
 		assertTrue("Uhrwerk wurde nicht erforscht", spieler[0].getFreigeschalteneAttrBillig()[2][1]);
 	}
@@ -157,7 +157,7 @@ public class UnternehmenTest {
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Premium");
 		spieler[0].erforscheUhr("Premium");
-		spieler[0].erforscheArmband("Premium"); 
+		spieler[0].erforscheArmband("Premium",1); 
 		
 		assertTrue("Armband wurde nicht erforscht", spieler[0].getFreigeschalteneAttrPremium()[1][1]);
 	}
@@ -170,7 +170,7 @@ public class UnternehmenTest {
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Oeko");
 		spieler[0].erforscheUhr("Oeko");
-		spieler[0].erforscheArmband("Oeko"); 
+		spieler[0].erforscheArmband("Oeko",1); 
 		
 		assertTrue("Armband wurde nicht erforscht", spieler[0].getFreigeschalteneAttrOeko()[1][1]);
 	}
@@ -183,7 +183,7 @@ public class UnternehmenTest {
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Billig");
 		spieler[0].erforscheUhr("Billig");
-		spieler[0].erforscheArmband("Billig"); 
+		spieler[0].erforscheArmband("Billig",1); 
 		
 		assertTrue("Armband wurde nicht erforscht", spieler[0].getFreigeschalteneAttrBillig()[1][1]);
 	}
@@ -196,7 +196,7 @@ public class UnternehmenTest {
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Premium");
 		spieler[0].erforscheUhr("Premium");
-		spieler[0].erforscheGehaeuse("Premium"); 
+		spieler[0].erforscheGehaeuse("Premium",1); 
 		
 		assertTrue("Gehäuse wurde nicht erforscht", spieler[0].getFreigeschalteneAttrPremium()[0][1]);
 	}
@@ -209,7 +209,7 @@ public class UnternehmenTest {
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Oeko");
 		spieler[0].erforscheUhr("Oeko");
-		spieler[0].erforscheGehaeuse("Oeko"); 
+		spieler[0].erforscheGehaeuse("Oeko",1); 
 		
 		assertTrue("Gehäuse wurde nicht erforscht", spieler[0].getFreigeschalteneAttrOeko()[0][1]);
 	}
@@ -222,7 +222,7 @@ public class UnternehmenTest {
 		spieler = spielbrett.getSpieler();
 		spieler[0].freischaltenSegment("Billig");
 		spieler[0].erforscheUhr("Billig");
-		spieler[0].erforscheGehaeuse("Billig"); 
+		spieler[0].erforscheGehaeuse("Billig",1); 
 		
 		assertTrue("Gehäuse wurde nicht erforscht", spieler[0].getFreigeschalteneAttrBillig()[0][1]);
 	}
