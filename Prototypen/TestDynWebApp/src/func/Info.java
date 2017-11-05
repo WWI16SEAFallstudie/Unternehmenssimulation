@@ -3,17 +3,17 @@ package func;
 public class Info {
 	
 	// Attribute für die Uhr
-	private static String uhrwerkOeko[] = {"Quarz","Funk","Automatik"};
-	private static String gehaeuseOeko[] = {"Holz","Wurzelholz","Gebeiztes Holz"};
-	private static String armbandOeko[] = {"Stoff","Leinenfasern","Holz"};
+	private static String uhrwerkOeko[] = {"Mechanisch","Funk","Quarz"};
+	private static String gehaeuseOeko[] = {"Biokunststoff","Holz","Bambus"};
+	private static String armbandOeko[] = {"Biobaumwolle","Bioleder","Holz"};
 
-	private static String uhrwerkPremium[] = {"Quarz","Automatik","Skelett/Kalender"};
-	private static String gehaeusePremium[] = {"Stahl","Titan","Platin"};
-	private static String armbandPremium[] = {"Leder","Gehäusematerial","Keramik"};
+	private static String uhrwerkPremium[] = {"Mechanisch","Automatik mit Skelettfunktion","Elektromechanisch"};
+	private static String gehaeusePremium[] = {"High-Tech Keramik","Gold","Platin"};
+	private static String armbandPremium[] = {"Edelstahl","Aligatorleder","Fischhaut"};
 
-	private static String uhrwerkBillig[] = {"Quarz","Funk","NochOffen"};
-	private static String gehaeuseBillig[] = {"Plastik","Gefärbtes Plastik","Durchsichtiges Plastik"};
-	private static String armbandBillig[] = {"Plastik","Gumi","Stoff"};
+	private static String uhrwerkBillig[] = {"Quarz","Funk","Elektronisch"};
+	private static String gehaeuseBillig[] = {"Kunststoff","Edelstahl","Carbon"};
+	private static String armbandBillig[] = {"Silikon","Metall","Kunstleder"};
 	
 	// Kosten für die Entwicklungen der Attribute
 	private static double kostenUhrwerkOeko[] = { 100000 , 200000 , 300000 };
