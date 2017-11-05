@@ -1,5 +1,4 @@
 // Begrenzung der Inputmöglichkeiten auf Ziffern und Komma
-
 $('.numInput').keypress(function(event){
 	var keyPressed = (window.event) ? window.event.keyCode : event.which;
 	 v=String.fromCharCode(keyPressed);
@@ -11,6 +10,7 @@ $('.numInput').keypress(function(event){
 	 event.stopPropagation();
 });
 
+//Begrenzung der Inputmöglichkeiten auf Ziffern
 $('.intInput').keypress(function(event){
 	var keyPressed = (window.event) ? window.event.keyCode : event.which;
 	v=String.fromCharCode(keyPressed);
@@ -21,53 +21,6 @@ $('.intInput').keypress(function(event){
 	event.preventDefault();
 	event.stopPropagation();
 	});
-
-
-// Chart.js Diagramm für Statistik der verkauften Uhren
-var ctx = document.getElementById("myChart").getContext('2d');
-ctx.height = 800;
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["Runde 1", "Runde 2", "Runde 3", "Runde 4", "Runde 5", "Runde 6"],
-        datasets: [{
-            label: 'Modell 1',
-            data: [20000, 15000, 23000, 10000, 5000, 14000],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        },
-        {
-            label: 'Modell2',
-            data: [1000, 2000, 5000, 1000, 6000, 3000],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255,99,132,1)',
-            borderWidth: 1
-        },
-        {
-            label: 'Modell3',
-            data: [0, 0, 0, 0, 0, 0],
-            backgroundColor: 'rgba(255, 206, 86, 0.2)',
-            borderColor: 'rgba(255, 206, 86, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	title: {
-            display: true,
-            text: 'Modellabsatz je Runde'
-        },
-    	scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        },
-        maintainAspectRatio: false
-    }
-});
-
 
 // Umschaltung der Navigation von Top to side
 function uiSwitch(){
@@ -178,7 +131,7 @@ function cancelResearch(card, input){
 	$("#"+card+">.selectSegmentOuter").css("display","none");
 }
 
-// Erforschung des übergebenen Parameters (
+// Erforschung des übergebenen Parameters
 // Diese Funktion wird von F&E, Produktion und Einkauf verwendet
 function research(input, item){
 	
