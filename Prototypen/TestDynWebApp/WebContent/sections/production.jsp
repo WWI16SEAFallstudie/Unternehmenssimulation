@@ -39,7 +39,7 @@
 						<li class="${prdLcr1} list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addPrLcr1}" onclick="if(getMoney() >= $(this).text().replace(/[\.\+\u20ac]/g,'')  && !$(this).hasClass('d')){research('costReductionLuxus',1); change($(this)); }else if($(this).hasClass('d')){research('costReductionLuxus',1); change($(this));}else{notEnough()}">+ ${prdCLcr1} &euro;</a></li>
 						<li class="${prdLcr2} list-group-item">Punkt 3 <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addPrLcr2}" onclick="if(getMoney() >= $(this).text().replace(/[\.\+\u20ac]/g,'')  && !$(this).hasClass('d')){research('costReductionLuxus',2); change($(this)); }else if($(this).hasClass('d')){research('costReductionLuxus',2); change($(this));}else{notEnough()}">+ ${prdCLcr2} &euro;</a></li>
 					</ul>
-					<input type="hidden" id="costReductionLuxus" name="costReductionLuxus">
+					<input type="hidden" id="costReductionLuxus" name="costReductionPremium">
 					
 					<span class="listhead">Kapazit&auml;tserweiterung</span>
 					<ul class="list-group">
@@ -47,7 +47,7 @@
 						<li class="${prdLce1} list-group-item">Punkt 2 <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addPrLce1}" onclick="if(getMoney() >= $(this).text().replace(/[\.\+\u20ac]/g,'')  && !$(this).hasClass('d')){research('expansionLuxus',1); change($(this)); }else if($(this).hasClass('d')){research('expansionLuxus',1); change($(this));}else{notEnough()}">+ ${prdCLce1} &euro;</a></li>
 						<li class="${prdLce2} list-group-item">Punkt 3 <span class="glyphicon glyphicon-ok"></span><a class="addBtn ${addPrLce2}" onclick="if(getMoney() >= $(this).text().replace(/[\.\+\u20ac]/g,'')  && !$(this).hasClass('d')){research('expansionLuxus',2); change($(this)); }else if($(this).hasClass('d')){research('expansionLuxus',2); change($(this));}else{notEnough()}">+ ${prdCLce2} &euro;</a></li>
 					</ul>
-					<input type="hidden" id="expansionLuxus" name="expansionLuxus">
+					<input type="hidden" id="expansionLuxus" name="expansionPremium">
 					
 					<ul class="list-group">
 						<li class="list-group-item">Produktionslimit <span class="productionLimit" id="productionLimit1">${prodLimitL}</span></li>
