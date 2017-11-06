@@ -248,7 +248,7 @@ function changeProd(button, changeCost)
 	else
 	{
 		let buttonText = button.text();
-		let priceFloat = parseFloat(buttonText.replace(/[\.\+\u20ac\Freischalten]/g,''));
+		let priceFloat = parseFloat(buttonText.replace(/[\Freischalten\.\+\u20ac]/g,''));
 		let difference = getMoney() - priceFloat - changeCost;
 		$(button).attr('value',buttonText);
 		$(button).attr('id',changeCost);
@@ -260,7 +260,7 @@ function changeProd(button, changeCost)
 
 
 
-$('#output0').blur(function()
+/*$('#output0').blur(function()
 {
 	if( !$(this).val() == '' ) 
 	{
@@ -269,6 +269,7 @@ $('#output0').blur(function()
 		{
 			alert('Die Produktionskapazit\u00e4ten reichen nicht aus! \nProduktionslimit liegt bei: ' +$('#productionLimit0').text());
 			$(this).val('');
+			$('#prodCost0').text('');
 		}
 		else if($(this).val() > 0 && $(this).val() <= parseInt($('#productionLimit0').text().replace(/[\.]/g,'')))
 		{
@@ -293,8 +294,10 @@ $('#output0').blur(function()
 				if($('#output0').hasClass('d'))
 				{
 					let undoCost = $('#output0').attr('class').replace('numInput','').replace('d','');
-					let prodCost = parseFloat(undoCost) * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
-					alert(parseFloat(prodCost));
+					let undoProdCost = parseFloat(undoCost) * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+					let sum = getMoney() + undoProdCost;
+					$('#money').text(sum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+					alert(parseFloat(undoProdCost));
 				}
 				else 
 				{
@@ -309,71 +312,262 @@ $('#output0').blur(function()
 			
 		}
 	}
-	else if($(this).val() == '')
+	else if(!$(this).val())
 	{
-		
 		if($('#outpout0').hasClass('d'))
 		{
-			alert('asdf');
 			alert($('#output0').attr('class').replace(/[\d\numInput]/g,''));
 			let prodCost = $('#output0').attr('class').replace(/[\d\numInput]/g,'') * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+			$('#money').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2}));
 		}
 	}
-});
+});*/
 
-$('#output1').blur(function()
-		{
-			if( !$(this).val() == '' ) 
-			{
-				
-				if($(this).val() > parseInt($('#productionLimit1').text().replace(/[\.]/g,'')))
-				{
-					alert('Die Produktionskapazit\u00e4ten reichen nicht aus! \nProduktionslimit liegt bei: ' +$('#productionLimit1').text());
-					$(this).val('');
-				}
-				else if($(this).val() > 0 && $(this).val() <= parseInt($('#productionLimit1').text().replace(/[\.]/g,'')))
-				{
-					let prodCost = $(this).val() * parseFloat($('#ekVal1').text().replace(/[\.\u20ac]/g,''));
-					if(prodCost > getMoney())
-					{
-						alert('Das Kontoguthaben reicht nicht aus!');
-						$(this).val('');
-					}
-					else
-					{
-						$('#prodCost1').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2}) + ' \u20ac');
-						$('#money').text(getMoney() - prodCost);
-					}
-					
-				}
-			}
-		});
 
-$('#output2').blur(function()
+
+
+$('#output0').blur(function()
 {
-	if( !$(this).val() == '' ) 
+	if($(this).val())
 	{
+		if($(this).hasClass('d'))
+		{
+			let undoProdCost = $(this).attr('class').replace('d','').replace('numInput','');
+			let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+			$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
 			
-		if($(this).val() > parseInt($('#productionLimit2').text().replace(/[\.]/g,'')))
-		{
-			alert('Die Produktionskapazit\u00e4ten reichen nicht aus! \nProduktionslimit liegt bei: ' +$('#productionLimit2').text());
-			$(this).val('');
-		}
-		else if($(this).val() > 0 && $(this).val() <= parseInt($('#productionLimit2').text().replace(/[\.]/g,'')))
-		{
-			let prodCost = $(this).val() * parseFloat($('#ekVal2').text().replace(/[\.\u20ac]/g,''));
-			if(prodCost > getMoney())
+			if($(this).val() > parseInt($('#productionLimit0').text().replace(/[\.]/g,'')))
 			{
-				alert('Das Kontoguthaben reicht nicht aus!');
+				alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit0').text());
+				$(this).attr('class','numInput');
 				$(this).val('');
 			}
 			else
 			{
-				$('#prodCost2').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2}) + ' \u20ac');
-			}	
+				if(getMoney() >= ($(this).val() * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''))))
+				{
+					let prodCost = $(this).val() * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+					let difference = getMoney() - prodCost;
+					$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+					$(this).attr('class','numInput');
+					$(this).addClass('d');
+					$(this).addClass($(this).val());
+				}
+				else
+				{
+					alert("Das Guthaben reicht nicht aus!");
+					$(this).val('');
+					$('#prodCost0').val('');
+				}
+			}
+			
+			
+		}
+		else
+		{
+			if($(this).val() > parseInt($('#productionLimit0').text().replace(/[\.]/g,'')))
+			{
+				alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit0').text());
+				$(this).val('');
+				$('#prodCost0').val('');
+			}
+			else
+			{
+				if(getMoney() >= ($(this).val() * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''))))
+				{
+					let prodCost = $(this).val() * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+					let difference = getMoney() - prodCost;
+					$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+					$(this).addClass('d');
+					$(this).addClass($(this).val());
+				}
+				else
+				{
+					alert("Das Guthaben reicht nicht aus!");
+					$(this).val('');
+					$('#prodCost0').val('');
+				}
+			}
 		}
 	}
+	else if(!$(this).val())
+	{
+		if($(this).hasClass('d'))
+		{
+			
+			let undoProdCost = $(this).attr('class').replace('d','').replace('numInput','');
+			let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+			$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+			$(this).attr('class','numInput');
+			
+		}
+	}
+
+
 });
+
+
+$('#output1').blur(function()
+		{
+			if($(this).val())
+			{
+				if($(this).hasClass('d'))
+				{
+					let undoProdCost = $(this).attr('class').replace('d','').replace('numInput','');
+					let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal1').text().replace(/[\.\u20ac]/g,''));
+					$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+					
+					if($(this).val() > parseInt($('#productionLimit1').text().replace(/[\.]/g,'')))
+					{
+						alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit1').text());
+						$(this).attr('class','numInput');
+						$(this).val('');
+					}
+					else
+					{
+						if(getMoney() >= ($(this).val() * parseFloat($('#ekVal1').text().replace(/[\.\u20ac]/g,''))))
+						{
+							let prodCost = $(this).val() * parseFloat($('#ekVal1').text().replace(/[\.\u20ac]/g,''));
+							let difference = getMoney() - prodCost;
+							$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+							$(this).attr('class','numInput');
+							$(this).addClass('d');
+							$(this).addClass($(this).val());
+						}
+						else
+						{
+							alert("Das Guthaben reicht nicht aus!");
+							$(this).val('');
+							$('#prodCost1').val('');
+						}
+					}
+					
+					
+				}
+				else
+				{
+					if($(this).val() > parseInt($('#productionLimit1').text().replace(/[\.]/g,'')))
+					{
+						alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit1').text());
+						$(this).val('');
+						$('#prodCost0').val('');
+					}
+					else
+					{
+						if(getMoney() >= ($(this).val() * parseFloat($('#ekVal1').text().replace(/[\.\u20ac]/g,''))))
+						{
+							let prodCost = $(this).val() * parseFloat($('#ekVal1').text().replace(/[\.\u20ac]/g,''));
+							let difference = getMoney() - prodCost;
+							$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+							$(this).addClass('d');
+							$(this).addClass($(this).val());
+						}
+						else
+						{
+							alert("Das Guthaben reicht nicht aus!");
+							$(this).val('');
+							$('#prodCost1').val('');
+						}
+					}
+				}
+			}
+			else if(!$(this).val())
+			{
+				if($(this).hasClass('d'))
+				{
+					
+					let undoProdCost = $(this).attr('class').replace('d','').replace('numInput','');
+					let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal1').text().replace(/[\.\u20ac]/g,''));
+					$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+					$(this).attr('class','numInput');
+					
+				}
+			}
+
+
+		});
+
+
+
+$('#output2').blur(function()
+		{
+			if($(this).val())
+			{
+				if($(this).hasClass('d'))
+				{
+					let undoProdCost = $(this).attr('class').replace('d','').replace('numInput','');
+					let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal2').text().replace(/[\.\u20ac]/g,''));
+					$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+					
+					if($(this).val() > parseInt($('#productionLimit2').text().replace(/[\.]/g,'')))
+					{
+						alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit2').text());
+						$(this).attr('class','numInput');
+						$(this).val('');
+					}
+					else
+					{
+						if(getMoney() >= ($(this).val() * parseFloat($('#ekVal2').text().replace(/[\.\u20ac]/g,''))))
+						{
+							let prodCost = $(this).val() * parseFloat($('#ekVal2').text().replace(/[\.\u20ac]/g,''));
+							let difference = getMoney() - prodCost;
+							$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+							$(this).attr('class','numInput');
+							$(this).addClass('d');
+							$(this).addClass($(this).val());
+						}
+						else
+						{
+							alert("Das Guthaben reicht nicht aus!");
+							$(this).val('');
+							$('#prodCost2').val('');
+						}
+					}
+					
+					
+				}
+				else
+				{
+					if($(this).val() > parseInt($('#productionLimit2').text().replace(/[\.]/g,'')))
+					{
+						alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit2').text());
+						$(this).val('');
+						$('#prodCost2').val('');
+					}
+					else
+					{
+						if(getMoney() >= ($(this).val() * parseFloat($('#ekVal2').text().replace(/[\.\u20ac]/g,''))))
+						{
+							let prodCost = $(this).val() * parseFloat($('#ekVal2').text().replace(/[\.\u20ac]/g,''));
+							let difference = getMoney() - prodCost;
+							$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+							$(this).addClass('d');
+							$(this).addClass($(this).val());
+						}
+						else
+						{
+							alert("Das Guthaben reicht nicht aus!");
+							$(this).val('');
+							$('#prodCost2').val('');
+						}
+					}
+				}
+			}
+			else if(!$(this).val())
+			{
+				if($(this).hasClass('d'))
+				{
+					
+					let undoProdCost = $(this).attr('class').replace('d','').replace('numInput','');
+					let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal2').text().replace(/[\.\u20ac]/g,''));
+					$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+					$(this).attr('class','numInput');
+					
+				}
+			}
+
+
+		});
 
 
 $('#quantitySupplied0').blur(function()
@@ -414,6 +608,6 @@ function notEnough()
 
 function h(h)
 {
-	alert(h.text());
+	alert(h.text().replace(/[\Freischalten\.\+\u20ac]/g,''));
 	alert(getMoney());
 }
