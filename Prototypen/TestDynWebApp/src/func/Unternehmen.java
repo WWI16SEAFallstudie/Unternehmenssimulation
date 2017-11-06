@@ -277,7 +277,7 @@ public class Unternehmen {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
 					if(this.getKapaErwStraßeBillig()[i] == false) {
-						if(checkeKapital(Info.getErweitereKapazitaetBillig()[i])) {
+						if(checkeKapital(Info.getKostenProduktionBillig()[i])) {
 							kapaErwStraßeBillig[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
@@ -288,7 +288,7 @@ public class Unternehmen {
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
 					if(this.getKapaErwStraßePremium()[i] == false) {
-						if(checkeKapital(Info.getErweitereKapazitaetPremium()[i])) {
+						if(checkeKapital(Info.getKostenProduktionPremium()[i])) {
 							kapaErwStraßePremium[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
@@ -299,7 +299,7 @@ public class Unternehmen {
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
 					if(this.getKapaErwStraßeOeko()[i] == false) {
-						if(checkeKapital(Info.getErweitereKapazitaetOeko()[i])) {
+						if(checkeKapital(Info.getKostenProduktionOeko()[i])) {
 							kapaErwStraßeOeko[i] = true;
 							erhoeheProduktionslimit(segment, i);
 							return true;
@@ -320,7 +320,7 @@ public class Unternehmen {
 			case "Billig":
 				for(int i = 0; i < 3; i++) {
 					if(this.getProdKostenSenkungStraßeBillig()[i] == false) {
-						if(checkeKapital(Info.getSenkeProdKostenStrasseBillig()[i])) {
+						if(checkeKapital(Info.getKostenProduktionBillig()[i])) {
 							prodKostenSenkungStraßeBillig[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
@@ -331,7 +331,7 @@ public class Unternehmen {
 			case "Premium":
 				for(int i = 0; i < 3; i++) {
 					if(this.getProdKostenSenkungStraßePremium()[i] == false) {
-						if(checkeKapital(Info.getSenkeProdKostenStrassePremium()[i])) {
+						if(checkeKapital(Info.getKostenProduktionPremium()[i])) {
 							prodKostenSenkungStraßePremium[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
@@ -342,7 +342,7 @@ public class Unternehmen {
 			case "Oeko":
 				for(int i = 0; i < 3; i++) {
 					if(this.getProdKostenSenkungStraßeOeko()[i] == false) {
-						if(checkeKapital(Info.getSenkeProdKostenStrasseOeko()[i])) {
+						if(checkeKapital(Info.getKostenProduktionOeko()[i])) {
 							prodKostenSenkungStraßeOeko[i] = true;
 							senkeProduktionskosten(segment, i);
 							return true;
