@@ -566,7 +566,7 @@ $('#output2').blur(function()
 				}
 			}
 
-
+//NOTE
 		});
 
 
