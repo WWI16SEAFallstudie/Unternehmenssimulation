@@ -51,7 +51,7 @@
 			</div>
 			<div class="col-sm-4 col-md-4 col-lg-4">
 				<div id="watch3" class="card preisbewusst">
-				<h4>Gro&szlig;serienfertigung</h4>
+				<h4>Billig</h4>
 				<button class="addBtn" name="selectbillig">Freischalten</button>
 				<p>Beschreibungstext der Sparte mit Vor- und Nachteilen...</p>
 				</div>

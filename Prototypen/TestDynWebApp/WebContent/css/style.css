@@ -73,6 +73,15 @@
 		margin-top: 20px;
 	}
 	
+	.card h4{
+		margin-top: 8px;
+		margin-bottom: 5px;
+	}
+	
+	.card p{
+		margin-bottom: 6px;
+	}
+	
 	.listhead{
 		font-size: 16px;
 		margin-left: 20px;
@@ -162,6 +171,10 @@
 	
 	.done>.addBtn{
 		display: none;
+	}
+	
+	h4>span{
+		padding-left: 8px;
 	}
 	
 	/* Inaktive und gesperrte Elemente der Card-Divs */

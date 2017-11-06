@@ -25,7 +25,7 @@ public class MyServlet extends HttpServlet {
 	 * Initiierung der fï¿½r das Spiel benï¿½tigten Instanzen
 	 */
 	// Festlegen der Startparameter für Spiel und Folgespiele
-	int rundenanzahl = 3; //für Test 3 sonst 10
+	int rundenanzahl = 10; //für Test 3 sonst 10
 	int marktvolumen = 1000000;
 	double impactRange = 0.2;
 	

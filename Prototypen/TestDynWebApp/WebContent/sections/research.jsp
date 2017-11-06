@@ -74,7 +74,7 @@
 				
 				<div class="col-sm-4 col-md-4 col-lg-4">
 					<div id="researchB" class="card preisbewusst ${researchB}">
-					<h4>Gro&szlig;serienfertigung</h4>
+					<h4>Billig</h4>
 					<a class="segment addBtn" onclick="research('researchSegmentBillig',1);">Freischalten ${rCB} &euro;</a>
 					<p></p>
 					<span class="listhead">Geh&auml;use</span>				

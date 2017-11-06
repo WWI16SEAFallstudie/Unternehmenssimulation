@@ -36,7 +36,7 @@
 				
 				<div class="col-sm-4 col-md-4 col-lg-4">
 					<div id="purB" class="card preisbewusst ${purchasingB}">
-						<h4>Gro&szlig;serienfertigung</h4>
+						<h4>Billig</h4>
 						<p></p>
 						<span class="listhead">Verbesserung</span>				
 						<ul class="list-group">
