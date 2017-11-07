@@ -24,8 +24,8 @@ public class Markttest {
 		System.out.println("Bestand " + spieler[0].getBestandUhr(0));
 		
 		System.out.println("Spieler0 will 1000 Uhren (1) produzieren");
-		spieler[0].produzieren(1000, 0);
-		System.out.println("Bestand " + spieler[0].getBestandUhr(0));
+		spieler[0].produzieren(1000, 1);
+		System.out.println("Bestand " + spieler[0].getBestandUhr(1));
 		
 		//setze score
 		iUhrenkategorie[] uhren = spieler[0].getUhr();
@@ -35,7 +35,7 @@ public class Markttest {
 		spieler[0].bieteUhren(100, 0, 100);
 		spieler[0].bieteUhren(100, 1, 100);
 		
-		spielbrett.starteMarkt();
+		spielbrett.starteMarkt(true);
 	}
 	
 }

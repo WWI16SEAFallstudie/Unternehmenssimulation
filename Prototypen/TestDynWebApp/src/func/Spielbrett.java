@@ -23,6 +23,10 @@ public class Spielbrett {
 		this.gesamtmarkt = new Gesamtmarkt(volume, impactRange);
 	}
 	
+	public void starteMarkt (boolean mockRandom) {
+		gesamtmarkt.starteSimulation(spieler, mockRandom);
+	}
+	
 	public void starteMarkt() {
 		gesamtmarkt.starteSimulation(spieler);
 	}
