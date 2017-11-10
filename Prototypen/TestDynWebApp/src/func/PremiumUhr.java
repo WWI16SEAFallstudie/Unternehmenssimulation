@@ -94,17 +94,17 @@ public class PremiumUhr implements iUhrenkategorie {
 
 	@Override
 	public void verkaufen() {
-		System.out.println("Bestand davor: " + bestand);
+//		System.out.println("Bestand davor: " + bestand);
 		if( (bestand - abgenommeneMenge) < 0)
 			this.setBestand(0);
 		else
 			this.setBestand(this.getBestand() - abgenommeneMenge);
-		System.out.println("Bestand danach:" + bestand);
+//		System.out.println("Bestand danach:" + bestand);
 	}
 	
 	@Override
 	public int getAbnahmepotential() {
-		System.out.println(getAbnahmequote());
+//		System.out.println(getAbnahmequote());
 		return (int) (angeboteneMenge * ((1 + marketingboost) * getAbnahmequote()));
 	}
 	

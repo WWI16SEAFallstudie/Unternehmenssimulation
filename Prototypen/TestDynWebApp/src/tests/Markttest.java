@@ -14,9 +14,10 @@ public class Markttest {
 		spieler = spielbrett.getSpieler();
 		
 		spieler[0].freischaltenSegment("Billig");
+		spieler[0].freischaltenSegment("Premium");
 		
 		spieler[0].erforscheUhr("Billig");
-		spieler[0].erforscheUhr("Billig");
+		spieler[0].erforscheUhr("Premium");
 		
 		//produzieren
 		System.out.println("Spieler0 will 1000 Uhren (0) produzieren");
@@ -30,11 +31,13 @@ public class Markttest {
 		//setze score
 		iUhrenkategorie[] uhren = spieler[0].getUhr();
 		uhren[0].setMarktwert(100);
-		uhren[1].setMarktwert(150);
+		uhren[1].setMarktwert(200);
 		
-		spieler[0].bieteUhren(100, 0, 100);
-		spieler[0].bieteUhren(100, 1, 100);
+		spieler[0].bieteUhren(300, 0, 100);
+		spieler[0].bieteUhren(300, 1, 100);
 		
+		spielbrett.starteMarkt(true);
+		spielbrett.starteMarkt(true);
 		spielbrett.starteMarkt(true);
 	}
 	

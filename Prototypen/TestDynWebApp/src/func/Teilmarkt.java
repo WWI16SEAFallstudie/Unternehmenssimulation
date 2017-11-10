@@ -15,7 +15,7 @@ public class Teilmarkt {
 			for (int j = 0; j < uhren.length; j++) {
 				if(Math.abs(uhren[i].getAngebotspreis() - uhren[j].getAngebotspreis()) <= uhren[j].getAngebotspreis() * impactRange){
 					// Je näher die Preise der beiden Uhren beeinander sind, desto stärker beeinflussen sich diese
-					System.out.println("Abnahmepotential Uhr " + j + ": " + uhren[j].getAbnahmepotential());
+//					System.out.println("Abnahmepotential Uhr " + j + ": " + uhren[j].getAbnahmepotential());
 					konkurenz += uhren[j].getAbnahmepotential() * ((impactRange - (Math.abs(uhren[i].getAngebotspreis() - uhren[j].getAngebotspreis()))) / impactRange);
 				}
 			}
@@ -23,7 +23,7 @@ public class Teilmarkt {
 				konkurenz += getThirdParty(uhren[i].getAngebotspreis()); //hat die Uhr keine Konkurenz wird die Absatzmöglichkeiten für diese künstlich verschmälert
 			// Die verkaufte Menge entspricht dem Anteil der Uhr in der Konkurenzsituation zu dem gegebenen Preispunkt
 			if (konkurenz > getMarktpotential(uhren[i].getAngebotspreis())) {
-				System.out.println("Marktpotential: " + getMarktpotential(uhren[i].getAngebotspreis()));
+//				System.out.println("Marktpotential: " + getMarktpotential(uhren[i].getAngebotspreis()));
 				if (!mockRandom) uhren[i].setAbgenommeneMenge((int) (uhren[i].getAbnahmepotential() * ((getMarktpotential(uhren[i].getAngebotspreis()) * ((Math.random() / 5) + 0.9)) / (double) konkurenz)));
 				else uhren[i].setAbgenommeneMenge((int) (uhren[i].getAbnahmepotential() * ((getMarktpotential(uhren[i].getAngebotspreis())) / (double) konkurenz)));
 			}

@@ -44,6 +44,7 @@ public class Gesamtmarkt {
 						billiguhren.add(uhr);
 						billigmarkt.setVolume(billigmarkt.getVolume() + volumeChange);
 						oekomarkt.setVolume((int) (oekomarkt.getVolume() - (volumeChange * 0.5)));
+						
 						premiummarkt.setVolume((int) (premiummarkt.getVolume() - (volumeChange * 0.5)));
 						break;
 					case "Oeko":
@@ -66,6 +67,14 @@ public class Gesamtmarkt {
 				}
 			}
 		}
+		
+		if (billigmarkt.getVolume() < 0.5 * volume) billigmarkt.setVolume((int) (volume * 0.5));
+		if (oekomarkt.getVolume() < 0.5 * volume) oekomarkt.setVolume((int) (volume * 0.5));
+		if (premiummarkt.getVolume() < 0.5 * volume) premiummarkt.setVolume((int) (volume * 0.5));
+		
+//		System.out.println("Billigmarkt: " + billigmarkt.getVolume());
+//		System.out.println("Oekomarkt: " + oekomarkt.getVolume());
+//		System.out.println("Premiummarkt: " + premiummarkt.getVolume());
 
 		// Uhren an die Teilmärkte übergeben zur weiteren Verarbeitung (Festlegung der verkauften Mengen)
  		if (billiguhren.size() > 0)	 billigmarkt.calcAbnahme(billiguhren.toArray(new iUhrenkategorie[0]), mockRandom);
