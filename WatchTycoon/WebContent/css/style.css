@@ -1,0 +1,499 @@
+/* Allgemeines und Sostiges*/
+	body{
+		background-image: url("../images/watch2.jpg");
+		background-size: 100%;
+	    background-repeat: no-repeat;
+		background-color: #F9FDFF;
+	}
+	
+	button{
+		margin: 3px;
+	}
+	
+	button, a.addBtn{
+		border: none;
+		border-radius: 3px;
+		box-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+		padding: 4px 7px;
+		background-color: rgba(79, 132, 196, 0.9);
+		color: white;
+		
+	}
+	
+	button:hover{
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+		background-color: rgba(79, 132, 196, 1);
+	}
+	
+	.addBtn, .card .glyphicon, .ekVal, .vkVal, .numProduction, .verkauf, .productionLimit, .stock, .numInput, .intInput, .prodC{
+		float: right;
+	}
+	
+	.glyphicon-plus{
+		color: #599A59;
+	}
+	
+	.glyphicon-ok{
+		color: #92B558;
+		
+	}
+	
+	.glyphicon-remove{
+		color: #dc0027;
+	}
+	
+	.good{
+		background-color: #F4F8EE;
+	}
+	
+	.bad{
+		background-color: #FCE6EA;
+	}
+
+
+/* Überschrift */
+	.head{
+		background-color: rgba(255,255,255, 0.8);
+		margin: 10px auto 25px auto;
+		padding: 10px;
+		border-radius: 6px;
+		text-align: center;
+	}
+
+/* Card-Divs 
+ * Beinhalten den Content
+ * */
+	.card{
+		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7), 0px 0px 7px -3px rgba(0,0,0, 0.13);
+		margin: 5px;
+		border-radius: 2px;
+		width: 100%;
+		padding: 6px;
+		min-height: 200px;
+		margin-top: 20px;
+	}
+	
+	.card h4{
+		margin-top: 8px;
+		margin-bottom: 5px;
+	}
+	
+	.card p{
+		margin-bottom: 6px;
+	}
+	
+	.listhead{
+		font-size: 16px;
+		margin-left: 20px;
+		margin-bottom: 6px;
+	}
+
+	.card ul, .card li{
+		width: 95%;
+	}
+	
+	.card ul{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.card li{
+		padding-top: 7px;
+		padding-bottom: 7px;
+		min-height: 35px;
+	}
+	
+	.card li>button{
+		text-align: right;
+		float: right;
+	}
+	
+	li.selected{
+		color: #4F84C4;
+		font-weight: 700;
+		background-color: #E5EDF6;
+	}
+	
+	.list-group{
+		margin-bottom: 12px;
+	}
+	
+	.card h4{
+		display: inline-block;
+		padding-left: 10px;
+	}
+	
+	.card p{
+		padding-left: 10px;
+	}
+	
+	.card table{
+		margin-top: 15px;
+	}
+
+	a.addBtn:hover{
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+	}
+	
+	
+	a.addBtn{
+		text-decoration: none;
+		vertical-align: middle;
+		cursor: pointer;
+	}
+	
+	li a.addBtn{
+		margin: -3px;
+	}
+	
+	.card-aktive{
+		background-color: white;
+	}
+	
+	.card-aktive .segment.addBtn{
+		display: none;
+	}
+	
+	.card-aktive .overlay{
+		display: none;
+	}
+	
+	.card-aktive input[type=text]{
+	text-align: right;
+	border-radius: 3px;
+	border-style: solid;
+	border: none;
+	background-color: rgba(79, 132, 196, 0.25);
+	padding-right: 3px;
+	width: 80px;
+	}
+	
+	.done>.addBtn{
+		display: none;
+	}
+	
+	h4>span{
+		padding-left: 8px;
+	}
+	
+	/* Inaktive und gesperrte Elemente der Card-Divs */
+	
+	a.addBtn.notAvailable{
+		box-shadow: none;
+	}
+	.card-inaktive,
+	#menu1 .card-inaktive li.list-group-item,
+	#menu1 li.notAvailable,
+	#menu1 .selectSegmentOuter li.list-group-item.notAvailable,
+	a.addBtn.notAvailable{
+		background-color: #f9f9f9;
+		color: grey;
+		cursor: not-allowed;
+	}
+	
+	.card-inaktive .overlay{
+		display: block;
+	}
+	
+	.card-inaktive li>.addBtn,
+	.card-inaktive input[type=text],
+	.list-group-item>span.glyphicon-ok,
+	.selectSegmentOuter
+	{
+		display: none;
+	}
+	
+	.selected>span.glyphicon-ok, .done>span.glyphicon-ok{
+		display:inline;
+	}
+	
+	.overlay, .selectSegmentOuter {
+	    position: static;
+	    width: 100%;
+	    height: 100%;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;    
+	}
+	
+	.overlay{
+		z-index: 2;
+	}
+	
+	.selectSegmentOuter{
+		z-index: 50;
+	}
+	
+	.selectSegmentOuter .addBtn{
+		margin: 3px;
+	}
+	.selectSegmentOuter li{
+		padding-right: 25px;
+		width: 200px;
+	}
+	#menu1 .selectSegmentOuter li.list-group-item{
+		background-color: white;
+		color: black;
+		cursor: pointer;
+	}
+	
+	.ol-text{
+		margin: 8px;
+		padding: 10px 25px;
+	    position: absolute;
+	    background-color: rgba(0,0,0,0.05);
+	    border-radius: 5px;
+	    top: 50%;
+	    left: 50%;
+	    font-size: 40px;
+	    color: #7a7a7a;
+	    transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	    text-align: center;
+	}
+	
+	.selectSegment{
+		margin: 5px;
+		padding: 8px 15px;
+	    position: absolute;
+	    background-color: white;
+	    border-radius: 5px;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	}
+	
+
+/* Navigationsleiste */
+	.nav{
+		background-color: #F9FDFF;
+		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7), 0px 0px 7px -3px rgba(0,0,0, 0.13);
+	}
+	
+	.nav li{
+		font-weight: bold;
+	}
+	
+	.dropdown-menu span{
+		padding-right: 12px;
+		padding-left: 6px;
+	}
+	
+	.dropdown-menu li{
+		margin: 5px;
+	}
+	
+	.dropdown-menu{
+		background-color: rgba(255,255,255, 0.9);
+		width: 250px;
+	}
+	
+	.dropdown-menu span:first-child{
+		left: 0px;
+	}
+	
+	.dropdown-menu span:last-child{
+		position: absolute;
+		right: 0px;
+	}
+	
+	.nav-stacked{
+		width: 140px;
+		display: inline-block;
+		position: fixed;
+		left: 0px;
+		top: 15%;
+	}
+	
+	.cont-side-nav{
+		position: fixed;
+		left: 140px;
+	}
+	
+	#player a, .player{
+		background-color: #101626;
+		color: white;
+		text-align: center;
+	}
+	
+	#player a{
+		cursor: default;
+	}
+	
+	#player img{
+		width: 28px;
+		margin-top: -6px;
+		margin-bottom: -6px;
+		margin-right: 5px;
+	}
+
+	#nextRound{
+		color: white;
+		background-color: rgba(79, 132, 196, 0.9);
+	}
+	
+	#nextRound:hover{
+		background-color: rgba(79, 132, 196, 1);
+	}
+
+
+
+/* Ökouhr */
+	.umwelt{
+		background-color: white;
+	}
+	
+	.umwelt h4, .umwelt .done{
+		color: #92B558;
+		font-weight: 700;
+	}
+	
+	.umwelt .done{
+		background-color: #F4F8EE;
+	}
+	
+	.umwelt .addBtn{
+		background-color: #92B558;
+	}
+
+/* Luxusuhr */
+	.luxus{
+		background-color: white;
+		/* 
+		background-image: url("../images/diamond100.png");
+	    background-repeat: no-repeat;
+	    background-position: top right;
+	    * */
+	}
+	
+	.luxus h4, .luxus .done{
+		color: #D8AE47;
+		font-weight: 700;
+	}
+	
+	.luxus .done{
+		background-color: #FBF7ED;
+	}
+	
+	.luxus  .addBtn{
+		background-color: #D8AE47;
+	}
+
+/* Günstige Uhr */
+	.preisbewusst{
+		background-color: white;
+	}
+	
+	.preisbewusst h4, .preisbewusst .done{
+		color: #368CDF;
+		font-weight: 700;
+	}
+	
+	.preisbewusst .done{
+		background-color: #e6f2ff;
+	}
+	
+	.preisbewusst .addBtn{
+		background-color: #368CDF;
+	}
+
+/* Produkte */
+#menu1 li{
+	cursor: pointer;
+}
+
+/* F&E */
+
+li.done>.glyphicon-ok{
+	
+}
+
+/* Marketing */
+.marketing a.addBtn{
+	background-color: rgba(79, 132, 196, 0.9);
+}
+
+/* Statistik */
+tfoot>tr>td{
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+/* Kachel zur anzeige des nöächsten Spielers */
+	#next{
+		margin-top: 10%;
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	#next img, #next button, #next>h4, #next>h3{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+	
+	#next button{
+		margin-top: 15px;
+		margin-bottom: 15px;
+		padding: 10px 14px;
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+	
+/* Styles für Gewinnerseite */
+#win{
+	width: 450px;
+	margin: 100px auto auto auto;
+}
+#win>h4{
+	text-align: center;
+	display: block;
+	margin: 20px auto 30px;
+}
+
+#win li{
+	height: 45px;
+}
+
+#win li img{
+	height: 30px;
+	margin-left: 10px;
+}
+
+.winner{
+	padding-left: 25px;
+	display: inline-block;
+}
+
+.pos{
+	width: 100px;
+	display: inline-block;
+}
+/* Startbutton */
+	
+	#restart{
+		display: block;
+		border: none;
+		border-radius: 4px;
+		box-shadow: 1px 1px 2px 0 rgb(0,0,0);
+		margin: 20px auto 20px auto;
+		padding: 8px 30px;
+		font-size: 1.3em;
+		background-color: #4F84C4;
+		color: black;
+		font-weight: bold;
+		-webkit-transition: 0.2s; /* Safari */
+	    transition: 0.2s;
+	}
+	
+	#restart:hover{
+		box-shadow: 2px 2px 6px 1px rgb(50,50,50);
+		color: white;
+		-webkit-transition: 0.2s; /* Safari */
+	    transition: 0.2s;
+	}
