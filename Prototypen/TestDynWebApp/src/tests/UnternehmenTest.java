@@ -1,12 +1,7 @@
 package tests;
 import func.*;
-import servlets.MyServlet;
 
 import static org.junit.Assert.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.junit.Test;
 
 
@@ -365,13 +360,4 @@ spieler[0].erweitereEinkauf("Billig");
 		assertTrue("Segment wurde nicht freigeschaltet", spieler[0].getFreieSegmenteAllgemein()[0]);
 		assertTrue("Produktion wurde nicht erweitert", spieler[0].getKapaErwStraßeBillig()[0]);
 	}
-	
-	/*  //Mockito müsste noch eingebunden werden
-	@Test
-	public void testServlet(){
-		MyServlet servlet = new MyServlet();
-		HttpServletRequest request = mock(HttpServletRequest.class);       
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        servlet.doPost(request, response);
-	}*/
 }
