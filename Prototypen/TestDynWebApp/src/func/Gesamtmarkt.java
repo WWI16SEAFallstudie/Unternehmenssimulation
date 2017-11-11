@@ -38,7 +38,8 @@ public class Gesamtmarkt {
 			for (iUhrenkategorie uhr : einzelunternehmen.getUhr()) {
 				if (uhr != null) {
 					int volumeChange =  (int) (volume * Math.log(uhr.getMarktwert() / uhr.getAngebotspreis()) * 0.2);
-					if(uhr.getAbnahmepotential() > uhr.getBestand()) uhr.setAngeboteneMenge(uhr.getBestand());
+//					System.out.println("Abnahmepotential: " + uhr.getAbnahmepotential());
+					if(uhr.getAbnahmepotential() > uhr.getBestand() || uhr.getAbnahmepotential() == 0) uhr.setAngeboteneMenge(uhr.getBestand());
 
 					switch (uhr.getSegment()) {
 					case "Billig":
