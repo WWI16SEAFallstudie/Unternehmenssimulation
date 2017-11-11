@@ -6,12 +6,12 @@ public class Gesamtmarkt {
 	private Teilmarkt billigmarkt, oekomarkt, premiummarkt;
 	private int volume;
 
-	public Gesamtmarkt(Teilmarkt billigmarkt, Teilmarkt oekomarkt, Teilmarkt premiummarkt) {
-		this.billigmarkt = billigmarkt;
-		this.oekomarkt = oekomarkt;
-		this.premiummarkt = premiummarkt;
-		this.volume = billigmarkt.getVolume();
-	}
+//	public Gesamtmarkt(Teilmarkt billigmarkt, Teilmarkt oekomarkt, Teilmarkt premiummarkt) {
+//		this.billigmarkt = billigmarkt;
+//		this.oekomarkt = oekomarkt;
+//		this.premiummarkt = premiummarkt;
+//		this.volume = billigmarkt.getVolume();
+//	}
 
 	public Gesamtmarkt(int volume, double impactRange) {
 		this.billigmarkt = new Teilmarkt(volume, impactRange);
@@ -20,12 +20,12 @@ public class Gesamtmarkt {
 		this.volume = volume;
 	}
 
-	public Gesamtmarkt(int billigVolume, double billigRange, int oekoVolume, double oekoRange, int premiumVolume, double premiumRange) {
-		this.billigmarkt = new Teilmarkt(billigVolume, billigRange);
-		this.oekomarkt = new Teilmarkt(oekoVolume, oekoRange);
-		this.premiummarkt = new Teilmarkt(premiumVolume, premiumRange);
-		this.volume = billigVolume;
-	}
+//	public Gesamtmarkt(int billigVolume, double billigRange, int oekoVolume, double oekoRange, int premiumVolume, double premiumRange) {
+//		this.billigmarkt = new Teilmarkt(billigVolume, billigRange);
+//		this.oekomarkt = new Teilmarkt(oekoVolume, oekoRange);
+//		this.premiummarkt = new Teilmarkt(premiumVolume, premiumRange);
+//		this.volume = billigVolume;
+//	}
 
 	public void starteSimulation(Unternehmen[] unternehmen) {
 		starteSimulation(unternehmen, false);
@@ -38,6 +38,7 @@ public class Gesamtmarkt {
 			for (iUhrenkategorie uhr : einzelunternehmen.getUhr()) {
 				if (uhr != null) {
 					int volumeChange =  (int) (volume * Math.log(uhr.getMarktwert() / uhr.getAngebotspreis()) * 0.2);
+					if(uhr.getAbnahmepotential() > uhr.getBestand()) uhr.setAngeboteneMenge(uhr.getBestand());
 
 					switch (uhr.getSegment()) {
 					case "Billig":

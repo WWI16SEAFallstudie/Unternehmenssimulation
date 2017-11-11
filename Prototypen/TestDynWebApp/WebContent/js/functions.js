@@ -38,32 +38,6 @@ function uiSwitch(){
 	}
 }
 
-// Timerfunktion
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
-}
-
-// Start des Timers
-window.onload = function () {
-    var starttime = 10;// Countdown-Zeit in Minuten
-    var display = document.querySelector('#countdown');
-    startTimer((starttime*60), display);
-};
-
-
 // Auswahl des zu Nutzenden Gehäuse, Armband, Uhrwerk
 function usedItem(input, item){	
 	selectItem(input, item);
@@ -157,13 +131,6 @@ function marketing(input, item){
 }
 
 
-
-
-
-
-
-
-
 function getMoney()
 {
 	return parseFloat($('#money').text().replace(/[\.\u20ac]/g,''));
@@ -174,30 +141,6 @@ function numberWithCommas(x) {
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
 }
-
-/*function change(button)
-{
-	if(button.hasClass('d'))
-	{
-		let sum = parseFloat(getMoney()) + parseFloat($(button).attr('value'));
-		let floatSum = parseFloat(sum);
-		$('#money').text(floatSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
-		$(button).removeClass('d');
-		let buttonPrice = parseFloat($(button).attr('value'));
-		let formattedNumber = buttonPrice.toLocaleString('de-DE',{minimumFractionDigits: 0});
-		$(button).text('+ '+formattedNumber+' \u20ac');	
-	}
-	else
-	{
-		let priceFloat = parseFloat(button.text().replace(/[\.\+\u20ac\Freischalten]/g,''));
-		let difference = getMoney() - priceFloat;
-		//alert(difference);
-		$(button).attr('value',priceFloat);
-		$(button).text('Undo');
-		$(button).addClass('d');
-		$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
-	}
-}*/
 
 function change(button)
 {
@@ -257,73 +200,6 @@ function changeProd(button, changeCost)
 		$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
 	}
 }
-
-
-
-/*$('#output0').blur(function()
-{
-	if( !$(this).val() == '' ) 
-	{
-		
-		if($(this).val() > parseInt($('#productionLimit0').text().replace(/[\.]/g,'')))
-		{
-			alert('Die Produktionskapazit\u00e4ten reichen nicht aus! \nProduktionslimit liegt bei: ' +$('#productionLimit0').text());
-			$(this).val('');
-			$('#prodCost0').text('');
-		}
-		else if($(this).val() > 0 && $(this).val() <= parseInt($('#productionLimit0').text().replace(/[\.]/g,'')))
-		{
-			let prodCost = parseFloat($(this).val()).toFixed(2) * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,'')).toFixed(2);
-			alert(prodCost);
-			if(prodCost > getMoney())
-			{
-				if($('#output0').hasClass('d'))
-				{
-					alert('Das Kontoguthaben reicht nicht aus!');
-					$(this).val($('#output0').attr('class').replace('numInput','').replace('d',''));
-				}
-				else
-				{
-					alert('Das Kontoguthaben reicht nicht aus!');
-					$(this).val('');
-				}
-				
-			}
-			else
-			{
-				if($('#output0').hasClass('d'))
-				{
-					let undoCost = $('#output0').attr('class').replace('numInput','').replace('d','');
-					let undoProdCost = parseFloat(undoCost) * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
-					let sum = getMoney() + undoProdCost;
-					$('#money').text(sum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
-					alert(parseFloat(undoProdCost));
-				}
-				else 
-				{
-					$('#prodCost0').text(parseFloat(prodCost).toFixed(2) + ' \u20ac');
-					let difference = getMoney() - prodCost;
-					$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
-					$('#output0').addClass('d');
-					$('#output0').addClass($(this).val());
-				}
-				
-			}
-			
-		}
-	}
-	else if(!$(this).val())
-	{
-		if($('#outpout0').hasClass('d'))
-		{
-			alert($('#output0').attr('class').replace(/[\d\numInput]/g,''));
-			let prodCost = $('#output0').attr('class').replace(/[\d\numInput]/g,'') * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
-			$('#money').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2}));
-		}
-	}
-});*/
-
-
 
 
 $('#output0').blur(function()
@@ -402,8 +278,6 @@ $('#output0').blur(function()
 			
 		}
 	}
-
-
 });
 
 
@@ -486,7 +360,6 @@ $('#output1').blur(function()
 
 
 		});
-
 
 
 $('#output2').blur(function()
@@ -598,7 +471,6 @@ $('#quantitySupplied0').blur(function()
 		}
 	}
 });
-
 
 
 function notEnough()

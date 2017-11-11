@@ -29,7 +29,7 @@ public class Teilmarkt {
 			}
 			else
 				uhren[i].setAbgenommeneMenge(uhren[i].getAbnahmepotential());
-			System.out.println(this.toString() + ": Uhr " + i + ": verkaufte Menge: " + uhren[i].getAbgenommeneMenge());
+//			System.out.println(this.toString() + ": Uhr " + i + ": verkaufte Menge: " + uhren[i].getAbgenommeneMenge());
 		}
 	}
 
