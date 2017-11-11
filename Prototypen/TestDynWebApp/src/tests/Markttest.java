@@ -1,12 +1,12 @@
 package tests;
 
-import func.;
+import func.*;
 import static org.junit.Assert.*; 
 import org.junit.Test;
 
 public class Markttest {
 	@Test
-	public void uhrenverkaufTest {
+	public void uhrenverkaufTest() {
 		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
 		Unternehmen[] spieler;
 		spielbrett.erstelleSpieler(2);
