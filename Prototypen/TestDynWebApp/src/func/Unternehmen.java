@@ -412,11 +412,16 @@ public class Unternehmen {
 				boostIndex = i;
 		}
 		
-		// Nur wenn Kapital ausreichend ist UND es einen boost gibt UND wenn die Zufallszahl nicht zugeschlagen hat
-		if(checkeKapital(kostenMarketing) && boostIndex != -1 && zufallMarketing())
-			this.uhr[uhr].setMarketingboost(this.uhr[uhr].getMarketingboost() + Info.getScoreMarketingkampagne()[boostIndex]);
-		else
-			this.uhr[uhr].setMarketingboost(this.uhr[uhr].getMarketingboost());
+		// Nur wenn Kapital ausreichend ist
+		if(checkeKapital(kostenMarketing)){
+			// Nur Boosten, wenn Zufallszahl nicht zugeschlagen hat
+			if(boostIndex != -1 && zufallMarketing()) {
+				this.uhr[uhr].setMarketingboost(this.uhr[uhr].getMarketingboost() + Info.getScoreMarketingkampagne()[boostIndex]);
+			} else {
+				this.uhr[uhr].setMarketingboost(this.uhr[uhr].getMarketingboost());				
+			}
+		}
+		
 	}
 	
 	public void unternehmenMarketing(boolean[] kampagne) {
@@ -430,17 +435,19 @@ public class Unternehmen {
 				boostIndex = i;
 		}
 		
-		// Nur wenn Kapital ausreichend ist UND es einen boost gibt UND wenn die Zufallszahl nicht zugeschlagen hat
-		if(checkeKapital(kostenMarketing) && boostIndex != -1 && zufallMarketing()) {
-			// Marketingbosst auf alle Uhren anrechnen
+		// Nur wenn Kapital ausreichend ist 
+		if(checkeKapital(kostenMarketing)) {
+			if(boostIndex != -1 && zufallMarketing()) {
+			// Marketingbosst auf alle Uhren anrechnen wenn Zufallszahl nicht zugeschlagen hat
 			for(int i = 0; i < 3; i++) {
 				if(this.uhr[i] != null)
 					this.uhr[i].setMarketingboost(this.uhr[i].getMarketingboost() + Info.getScoreMarketingkampagne()[boostIndex]);
 			}
-		} else {
-			for(int i = 0; i < 3; i++) {
-				if(this.uhr[i] != null)
-					this.uhr[i].setMarketingboost(this.uhr[i].getMarketingboost());
+			} else {
+				for(int i = 0; i < 3; i++) {
+					if(this.uhr[i] != null)
+						this.uhr[i].setMarketingboost(this.uhr[i].getMarketingboost());
+				}
 			}
 		}
 	}

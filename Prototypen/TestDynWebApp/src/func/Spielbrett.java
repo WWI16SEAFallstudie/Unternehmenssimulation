@@ -101,11 +101,7 @@ public class Spielbrett {
 	public Unternehmen[] getSpieler() {
 		return spieler;
 	}
-/*
-	public void setSpieler(Unternehmen[] spieler) {
-		this.spieler = spieler;
-	}
-*/
+	
 	public int getAktuellerSpieler() {
 		return aktuellerSpieler;
 	}

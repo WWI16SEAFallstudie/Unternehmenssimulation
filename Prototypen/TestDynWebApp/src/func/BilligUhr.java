@@ -152,6 +152,7 @@ public class BilligUhr implements iUhrenkategorie {
 		this.marktwert = marktwert;
 	}
 	
+	@Override
 	public double berechneSelbstkosten() {
 		return( Info.getSelbstkostenArmbandBillig()[this.getArmband()] + Info.getSelbstkostenGehaeuseBillig()[this.getGehaeuse()] 
 				+ Info.getSelbstkostenUhrwerkBillig()[this.getUhrwerk()] );
