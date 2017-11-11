@@ -1,9 +1,17 @@
 \clearpage
 \chapter{Qualitätssicherung mittels JUnit-Tests}
+Autor: Luisa Karl, Rebekka Henn
 \section{Vorgehensweise}
 Zunächst wurde die Funktionalität der Methoden der Unternehmenssimulation anhand einfacher Konsolenausgaben durch die Entwickler unseres Teams getestet. Diese Art der Tests kann als Entwicklertest eingestuft werden. Die Entwicklertests werden in der Regel vom Entwickler selbst durchgeführt und dienen zur Überprüfung von Zwischenergebnissen und einzelnen Codezeilen. \par
 Nachdem die Funktionalität der Methoden überprüft und gegebenenfalls angepasst wurde, konnte mit dem Schreiben von JUnit-Tests begonnen werden. Unit-Tests, auch Modultests genannt, überprüfen einzelne isolierte Komponenten wie beispielsweise Methoden. Dadurch ist es möglich, Fehler schnell und einfach zu erkennen. Eine Änderung muss oft nur an einer Stelle vorgenommen werden, da die Methoden unabhängig voneinander sein sollen. Da sich in umserem Projekt viele Methoden aufeinander aufbauen, war es nicht möglich, alle Methoden isoliert zu testen. Es existiert jedoch immer ein Test, der zunächst die Grundlage testet, zum Beispiel einen Spieler zu erstellen. Diese Methode wird dann in nachfolgenden Tests erneut aufgerufen, um eine logische Einheit abbilden zu können. Das Testen einer sinnvollen Einheit ist uns wichtiger, als ein isoliertes Detail zu testen, das aber in dieser Form kein Mehrwert bringt.
 
 %% Codebeispiel (erforsche Uhr)? zum verdeutlichen vom aufeinander aufbauen
+
+Um einen Spielablauf simulieren zu können, wurde ein Szenariotest geschrieben. Anders als beim Unit-Test prüft dieser das Zusammenspiel der einzelnen Methoden, wodurch ein Programmablauf nachgearmt werden kann.
+Der Szenariotest besteht aus drei Runden, damit ausreichend Funktionalität abgedeckt werden kann. \par
+In der ersten Runde werden drei Spieler in den jeweils drei unterschiedlichen Marktsegmenten erstellt. Jeder Spieler erforscht in seinem Segment eine Uhr, die dann produziert wird. \par
+In der zweiten Runde können die produzierten Uhren am Markt angeboten werden. Jeder Spieler entwickelt zusätzlich in seinem Segment einen Bestandteil der Uhr (Armband, Gehäuse und Uhrwerk). Des Weiteren wird der Einkauf erweitert, wodurch die Selbstkosten gesenkt werden können. Anschließend wird nochmals produziert. \par
+In der dritten Runde werden erneut die produzierten Uhren angeboten. Die Produktion wird erweitert, wodurch das Produktionslimit gesteigert wird und somit mehr Uhren produziert werden können. Die letzten Funktionen, die der Szenariotest abbildet, sind die beiden Marketingstrategien. Diese setzen sich aus dem Uhrenmarketing, welches ein einzelnes Uhrenmodell bewirbt und dem Unternehmensmarketing, welches das Unternehmen als Ganzes betrifft, zusammen. 
+Abgeschlossen wird der Test durch die Ermittlung des Siegers mittels einer AssertEquals-Abfrage. Die genaue Platzierung der restlichen Spieler bleibt hierbei jedoch unberücksichtigt.
 
 \section{Testergebnisse}
