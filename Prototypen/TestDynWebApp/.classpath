@@ -14,6 +14,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Unternehmenssimulation/Prototypen/TestDynWebApp/lib/org.mockito_1.9.5.v201311280930.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
