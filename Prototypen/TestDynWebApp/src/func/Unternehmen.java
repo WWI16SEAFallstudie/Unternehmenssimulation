@@ -237,7 +237,7 @@ public class Unternehmen {
 				break;
 		}	
 	}
-	
+	/*
 	public int getUhrwerk(int uhr) {
 		if(this.uhr[uhr] != null)
 			return this.uhr[uhr].getUhrwerk();
@@ -258,7 +258,7 @@ public class Unternehmen {
 		else
 			return -1;
 	}
-	
+	*/
 	/**
 	 * Methode erweitert die Produktion des ausgewählten Segmentes
 	 * 
@@ -502,7 +502,7 @@ public class Unternehmen {
 		}
 		return -1;
 	}
-	
+/*	
 	public void setAbgenommeneMenge(int menge, int uhr) {
 		if(this.uhr[uhr] != null) {
 			this.uhr[uhr].setAbgenommeneMenge(menge);
@@ -514,7 +514,7 @@ public class Unternehmen {
 		}
 		this.addMengeZuArray(this.getBestandUhr(uhr));
 	}
-	
+	*/
 	/**
 	 * Methode zum freischalten des Segments
 	 * @param segment
@@ -543,12 +543,13 @@ public class Unternehmen {
 	}
 	
 	// *** PRIVATE METHODEN
+	/*
 	private void addMengeZuArray(int menge) {
 		for(int i = 0; i < 10; i++)
 			if(this.verkaufteUhrenRunden[i] != -1)
 				this.verkaufteUhrenRunden[i] = menge;
 	}
-
+*/
 	private boolean zufallMarketing() {
 		// Zufallszahl zwischen 0 und 1
 		Random rand = new Random();
