@@ -6,7 +6,11 @@ import org.junit.Test;
 
 public class Markttest {
 	@Test
+<<<<<<< HEAD
 	public void uhrenverkaufAlleKategorienTest() {
+=======
+	public void uhrenverkaufTest() {
+>>>>>>> e889bf673636537e4a6fd1cda8c00c8fd81c0756
 		Spielbrett spielbrett = new Spielbrett(10, 10000, 0.1);
 		Unternehmen[] spieler;
 		spielbrett.erstelleSpieler(2);
