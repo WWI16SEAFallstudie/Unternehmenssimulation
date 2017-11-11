@@ -24,7 +24,7 @@
 	<form id="roundData" action="${pageContext.request.contextPath}/servlet" method="post">
     <!-- Navigation -->
       <ul id="mainNav" class="nav nav-tabs">
-      	<li id="player"><a><img alt="" src="images/Man${pic}.png"> <span id="countdown" class="player">10:00</span></a></li>
+      	<li id="player"><a><img alt="" src="images/Man${pic}.png"> <span  class="player">Runde ${rounda}</span></a></li>
 		<li class="dropdown">
 			<a id="player" class=" player dropdown-toggle" data-toggle="dropdown" href="#"><span id="money">${kapital}</span> &euro;<span class="caret"></span></a>
 			<ul class="dropdown-menu">
