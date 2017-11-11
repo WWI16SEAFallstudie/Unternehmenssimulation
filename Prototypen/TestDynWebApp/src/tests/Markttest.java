@@ -24,9 +24,9 @@ public class Markttest {
 		uhren[0].setMarktwert(100);
 		uhren[1].setMarktwert(100);
 		uhren[2].setMarktwert(100);
-		spieler[0].bieteUhren(100, 0, 100);
-		spieler[0].bieteUhren(100, 1, 100);
-		spieler[0].bieteUhren(100, 2, 100);
+		spieler[0].setAngeboteneMenge(100, 0, 100);
+		spieler[0].setAngeboteneMenge(100, 1, 100);
+		spieler[0].setAngeboteneMenge(100, 2, 100);
 		spielbrett.starteMarkt(true);
 
 		assertEquals("Uhren wurde nicht korrekt abgenommen", 50, uhren[0].getAbgenommeneMenge());
@@ -49,8 +49,8 @@ public class Markttest {
 		iUhrenkategorie[] uhren = spieler[0].getUhr();
 		uhren[0].setMarktwert(100);
 		uhren[1].setMarktwert(150);
-		spieler[0].bieteUhren(100, 0, 100);
-		spieler[0].bieteUhren(100, 1, 100);
+		spieler[0].setAngeboteneMenge(100, 0, 100);
+		spieler[0].setAngeboteneMenge(100, 1, 100);
 		spielbrett.starteMarkt(true);
 
 		assertEquals("Uhren wurde nicht korrekt abgenommen", 41, uhren[0].getAbgenommeneMenge());
