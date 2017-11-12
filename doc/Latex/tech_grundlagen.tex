@@ -1,14 +1,14 @@
 \clearpage
 \chapter{Architektur}
-In diesem Kapitel wird der technische Aufbau des Spiels beschrieben. Hierbei wird auf die verwendete Architektur sowie die zugrunde liegenden Designentscheidungen eingegangen.
+(ES) In diesem Kapitel wird der technische Aufbau des Spiels beschrieben. Hierbei wird auf die verwendete Architektur sowie die zugrunde liegenden Designentscheidungen eingegangen.
 
 \section{Einflussfaktoren für Architektur}
-Die Maßgebenden Einflussfaktoren für die Entscheidung der verwendeten Softwarearchitektur, sind neben dem im Team vorhanden Know-How bezüglich Programmiersprachen und Unit-Tests, die eigenen Anforderungen an die optische Repräsentation des Spiels. Nach einer Aufnahme der Kenntnisse der Teammitglieder war schnell ersichtlich, dass die Programmiersprache Java am verbreitetsten ist und sich in Bezug auf Unit-Tests auch hier die größte Übereinstimmung findet.
+(ES) Die Maßgebenden Einflussfaktoren für die Entscheidung der verwendeten Softwarearchitektur, sind neben dem im Team vorhanden Know-How bezüglich Programmiersprachen und Unit-Tests, die eigenen Anforderungen an die optische Repräsentation des Spiels. Nach einer Aufnahme der Kenntnisse der Teammitglieder war schnell ersichtlich, dass die Programmiersprache Java am verbreitetsten ist und sich in Bezug auf Unit-Tests auch hier die größte Übereinstimmung findet.
 
 Der in der Vorlesung zur Fallstudie vorgestellte Tomcat-Server bietet die Möglichkeit, für ein in Java geschriebenes Fachkonzept ein Userinterface auf HTML-Basis bereitzustellen. Da die in Java zur Verfügung stehende SWING-Bibliothek nicht die gewünschten optischen Resultate erzielt, wurde diese schnell ausgeschlossen.
 
 \section{Übersicht über technischen Aufbau}
-Aus den zuvor genannten Beweggründen ergab sich schnell der in \ref{fig:abb29} 
+(ES) Aus den zuvor genannten Beweggründen ergab sich schnell der in \ref{fig:abb29} 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.2]{img/3-schichten-modell.jpeg}
@@ -23,7 +23,7 @@ Bei der Darstellungsebene des Spiels werden die gestalterischen Möglichkeiten v
 Folglich ergibt sich, neben einer logischen Trennung von Fachkonzept und Darstellung, eine technische Trennung, in Form einer Client-Server-Architektur. Auf dem Server wird die Spiellogik ausgeführt, eine dynamische Webseite generiert und auf Eingaben des Anwenders gewartet. Im Browser des Clients wird hingegen die dynamisch generierte Webseite mit den aktuellen Werten des Spielstandes angezeigt, als auch eine Eingabemöglichkeit zur Ausführung von gewünschten Spielaktionen geboten.
 
 \section{Laufzeitumgebung}
-Da die Spiellogik in Java programmiert ist, wird zur Ausführung des Programms eine Java-Laufzeitumgebung benötigt. Während der Entwicklung wird hier im speziellen die Java Runtime Environment in Version 8 verwendet. Eine weitere wichtige Komponente ist der Servlet-Container. Die an den Server übermittelten Eingaben, in Form von Http-Requests, werden vom Webserver entgegen genommen und an den Servlet-Container weitergeleitet. Dieser verarbeitet die Requests und leitet diese an das Servlet, welches im folgenen Kapitel näher beschrieben wird, weiter. Zur Bereitstellung einer serverseitigen Java-Laufzeitumgebung, als auch einem Servlet-Container, dient der bereits angesprochene Tomcat-Server von Apache.
+(ES) Da die Spiellogik in Java programmiert ist, wird zur Ausführung des Programms eine Java-Laufzeitumgebung benötigt. Während der Entwicklung wird hier im speziellen die Java Runtime Environment in Version 8 verwendet. Eine weitere wichtige Komponente ist der Servlet-Container. Die an den Server übermittelten Eingaben, in Form von Http-Requests, werden vom Webserver entgegen genommen und an den Servlet-Container weitergeleitet. Dieser verarbeitet die Requests und leitet diese an das Servlet, welches im folgenen Kapitel näher beschrieben wird, weiter. Zur Bereitstellung einer serverseitigen Java-Laufzeitumgebung, als auch einem Servlet-Container, dient der bereits angesprochene Tomcat-Server von Apache.
 
 \section{Java Servlets}\label{sec:Servlets}
 Auf dem bereits erwähnten Tomcat-Server wird eine Instanz der Klasse Servlet ausgeführt. Hierüber wird es ermöglicht, auf Eingaben des Anwenders zu reagieren und entsprechende Rückgaben auszuliefern. Die Kommunikation zwischen Server und Client erfolgt hierbei mittels Http-Requests. In diesem Fall wird die doPost()-Methode der Klasse HttpServlet überschrieben und mit den gewünschten Funktionalitäten versehen.
@@ -33,12 +33,12 @@ Der Aufruf der Methode erfolgt von Seiten des Clients durch absenden eines HTML-
 Zur weiteren Vereinfachung des Programmieraufwandes wird innerhalb der Servlet-Instanz nicht nur die Kommunikation mit dem Client koordiniert, sondern auch eine Instanz des Spiels erzeugt. Alle innerhalb der doPost()-Methode getätigten aufrufe bezüglich der Spiellogik werden somit an die Instanz des Spiels übergeben. Auch wenn auf abstrakter Ebene das Servlet und die Spiellogik als zwei getrennte Elemente betrachten werden, ist die Spielinstanz real gesehen eine Instanz innerhalb des Servlets.
 
 \section{JavaServer Page}
-Wie im Kapitel \ref{sec:Servlets} auf Seite \pageref{sec:Servlets} beschriebenen werden in der doPost()-Methode neue Webseiten unter Mitgabe des request-Objekts aufgerufen. Da eine nur mit HTML erstellte Seite mit dem request-Objekt nicht umgehen kann, kommt zur Erstellung der Webseite JavaServer Page bzw. Expression Language zum Einsatz. Der Einsatz beider beschränkt sich jedoch innerhalb dieses Projektes auf die Angabe des Ziels des HTML-Formulars sowie als Platzhalter für Variablen zur dynamischen Erstellung von Seiteninhalten.
+(ES) Wie im Kapitel \ref{sec:Servlets} auf Seite \pageref{sec:Servlets} beschriebenen werden in der doPost()-Methode neue Webseiten unter Mitgabe des request-Objekts aufgerufen. Da eine nur mit HTML erstellte Seite mit dem request-Objekt nicht umgehen kann, kommt zur Erstellung der Webseite JavaServer Page bzw. Expression Language zum Einsatz. Der Einsatz beider beschränkt sich jedoch innerhalb dieses Projektes auf die Angabe des Ziels des HTML-Formulars sowie als Platzhalter für Variablen zur dynamischen Erstellung von Seiteninhalten.
 
 Die Webseite wird wie gewohnt mit HTML erstellt, wobei die dynamisch zu erstellenden Inhalte im Quellcode durch Value Expressions ( \$\{ Value \} ) ersetzt werden. Beim Aufruf der Seite innerhalb der doPost()-Methode werden die Value Expressions mit den gleichnamigen Parametern aus dem request-Objekt ersetzt und der so entstehende HTML-Code an den Browser des Clients ausgeliefert. In diesem Projekt werden hierdurch vor allem Textinhalte innerhalb von HTML-Elementen generiert bzw. bestimmte Werte dem Class-Attribut der HTML-Elemente hinzugefügt.
 
 \section{User Interface}\label{UI}
-Zur Erstellung des Userinterface kommen überwiegend die für Webanwendungen üblichen Technologien in Form von HTML5, CSS3 und JavaScript sowie aktuell gängige Frameworks zum Einsatz. Die logische Strukturierung der Seiten erfolgt mittels der Auszeichnungsprache HTML. Die Gestaltung des Userinterface in Bezug auf Layout, \enquote{Look and Feel} erfolgt überwiegend mittels CSS3 sowie zur Reduzierung des Programmieraufwands mittels dem CSS-Framework Bootstrap. JavaScript sowie das JS-Framework jQuery werden zur logischen Validierung von Benutzereingaben siwue zur Umsetzung einiger kontextbezogener optischer Effekte bzw. Layoutumgestaltungen, welche sich mittels CSS schwierig oder nicht umsetzten lassen.
+(ES) Zur Erstellung des Userinterface kommen überwiegend die für Webanwendungen üblichen Technologien in Form von HTML5, CSS3 und JavaScript sowie aktuell gängige Frameworks zum Einsatz. Die logische Strukturierung der Seiten erfolgt mittels der Auszeichnungsprache HTML. Die Gestaltung des Userinterface in Bezug auf Layout, \enquote{Look and Feel} erfolgt überwiegend mittels CSS3 sowie zur Reduzierung des Programmieraufwands mittels dem CSS-Framework Bootstrap. JavaScript sowie das JS-Framework jQuery werden zur logischen Validierung von Benutzereingaben siwue zur Umsetzung einiger kontextbezogener optischer Effekte bzw. Layoutumgestaltungen, welche sich mittels CSS schwierig oder nicht umsetzten lassen.
 
 Die Aufteilung des Userinterface auf mehrere JSP-Dokumente ergibt sich in erster Linie aus an den Server zu schickenden Formularen und dem im Servlet definierten Requests. Für jedes zu versendende Formular wird ein eigenes JSP-Dokument verwendet. Die Formulare wiederum repräsentieren logische Spielabschnitte.
 
@@ -68,7 +68,7 @@ Neben der Dokumentenstruktur ist die Verwendung von CSS-Regeln und CSS-Klassen e
 \end{lstlisting} 
 
 \section{Eingabeüberprüfung im UI durch JavaScript}
-Da der Java-Code nicht im im HTML-basierten UI abgebildet ist benötigt es auf UI-Ebene eine weitere Logik. Diese ist notwendig, um die vom Benutzer getätigten Eingaben zu überprüfen und somit keine ungültigen Werte an das Spiel zu übergeben. 
+(EA) Da der Java-Code nicht im im HTML-basierten UI abgebildet ist benötigt es auf UI-Ebene eine weitere Logik. Diese ist notwendig, um die vom Benutzer getätigten Eingaben zu überprüfen und somit keine ungültigen Werte an das Spiel zu übergeben. 
 
 \subsection*{Kontostand prüfen}
 
@@ -80,7 +80,7 @@ return parseFloat($('#money').text().replace(/[\.\u20ac]/g,''));
 }
 \end{lstlisting}
 
-Jedes mal wenn eine Aktion ausgeführt werden soll, die Geld kostet, wird zuerst der Kontostand überprüft bevor sie ausgeführt wird. Die Aktionen eines Buttons werden über das \enquote{onclick-Event} abgefangen. Damit diese jedoch nicht nicht immer ausführbar ist wird in die \enquote{onclick} Eigenschaft des Buttons eine Bedingung eingefügt. 
+(EA) Jedes mal wenn eine Aktion ausgeführt werden soll, die Geld kostet, wird zuerst der Kontostand überprüft bevor sie ausgeführt wird. Die Aktionen eines Buttons werden über das \enquote{onclick-Event} abgefangen. Damit diese jedoch nicht nicht immer ausführbar ist wird in die \enquote{onclick} Eigenschaft des Buttons eine Bedingung eingefügt. 
 
 \lstset{language=HTML}
 \begin{lstlisting} [caption={OnClick-Event mit Bedingung für Kontostandüberprüfung},captionpos=b]
@@ -90,7 +90,7 @@ Jedes mal wenn eine Aktion ausgeführt werden soll, die Geld kostet, wird zuerst
 </li>
 \end{lstlisting}
 
-In dieser Bedingung wird geprüft, ob die Kosten der Aktion durch den aktuellen Kontostand gedeckt sind. Ergibt diese Prüfung \enquote{true}, so wird die jeweilige Aktion ausgeführt, es erfolgt eine Meldung auf dem Bildschirm, der Button ändert seine Beschriftung und die jeweiligen Kosten werden direkt vom Konto abgezogen.
+(EA) In dieser Bedingung wird geprüft, ob die Kosten der Aktion durch den aktuellen Kontostand gedeckt sind. Ergibt diese Prüfung \enquote{true}, so wird die jeweilige Aktion ausgeführt, es erfolgt eine Meldung auf dem Bildschirm, der Button ändert seine Beschriftung und die jeweiligen Kosten werden direkt vom Konto abgezogen.
 
 \begin{figure} [H]
 	\centering
@@ -114,11 +114,11 @@ Folglich wird die Aktion des Buttons auch nicht ausgeführt.
 
 \subsection*{Eingabeüberprüfung in den Abteilungen}
 
-In den diversen Abteilungen müssen verschiedene Eingabemöglichkeiten berücksichtigt werden. 
+(EA) In den diversen Abteilungen müssen verschiedene Eingabemöglichkeiten berücksichtigt werden. 
 
 \subsection*{Forschung \& Entwicklung}
 
-Hier ist es nur möglich Erweiterung für das jeweilige Segment freizuschalten, wenn das Kontoguthaben ausreicht. Des Weiteren ist es auch nur möglich ein neues Segment freizuschalten, wenn ebenfalls das Geld ausreicht.
+(EA) Hier ist es nur möglich Erweiterung für das jeweilige Segment freizuschalten, wenn das Kontoguthaben ausreicht. Des Weiteren ist es auch nur möglich ein neues Segment freizuschalten, wenn ebenfalls das Geld ausreicht.
 
 Es wird aber auch ein bereits bestehender Bestand berücksichtigt, da Produktveränderungen auch an vorhandenen Uhren durchgeführt werden müssen. Dies verursacht somit einen zusätzlichen Aufwand. 
 
@@ -202,7 +202,7 @@ $(this).attr('class','numInput');
 
 \end{lstlisting}
 
-In der Abteilung Produktion lässt sich die Menge der zu produzierenden Uhren angeben. Die Menge ist jedoch durch die Produktionskapazität begrenzt. Insofern wird auf Eingaben, welche die Kapazität übersteigen durch eine Meldung hingewiesen und das Eingabefeld wird geleert. 
+(EA) In der Abteilung Produktion lässt sich die Menge der zu produzierenden Uhren angeben. Die Menge ist jedoch durch die Produktionskapazität begrenzt. Insofern wird auf Eingaben, welche die Kapazität übersteigen durch eine Meldung hingewiesen und das Eingabefeld wird geleert. 
 
 Wenn die Produktionsmenge jedoch im Rahmen des Möglichen liegt, so wird überprüft ob das Guthaben zu dem Zeitpunkt für die geplante Menge ausreicht. Ansonsten erfolgt die Meldung, dass dies nicht der Fall ist. 
 
@@ -210,11 +210,11 @@ Dadurch dass das Geld sofort nach der Eingabe abgezogen wird muss berücksichtig
 
 \subsection*{Einkauf}
 
-Beim Einkauf gibt es die Möglichkeit Produktressourcen durch Verbesserungen billiger zu beziehen. Hierbei erfolgt auch die Prüfung ob das Guthaben ausreicht.
+(EA) Beim Einkauf gibt es die Möglichkeit Produktressourcen durch Verbesserungen billiger zu beziehen. Hierbei erfolgt auch die Prüfung ob das Guthaben ausreicht.
 
 \subsection*{Vertrieb}
 
-Im Vertrieb wird lediglich überprüft der Verkaufspreis mit der geplanten Absatzmenge multipliziert. Wobei auch die Absatzmenge durch den Vorrat begrenzt ist.
+(EA) Im Vertrieb wird lediglich überprüft der Verkaufspreis mit der geplanten Absatzmenge multipliziert. Wobei auch die Absatzmenge durch den Vorrat begrenzt ist.
 
 \lstset{language=Java}
 \begin{lstlisting} [caption={Eingabeüberprüfung Vetrieb},captionpos=b]
@@ -249,13 +249,13 @@ $(this).val('');
 \clearpage
 \chapter{Entwickungsumgebung}
 \section{Eclipse JAVA EE IDE}
-Eclipse ist eine Programmierumgebung als Entwicklungswerkzeug von Software und Programmen aller Art. Es gibt eine Vielzahl von kommerziellen und kostenlosen Erweiterungen. Unter Eclipse ist es möglich nahezu jede Programmiersprache zu entwickeln. Für das Projekt wurde lediglich die Programmiersprache Java für die Logik der Simulation verwendet. Als integrierte Entwicklungsumgebung umfasst Eclipse nicht nur einen Texteditor zum erstellen des Quellcodes, sondern viele weiterere für die Softwareentwicklung benötigten oder hilfreichen Programme bzw. Funktionen. Diese lassen sich dank des modularen Aufbaus von Eclipse in beliebiger Kombination hinzufügen, oder man verwendet eine der für bestimmte Anwendungsfälle bereits vorkonfigurierten Versionen. Aufgrund der Verwendung einer Server-Client-Architektur unter Verwendung von Java Servlets, bietet es sich an, die entsprechende Version Eclipse JAVA EE IDE zu verwenden. Diese Version beinhaltet gleich die benötigten Komponenten, um den Tomcat-Server in die IDE einbinden zu können. Das Testen einzelner Funktionen kann somit innerhalb der Entwicklungsumgebung erfolgen und eine separate Verwaltung eines Webservers zu Testzwecken ist somit nicht erforderlich.
+(NF) Eclipse ist eine Programmierumgebung als Entwicklungswerkzeug von Software und Programmen aller Art. Es gibt eine Vielzahl von kommerziellen und kostenlosen Erweiterungen. Unter Eclipse ist es möglich nahezu jede Programmiersprache zu entwickeln. Für das Projekt wurde lediglich die Programmiersprache Java für die Logik der Simulation verwendet. Als integrierte Entwicklungsumgebung umfasst Eclipse nicht nur einen Texteditor zum erstellen des Quellcodes, sondern viele weiterere für die Softwareentwicklung benötigten oder hilfreichen Programme bzw. Funktionen. Diese lassen sich dank des modularen Aufbaus von Eclipse in beliebiger Kombination hinzufügen, oder man verwendet eine der für bestimmte Anwendungsfälle bereits vorkonfigurierten Versionen. Aufgrund der Verwendung einer Server-Client-Architektur unter Verwendung von Java Servlets, bietet es sich an, die entsprechende Version Eclipse JAVA EE IDE zu verwenden. Diese Version beinhaltet gleich die benötigten Komponenten, um den Tomcat-Server in die IDE einbinden zu können. Das Testen einzelner Funktionen kann somit innerhalb der Entwicklungsumgebung erfolgen und eine separate Verwaltung eines Webservers zu Testzwecken ist somit nicht erforderlich.
 \section{Git}
-Bei Git handelt es sich um eine freie Software zur Versionsverwaltung. Git ist Open Source und lediglich per Kommandozeile verfügbar. Dennoch gibt es bereits unzählige grafische UIs, die Git vereinfachen und seine Befehle grafisch darstellen (beispielhaft dafür: Sourcetree, GitHub Desktop oder TortoiseGit) . Git wird auch von zahlreichen Großprojekten verwendet, darunter Android, LibreOffice oder jQuery. 
+(NF) Bei Git handelt es sich um eine freie Software zur Versionsverwaltung. Git ist Open Source und lediglich per Kommandozeile verfügbar. Dennoch gibt es bereits unzählige grafische UIs, die Git vereinfachen und seine Befehle grafisch darstellen (beispielhaft dafür: Sourcetree, GitHub Desktop oder TortoiseGit) . Git wird auch von zahlreichen Großprojekten verwendet, darunter Android, LibreOffice oder jQuery. 
 \section{GitHub}
-GitHub ist der webbasierte Online-Dienst, welcher Entwicklungsprojekte auf einem Server bereitstellt und somit Filehosting betreibt. Grundsätzlich ist es nicht anderes als Git, eben nur nicht lokal, zudem bringt GitHub seinen eigenen grafischen UI Client namens GitHub Desktop mit. Ein grafischer Client wurde in diesem Projekt nicht mitgliederübergreifend eingesetzt. Weiterhin bieten viele Entwicklungsumgebungen wie auch Eclipse eine integrierte Möglichkeit auf die gehosteten Softwarerepositories zuzugreifen. Auch diese Lösung kam im Team zum Teil in Einsatz.
+(NF) GitHub ist der webbasierte Online-Dienst, welcher Entwicklungsprojekte auf einem Server bereitstellt und somit Filehosting betreibt. Grundsätzlich ist es nicht anderes als Git, eben nur nicht lokal, zudem bringt GitHub seinen eigenen grafischen UI Client namens GitHub Desktop mit. Ein grafischer Client wurde in diesem Projekt nicht mitgliederübergreifend eingesetzt. Weiterhin bieten viele Entwicklungsumgebungen wie auch Eclipse eine integrierte Möglichkeit auf die gehosteten Softwarerepositories zuzugreifen. Auch diese Lösung kam im Team zum Teil in Einsatz.
 \section{LaTeX}
-Für die Erstellung der Dokumentation wurde das Softwarepaket LaTeX genutzt. Als Editor wurden überwiegend TeXstudio oder der zur Softwareentwicklung gedachte Texteditor Atom eingesetzt.\\
+(NF) Für die Erstellung der Dokumentation wurde das Softwarepaket LaTeX genutzt. Als Editor wurden überwiegend TeXstudio oder der zur Softwareentwicklung gedachte Texteditor Atom eingesetzt.\\
 LaTeX ist ein Softwarepaket, welches die Benutzung des Textsatzsystems TeX mit Hilfe von Makros vereinfacht.
 LaTeX ist die populärste Methode TeX zu verwenden.
 TeXstudio ist ein plattformunabhängiger Editor zur Erstellung von genannten LaTeX Dokumenten.\\
