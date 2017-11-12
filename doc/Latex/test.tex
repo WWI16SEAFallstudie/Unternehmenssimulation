@@ -40,19 +40,17 @@ Abgeschlossen wird der Test durch die Ermittlung des Siegers mittels einer asser
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.8]{img/bild1_tests.png} 
-	\label{fig:abb}
-	\caption{Coverage des Szenariotests}
+	\caption{Coverage des Szenariotests} \label{fig:abb31}
 \end{figure}
 
-Dem Screenshot ist zu entnehmen, dass der Szenariotest „Spielablauftest“ unsere Unternehmenssimulation zu 42,7 % abdeckt. 
+Dem Screenshot ist zu entnehmen, dass der Szenariotest „Spielablauftest“ unsere Unternehmenssimulation zu 42,7\% abdeckt. 
 
 Die JUnit-Tests unserer Unternehmenssimulation wurden in drei Testklassen aufgeteilt, um die Tests übersichtlicher zu gestalten. Somit testest z.B. der Markttest Methoden des Markts, welche jedoch teilweise Methoden des Unternehmens voraussetzen. Daher wurden manche Methoden sowohl im Unternehmenstest als auch im Markttest durchgeführt. Die drei Testklassen erreichen zusammen eine Codecoverage von 61,1\%. In dem Screenshot ist zu erkennen, dass alle Klassen des Pakets „func“ zu mindestens 80\% getestet wurden. Die Codecoverage wurde durch das Auslassen des Tests für das Servlet verringert. 
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.8]{img/bild2_tests.png} 
-	\label{fig:abb}
-	\caption{Gesamte Coverage}
+	\caption{Gesamte Coverage} \label{fig:abb32}
 \end{figure}
 
 Beim Ausgrenzen des Servlets von der Codecoverage wird die Unternehmenssimulation zu 95,1\% durch Tests abgedeckt. 
@@ -60,8 +58,7 @@ Beim Ausgrenzen des Servlets von der Codecoverage wird die Unternehmenssimulatio
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.8]{img/bild3_tests.png} 
-	\label{fig:abb}
-	\caption{Gesamte Coverage (ohne Servlets)}
+	\caption{Gesamte Coverage (ohne Servlets)} \label{fig:abb33}
 \end{figure}
 
 

@@ -1,25 +1,20 @@
 \chapter{Fachkonzept}
-
-% Einleitungssatz
-Miri
-
 \section{Anforderungen}
 
 %Kurze Anforderungsanalyse und USE-Case beschreiben
-Abbildung \ref{fig:usecase} zeigt ein vereinfachtes Use Case Diagramm für den Spieler. Diese Anforderungen müssen in der Benutzeroberfläche und im tatsächlichen Fachkonzept umgesetzt werden. \\
+Abbildung \ref{fig:abb1} zeigt ein vereinfachtes Use Case Diagramm für den Spieler. Diese Anforderungen müssen in der Benutzeroberfläche und im tatsächlichen Fachkonzept umgesetzt werden. \\
 Um ein neues Spiel zu spielen, muss der Spieler ein Spiel starten können. Dies beinhaltet, dass ein Spielbrett erzeugt, ein Segment gewählt werden kann und in diesem Segment eine Standarduhr mit den ersten Attributen freigeschaltet wird. Je nach Segment werden verschiedene Kosten vom Kapital abgezogen um somit das Verhältnis von Billig zu Teuer zu gewährleisten. \\
 Währen dem Spiel kann der Spieler verschiedenes in seinem Unternehmen machen, wie zum Beispiel die Produktion erweitern, Attribute entwickeln, Uhren produzieren und verkaufen. Weitere Aufgaben können aus dem Use Case abgelesen werden. Sobald ein Spieler seine Uhr verbessert / produziert oder die Absatzmenge angegeben hat, wird die Runde beendet. In diesem Schritt werden die Spielerdaten gespeichert und somit auch die neue Konfiguration der Uhr berechnet. Anschließend ist der nächste Spieler an der Reihe. Sollte eine Runde von allen Spielern beendet worden sein ist die erste Periode zu Ende und die Marktsimmulation wird gestartet.
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.4]{img/UseCase.png} 
-	\label{fig:usecase}
-	\caption{Vereinfachtes Use Case}
+	\caption{Vereinfachtes Use Case} \label{fig:abb1}
 \end{figure}
 
 \newpage
 \section{Klassen}
-Im folgenden Abschnitt werden die einzelnen Klassen mit den wichtigsten Methoden kurz erläutert. Ein komplettes Klassendiagramm ist in Abbildung \ref{(UML-Final)} dargestellt. Der Markt wird im Kapitel \ref{KapitelMarkt} genauer beschrieben.
+Im folgenden Abschnitt werden die einzelnen Klassen mit den wichtigsten Methoden kurz erläutert. Ein komplettes Klassendiagramm ist in Abbildung \ref{fig:abb27} dargestellt. Der Markt wird im Kapitel \ref{KapitelMarkt} genauer beschrieben.
 
 \subsection{Spielbrett}
 Das Spielbrett managed den kompletten Spielablauf. Im ersten Schritt wird ein Spielbrett mit der Anzahl der Runden, dem Marktvolumen und dem Einflussbereich für den Markt erzeugt. Anschließend kann der erste Spieler sein Unternehmen leiten. Sobald er die Runde beendet, wird der nächste Spieler ausgewählt bis alle Spieler die Periode abgeschlossen haben. Mit abschließen der Periode wird die Martsimmulation gestartet. Genaueres im Kapitel \ref{KapitelMarkt}. \\
@@ -59,16 +54,14 @@ private void gewinnermittlung() {
 
 Nachdem der Gewinner ermittelt und auf der Benutzeroberfläche angezeigt wurde, kann ein neues Spiel gestartet werden und die Simulation startet von vorn.
 
-
-
 \newpage
 \subsection{Unternehmen}
-Abbildung \ref{fig:KlassUnternehmen} zeigt zunächst ein Klassendiagramm, um einen groben Überblick zu erhalten. Üblicherweise sind die Attribute und Methoden in einem Klassendiagramm untereinander, jedoch aus Platzgründen wurde es hier nebeneinander dargestellt.
+Abbildung \ref{fig:abb2} zeigt zunächst ein Klassendiagramm, um einen groben Überblick zu erhalten. Üblicherweise sind die Attribute und Methoden in einem Klassendiagramm untereinander, jedoch aus Platzgründen wurde es hier nebeneinander dargestellt.
+
 \begin{figure} [h]
 	\centering
-	\includegraphics[scale=0.6]{img/Unternehmen.png} 
-	\label{fig:KlassUnternehmen}
-	\caption{Klassendiagramm Unternehmen}
+	\includegraphics[scale=0.6]{img/Unternehmen.png} 	
+	\caption{Klassendiagramm Unternehmen} \label{fig:abb2}
 \end{figure}
 
 Im Unternehmen sind alle wichtigen Attribute gespeichert, die zu einem Unternehmen / Spieler gehören. Da der Spieler das Unternehmen leitet, wird im folgenden das Unternehmen benannt. \\
@@ -81,6 +74,7 @@ Das Interface iUhrenkategorie bietet die Methodensignaturen für die verschieden
 	
 	uhr[0] = new BilligUhr();
 \end{lstlisting}
+
 Das Attribut \textit{uhr} wird als iUhrenkategorie-Array mit der Größe drei erzeugt. Anschließend wird im ersten Feld eine BilligUhr erzeugt. Durch Polymorphy wird eine Referenzvariable vom Typ iUhrenkategorie erstellt. Somit können die verschiedenen Uhrenkategorien in einem Array erstellt und im Anschluss verwendet werden. 
 
 Im folgenden Abschnitt werden die wichtigsten Methoden der Klasse erläutert. Viele der Methoden sind durch ein switch-case in die Segmente unterteilt. Da sich der Codeteil nur um die Attributnamen verändert, wurden diese Codestücke durch [...] ersetzt.
@@ -130,8 +124,8 @@ public boolean erforscheUhr(String segment) {
 
 Zunächst wird überprüft, ob noch eine weitere Uhr erforscht werden kann. Jedes Unternehmen kann 3 Uhren entwickeln bzw. erforschen. Als nächstes wird geschaut, ob das passende Segment schon erforscht wurde, in dem die Uhr erstellt werden soll. Als letzte Abfrage wird über ein switch-case das Segment gewählt und die passende Uhr am passenden Indexplatz erzeugt.
 
-
 \subsubsection{Produktion erweitern}
+
 \lstset{language=Java} 
 \begin{lstlisting}
 public boolean erweitereProduktion(String segment) {
@@ -219,6 +213,7 @@ private int testeMengeProduzieren(int menge, int uhr, int limit, double prodKost
 
 \subsubsection{Segment freischalten}
 Diese Methode schaltet ein neues Segment frei. Als Übergabeparameter wird das Segment mitgegeben, welches freigeschaltet werden soll. Wenn genügend Kapital vorhanden ist, wird das Segment freigeschaltet.
+
 \lstset{language=Java} 
 \begin{lstlisting}
 public void freischaltenSegment(String segment) {
@@ -298,6 +293,7 @@ public boolean erweitereEinkauf(String segment) {
 Als Marketingkampagnen sind zwei verschiedene Arten vorgesehen. Als erstes ein Marketing speziell für die Uhr und ein Unternehmensmarketing. Das spezielle Marketing der Uhr verändert nur den Score der einen Uhr, bei der eine Kampagne gestartet werden soll. Im Unternehmensmarketing hingegen wirkt sich die Kampagne auf alle Uhren des Unternehmens aus.
 
 Bei beiden Varianten wird eine Zufallskomponente eingebaut, die über den Erfolg bzw. Misserfolg einer Marketingkampagne entscheidet. Diese Zufallskomponente erstellt eine zufällige Zahl zwischen 0 und 1. Sollte der Wert zwischen 0,4 und 0,6 liegen, scheitert die Marketingkampagne.
+
 \lstset{language=Java}
 \begin{lstlisting}
 public void uhrenMarketing(int uhr, boolean[] kampagne) {	
@@ -365,6 +361,7 @@ private boolean zufallMarketing() {
 \subsubsection{Kapital überprüfen}
 Diese Methode ist zwar klein, aber fein. Sie bestimmt bei fast allen Methoden ob das Kapital ausreichend für die benötigten Kosten sind. Ohne diese Methode könnte das Unternehmen alles entwickeln und hätte sozusagen unendliches Geld zur Verfügung.
 Sollte genügend Kapital vorhanden sein, dann werden die Kosten vom Kapital abgezogen und es wird \textit{true} zurückgegeben.
+
 \lstset{language=Java}
 \begin{lstlisting}
 private boolean checkeKapital(double kosten) {
@@ -377,11 +374,11 @@ private boolean checkeKapital(double kosten) {
 }
 \end{lstlisting}
 
-
 \subsection{Uhren}
 Hierunter zählen die Klassen BilligUhr, OekoUhr und PremiumUhr. Alle Klassen implementieren das Interface iUhrenkategorie und müssen alle Methoden des Interfaces implementieren. Das Unternehmen hat Zugriff auf alle implementierten Methoden, die im Interface erstellt wurden, durch die Polymorphie. 
 
-Die Uhren-Klassen dienen nur als Datenverwaltung, damit die Konfiguration der Uhren im Unternehmen gespeichert werden können. Die wichtigsten Methoden sind: \\
+Die Uhren-Klassen dienen nur als Datenverwaltung, damit die Konfiguration der Uhren im Unternehmen gespeichert werden können. Die wichtigsten Methoden sind: 
+
 \lstset{language=Java}
 \begin{lstlisting}
 public double berechneSelbstkosten() {
@@ -395,22 +392,23 @@ public double berechneMarktwert() {
 	return this.getMarktwert();
 }
 \end{lstlisting}
+
 Beide Methoden sind mit \textit{@Override} versehen. Dies zeigt, dass die Methode vom Interface überschrieben werden müssen, also ein Methodenbody eingefügt werden muss. Um die Selbstkosten zu berechnen, wird die Konfiguration der Uhr multipliziert mit den Kosten, die für diese Konfiguration stehen. Diese Kosten werden aus der Klasse \textit{Info.java} ausgelesen.\\
 
 Der Merktwert der Uhren wird berechnet aus den Selbstkosten multipliziert mit (1 + Score der Attribute). Je hochwertiger die Konfiguration der Uhr ist, desto höher ist der Score und somit steigt auch der Marktwert der Uhr an.
 
 \subsection{Interface iUhrenkategorie}
-Das Interface stellt alle Methoden für die Uhren zur Verfügung. An dieser Stelle nur das Klassendiagramm des Interfaces in Abbilung \ref{fig:iUhren}. Die wichtigsten Methoden werden im Abschnitt Unternehmen erläutert.
+Das Interface stellt alle Methoden für die Uhren zur Verfügung. An dieser Stelle nur das Klassendiagramm des Interfaces in Abbilung \ref{fig:abb3}. Die wichtigsten Methoden werden im Abschnitt Unternehmen erläutert.
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.7]{img/iUhrenkategorie.png} 
-	\label{fig:iUhren}
-	\caption{Klassendiagramm iUhrenkategorie}
+	\caption{Klassendiagramm iUhrenkategorie} \label{fig:abb3}
 \end{figure}
 
 \subsection{Uhrmodell}
 Die Klasse Uhrmodell wird als statische Klasse implementiert und dient dazu, gleiche Methoden der Uhren auszulagern. Die Klasse besteht aus 3 Methoden: 
+
 \lstset{language=Java}
 \begin{lstlisting}
 public static boolean[][] entwickleUhrwerk(boolean[][] uhrwerk, int index) {
@@ -446,10 +444,10 @@ public static boolean[][] entwickleGehaeuse(boolean[][] gehaeuse, int index) {
 
 Diese statischen Methoden erweitern das Uhrwerk, das Armband und das Gehäuse der Uhr. Als Übergabeparameter wird das gesamte Array und der feste Index übergeben. Anschließend wird das nächste Attribut freigeschaltet und das erweiterte Array zurückgegeben. Durch die statischen Methoden muss von dieser Klasse keine Instanz erstellt werden und die Methodenaufrufe erfolgen über den Klassennamen.
 
-
 \subsection{Info}
 Die Info.java dient ausschließlich der Informationsverwaltung. In dieser statischen Klasse werden die Attributnamen, die Kosten und die verschiedenen Faktoren bereitgestellt. Da dies eine statische Klasse ist, wird keine Instanz verwendet, sondern die Methoden können über den Klassennamen aufgerufen werden. \\
 Beispiel:
+
 \lstset{language=Java}
 \begin{lstlisting}
 	double kosten = Info.getSelbstkostenGeaeuseBillig()[0];

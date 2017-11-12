@@ -8,11 +8,11 @@ Die Maßgebenden Einflussfaktoren für die Entscheidung der verwendeten Software
 Der in der Vorlesung zur Fallstudie vorgestellte Tomcat-Server bietet die Möglichkeit, für ein in Java geschriebenes Fachkonzept ein Userinterface auf HTML-Basis bereitzustellen. Da die in Java zur Verfügung stehende SWING-Bibliothek nicht die gewünschten optischen Resultate erzielt, wurde diese schnell ausgeschlossen.
 
 \section{Übersicht über technischen Aufbau}
-Aus den zuvor genannten Beweggründen ergab sich schnell der in \ref{fig:abb} 
+Aus den zuvor genannten Beweggründen ergab sich schnell der in \ref{fig:abb29} 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.2]{img/3-schichten-modell.jpeg}
-	\caption{3-Schichten-Modell} \label{fig:abb}
+	\caption{3-Schichten-Modell} \label{fig:abb29}
 \end{figure}
 dargestellte Aufbau der Software. Im ersten Schritt zur Gliederung der Architektur wurde die aus dem Studium bekannte 3-Schichten-Architektur zugrunde gelegt. Die Software wird hierbei in die ebenen Datenhaltung, Fachkonzept sowie Darstellung untergliedert. Bei den vorgegebenen Anforderungen an die Fallstudie, ist eine Datenhaltung als optional angegeben. Zur Reduzierung des Programmieraufwandes wurde auf eine Datenbankanbindung oder sonstige Datenhaltung verzichtet.
 
@@ -55,10 +55,7 @@ Neben der Dokumentenstruktur ist die Verwendung von CSS-Regeln und CSS-Klassen e
 
 
 %EWALD
-% !TEX root =  master.tex
-
 \section{Eingabeüberprüfung im UI durch JavaScript}
-
 Da der Java-Code nicht im im HTML-basierten UI abgebildet ist benötigt es auf UI-Ebene eine weitere Logik. Diese ist notwendig, um die vom Benutzer getätigten Eingaben zu überprüfen und somit keine ungültigen Werte an das Spiel zu übergeben. 
 
 \subsection*{Kontostand prüfen}
@@ -85,13 +82,11 @@ In dieser Bedingung wird geprüft, ob die Kosten der Aktion durch den aktuellen 
 
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.5]{img/button-do-undo.jpeg} 
-	\label{fig:button-do-undo}
-	\caption{Button: do-undo}
+	\includegraphics[scale=0.38]{img/button-do-undo.jpeg} 
+	\caption{Button: do-undo} \label{fig:abb30}
 \end{figure}
 
 Beim erneuten Drücken auf den Button wird der Kontostand wieder um den vorher abgezogenen Betrag erhöht und die Kosten für die Aktion werden wieder auf dem Button ausgewiesen. 
-
 
 Wenn der Kontostand jedoch nicht ausreicht und der Button auch nichts bereits einmal gedrückt wurde, so wird die Funktion \enquote{notEnough()} ausgeführt, welche eine Meldung auf dem Bildschirm ausgibt, dass das Geld nicht ausreicht. 
 
@@ -105,7 +100,6 @@ alert('Das Kontoguthaben reicht nicht aus!');
 
 Folglich wird die Aktion des Buttons auch nicht ausgeführt.
 
-
 \subsection*{Eingabeüberprüfung in den Abteilungen}
 
 In den diversen Abteilungen müssen verschiedene Eingabemöglichkeiten berücksichtigt werden. 
@@ -117,7 +111,6 @@ Hier ist es nur möglich Erweiterung für das jeweilige Segment freizuschalten, 
 Es wird aber auch ein bereits bestehender Bestand berücksichtigt, da Produktveränderungen auch an vorhandenen Uhren durchgeführt werden müssen. Dies verursacht somit einen zusätzlichen Aufwand. 
 
 \subsection*{Produktion}
-
 
 \lstset{language=Java}
 \begin{lstlisting}
@@ -207,7 +200,6 @@ Dadurch dass das Geld sofort nach der Eingabe abgezogen wird muss berücksichtig
 
 Beim Einkauf gibt es die Möglichkeit Produktressourcen durch Verbesserungen billiger zu beziehen. Hierbei erfolgt auch die Prüfung ob das Guthaben ausreicht.
 
-
 \subsection*{Vertrieb}
 
 Im Vertrieb wird lediglich überprüft der Verkaufspreis mit der geplanten Absatzmenge multipliziert. Wobei auch die Absatzmenge durch den Vorrat begrenzt ist.
@@ -241,21 +233,6 @@ $(this).val('');
 }
 });
 \end{lstlisting}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \clearpage
 \chapter{Entwickungsumgebung}
