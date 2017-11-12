@@ -81,10 +81,11 @@
 							<div class="selectSegment">
 								<span class="listhead">Uhrwerk</span>
 									<ul class="list-group researchModel1">
-										<li class="${rO} list-group-item" onclick="researchModel('researchModel1',0);">Umwelt <span>${uO} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
-										<li class="${rL} list-group-item" onclick="researchModel('researchModel1',1);">Luxus <span>${uP} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
-										<li class="${rB} list-group-item" onclick="researchModel('researchModel1',2);">Groﬂserienfertigung <span>${uB} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
+										<li class="${rO} list-group-item" onclick="if(getMoney() >= $(this).text().replace(/[\Umwelt\Luxus\Gro\u00DFserienfertigung\.\u20ac]/g,'')){researchModel('researchModel1',0);}else{notEnough();};">Umwelt <span>${uO} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
+										<li class="${rL} list-group-item" onclick="if(getMoney() >= $(this).text().replace(/[\Umwelt\Luxus\Gro\u00DFserienfertigung\.\u20ac]/g,'')){researchModel('researchModel1',1);}else{notEnough();};">Luxus <span>${uP} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
+										<li class="${rB} list-group-item" onclick="if(getMoney() >= $(this).text().replace(/[\Umwelt\Luxus\Gro\u00DFserienfertigung\.\u20ac]/g,'')){researchModel('researchModel1',2);}else{notEnough();};">Groﬂserienfertigung <span>${uB} &euro;</span><span class="glyphicon glyphicon-ok"></span></li>
 									</ul>
+									<!-- onclick="if(getMoney() >= $(this).text().replace(/[\.\+\u20ac]/g,'')  && !$(this).hasClass('d')){research('costReductionOeko',1); change($(this)); }else if($(this).hasClass('d')){research('costReductionOeko',1); change($(this));}else{notEnough()}"-->
 								<a class="addBtn" onclick="acceptResearch('watch1');">Erforschen</a>
 								<a class="addBtn" onclick="cancelResearch('watch1','researchModel1');">Abbrechen</a>		
 							</div>
