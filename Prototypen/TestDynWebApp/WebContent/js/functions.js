@@ -484,6 +484,16 @@ $('#quantitySupplied0').blur(function()
 	}
 });
 
+$('#offerPrice0').blur(function()
+{
+	if($('#quantitySupplied0').val())
+	{
+		let a = $('#quantitySupplied0').val();
+		let verkauf = parseFloat($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2})) * parseFloat(a);
+		$('#verkauf0').text(parseFloat(verkauf).toLocaleString('de-DE',{minimumFractionDigits: 2})+ ' \u20ac');
+	}
+});
+
 
 $('#quantitySupplied1').blur(function()
 		{
@@ -510,7 +520,17 @@ $('#quantitySupplied1').blur(function()
 			}
 		});
 
-$('#quantitySupplied02').blur(function()
+$('#offerPrice1').blur(function()
+		{
+			if($('#quantitySupplied1').val())
+			{
+				let a = $('#quantitySupplied1').val();
+				let verkauf = parseFloat($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2})) * parseFloat(a);
+				$('#verkauf1').text(parseFloat(verkauf).toLocaleString('de-DE',{minimumFractionDigits: 2})+ ' \u20ac');
+			}
+		});
+
+$('#quantitySupplied2').blur(function()
 		{
 			if( !$(this).val() == '')
 			{
@@ -534,6 +554,16 @@ $('#quantitySupplied02').blur(function()
 					alert('Sie m\u00fcssen zuerst einen Verkaufspreis eingeben!');
 					$(this).val('');
 				}
+			}
+		});
+
+$('#offerPrice2').blur(function()
+		{
+			if($('#quantitySupplied2').val())
+			{
+				let a = $('#quantitySupplied2').val();
+				let verkauf = parseFloat($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2})) * parseFloat(a);
+				$('#verkauf2').text(parseFloat(verkauf).toLocaleString('de-DE',{minimumFractionDigits: 2})+ ' \u20ac');
 			}
 		});
 
