@@ -57,13 +57,13 @@
 %\listoftables
 
 %	Listingsverzeichnis
-%\lstlistoflistings
+\lstlistoflistings
 
 % 	Algorithmenverzeichnis
-\listofalgorithms
+%\listofalgorithms
 
 % 	Abkürzungsverzeichnis (siehe Datei acronyms.tex!)
-%\input{acronyms}
+\input{acronyms}
 
 %--------------------------------
 % Start des Textteils der Arbeit
@@ -102,9 +102,6 @@
 % 	Test
 \input{test.tex}
 
-%	Use Cases
-\input{usecases.tex}
-
 % 	Projektorganisation
 \input{prj_orga.tex}
 
@@ -123,11 +120,13 @@
 \appendix
 \ihead{\appendixname~\thechapter} % Neue Header-Definition
 
-% appendix.tex einziehen
-\input{appendix}
-
 % Ehrenwörtliche Erklärung ewerkl.tex einziehen
 \input{ewerkl.tex}
+
+% appendix.tex einziehen
+%\input{appendix}
+
+
 
 
 \end{document}

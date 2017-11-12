@@ -12,8 +12,7 @@ Aus den zuvor genannten Beweggründen ergab sich schnell der in \ref{fig:abb}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.2]{img/3-schichten-modell.jpeg}
-	\label{fig:abb} 
-	\caption{3-Schichten-Modell} 
+	\caption{3-Schichten-Modell} \label{fig:abb}
 \end{figure}
 dargestellte Aufbau der Software. Im ersten Schritt zur Gliederung der Architektur wurde die aus dem Studium bekannte 3-Schichten-Architektur zugrunde gelegt. Die Software wird hierbei in die ebenen Datenhaltung, Fachkonzept sowie Darstellung untergliedert. Bei den vorgegebenen Anforderungen an die Fallstudie, ist eine Datenhaltung als optional angegeben. Zur Reduzierung des Programmieraufwandes wurde auf eine Datenbankanbindung oder sonstige Datenhaltung verzichtet.
 
@@ -53,6 +52,210 @@ Mittels Buttons kann der Spieler wählen, welche Aktionen in der aktuellen Spiel
 Nach Tätigung aller während der aktuellen Spielrunde gewünschten Spielaktionen, kann der Spieler den Button \enquote{Runde beenden} betätigen. Die in den versteckten Inputfeldern gesammelten Spielaktionen werdenüber das HTML-Formular in Form eines Http-Requests an die doPost()-Methode innerhalb des Servlet-Objekts weitergeleitet. Innerhalb der Methode wird geprüft welche Buttons angeklickt wurden und die äquivalenten Methoden im Fachkonzept ausgeführt sowie die Methode zum Wechsel des Spielers aufgerufen. Am Ende dieses Abschnittes wird eine neue Seite mit Anzeige der aktuellen Runde sowie des nächsten Spielers angezeigt. Dieser kann gemäß des Hot-Seat-Verfahrens den Platz am Bildschirm einnehmen und seine Runde beginnen. Zum Ende der letzen Spielrunde wird das letzte Dokument zur Darstellung des Gewinners, bzw. der Gewinnreihenfolge der Spieler angezeigt. Unterhalb der Gewinneranzeige gibt es die Möglichkeit ein neues Spiel zu starten.
 
 Neben der Dokumentenstruktur ist die Verwendung von CSS-Regeln und CSS-Klassen ein weiteres wichtiges Element der Umsetzung des Userinterface. Die CSS-Regeln sind derart gestaltet, dass je nachdem was der Spieler freigeschalten bzw. nicht freigeschaltenen hat, eine entsprechende optische Darstellung erfolgt. Als Selektoren kommen hierbei überwiegend CSS-Klassen zum Einsatz. In den entsprechenden HTML-Elementen sind im Value-Bereich des class-Attributs Value Expressions eingebettet. Je nach freigeschaltenen Spielelementen werden im request-Objekt entsprechende Werte hinterlegt. Beim Kompilieren der Webseite werden die Value Expressions ggf. durch die entsprechenden Werte im request-Objekt ersetzt und somit die definierte CSS-Klasse beim HTML-Element definiert. Im Spielerobjekt hinterlegte Werte wie zum Beispiel das aktuelle Kapital oder der Warenbestand der Uhren werden auf die gleiche Art und Weise der Webseite übergeben. Die Value Expressions sind dann jedoch so im Quellcode plaziert, dass diese als Text ausgegeben werden und nicht dem jeweiligen Element als class-Atribute mitgegeben werden.
+
+
+%EWALD
+% !TEX root =  master.tex
+
+\section{Eingabeüberprüfung im UI durch JavaScript}
+
+Da der Java-Code nicht im im HTML-basierten UI abgebildet ist benötigt es auf UI-Ebene eine weitere Logik. Diese ist notwendig, um die vom Benutzer getätigten Eingaben zu überprüfen und somit keine ungültigen Werte an das Spiel zu übergeben. 
+
+\subsection*{Kontostand prüfen}
+
+\lstset{language=Java}
+\begin{lstlisting}
+function getMoney()
+{
+return parseFloat($('#money').text().replace(/[\.\u20ac]/g,''));
+}
+\end{lstlisting}
+
+Jedes mal wenn eine Aktion ausgeführt werden soll, die Geld kostet, wird zuerst der Kontostand überprüft bevor sie ausgeführt wird. Die Aktionen eines Buttons werden über das \enquote{onclick-Event} abgefangen. Damit diese jedoch nicht nicht immer ausführbar ist wird in die \enquote{onclick} Eigenschaft des Buttons eine Bedingung eingefügt. 
+
+\lstset{language=HTML}
+\begin{lstlisting}
+<li class="${clOc1} list-group-item">Holz 
+<span class="glyphicon glyphicon-ok"></span>
+<a class="addBtn" onclick="if(getMoney() >= $(this).text().replace(/[\.\+\u20ac]/g,'')  && !$(this).hasClass('d')){research('researchCaseOeko',1); change($(this)); }else if($(this).hasClass('d')){research('researchCaseOeko',1); change($(this));}else{notEnough()}">+ ${clCOc1} &euro;</a>
+</li>
+\end{lstlisting}
+
+In dieser Bedingung wird geprüft, ob die Kosten der Aktion durch den aktuellen Kontostand gedeckt sind. Ergibt diese Prüfung \enquote{true}, so wird die jeweilige Aktion ausgeführt, es erfolgt eine Meldung auf dem Bildschirm, der Button ändert seine Beschriftung und die jeweiligen Kosten werden direkt vom Konto abgezogen.
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.5]{img/button-do-undo.jpeg} 
+	\label{fig:button-do-undo}
+	\caption{Button: do-undo}
+\end{figure}
+
+Beim erneuten Drücken auf den Button wird der Kontostand wieder um den vorher abgezogenen Betrag erhöht und die Kosten für die Aktion werden wieder auf dem Button ausgewiesen. 
+
+
+Wenn der Kontostand jedoch nicht ausreicht und der Button auch nichts bereits einmal gedrückt wurde, so wird die Funktion \enquote{notEnough()} ausgeführt, welche eine Meldung auf dem Bildschirm ausgibt, dass das Geld nicht ausreicht. 
+
+\lstset{language=Java}
+\begin{lstlisting}
+function notEnough()
+{
+alert('Das Kontoguthaben reicht nicht aus!');
+}
+\end{lstlisting}
+
+Folglich wird die Aktion des Buttons auch nicht ausgeführt.
+
+
+\subsection*{Eingabeüberprüfung in den Abteilungen}
+
+In den diversen Abteilungen müssen verschiedene Eingabemöglichkeiten berücksichtigt werden. 
+
+\subsection*{Forschung \& Entwicklung}
+
+Hier ist es nur möglich Erweiterung für das jeweilige Segment freizuschalten, wenn das Kontoguthaben ausreicht. Des Weiteren ist es auch nur möglich ein neues Segment freizuschalten, wenn ebenfalls das Geld ausreicht.
+
+Es wird aber auch ein bereits bestehender Bestand berücksichtigt, da Produktveränderungen auch an vorhandenen Uhren durchgeführt werden müssen. Dies verursacht somit einen zusätzlichen Aufwand. 
+
+\subsection*{Produktion}
+
+
+\lstset{language=Java}
+\begin{lstlisting}
+$('#output0').blur(function()
+{
+if($(this).val())
+{
+if($(this).hasClass('d'))
+{
+let undoProdCost = $(this).attr('class').replace('d','').replace('numInput','');
+let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+
+if($(this).val() > parseInt($('#productionLimit0').text().replace(/[\.]/g,'')))
+{
+alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit0').text());
+$(this).attr('class','numInput');
+$(this).val('');
+}
+else
+{
+if(getMoney() >= ($(this).val() * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''))))
+{
+let prodCost = $(this).val() * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+let difference = getMoney() - prodCost;
+$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+$(this).attr('class','numInput');
+$(this).addClass('d');
+$(this).addClass($(this).val());
+}
+else
+{
+alert("Das Guthaben reicht nicht aus!");
+$(this).val('');
+$('#prodCost0').val('');
+}
+}
+}
+else
+{
+if($(this).val() > parseInt($('#productionLimit0').text().replace(/[\.]/g,'')))
+{
+alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit0').text());
+$(this).val('');
+$('#prodCost0').val('');
+}
+else
+{
+if(getMoney() >= ($(this).val() * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''))))
+{
+let prodCost = $(this).val() * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+let difference = getMoney() - prodCost;
+$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+$(this).addClass('d');
+$(this).addClass($(this).val());
+}
+else
+{
+alert("Das Guthaben reicht nicht aus!");
+$(this).val('');
+$('#prodCost0').val('');
+}
+}
+}
+}
+else if(!$(this).val())
+{
+if($(this).hasClass('d'))
+{
+let undoProdCost = $(this).attr('class').replace('d','').replace('numInput','');
+let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
+$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
+$(this).attr('class','numInput');
+}
+}
+});
+
+\end{lstlisting}
+
+In der Abteilung Produktion lässt sich die Menge der zu produzierenden Uhren angeben. Die Menge ist jedoch durch die Produktionskapazität begrenzt. Insofern wird auf Eingaben, die die Kapazität übersteigen durch eine Meldung hingewiesen und das Eingabefeld wird geleert. 
+
+Wenn die Produktionsmenge jedoch im Rahmen des Möglichen liegt, so wird überprüft ob das Guthaben zu dem Zeitpunkt für die geplante Menge ausreicht. Ansonsten erfolgt die Meldung, dass dies nicht der Fall ist. 
+
+Dadurch dass das Geld sofort nach der Eingabe abgezogen wird muss berücksichtigt werden, dass Eingaben wieder rückgängig gemacht werden können. Insofern wird erkannt dass bereits eine Eingabe erfolgt ist und bei Änderung werden die vorher abgezogenen Beträge erst wieder auf das Konto hinzu addiert um danach die neuen Produktionskosten abziehen.
+
+\subsection*{Einkauf}
+
+Beim Einkauf gibt es die Möglichkeit Produktressourcen durch Verbesserungen billiger zu beziehen. Hierbei erfolgt auch die Prüfung ob das Guthaben ausreicht.
+
+
+\subsection*{Vertrieb}
+
+Im Vertrieb wird lediglich überprüft der Verkaufspreis mit der geplanten Absatzmenge multipliziert. Wobei auch die Absatzmenge durch den Vorrat begrenzt ist.
+
+\lstset{language=Java}
+\begin{lstlisting}
+$('#quantitySupplied0').blur(function()
+{
+if( !$(this).val() == '')
+{
+if(!$('#offerPrice0').val() == '')
+{
+if($(this).val() > parseInt($('#stock0').text().replace(/[\.]/g,'')))
+{
+alert('Der Vorrat reicht nicht aus! \nVorrat: '+$('#stock0').text());
+$(this).val('');
+}
+else if($(this).val() > 0 && $(this).val() <= parseInt($('#stock0').text().replace(/[\.]/g,'')))
+{
+alert($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2}));
+alert($('#offerPrice0').val());
+let verkauf = parseFloat($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2})) * parseFloat($('#offerPrice0').val());
+$('#verkauf0').text(parseFloat(verkauf)+ ' \u20ac');
+}
+}
+else
+{
+alert('Sie m\u00fcssen zuerst einen Verkaufspreis eingeben!');
+$(this).val('');
+}
+}
+});
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \clearpage
 \chapter{Entwickungsumgebung}
