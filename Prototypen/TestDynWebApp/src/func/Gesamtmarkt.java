@@ -89,6 +89,7 @@ public class Gesamtmarkt {
 				if (uhr != null) {
 					uhr.verkaufen();
 					uhr.setMarketingboost(0.0);
+					uhr.setAngeboteneMenge(0);
 					einzelunternehmen.setKapital(einzelunternehmen.getKapital() + (uhr.getAbgenommeneMenge()*uhr.getAngebotspreis()));
 				}
 			}
