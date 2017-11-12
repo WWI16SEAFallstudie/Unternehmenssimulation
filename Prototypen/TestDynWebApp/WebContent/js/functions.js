@@ -217,6 +217,7 @@ $('#output0').blur(function()
 				alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit0').text());
 				$(this).attr('class','numInput');
 				$(this).val('');
+				$('#prodCost0').text('');
 			}
 			else
 			{
@@ -228,12 +229,14 @@ $('#output0').blur(function()
 					$(this).attr('class','numInput');
 					$(this).addClass('d');
 					$(this).addClass($(this).val());
+					$('#prodCost0').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2})+' \u20ac');
 				}
 				else
 				{
 					alert("Das Guthaben reicht nicht aus!");
 					$(this).val('');
-					$('#prodCost0').val('');
+					$(this).attr('class','numInput');
+					$('#prodCost0').text('');
 				}
 			}
 			
@@ -245,7 +248,7 @@ $('#output0').blur(function()
 			{
 				alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit0').text());
 				$(this).val('');
-				$('#prodCost0').val('');
+				$('#prodCost0').text('');
 			}
 			else
 			{
@@ -256,12 +259,14 @@ $('#output0').blur(function()
 					$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
 					$(this).addClass('d');
 					$(this).addClass($(this).val());
+					$('#prodCost0').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2})+' \u20ac');
 				}
 				else
 				{
 					alert("Das Guthaben reicht nicht aus!");
 					$(this).val('');
-					$('#prodCost0').val('');
+					$(this).attr('class','numInput');
+					$('#prodCost0').text('');
 				}
 			}
 		}
@@ -270,12 +275,11 @@ $('#output0').blur(function()
 	{
 		if($(this).hasClass('d'))
 		{
-			
 			let undoProdCost = $(this).attr('class').replace('d','').replace('numInput','');
 			let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal0').text().replace(/[\.\u20ac]/g,''));
 			$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
 			$(this).attr('class','numInput');
-			
+			$('#prodCost0').text('');
 		}
 	}
 });
@@ -296,6 +300,7 @@ $('#output1').blur(function()
 						alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit1').text());
 						$(this).attr('class','numInput');
 						$(this).val('');
+						$('#prodCost1').text('');
 					}
 					else
 					{
@@ -307,11 +312,14 @@ $('#output1').blur(function()
 							$(this).attr('class','numInput');
 							$(this).addClass('d');
 							$(this).addClass($(this).val());
+							$('#prodCost1').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2})+' \u20ac');
+
 						}
 						else
 						{
 							alert("Das Guthaben reicht nicht aus!");
 							$(this).val('');
+							$(this).attr('class','numInput');
 							$('#prodCost1').val('');
 						}
 					}
@@ -324,7 +332,8 @@ $('#output1').blur(function()
 					{
 						alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit1').text());
 						$(this).val('');
-						$('#prodCost0').val('');
+						$('#prodCost1').val('');
+						$('#prodCost1').text('');
 					}
 					else
 					{
@@ -335,12 +344,15 @@ $('#output1').blur(function()
 							$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
 							$(this).addClass('d');
 							$(this).addClass($(this).val());
+							$('#prodCost1').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2})+' \u20ac');
+
 						}
 						else
 						{
 							alert("Das Guthaben reicht nicht aus!");
 							$(this).val('');
-							$('#prodCost1').val('');
+							$(this).attr('class','numInput');
+							$('#prodCost1').text('');
 						}
 					}
 				}
@@ -354,7 +366,7 @@ $('#output1').blur(function()
 					let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal1').text().replace(/[\.\u20ac]/g,''));
 					$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
 					$(this).attr('class','numInput');
-					
+					$('#prodCost1').text('');
 				}
 			}
 
@@ -388,12 +400,14 @@ $('#output2').blur(function()
 							$(this).attr('class','numInput');
 							$(this).addClass('d');
 							$(this).addClass($(this).val());
+							$('#prodCost2').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2})+' \u20ac');
 						}
 						else
 						{
 							alert("Das Guthaben reicht nicht aus!");
 							$(this).val('');
-							$('#prodCost2').val('');
+							$(this).attr('class','numInput');
+							$('#prodCost2').text('');
 						}
 					}
 					
@@ -405,7 +419,7 @@ $('#output2').blur(function()
 					{
 						alert("Die Produktionskapazitaeten reichen nicht aus!\nDas Limit betraegt: "+$('#productionLimit2').text());
 						$(this).val('');
-						$('#prodCost2').val('');
+						$('#prodCost2').text('');
 					}
 					else
 					{
@@ -416,12 +430,14 @@ $('#output2').blur(function()
 							$('#money').text(difference.toLocaleString('de-DE',{minimumFractionDigits: 2}));
 							$(this).addClass('d');
 							$(this).addClass($(this).val());
+							$('#prodCost2').text(prodCost.toLocaleString('de-DE',{minimumFractionDigits: 2})+' \u20ac');
 						}
 						else
 						{
 							alert("Das Guthaben reicht nicht aus!");
 							$(this).val('');
-							$('#prodCost2').val('');
+							$(this).attr('class','numInput');
+							$('#prodCost2').text('');
 						}
 					}
 				}
@@ -435,7 +451,7 @@ $('#output2').blur(function()
 					let undoSum = getMoney() + undoProdCost * parseFloat($('#ekVal2').text().replace(/[\.\u20ac]/g,''));
 					$('#money').text(undoSum.toLocaleString('de-DE',{minimumFractionDigits: 2}));
 					$(this).attr('class','numInput');
-					
+					$('#prodCost2').text('');
 				}
 			}
 
