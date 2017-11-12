@@ -21,7 +21,7 @@ Das Spielbrett managed den kompletten Spielablauf. Im ersten Schritt wird ein Sp
 Nachdem alle Runden gespielt und die Marktsimmulation am Ende noch einmal durchgelaufen ist, wird der Sieger ermittelt. Die Methode der Gewinnermittlung ist im folgenden aufgezeigt: \\
 
 \lstset{language=Java} 
-\begin{lstlisting}
+\begin{lstlisting} [caption={Gewinnermittlung},captionpos=b]
 private void gewinnermittlung() {
 	this.sieger = new int[spieler.length];
 	double kapi[] = new double[spieler.length];
@@ -69,7 +69,7 @@ Im Unternehmen sind alle wichtigen Attribute gespeichert, die zu einem Unternehm
 Das Interface iUhrenkategorie bietet die Methodensignaturen für die verschiedenen Uhren an und wird somit als Schnittstelle verwendet. Damit das Unternehmen alle Uhren in einem Array vereinen kann, wird Polymorphie angewandt. Im folgenden Codeabschnitt wird gezeigt, wie Polymorphie in Java verwendet wird. \\
 
 \lstset{language=Java} 
-\begin{lstlisting}
+\begin{lstlisting} [caption={Interface iUHrenkategorie},captionpos=b]
 	private iUhrenkategorie uhr[] = new iUhrenkategorie[3];
 	
 	uhr[0] = new BilligUhr();
@@ -83,7 +83,7 @@ Im folgenden Abschnitt werden die wichtigsten Methoden der Klasse erläutert. Vi
 Das erforschen der Uhr ist einer der wichtigsten Methoden im Unternehmen. Sobald das Spiel gestartet und der Spieler ein Segment gewählt hat, wird eine Standarduhr in dem Segment erforscht. Alle weiteren Uhren können während dem Spiel erforscht werden, sofern genügend Kapital vorhanden ist. 
 
 \lstset{language=Java} 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Neue Uhr erforschen},captionpos=b]
 public boolean erforscheUhr(String segment) {
 	boolean result = false;
 	// Test auf naechste Freie Uhr
@@ -127,7 +127,7 @@ Zunächst wird überprüft, ob noch eine weitere Uhr erforscht werden kann. Jede
 \subsubsection{Produktion erweitern}
 
 \lstset{language=Java} 
-\begin{lstlisting}
+\begin{lstlisting} [caption={Produktion erweitern},captionpos=b]
 public boolean erweitereProduktion(String segment) {
 	// Erweitert die Kapazitaet -> erhoeht also das Produktionslimit
 	switch(segment) {
@@ -168,7 +168,7 @@ Zunächst wird überprüft, ob diese Uhr überhaupt existiert und somit wird ein
 Als nächstes wird mit der privaten Methode \textit{testeMengeProduzieren} getestet, ob die gewünschte Menge produziert werden kann. Sollte nicht genügend Kapital vorhanden sein, wird die Menge berechnet, die mit dem letzten Kapital noch Produziert werden kann. Im letzten Schritt wird der neue Bestand gesetzt und das Kapital um die Kosten verringert.
 
 \lstset{language=Java} 
-\begin{lstlisting}
+\begin{lstlisting} [caption={Gewünschte Menge produzieren},captionpos=b]
 public void produzieren(int menge, int uhr) {
 	if(this.uhr[uhr] != null) {
 		int m = 0;
@@ -215,7 +215,7 @@ private int testeMengeProduzieren(int menge, int uhr, int limit, double prodKost
 Diese Methode schaltet ein neues Segment frei. Als Übergabeparameter wird das Segment mitgegeben, welches freigeschaltet werden soll. Wenn genügend Kapital vorhanden ist, wird das Segment freigeschaltet.
 
 \lstset{language=Java} 
-\begin{lstlisting}
+\begin{lstlisting} [caption={Weiteres Segment freischalten},captionpos=b]
 public void freischaltenSegment(String segment) {
 	switch(segment) {
 		case "Billig":
@@ -238,7 +238,7 @@ public void freischaltenSegment(String segment) {
 In diesem Abschnitt werden die Attribute Uhrwerk, Gehäuse und Armband entwickelt. Da die Methoden ähnlich sind, wird hier als Codebeispiel nur das Uhrwerk angegeben. Der Übergabeparameter ist das Segment und der Index, welche Erweiterung freigeschaltet werden soll. Nachdem das Kapital ausreichend ist, wird das Attribut entwickelt. Das Entwickeln wird in der Klasse Uhrmodell ausgelagert, da dies für alle Uhren identisch ist und somit kein Wiederholender Code geschrieben wird.
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Weiteres Uhrwerk erforschen},captionpos=b]
 public void erforscheUhrwerk(String segment, int index) {
 	double kosten = 0;
 		switch (segment) {
@@ -261,7 +261,7 @@ public void erforscheUhrwerk(String segment, int index) {
 In dieser Methode wird der Einkauf erweitert und somit die Anschaffungskosten der Uhr geringer. Sollte genügend Kapital vorhanden sein, so wird ein Flag gesetzt, welches in der Methode \textit{produzieren} abgefragt und mit den Selbstkosten verrechnet wird. Als Übergabeparameter wird das Segment übergeben.
 
 \lstset{language=Java}
-\begin{lstlisting}{\listalgorithmname}
+\begin{lstlisting}[caption={Einkauf erweitern},captionpos=b]
 public boolean erweitereEinkauf(String segment) {
 	switch(segment) {
 		case "Billig":
@@ -295,7 +295,7 @@ Als Marketingkampagnen sind zwei verschiedene Arten vorgesehen. Als erstes ein M
 Bei beiden Varianten wird eine Zufallskomponente eingebaut, die über den Erfolg bzw. Misserfolg einer Marketingkampagne entscheidet. Diese Zufallskomponente erstellt eine zufällige Zahl zwischen 0 und 1. Sollte der Wert zwischen 0,4 und 0,6 liegen, scheitert die Marketingkampagne.
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Marketingkampagne starten},captionpos=b]
 public void uhrenMarketing(int uhr, boolean[] kampagne) {	
 	// Kosten der Kampagnen berechnen
 	double kostenMarketing = berechneMarketingkosten(kampagne, "Uhr");
@@ -363,7 +363,7 @@ Diese Methode ist zwar klein, aber fein. Sie bestimmt bei fast allen Methoden ob
 Sollte genügend Kapital vorhanden sein, dann werden die Kosten vom Kapital abgezogen und es wird \textit{true} zurückgegeben.
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Überprüfung vorhandenes Kapital},captionpos=b]
 private boolean checkeKapital(double kosten) {
 	if( (this.kapital - kosten) >= 0) {
 		this.kapital -= kosten;
@@ -380,7 +380,7 @@ Hierunter zählen die Klassen BilligUhr, OekoUhr und PremiumUhr. Alle Klassen im
 Die Uhren-Klassen dienen nur als Datenverwaltung, damit die Konfiguration der Uhren im Unternehmen gespeichert werden können. Die wichtigsten Methoden sind: 
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Selbstkosten/Marktwert berechnen},captionpos=b]
 public double berechneSelbstkosten() {
 	return( Info.getSelbstkostenArmbandBillig()[this.getArmband()] + Info.getSelbstkostenGehaeuseBillig()[this.getGehaeuse()] 
 	+ Info.getSelbstkostenUhrwerkBillig()[this.getUhrwerk()] );
@@ -410,7 +410,7 @@ Das Interface stellt alle Methoden für die Uhren zur Verfügung. An dieser Stel
 Die Klasse Uhrmodell wird als statische Klasse implementiert und dient dazu, gleiche Methoden der Uhren auszulagern. Die Klasse besteht aus 3 Methoden: 
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Weiteres Merkmal entwickeln},captionpos=b]
 public static boolean[][] entwickleUhrwerk(boolean[][] uhrwerk, int index) {
 	for(int i = 0; i < 3; i++) {
 		if(uhrwerk[index][i] == false) {
@@ -449,6 +449,6 @@ Die Info.java dient ausschließlich der Informationsverwaltung. In dieser statis
 Beispiel:
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Beispielaufruf aus Info.java},captionpos=b]
 	double kosten = Info.getSelbstkostenGeaeuseBillig()[0];
 \end{lstlisting}

@@ -53,15 +53,27 @@ Nach Tätigung aller während der aktuellen Spielrunde gewünschten Spielaktione
 
 Neben der Dokumentenstruktur ist die Verwendung von CSS-Regeln und CSS-Klassen ein weiteres wichtiges Element der Umsetzung des Userinterface. Die CSS-Regeln sind derart gestaltet, dass je nachdem was der Spieler freigeschalten bzw. nicht freigeschaltenen hat, eine entsprechende optische Darstellung erfolgt. Als Selektoren kommen hierbei überwiegend CSS-Klassen zum Einsatz. In den entsprechenden HTML-Elementen sind im Value-Bereich des class-Attributs Value Expressions eingebettet. Je nach freigeschaltenen Spielelementen werden im request-Objekt entsprechende Werte hinterlegt. Beim Kompilieren der Webseite werden die Value Expressions ggf. durch die entsprechenden Werte im request-Objekt ersetzt und somit die definierte CSS-Klasse beim HTML-Element definiert. Im Spielerobjekt hinterlegte Werte wie zum Beispiel das aktuelle Kapital oder der Warenbestand der Uhren werden auf die gleiche Art und Weise der Webseite übergeben. Die Value Expressions sind dann jedoch so im Quellcode plaziert, dass diese als Text ausgegeben werden und nicht dem jeweiligen Element als class-Atribute mitgegeben werden.
 
+\lstset{language=HTML}
+\begin{lstlisting} [caption={Geschriebener Quellcode mit JSP},label=JSP-Code,captionpos=b]
+<div id="watch0" class="card ${watch0}">
+<h4>Modell 1</h4>
+<p>Produktlinie: ${m0s}</p>
+\end{lstlisting}
 
-%EWALD
+\lstset{language=HTML}
+\begin{lstlisting} [caption={Kompilierter HTML-Code},label=compiled-HTML,captionpos=b]
+<div id="watch0" class="card card-aktive">
+<h4>Modell 1</h4>
+<p>Produktlinie: Umwelt</p>
+\end{lstlisting} 
+
 \section{Eingabeüberprüfung im UI durch JavaScript}
 Da der Java-Code nicht im im HTML-basierten UI abgebildet ist benötigt es auf UI-Ebene eine weitere Logik. Diese ist notwendig, um die vom Benutzer getätigten Eingaben zu überprüfen und somit keine ungültigen Werte an das Spiel zu übergeben. 
 
 \subsection*{Kontostand prüfen}
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Überprüfung Kontostand},captionpos=b]
 function getMoney()
 {
 return parseFloat($('#money').text().replace(/[\.\u20ac]/g,''));
@@ -71,7 +83,7 @@ return parseFloat($('#money').text().replace(/[\.\u20ac]/g,''));
 Jedes mal wenn eine Aktion ausgeführt werden soll, die Geld kostet, wird zuerst der Kontostand überprüft bevor sie ausgeführt wird. Die Aktionen eines Buttons werden über das \enquote{onclick-Event} abgefangen. Damit diese jedoch nicht nicht immer ausführbar ist wird in die \enquote{onclick} Eigenschaft des Buttons eine Bedingung eingefügt. 
 
 \lstset{language=HTML}
-\begin{lstlisting}
+\begin{lstlisting} [caption={OnClick-Event mit Bedingung für Kontostandüberprüfung},captionpos=b]
 <li class="${clOc1} list-group-item">Holz 
 <span class="glyphicon glyphicon-ok"></span>
 <a class="addBtn" onclick="if(getMoney() >= $(this).text().replace(/[\.\+\u20ac]/g,'')  && !$(this).hasClass('d')){research('researchCaseOeko',1); change($(this)); }else if($(this).hasClass('d')){research('researchCaseOeko',1); change($(this));}else{notEnough()}">+ ${clCOc1} &euro;</a>
@@ -91,7 +103,7 @@ Beim erneuten Drücken auf den Button wird der Kontostand wieder um den vorher a
 Wenn der Kontostand jedoch nicht ausreicht und der Button auch nichts bereits einmal gedrückt wurde, so wird die Funktion \enquote{notEnough()} ausgeführt, welche eine Meldung auf dem Bildschirm ausgibt, dass das Geld nicht ausreicht. 
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Ausgabe bei zu geringem Kapital},captionpos=b]
 function notEnough()
 {
 alert('Das Kontoguthaben reicht nicht aus!');
@@ -113,7 +125,7 @@ Es wird aber auch ein bereits bestehender Bestand berücksichtigt, da Produktver
 \subsection*{Produktion}
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Eingabeüberprüfung Produktion},captionpos=b]
 $('#output0').blur(function()
 {
 if($(this).val())
@@ -190,7 +202,7 @@ $(this).attr('class','numInput');
 
 \end{lstlisting}
 
-In der Abteilung Produktion lässt sich die Menge der zu produzierenden Uhren angeben. Die Menge ist jedoch durch die Produktionskapazität begrenzt. Insofern wird auf Eingaben, die die Kapazität übersteigen durch eine Meldung hingewiesen und das Eingabefeld wird geleert. 
+In der Abteilung Produktion lässt sich die Menge der zu produzierenden Uhren angeben. Die Menge ist jedoch durch die Produktionskapazität begrenzt. Insofern wird auf Eingaben, welche die Kapazität übersteigen durch eine Meldung hingewiesen und das Eingabefeld wird geleert. 
 
 Wenn die Produktionsmenge jedoch im Rahmen des Möglichen liegt, so wird überprüft ob das Guthaben zu dem Zeitpunkt für die geplante Menge ausreicht. Ansonsten erfolgt die Meldung, dass dies nicht der Fall ist. 
 
@@ -205,7 +217,7 @@ Beim Einkauf gibt es die Möglichkeit Produktressourcen durch Verbesserungen bil
 Im Vertrieb wird lediglich überprüft der Verkaufspreis mit der geplanten Absatzmenge multipliziert. Wobei auch die Absatzmenge durch den Vorrat begrenzt ist.
 
 \lstset{language=Java}
-\begin{lstlisting}
+\begin{lstlisting} [caption={Eingabeüberprüfung Vetrieb},captionpos=b]
 $('#quantitySupplied0').blur(function()
 {
 if( !$(this).val() == '')
