@@ -62,17 +62,17 @@ public class Info {
 	private static double kostenEinkaufPremium[] = { 100000 , 200000 , 300000 };
 	
 	// Wert, wie viel die Verbesserung des Attributs zählt
-	private static double scoreUhrwerkBillig[] = { 0.1, 0.2, 0.3 };
-	private static double scoreGehaeuseBillig[] = { 0.1, 0.2, 0.3 };
-	private static double scoreArmbandBillig[] = { 0.1, 0.2, 0.3 };
+	private static double scoreUhrwerkBillig[] = { 0.15, 0.25, 0.35 };
+	private static double scoreGehaeuseBillig[] = { 0.15, 0.25, 0.35 };
+	private static double scoreArmbandBillig[] = { 0.15, 0.25, 0.35 };
 
-	private static double scoreUhrwerkOeko[] = { 0.1, 0.2, 0.3 };
-	private static double scoreGehaeuseOeko[] = { 0.1, 0.2, 0.3 };
-	private static double scoreArmbandOeko[] = { 0.1, 0.2, 0.3 };
+	private static double scoreUhrwerkOeko[] = { 0.15, 0.25, 0.35 };
+	private static double scoreGehaeuseOeko[] = { 0.15, 0.25, 0.35 };
+	private static double scoreArmbandOeko[] = { 0.15, 0.25, 0.35 };
 	
-	private static double scoreUhrwerkPremium[] = { 0.1, 0.2, 0.3 };
-	private static double scoreGehaeusePremium[] = { 0.1, 0.2, 0.3 };
-	private static double scoreArmbandPremium[] = { 0.1, 0.2, 0.3 };
+	private static double scoreUhrwerkPremium[] = { 0.15, 0.25, 0.35 };
+	private static double scoreGehaeusePremium[] = { 0.15, 0.25, 0.35 };
+	private static double scoreArmbandPremium[] = { 0.15, 0.25, 0.35 };
 	
 	// Produktion - Kosten pro erweiterung um ... senken	
 	private static double erweitereKapazitaetBillig[] = { 0.1, 0.2, 0.3 };
