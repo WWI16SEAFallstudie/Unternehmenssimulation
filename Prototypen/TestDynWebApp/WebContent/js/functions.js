@@ -472,12 +472,8 @@ $('#quantitySupplied0').blur(function()
 			}
 			else if($(this).val() > 0 && $(this).val() <= parseInt($('#stock0').text().replace(/[\.]/g,'')))
 			{
-				alert($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2}));
-				alert($('#offerPrice0').val());
 				let verkauf = parseFloat($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2})) * parseFloat($('#offerPrice0').val());
-				
-				alert(verkauf);
-				$('#verkauf0').text(parseFloat(verkauf)+ ' \u20ac');
+				$('#verkauf0').text(parseFloat(verkauf).toLocaleString('de-DE',{minimumFractionDigits: 2})+ ' \u20ac');
 			}
 		}
 		else
@@ -487,6 +483,60 @@ $('#quantitySupplied0').blur(function()
 		}
 	}
 });
+
+
+$('#quantitySupplied1').blur(function()
+		{
+			if( !$(this).val() == '')
+			{
+				if(!$('#offerPrice1').val() == '')
+				{
+					if($(this).val() > parseInt($('#stock1').text().replace(/[\.]/g,'')))
+					{
+						alert('Der Vorrat reicht nicht aus! \nVorrat: '+$('#stock1').text());
+						$(this).val('');
+					}
+					else if($(this).val() > 0 && $(this).val() <= parseInt($('#stock1').text().replace(/[\.]/g,'')))
+					{
+						let verkauf = parseFloat($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2})) * parseFloat($('#offerPrice1').val());
+						$('#verkauf1').text(parseFloat(verkauf).toLocaleString('de-DE',{minimumFractionDigits: 2})+ ' \u20ac');
+					}
+				}
+				else
+				{
+					alert('Sie m\u00fcssen zuerst einen Verkaufspreis eingeben!');
+					$(this).val('');
+				}
+			}
+		});
+
+$('#quantitySupplied02').blur(function()
+		{
+			if( !$(this).val() == '')
+			{
+				if(!$('#offerPrice2').val() == '')
+				{
+					if($(this).val() > parseInt($('#stock2').text().replace(/[\.]/g,'')))
+					{
+						alert('Der Vorrat reicht nicht aus! \nVorrat: '+$('#stock2').text());
+						$(this).val('');
+					}
+					else if($(this).val() > 0 && $(this).val() <= parseInt($('#stock2').text().replace(/[\.]/g,'')))
+					{
+						alert($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2}));
+						alert($('#offerPrice2').val());
+						let verkauf = parseFloat($(this).val().toLocaleString('de-DE',{minimumFractionDigits: 2})) * parseFloat($('#offerPrice2').val());
+						$('#verkauf2').text(parseFloat(verkauf).toLocaleString('de-DE',{minimumFractionDigits: 2})+ ' \u20ac');
+					}
+				}
+				else
+				{
+					alert('Sie m\u00fcssen zuerst einen Verkaufspreis eingeben!');
+					$(this).val('');
+				}
+			}
+		});
+
 
 
 function notEnough()
